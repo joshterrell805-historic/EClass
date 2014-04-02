@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane fx:id="anchor" minWidth="-Infinity" prefHeight="558.0" prefWidth="226.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label id="forum" fx:id="label1" alignment="CENTER" layoutY="6.0" prefHeight="22.0" prefWidth="226.0" text="Forum" textAlignment="LEFT" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+    <TextArea fx:id="text1" editable="false" layoutY="51.0" prefHeight="75.0" prefWidth="85.0" text="Is int a primitive type in java?" wrapText="true" AnchorPane.leftAnchor="0.0" />
+    <Label fx:id="label2" alignment="CENTER" layoutY="126.0" prefHeight="22.0" prefWidth="85.0" text="Carly A." AnchorPane.leftAnchor="0.0" />
+    <TextArea fx:id="text2" editable="false" layoutY="148.0" prefHeight="26.0" prefWidth="74.0" text="Yes it is" wrapText="true" AnchorPane.rightAnchor="0.0" />
+    <Label fx:id="label3" alignment="CENTER" layoutY="174.0" prefHeight="22.0" prefWidth="74.0" text="Daniel B." AnchorPane.rightAnchor="0.0" />
+    <TextArea fx:id="text3" editable="false" layoutY="196.0" prefHeight="75.0" prefWidth="85.0" text="Is the milestone due this friday?" wrapText="true" AnchorPane.leftAnchor="0.0" />
+    <Label fx:id="label4" alignment="CENTER" layoutY="271.0" prefHeight="22.0" prefWidth="74.0" text="Rachel G." AnchorPane.leftAnchor="0.0" />
+    <TextArea fx:id="text4" editable="false" layoutY="293.0" prefHeight="49.0" prefWidth="92.0" text="No it is due wednesday." wrapText="true" AnchorPane.rightAnchor="0.0" />
+    <Label fx:id="label5" alignment="CENTER" layoutY="342.0" prefHeight="22.0" prefWidth="85.0" text="John D." AnchorPane.rightAnchor="0.0" />
+    <TextField prefHeight="39.0" prefWidth="226.0" promptText="Message" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+    <Button mnemonicParsing="false" prefHeight="39.0001220703125" prefWidth="111.0" text="Send" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" text="Clear" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+  </children>
+</AnchorPane>

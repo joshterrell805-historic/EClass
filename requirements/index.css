@@ -1,0 +1,19 @@
+ul {
+   list-style-type: none;
+}
+li {
+   font-size: inherit;
+}
+
+.tier1 {
+   font-size: 20pt;
+}
+
+.tier2 {
+   font-size: 16pt;
+}
+
+.tier3 {
+   font-size: 12pt;
+}
+

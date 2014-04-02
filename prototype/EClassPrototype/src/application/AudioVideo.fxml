@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="306.66064453125" prefWidth="331.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.AudioVideoController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TitledPane animated="false" collapsible="false" layoutX="0.0" layoutY="0.0" prefHeight="306.66064453125" text="Audio/Video Control">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="202.66064453125" prefWidth="327.0">
+          <children>
+            <ImageView fitHeight="245.0" fitWidth="326.66666666666663" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@AudioVideoIcon.png" />
+              </image>
+            </ImageView>
+            <Button fx:id="avOffButton" layoutX="164.0" layoutY="203.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="163.0" text="Off" />
+            <Button fx:id="avOnButton" defaultButton="false" layoutX="1.0" layoutY="203.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="162.5" text="On" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

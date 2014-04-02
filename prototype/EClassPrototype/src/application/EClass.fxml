@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="605.0" prefWidth="568.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.EClass">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="72.0" layoutX="123.0" layoutY="491.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.9" visible="true" width="95.0" />
+    <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="72.0" layoutX="249.0" layoutY="491.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.9" width="95.0" />
+    <Rectangle fx:id="rectangle3" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="86.0" layoutX="170.0" layoutY="485.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.9" width="126.0" />
+    <Button id="navigationPrevious" fx:id="prevButton" layoutX="41.0" layoutY="517.0" mnemonicParsing="false" text="Previous" />
+    <Button id="navigationNext" fx:id="nextButton" layoutX="362.0" layoutY="517.0" mnemonicParsing="false" text="Next" />
+    <TextField id="navigationTextBox" fx:id="slideNumTextField" layoutX="443.0" layoutY="516.0" prefWidth="87.0" promptText="Slide Number" text="" />
+    <TextArea fx:id="whiteboardTextArea" disable="false" editable="false" layoutX="41.0" layoutY="32.0" prefHeight="411.0" prefWidth="489.0" wrapText="true" />
+    <TextArea id="navigationSlideNum" fx:id="slideNumTextArea" disable="false" editable="false" layoutX="477.0" layoutY="475.0" prefHeight="32.0" prefWidth="24.0" text="" wrapText="true" />
+    <Pane id="LecturePane" fx:id="lecturePane" layoutX="41.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="489.0">
+      <children>
+        <Button fx:id="openLectureButton" layoutX="78.0" layoutY="162.0" mnemonicParsing="false" prefHeight="86.9609375" prefWidth="135.0" text="Open Lecture">
+          <font>
+            <Font size="16.0" fx:id="x1" />
+          </font>
+        </Button>
+        <Button fx:id="newLectureButton" font="$x1" layoutX="279.0" layoutY="162.0" mnemonicParsing="false" prefHeight="86.9609375" prefWidth="135.0" text="New Lecture" />
+      </children>
+    </Pane>
+    <MenuBar fx:id="MenuBar" layoutX="0.0" layoutY="0.0" minHeight="12.0" prefHeight="22.0" prefWidth="567.0" useSystemMenuBar="false">
+      <menus>
+        <Menu mnemonicParsing="false" text="File" fx:id="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" fx:id="MBNew">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Open" fx:id="MBOpen">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <Menu mnemonicParsing="false" text="Open Recent" fx:id="MBOpenRecent">
+              <items>
+                <MenuItem mnemonicParsing="false" text="308_lecture" />
+                <MenuItem mnemonicParsing="false" text="309_lecture" />
+              </items>
+            </Menu>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Save">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Save as...">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Print">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Send Layer" fx:id="sendLayerItem" />
+            <MenuItem mnemonicParsing="false" text="Receive Layer" fx:id="receiveLayerItem" />
+            <MenuItem mnemonicParsing="false" text="Exit">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem disable="true" mnemonicParsing="false" text="Redo">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Copy">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem disable="true" mnemonicParsing="false" text="Paste">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem disable="true" mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Select None">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="View" fx:id="View">
+          <items>
+            <RadioMenuItem disable="false" mnemonicParsing="false" selected="false" text="Show Approval Tracker" fx:id="MBShowApprovalTracker" />
+            <RadioMenuItem disable="false" mnemonicParsing="false" selected="false" text="Show Approval Gadget" fx:id="MBShowApprovalGadget" />
+            <RadioMenuItem mnemonicParsing="false" text="Show Approval Tracker Analysis" fx:id="MBShowApprovalTrackerAnalysis" />
+            <RadioMenuItem mnemonicParsing="false" text="Show Approval Tracker Settings" fx:id="MBShowApprovalTrackerSettings" />
+            <RadioMenuItem mnemonicParsing="false" selected="false" text="Show Drawing Tools" fx:id="MBShowDrawingTools" />
+            <RadioMenuItem mnemonicParsing="false" selected="false" text="Show Forum" fx:id="MBShowForum" />
+            <RadioMenuItem mnemonicParsing="false" selected="false" text="Show Layer Manager" fx:id="MBShowLayerManager" />
+            <RadioMenuItem mnemonicParsing="false" selected="false" text="Show Roster" fx:id="MBShowRoster" />
+            <RadioMenuItem disable="false" mnemonicParsing="false" selected="false" text="Show Questions" fx:id="MBShowQuestions" />
+            <RadioMenuItem disable="false" mnemonicParsing="false" selected="false" text="Ask a Question" fx:id="MBAskQuestion" />
+            <RadioMenuItem mnemonicParsing="false" text="Show Audio/Video Control" fx:id="MBShowAVControl" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Zoom In">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="EQUALS" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Zoom Out">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="MINUS" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Zoom to Fit">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="DIGIT0" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Full Screen">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </children>
+</AnchorPane>

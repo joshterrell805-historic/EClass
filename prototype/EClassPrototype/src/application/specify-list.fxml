@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.SpecifyListController">
+  <children>
+    <MenuButton fx:id="menubutton_sym" layoutX="77.0" layoutY="12.0" mnemonicParsing="false" text="A">
+      <items>
+        <MenuItem mnemonicParsing="false" text="A" fx:id="menuitem_sym1" />
+        <MenuItem mnemonicParsing="false" text="a" fx:id="menuitem_sym2" />
+        <MenuItem mnemonicParsing="false" text="1" fx:id="menuitem_sym3" />
+        <MenuItem mnemonicParsing="false" text="I" fx:id="menuitem_sym4" />
+        <MenuItem mnemonicParsing="false" text="i" fx:id="menuitem_sym5" />
+        <MenuItem mnemonicParsing="false" text="•" fx:id="menuitem_sym6" />
+        <MenuItem mnemonicParsing="false" text="○" fx:id="menuitem_sym7" />
+      </items>
+    </MenuButton>
+    <Label layoutX="14.0" layoutY="14.0" text="Symbol:" />
+    <Pane layoutX="14.0" layoutY="61.0" prefHeight="226.0" prefWidth="572.0" style="-fx-border-color: black;">
+      <children>
+        <Pane fx:id="theElement" layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="572.0" style="-fx-background-color: #CCCCCC;&#10;-fx-border-color: black;">
+          <children>
+            <Label fx:id="theElementText" layoutX="52.0" layoutY="18.0" prefWidth="226.0" text="Bla bla bla bla bla bla bla bla bla bla" />
+            <Label layoutX="14.0" layoutY="18.0" minWidth="22.0" prefWidth="22.0" text="A" />
+            <Label layoutX="370.0" layoutY="18.0" minHeight="10.999908447265625" prefHeight="10.999908447265625" text="Inner:" />
+            <Label id="elementInnerTypeText" fx:id="theElementInnerTypeText" layoutX="427.0" layoutY="18.0" prefWidth="131.0" text="List (Collapsed)" />
+          </children>
+        </Pane>
+      </children>
+    </Pane>
+    <Button fx:id="button_insert" layoutX="152.0" layoutY="306.0" mnemonicParsing="false" text="Insert" />
+    <Button fx:id="button_remove" layoutX="266.0" layoutY="306.0" mnemonicParsing="false" text="Remove" />
+    <Button fx:id="button_edit" layoutX="380.0" layoutY="306.0" mnemonicParsing="false" prefWidth="69.0" text="Edit" />
+    <Button layoutX="186.0" layoutY="359.0" mnemonicParsing="false" text="Cancel" />
+    <Button fx:id="button_ok" layoutX="345.0" layoutY="359.0" mnemonicParsing="false" prefWidth="68.9998779296875" text="OK" />
+  </children>
+</AnchorPane>

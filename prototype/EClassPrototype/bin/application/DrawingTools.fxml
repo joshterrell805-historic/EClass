@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0000999999975" prefWidth="196.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <AnchorPane layoutX="2.0" layoutY="5.0" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="200.0">
+      <children>
+        <TitledPane animated="false" minWidth="200.0" prefHeight="450.0" prefWidth="200.0" text="Drawing Tools" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-4.0">
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="424.0" prefWidth="176.0">
+              <children>
+                <GridPane gridLinesVisible="false" prefHeight="410.0" prefWidth="173.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                    <ToggleButton id="PencilTool" minHeight="80.0" minWidth="85.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="85.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                      <graphic>
+                        <ImageView fitHeight="63.750099182128906" fitWidth="71.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="false">
+                          <image>
+                            <Image url="@PencilIcon.png" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </ToggleButton>
+                    <ToggleButton id="BasicShapesTool" minHeight="81.0" minWidth="85.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="85.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                      <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Circle" />
+                            <MenuItem mnemonicParsing="false" text="Square" />
+                            <MenuItem mnemonicParsing="false" text="Triangle" />
+                          </items>
+                        </ContextMenu>
+                      </contextMenu>
+                      <graphic>
+                        <ImageView fitHeight="67.75003051757812" fitWidth="90.33337132073703" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@BasicShapesIcon.png" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </ToggleButton>
+                    <ToggleButton id="TextTool" minHeight="80.0" minWidth="85.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="85.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                      <graphic>
+                        <ImageView fitHeight="63.750099182128906" fitWidth="71.00000762939453" mouseTransparent="true" pickOnBounds="true" preserveRatio="false">
+                          <image>
+                            <Image url="@TextIcon.png" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </ToggleButton>
+                    <ToggleButton id="HandTool" minHeight="81.0" minWidth="85.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="85.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                      <graphic>
+                        <ImageView fitHeight="65.75001525878906" fitWidth="87.66668176588674" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@HandIcon.png" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </ToggleButton>
+                    <ToggleButton id="AttachmentTool" minHeight="81.0" minWidth="85.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="85.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                      <graphic>
+                        <ImageView fitHeight="60.5" fitWidth="60.5" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="@PaperClipIcon.png" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </ToggleButton>
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints maxHeight="163.0" minHeight="0.0" prefHeight="104.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="301.0" minHeight="10.0" prefHeight="107.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>

@@ -1,0 +1,22 @@
+should students be able to browse lectures at their own pace and follow along?
+   What if a student is taking notes and the teacher moves on to the next section?
+   It would suck if the student was in the middle of taking notes and his layer
+   collapsed because the teacher collapsed the section.
+
+What is the solution to this? The student needs to see what the teacher is doing,
+yet he needs to be able to take his own notes too.
+
+Is index.html different than our table of contents file?
+
+
+clarify on one type of permissions: locking the user's machine to only EC or
+only EC and email, etc.
+- How should presentations be created? Importing? Creating with markup?
+- Do the panes have to absolutely be detachable windows?
+
+Do you want an additional info button for each student?
+-Name
+-poly id
+-year
+-major
+-etc

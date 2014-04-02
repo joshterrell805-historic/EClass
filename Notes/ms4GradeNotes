@@ -1,0 +1,12 @@
+- update roster with actual names in all pictures - user 308 roster
+- use html notes from this class instead of generic data
+- rendering the html seems pretty good as we have it
+- fully expand everything if browser doesnt support the dynamic expanding
+- trim down some of the pictures like the navigation page
+- allow students to move back and forth between slides whenever they want to
+- include button to resync with instructor
+- include in lockdown mode that students cant move around between slides
+- include timer that allows them to save their notes before lockdown starts
+- explain how roster gets populated
+	- 2 or 3 figure explanation
+- new examples for each drawing tool stuff

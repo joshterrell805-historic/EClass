@@ -1,0 +1,4 @@
+- Importing documents and simple document creation ability
+- Expanding and collapsing will invalidate layers unless you revert back to where you were
+- 1 level of slides, if you expand mid-lecture then it adds a scrollbar for the current slide
+- Pre-lecture compilation and preview of new slides/lectures

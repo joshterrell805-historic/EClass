@@ -1,0 +1,20 @@
+- Write document and have it create slides for you.
+- Manually build slides like powerpoint.
+- Tool that imports text. Basic features like add slide etc.
+- Important (not found in other software):
+   - expand headings on a slide into the actual content
+   - multiple headings per slide
+   - hierarchy with roman numerals etc
+      - only show one level like I option
+   - dynamically fit content on slides
+   - popup for student question submits -> give permission to specific students to draw on current slide
+   - FFA whiteboard where anyone can draw
+   - console that shows up for teacher but not students
+      - include student roster with names and can draw permission, permission levels
+      - include allow all button and clear all
+   - include option for private layers
+      - one public layer
+   - transparency option for ink, background
+
+- browser or desktop is fine
+- feedback voting option - "Getting It" meter

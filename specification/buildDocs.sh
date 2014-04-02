@@ -1,0 +1,1 @@
+javadoc EClass EClass.ApprovalTracker EClass.Person EClass.Forum EClass.Presentation EClass.Presentation.LayerObject EClass/*.java EClass/*/*.java EClass/Presentation/LayerObject/*.java -d javadoc -private

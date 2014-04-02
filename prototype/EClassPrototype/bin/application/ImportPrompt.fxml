@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" blendMode="SRC_ATOP" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.50003896484122" prefWidth="250.0" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ImportPromptController">
+  <children>
+    <TitledPane alignment="CENTER" animated="false" collapsible="false" contentDisplay="CENTER" disable="false" expanded="true" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.50003896484122" prefWidth="250.0" text="Import Lecture" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="0.75" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="-0.75">
+      <content>
+        <AnchorPane id="Content" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="246.0">
+          <children>
+            <TextField alignment="CENTER" editable="false" layoutX="23.0" layoutY="58.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="200.0" text="Would you like to import a lecture?" />
+            <Button id="ImportYes" fx:id="importYesButton" layoutX="68.0" layoutY="113.0" mnemonicParsing="false" text="Yes" />
+            <Button id="ImportNo" fx:id="importNoButton" layoutX="136.0" layoutY="113.0" mnemonicParsing="false" text="No" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

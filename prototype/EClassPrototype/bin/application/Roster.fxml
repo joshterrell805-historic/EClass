@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="585.999977929685" prefWidth="307.0" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.RosterController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Rectangle id="rectangel" fx:id="rectange" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="226.9998779296875" />
+    <Label fx:id="label1" layoutY="14.0" text="Attendance" textFill="WHITE" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="78.0" />
+    <Label fx:id="label2" layoutX="82.0" layoutY="44.0" text="Present: 3" textFill="WHITE" />
+    <Label fx:id="label3" layoutX="79.0" layoutY="60.0" text="Absent: 11" textFill="WHITE" />
+    <TitledPane fx:id="titledPaneInClass" animated="false" layoutX="0.0" layoutY="86.0" prefHeight="338.0" prefWidth="228.0" text="In Class">
+      <content>
+        <ListView fx:id="listViewInClass" prefHeight="320.0" prefWidth="223.0" />
+      </content>
+    </TitledPane>
+    <TitledPane fx:id="titledPaneRemoteAccess" animated="false" layoutX="0.0" layoutY="422.0" prefHeight="165.0001220703125" prefWidth="226.0" text="Remote Access">
+      <content>
+        <ListView fx:id="listViewRemoteAccess" prefHeight="200.0" prefWidth="200.0" />
+      </content>
+    </TitledPane>
+    <Button fx:id="optionsButton" layoutX="229.0" layoutY="113.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0" fx:id="optionsContextMenu">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." fx:id="permissionsMenuItem" />
+            <MenuItem mnemonicParsing="false" text="Kick" fx:id="kickMenuItem" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="160.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="184.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="208.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="233.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="256.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="280.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="304.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="328.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="352.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="376.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="400.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="449.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="472.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="496.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+    <Button id="optionsButton" layoutX="229.0" layoutY="137.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." />
+            <MenuItem mnemonicParsing="false" text="Kick" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+  </children>
+</AnchorPane>

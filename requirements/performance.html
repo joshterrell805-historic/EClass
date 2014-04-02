@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>3.1  Performance</title>
+</head>
+
+<body>
+    <h3 id="Performance">3.1 Performance</h3>
+        <p>
+        All EClass operations that occur during a presentation such as sharing layers with the classroom, administration commands (actions on students), manipulating layers and layer objects, and all other presentation tools should execute effectively instantaneously. Actions for students such as viewing the lecture, creating their own private layers, and posting messages to the forum will execute quickly as well.
+        <p>
+        The time to execute all administrative commands must be instantaneous, except
+        for any delays due to network transmission of data from the central host.
+        <p>
+        Actions in the provided presentation editor should happen effectively immediately including inserting text elements, inserting lists and list elements, and deleting these elements. Slidify will also happen effectively immediately, and the time to save an edited presentation to disk is expected to take no more than on the order of ones of seconds.
+        <p>
+            Opening a presentation for both students and presenters is expected to have a noticeable delay for presentations with slides in the expected maximum range. When opening a presentation as a presenter or a student, EClass is expected to have a delay up to on the order of tens of seconds to complete the opening process. EClass must not be unresponsive during this time, but instead load all needed content in the background displaying a loading status somewhere on the application until EClass has completed opening the presentation.
+        </p>
+        <p>
+            In general, the performance of EClass operations that must access data
+            across a network is subject to potential network delays.  EClass
+            must transmit data as fast as is possible on any given network, but delays due
+            to external network circumstances are beyond the control of EClass.
+        </p>
+        <p>
+        </p>
+        There are no specific requirements for the allowable size of a presentation or class in
+        terms of the amount of content or class size. A presentation on the order of thousands of slides, and a class size (count of students) on the order of hundreds is the maximum expected size during normal use.
+        <p>
+        The maximum expected sizes of the EClass data structure are the following:
+        <ul>
+            <li>
+            slides -- on the order of hundreds slides per presentation
+            <li>
+            layers -- on the order of tens of layers per slide
+            <li>
+            students -- on the order of hundreds of students per class
+            <li>
+            classes -- on the order of tens of classes per teacher
+        </ul>
+        While there may be on the order of tens of thousands of registered users in the total databse, the
+        expected maximum number of users connected to any given presentation at any given
+        time is on the order of hundreds.
+        <p>
+        EClass must be able to operate with presentations and class sizes
+        larger than these normal maximums.  However, the tool need not the meet the
+        previously-enumerated time performance requirements if the the specified sizes are larger than the normal maximum expected sizes.
+    <!-- Footer !-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr width=80% size=3>
+    <center>
+    <font size=-1>
+    <font color=black> Prev: </font> [none]
+     | <font color=black> Next: </font><a href="system-characteristics.html">System Characteristics</a>
+     | <font color=black> Up: </font><a href="non-functional-requirements.html">Non-Functional Requirements</a>
+     | <font color=black> Top: </font><a href="index.html">index</a></font>
+    </center>
+    <hr width=80% size=3>
+</body>
+</html>

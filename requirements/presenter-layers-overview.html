@@ -1,0 +1,96 @@
+
+<html>
+<head>
+<title>
+2.3.3. Presenter Layers and the Layer Manager  
+</title>
+</head>
+<body bgcolor = white>
+<a name="Presenter Layers and the Layer Manager">
+<h4>
+2.3.3.  Presenter Layers and the Layer Manager
+<hr>
+</h4>
+<p>
+This page will present the specifics of the Presenter Layers and its functions.
+A more general layer manager explanation is available at 
+<a href="layermanager-overview.html">Layer Manager</a>.
+<br>
+<br>
+Image 1 is the state of the program when the presenter has chosen to use a
+virtual whiteboard to present his presentation. This is done via a layer using the 
+layer manager. The presenter is able to create a new layer from the layer
+manager and is then able to select it (indicated by yellow highlight) and/or
+multiple other layers to draw on using a drawing tool.
+<br>
+<br>
+Each slide in a presentation will also have it's own stack of layers. That is, if a 
+presenter switches slides, the layers from the previous slides will not transfer
+over to the current slide.
+<br>
+<br>
+A presenter can create and have multiple layers at a time. It is also possible
+to create layers on top of the original presentation slide and adjust the 
+opacity of the layer as if the presenter were drawing directly on to the slide.
+The advantage to this layer concept is that individual drawings can be removed
+or added at any time.
+<br>
+<br>
+The presenter also has access to layers that students push to his layer manager
+stack. Once a student has pushed a layer to the presenters layer stack, the 
+presenter owns a copy of the layer and is able to use actions on the layer as
+if he created it. If the presenter alters his copy of the layer, the change does
+not affect the student copy of the layer. Essentially, the presenter only has
+access to student layers if the student so chooses to push a 
+layer the presenter.
+<br>
+<br>
+In contrast, the student will always have his own copy of the presenter layers. 
+But the same concept of layer ownership is maintained: if the student modifies
+the presenter's layers, the modification is only to his own copy.
+<hr>
+<p>
+Below is a use case of the layer manager and how it can be used by the presenter
+to seemingly write/draw directly onto the presentation slides.
+<br>
+<br>
+Figure 1 shows the intial state of when a presentation has been loaded.
+</p>
+<center><img src="images/PresenterLayers.png"></center>
+<p align=center>Figure 1: The Presenter Using Layers</p>
+<hr>
+<p>
+To begin writing, create a new layer by pressing the + symbol in the layer manager.
+A layer will then be added to the layer manager and is automatically highlighted
+for editing.
+</p>
+<center><img src="images/PresenterLayersNewLayer.png"></center>
+<p align=center>Figure 2: New layer Lecture Notes is created and highlighted </p>
+<hr>
+<p>
+Say the presenter then selects the pencil drawing tool, indicated by the pencil.
+The following prompt will show up asking to select a color to write/draw in.
+</p>
+<center><img src="images/PresenterLayersChooseColor.png"></center>
+<p align=center>Figure 3: Color can be chosen for the pencil tool. </p>
+<p>
+Assuming the presenter chooses the color red, a red pencil will become the
+presenters cursor and the presenter is able to freely draw on top of the layer
+without affecting the original presentation slide.
+</p>
+<center><img src="images/PresenterLayersDrawing.png"></center>
+<p align=center>Figure 4: Color chosen and layer edited with notes. </p>
+
+<hr width=80% size=3>
+<center>
+<font size=-1>
+<font color=black> Prev: </font><a href="collapsing-expanding-overview.html">collapsing and expanding</a>
+ | <font color=black> Next: [none]
+ | <font color=black> Up: </font><a href="present-overview">presenting</a>
+ | <font color=black> Top: </font><a href="index.html">index</a></font>
+</center>
+<hr width=80% size=3>
+</body>
+</html>
+
+

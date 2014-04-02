@@ -1,0 +1,18 @@
+- Lets say professor wants multiple people to edit the whiteboard. 
+ - Prof gives permission to x people
+   - Each person gets their own blank layer.
+    - Prof. is able to display each individual layer or any amount of layers.
+     - Prof. is able to delete selected or all layers
+- idea: screen size is square, combind both side bars that would be empty into a notes section.
+- idea: option for the instructor to not show new layers he/she is working on? possible layer property for top viewable layer and bottom viewable layer.
+- roster icons: hand, optional slide push request icon, lock icon representing current permissions, gear for overall permissions and kicking a student
+- possible roster sorting
+ - but definite popping to the top of the list for users with active questions/requests
+  - no sorting afterward
+- greyed out students who are not present
+- Should slides be layers?
+ - Could have the originally created slides be different because they have html markup, images, etc.
+ - Also more/different options for creating a slide outside of an ongoing presentation
+- Problem: when adjusting base presentation, any saved layers from previous presentations may no longer match up with the slides/presentation.
+ - Similar issue when collasping and expanding the titles/sections
+- Problem: Layers associated with relative slide or section? When section is broke onto multiple slides what happens? (AKA 2 sections on one slide)

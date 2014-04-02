@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="387.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <TitledPane animated="false" collapsible="false" prefHeight="238.0" prefWidth="338.0" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="177.0" prefWidth="396.0">
+          <children>
+            <Text layoutX="37.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question:" />
+            <Button layoutX="232.0" layoutY="149.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="97.0" text="Submit" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+    <TextArea layoutX="32.0" layoutY="46.0" prefHeight="120.0" prefWidth="324.0" text="Enter a question here" wrapText="true" />
+  </children>
+</AnchorPane>

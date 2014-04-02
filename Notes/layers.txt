@@ -1,0 +1,37 @@
+Layers in the Electronic Classroom
+
+Layers appear over the presentation and may be drawn on. The students and
+teacher draw on layers. Layers may be displayed, hidden, created, deleted,
+(re)named, and modified.
+
+Modifying layers invlolves changing the content on them or changing the way
+in which they are displayed. Layers can have an opaque or transparent background
+or any value inbetween. Layers may have text and drawings added to them.
+
+Layers are controlled from the layer console in which layers can have their
+transparency changed, be renamed, be displayed or hidden, and be reordered.
+
+The teacher may see all students' layers and choose any to be displayed on the
+presentation. 
+
+The teacher may also choose to enable editing by any or all students on a shared
+layer.
+
+The electronic classroom is also used as notes for students. 
+Since the electronic classroom is used as notes too, students should have a copy
+of all of the teacher's layers.
+
+I think saving the notes as image files is out of the question. It will be way
+too cumbersome to review notes. In order for these notes to be of any value to
+students, the electronic classroom notes must be preserved in a way in which
+a student can open the program at a later date and see the notes how they
+originally were.
+
+I'm thinking we should have an option to be able to save layers/presentation
+to a file for student notes.
+
+The teacher mentioned this tool being for use by students as a note-taking tool
+as well as an in-lecture device. If the tool is to be used for note-taking,
+there needs to be some way to save the notes.
+
+To be disccussed & reviewed

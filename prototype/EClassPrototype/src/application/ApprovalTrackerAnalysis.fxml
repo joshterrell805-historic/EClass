@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="ApprovalTrackerAnalysis" prefHeight="300.0" prefWidth="788.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ApprovalTrackerAnalysisController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TitledPane animated="false" collapsible="false" prefHeight="251.0" prefWidth="683.0" text="Approval Tracker Analysis" textAlignment="LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <BorderPane prefHeight="251.0" prefWidth="683.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <bottom>
+                <ScrollBar fx:id="ATAScrollBar" prefWidth="529.0">
+                  <BorderPane.margin>
+                    <Insets bottom="15.0" left="130.0" right="190.0" />
+                  </BorderPane.margin>
+                </ScrollBar>
+              </bottom>
+              <center>
+                <ScatterChart id="ScatterChartNxN" fx:id="ATAChart" alternativeColumnFillVisible="false" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="true" horizontalZeroLineVisible="false" legendVisible="false" titleSide="TOP" verticalGridLinesVisible="true" verticalZeroLineVisible="false">
+                  <xAxis>
+                    <NumberAxis label="Time (Minutes)" minorTickVisible="false" side="BOTTOM" />
+                  </xAxis>
+                  <yAxis>
+                    <NumberAxis autoRanging="true" label="Approval" minorTickVisible="false" side="LEFT" tickUnit="0.25" upperBound="1.0" />
+                  </yAxis>
+                </ScatterChart>
+              </center>
+              <left>
+                <Pane prefHeight="136.0" prefWidth="111.0" />
+              </left>
+              <right>
+                <TitledPane animated="false" collapsible="false" minWidth="132.0" prefHeight="136.0" prefWidth="188.0" text="Point Data">
+                  <content>
+                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="69.0" prefWidth="128.0">
+                      <children>
+                        <HBox prefHeight="110.0" prefWidth="184.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <VBox prefHeight="200.0" prefWidth="100.0">
+                              <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Data Point:">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                  </VBox.margin>
+                                </Text>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Approval:" VBox.margin="$x1" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Slide No:" VBox.margin="$x1" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time on Slide:" VBox.margin="$x1" />
+                              </children>
+                            </VBox>
+                            <VBox prefHeight="200.0" prefWidth="100.0">
+                              <children>
+                                <Text fx:id="ATADataPointVal" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                  </VBox.margin>
+                                </Text>
+                                <Text fx:id="ATAApprovalVal" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                  </VBox.margin>
+                                </Text>
+                                <Text fx:id="ATASlideNoVal" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                  </VBox.margin>
+                                </Text>
+                                <Text fx:id="ATATimeOnSlideVal" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                            </VBox>
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                  <BorderPane.margin>
+                    <Insets right="8.0" />
+                  </BorderPane.margin>
+                </TitledPane>
+              </right>
+              <top>
+                <VBox alignment="TOP_CENTER" fillWidth="true" prefHeight="69.0" prefWidth="370.0">
+                  <children>
+                    <Text strikethrough="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Approval vs. Time" textAlignment="CENTER" textOrigin="BASELINE">
+                      <font>
+                        <Font size="28.0" />
+                      </font>
+                    </Text>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How well are you understanding the presentation right now?" textAlignment="CENTER">
+                      <font>
+                        <Font size="10.0" />
+                      </font>
+                    </Text>
+                  </children>
+                </VBox>
+              </top>
+            </BorderPane>
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

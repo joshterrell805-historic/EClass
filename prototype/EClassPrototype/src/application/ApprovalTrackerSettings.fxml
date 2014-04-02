@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="ApprovalTrackerSettings" prefHeight="201.0" prefWidth="537.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ApprovalTrackerSettingsController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TitledPane animated="false" collapsible="false" prefHeight="247.0" prefWidth="537.0" text="Approval Tracker Settings" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <BorderPane prefHeight="221.0" prefWidth="533.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <bottom>
+                <HBox alignment="CENTER" prefHeight="69.0" prefWidth="533.0">
+                  <children>
+                    <Button fx:id="ATSOkButton" mnemonicParsing="false" text="OK" textAlignment="LEFT">
+                      <font>
+                        <Font size="14.0" fx:id="x1" />
+                      </font>
+                      <HBox.margin>
+                        <Insets right="10.0" />
+                      </HBox.margin>
+                    </Button>
+                    <Button fx:id="ATSCancelButton" font="$x1" mnemonicParsing="false" text="Cancel">
+                      <HBox.margin>
+                        <Insets left="10.0" />
+                      </HBox.margin>
+                    </Button>
+                  </children>
+                </HBox>
+              </bottom>
+              <center>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                    <VBox prefHeight="166.0" prefWidth="99.0">
+                      <children>
+                        <Text font="$x1" strokeType="OUTSIDE" strokeWidth="0.0" text="Question:">
+                          <VBox.margin>
+                            <Insets bottom="15.0" left="15.0" top="25.0" />
+                          </VBox.margin>
+                        </Text>
+                        <Text font="$x1" strokeType="OUTSIDE" strokeWidth="0.0" text="Left Value:">
+                          <VBox.margin>
+                            <Insets bottom="18.0" left="15.0" />
+                          </VBox.margin>
+                        </Text>
+                        <Text font="$x1" strokeType="OUTSIDE" strokeWidth="0.0" text="Right Value:">
+                          <VBox.margin>
+                            <Insets left="15.0" />
+                          </VBox.margin>
+                        </Text>
+                      </children>
+                    </VBox>
+                    <VBox prefHeight="166.0" prefWidth="388.0">
+                      <children>
+                        <TextField fx:id="ATSQuestionField" prefWidth="200.0" promptText="Ex. How is the lecture pacing?">
+                          <VBox.margin>
+                            <Insets bottom="14.0" top="25.0" />
+                          </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="ATSLeftValField" prefWidth="147.0" promptText="Ex. Too Fast">
+                          <VBox.margin>
+                            <Insets bottom="15.0" />
+                          </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="ATSRightValField" prefWidth="147.0" promptText="Ex. Too Slow" />
+                      </children>
+                    </VBox>
+                  </children>
+                </HBox>
+              </center>
+            </BorderPane>
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

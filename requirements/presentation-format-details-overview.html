@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>
+2.2.3 Format Details
+</title>
+</head>
+<body bgcolor = white>
+<h3>
+2.2.3 Format Details
+</h3>
+</center>
+<p>EClass uses <a href="http://www.w3schools.com/html/html_xhtml.asp">XHTML</a> to encode presentations. All standard HTML elements are available for use in EClass presentations (so long as the elements are in XHTML format), and CSS is allowed as well. The EClass presentation file is simply an XHTML file with special attributes. The special attributes that EClass supports are:</p>
+<ul>
+<li><a href="#CollapsibleListElement">Collapsible List Element</a></li>
+<li><a href="#SlideBoundaryElement">Slide Boundary Element</a></li>
+</ul>
+
+<a name="CollapsibleListElement"><h4>Collapsible List Element</h4></a>
+<p>Ordered and unordered list-elements can be given a specific property which specifies that the list-element is collapsible. Collapsible list elements are displayed differently than non-collapsible list elements to communicate their collapsible property. Collapsible list-elements start off initially collapsed or uncollapsed depending on how the attribute is specified, and when a collapsible list-item is selected it alternates between collapsed and un-collapsed. When a list-item is collapsed, its inner information is hidden. When it is un-collapsed, its inner information is displayed.</p>
+
+<p>The following is sample source code on how collapsible elements are constructed:</p>
+<!-- Start HTML source code !-->
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>ul</span><span style='color:#a65700; '>></span>                                                                                
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#274796; '> collapsible</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"enabled;collapsed"</span><span style='color:#a65700; '>></span>I'm collapsible and I'm initialized as collapsed<span style='color:#008c00; '>.</span><span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#274796; '> collapsible</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"enabled;expanded"</span><span style='color:#a65700; '>></span>I'm collpasable and I'm initialized as expanded<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#274796; '> collapsible</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"disabled"</span><span style='color:#a65700; '>></span>I'm not collapsible<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>                               
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>I'm not collapsible<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>                                                     
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>ul</span><span style='color:#a65700; '>></span>
+</pre>
+</pre>
+<!-- End HTML source code !-->
+<p>Notice that to specify a list item as collapsible, the presentation maker must add the attribute "collapsible" to the list item and specify the property value. The property value can be either "disabled" "enabled;collapsed" or "enabled;expanded". The collpased/expanded value defines the default state of the collapsible list item. The following is an example of the resultant behavior (clicked on an underlined li to observe collapsing).</p>
+<script type="text/javascript">
+function toggleCollapse(elementName)
+{
+   var element = document.getElementById(elementName);
+   var display = element.style.display;
+   element.style.display = display == "none" ? "block" : "none";
+
+}
+</script>
+<ul>                                                                                
+<!-- collapsabe intentional here due to js/css !-->
+   <li onclick="toggleCollapse('CollapsabeInnerDiv1')" style="margin:0px;border:0px"><u>I'm collapsible and I'm initialized as collapsed.</u></li>
+      <div id="CollapsabeInnerDiv1" style="display:none;margin:0px;padding:0px">                                           
+         Hello, world!                                                   
+      </div>                                                                     
+   <li onclick="toggleCollapse('CollapsabeInnerDiv2')" style="margin:0px;border:0px"><u>I'm collapsible and I'm initialized as expanded.</u></li>
+      <div id="CollapsabeInnerDiv2">                                           
+         Hello, world!                                                   
+      </div>                                                                     
+   <li collapsabe="disabled">I'm not collapsible</li>                               
+      <div id="CollapsabeInnerDiv3">                                           
+         Hello, world!                                                    
+      </div>                                                                     
+   <li>I'm not collapsible</li>                                                     
+      <div id="CollapsabeInnerDiv4">                                           
+         Hello, world!                                                    
+      </div>                                                                     
+</ul>
+
+<p>The eample above uses an unordered list (ul). Ordered lists (ol) are also supported in the same exact fashion. Ordered and unordered lists may have a specified bulletStyle attribute which can take the values A, a, i, I, 1, filled-dot, hollow-dot, and none. A, a, i, I, and 1 are all ordered-list bulletStyles. <i>A</i> and <i>a</i> specify a list with alphabetic ordering where the first list-element has the letter <i>A</i> or <i>a</i>, respectively and then carries on to the letter b for the next list element and so forth. <i>i</i> and <i>I</i> specify <a href=http://en.wikipedia.org/wiki/Roman_numerals">roman numeral</a> list ordering, and <i>1</i> creates numeric ordering where the list elements begin at 1 procede to 2 and so forth. filled-dot, hollow-dot, and none are ul bulletStyle attributes. filled-dot specifies a ul with bullets of a filled-dot (as seen above). hollow-dot specifies a ul with bullets of a hollow-dot, and none specifies a ul without a bullet marker.</p>
+
+<p>Below is an example of how the bulletAttribute is specified with the lowercase alphabetic numbering on an ordered list.</p>
+
+<!--begin!-->
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>ol</span><span style='color:#274796; '> bulletStyle</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"a"</span><span style='color:#a65700; '>></span>
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>First list item which will have the bullet "a"<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>Second list item which will have the bullet "b"<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>
+<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>ol</span><span style='color:#a65700; '>></span>
+</pre>
+<!--end!-->
+<br />
+
+<p>See the following for more information on collapsing: details of <a href="collapsing-expanding-overview.html">how collapsing and uncollaping is performed</a> and <a href="inserting-elements-overview.html">specifying an element's collapsible properties in the editor</a></p>
+
+<a name="SlideBoundaryElement"><h4>Slide Boundary Element</h4></a>
+<p>The presentation exists as one large document through the editing process. However, when the presentation is viewed it is displays in slides. Slides are simply HTML elements. Here is an example:</p>
+
+<!--begin!-->
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>ul</span><span style='color:#a65700; '>></span>                                                                                
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#274796; '> collapsible</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"enabled;collapsed"</span><span style='color:#a65700; '>></span>I'm collapsible and I'm initialized as collapsed<span style='color:#008c00; '>.</span><span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#274796; '> collapsible</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"enabled;expanded"</span><span style='color:#a65700; '>></span>I'm collpasable and I'm initialized as expanded<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#274796; '> collapsible</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"disabled"</span><span style='color:#a65700; '>></span>I'm not collapsible<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>                               
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+   <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>I'm not collapsible<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>li</span><span style='color:#a65700; '>></span>                                                     
+      <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"CollapsibleInnerDiv"</span><span style='color:#a65700; '>></span>                                           
+         <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>Hello, world!<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>                                                    
+      <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>                                                                     
+<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>ul</span><span style='color:#a65700; '>></span>
+<span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>slide</span><span style='color:#a65700; '>></span><span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>slide</span><span style='color:#a65700; '>></span>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>A very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long paragraph<span style='color:#008c00; '>.</span><span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>p</span><span style='color:#a65700; '>></span>
+</pre>
+</pre>
+<!--end!-->
+<p>The slide element denotes the slide break. Everything above the slide element is displayed on one slide; everything below is displayed in another slide. As many slide breaks as desired are allowed on a presentation with each slide element denoting where to begin the next slide. Assuming the above code is the entire presentation document, the ul is dispyed as slide one and the very long paragraph is displayed as slide two.</p>
+
+<p>When using the slidify button of the <a href="inserting-elements-overview.html">presentation editor</a>, all existing slide elements are removed before new slide boundaries are added. To specify a slide boundary as unremovable by the slidify feature, the attribute <i>locked</i> is added to the slide tag. EClass does not pay attention to the value of locked attribute; it only checks whether or not the attribute exists on the tag.</p>
+
+<br>
+<br>
+<br>
+<br>
+<hr width=80% size=3>
+<center>
+<font size=-1>
+<font color=black> Prev: </font><a href="importing-overview.html">Importing A Presentation</a>
+ | <font color=black> Next: </font>[none]
+ | <font color=black> Up: </font><a href="preparing-a-presentation-overview.html">Preparing A Presentation</a>
+ | <font color=black> Top: </font><a href="index.html">index</a></font>
+</center>
+<hr width=80% size=3>
+</body>
+</html>

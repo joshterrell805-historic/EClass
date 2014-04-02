@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="237.5" prefWidth="177.99997792968497" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.GearOptionsController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Button fx:id="optionsButton" layoutX="27.0" layoutY="37.0" mnemonicParsing="false" text="Options">
+      <contextMenu>
+        <ContextMenu x="27.0" y="37.0" fx:id="optionsContextMenu">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Change permissions..." fx:id="permissionsMenuItem" />
+            <MenuItem mnemonicParsing="false" text="Kick" fx:id="kickMenuItem" />
+          </items>
+        </ContextMenu>
+      </contextMenu>
+    </Button>
+  </children>
+</AnchorPane>

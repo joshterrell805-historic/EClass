@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchor" prefHeight="287.0" prefWidth="216.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Accordion fx:id="accordion" layoutX="0.0" layoutY="0.0" prefHeight="287.0" prefWidth="216.0">
+      <expandedPane>
+        <TitledPane fx:id="titledPane3" animated="false" expanded="true" text="John D.">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextArea fx:id="textArea3" editable="false" layoutX="0.0" layoutY="0.0" prefHeight="217.0" prefWidth="212.0" text="How do you make a prototype using JavaFX?" wrapText="true" />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
+        <TitledPane fx:id="titledPane1" animated="false" text="Nick G.">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextArea fx:id="textArea1" editable="false" layoutX="0.0" layoutY="0.0" prefHeight="217.0" prefWidth="212.0" text="Is int a primitive data type in java?" wrapText="true" />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <TitledPane fx:id="titledPane2" animated="false" text="Brooke B.">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextArea fx:id="textArea2" editable="false" layoutX="0.0" layoutY="0.0" prefHeight="217.0" prefWidth="212.0" text="What is the software engineering code of ethics?" wrapText="true" />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <fx:reference source="titledPane3" />
+      </panes>
+    </Accordion>
+  </children>
+</AnchorPane>

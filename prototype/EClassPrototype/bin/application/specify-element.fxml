@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.SpecifyElementController">
+  <children>
+    <TextArea fx:id="textarea_text" layoutX="14.0" layoutY="56.0" prefHeight="111.0" prefWidth="572.0" wrapText="true" />
+    <Button layoutX="445.0" layoutY="14.0" mnemonicParsing="false" text="B">
+      <font>
+        <Font name="System Bold" size="13.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button layoutX="485.0" layoutY="14.0" mnemonicParsing="false" text="I">
+      <font>
+        <Font name="System Italic" size="13.0" fx:id="x2" />
+      </font>
+    </Button>
+    <Button layoutX="531.0" layoutY="14.0" mnemonicParsing="false" text="U" underline="true" />
+    <Button layoutX="185.0" layoutY="416.0" mnemonicParsing="false" text="Cancel" />
+    <Button fx:id="button_ok" layoutX="344.0" layoutY="416.0" mnemonicParsing="false" prefWidth="68.9998779296875" text="OK" />
+    <Label layoutX="14.0" layoutY="34.0" text="Text:" />
+    <Label layoutX="13.0" layoutY="183.0" text="Inner Data:" />
+    <MenuButton fx:id="menu_type" layoutX="108.0" layoutY="180.0" mnemonicParsing="false" text="Text">
+      <items>
+        <MenuItem mnemonicParsing="false" text="Text" fx:id="menuitem_text" />
+        <MenuItem mnemonicParsing="false" text="List" fx:id="menuitem_list" />
+        <MenuItem mnemonicParsing="false" text="None" fx:id="menuitem_none" />
+      </items>
+    </MenuButton>
+    <CheckBox layoutX="237.0" layoutY="182.0" mnemonicParsing="false" text="Collapsable" />
+    <Label layoutX="383.0" layoutY="183.0" text="Initially:" />
+    <MenuButton fx:id="menu_initially" layoutX="470.0" layoutY="179.0" mnemonicParsing="false" text="Collapsed">
+      <items>
+        <MenuItem mnemonicParsing="false" text="Collpased" fx:id="menuitem_collapsed" />
+        <MenuItem mnemonicParsing="false" text="Expanded" fx:id="menuitem_expanded" />
+      </items>
+    </MenuButton>
+    <Pane fx:id="innerpane_text" layoutX="14.0" layoutY="225.0" prefHeight="183.0" prefWidth="572.0" style="-fx-background-color:#DDDDDD;&#10;-fx-border-color:#AAAAAA;">
+      <children>
+        <TextArea layoutX="8.0" layoutY="41.0" prefHeight="134.2734375" prefWidth="556.0" wrapText="true" />
+        <Label layoutX="14.0" layoutY="10.0" text="Text:" />
+        <Button font="$x1" layoutX="433.0" layoutY="7.0" mnemonicParsing="false" text="B" />
+        <Button font="$x2" layoutX="473.0" layoutY="7.0" mnemonicParsing="false" text="I" />
+        <Button layoutX="519.0" layoutY="7.0" mnemonicParsing="false" text="U" underline="true" />
+      </children>
+    </Pane>
+    <Pane fx:id="innerpane_list" layoutX="13.0" layoutY="225.0" prefHeight="183.0" prefWidth="572.0" style="-fx-background-color:#DDDDDD;&#10;-fx-border-color:#AAAAAA;">
+      <children>
+        <MenuButton layoutX="70.0" layoutY="5.0" mnemonicParsing="false" text="A">
+          <items>
+            <MenuItem mnemonicParsing="false" text="A" />
+            <MenuItem mnemonicParsing="false" text="a" />
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="I" />
+            <MenuItem mnemonicParsing="false" text="i" />
+            <MenuItem mnemonicParsing="false" text="•" />
+            <MenuItem mnemonicParsing="false" text="○" />
+          </items>
+        </MenuButton>
+        <Label layoutX="7.0" layoutY="7.0" text="Symbol:" />
+        <Pane layoutX="7.0" layoutY="27.0" prefHeight="125.2734375" prefWidth="556.0" style="-fx-border-color: black;&#10;-fx-background-color: white;" />
+        <Button id="button_insert" layoutX="138.0" layoutY="159.0" mnemonicParsing="false" text="Insert" />
+        <Button id="button_remove" layoutX="252.0" layoutY="159.0" mnemonicParsing="false" text="Remove" />
+        <Button id="button_edit" layoutX="366.0" layoutY="159.0" mnemonicParsing="false" prefWidth="69.0" text="Edit" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="301.0" prefWidth="393.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TitledPane animated="false" collapsible="false" layoutX="0.0" layoutY="0.0" text="Audio/Video Stream">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="391.0">
+          <children>
+            <Slider layoutX="85.0" layoutY="249.0" prefWidth="222.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="27.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+            <ImageView fitHeight="77.85447892976498" fitWidth="82.79762268066406" layoutX="154.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@PlayIcon.png" />
+              </image>
+            </ImageView>
+            <ImageView fitHeight="26.00000034890523" fitWidth="34.66666793823242" layoutX="35.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@AudioIcon.png" />
+              </image>
+            </ImageView>
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

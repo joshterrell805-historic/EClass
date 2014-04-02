@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minWidth="369.0" prefHeight="261.99998474121094" prefWidth="372.999977929685" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.NewLayerController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <TitledPane animated="false" collapsible="false" layoutX="0.0" layoutY="1.0" minWidth="373.0" prefHeight="262.0" prefWidth="373.0" text="New Layer">
+      <content>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="385.0">
+          <children>
+            <Label layoutX="57.0" layoutY="32.0" prefHeight="27.0" text="Name:" />
+            <TextArea layoutX="108.0" layoutY="32.0" prefHeight="27.0" prefWidth="230.0" wrapText="true" />
+            <Slider layoutX="108.0" layoutY="86.0" prefWidth="230.0" />
+            <Label layoutX="43.0" layoutY="81.0" prefHeight="27.0" text="Opacity:" />
+            <Label layoutX="14.0" layoutY="123.0" prefHeight="27.0" text="Permissions:" />
+            <ChoiceBox fx:id="perms" layoutX="108.0" layoutY="130.0" prefWidth="230.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ChoiceBox>
+            <Button fx:id="selectButton" layoutX="78.0" layoutY="180.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" text="OK!" />
+            <Button fx:id="cancelButton" layoutX="209.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" text="Cancel" />
+          </children>
+        </AnchorPane>
+      </content>
+    </TitledPane>
+  </children>
+</AnchorPane>

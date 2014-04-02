@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="285.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ImportListController">
+  <children>
+    <Pane prefHeight="365.0" prefWidth="285.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Accordion fx:id="accordion" blendMode="SRC_OVER" cache="false" disable="false" expandedPane="$null" focusTraversable="false" layoutX="0.0" layoutY="0.0" prefHeight="322.0" prefWidth="285.0" visible="true">
+          <panes>
+            <TitledPane fx:id="x1" animated="true" collapsible="true" expanded="false" text="308 Software Engineering I">
+              <content>
+                <ListView fx:id="firstListView" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+            <TitledPane animated="true" expanded="false" text="309 Software Engineering II">
+              <content>
+                <ListView fx:id="secondListView" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+            <TitledPane animated="true" expanded="false" text="453 Operating Systems">
+              <content>
+                <ListView fx:id="thirdListView" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+            <TitledPane fx:id="x2" animated="true" expanded="false" text="430 Programming Languages I">
+              <content>
+                <ListView fx:id="forthListView" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+            <TitledPane animated="true" expanded="false" text="357 Systems Programming">
+              <content>
+                <ListView fx:id="fifthListView" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+          </panes>
+        </Accordion>
+        <Button id="selectButton" fx:id="cancelButton" layoutX="141.0" layoutY="322.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="142.0" text="Cancel" />
+        <Button fx:id="selectButton" layoutX="0.0" layoutY="322.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="142.0" text="Select" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

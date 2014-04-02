@@ -1,0 +1,12 @@
+- Drawing tools palette
+- Multiple palettes/windows (maybe dockable)
+- Roster section
+  - Faded/greyed out names for students missing
+  - Icons indicating if they are connected remotely
+  - Right click menu for each student
+- Layers manager window
+  - Transparency gradient for background AND ink
+  - Merge layers
+- Navigation slider/pane/window like Powerpoint/Adobe
+  - Next/last slide button
+  - Expansion/collapse capabilities
