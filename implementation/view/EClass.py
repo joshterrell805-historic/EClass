@@ -4,6 +4,8 @@ import sys
 from LoginWindow import LoginWindow
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
+sys.path.insert(0, '..\model')
+from Presentation import Presentation
 
 class EClass(wx.Frame):
    """EClass is a window"""
@@ -55,7 +57,10 @@ class EClass(wx.Frame):
       print('Use Presentation')
 
    def SelectPresentation(self, event):
-      print('Selected Presentation')
+      self.presentation = Presentation(self.importPresentation
+         .GetPresentationPath()
+      )
+      self.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
       self.initialPrompt.Show()
