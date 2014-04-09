@@ -2,7 +2,7 @@ import wx
 
 class ImportPresentation(wx.Frame):
    
-   def __init__(self):
+   def __init__(self, SelectPresentation, CancelSelectPresentation):
       super(ImportPresentation, self).__init__(None, -1, 'Lecture Import')
 
       lectureList = wx.ListCtrl(self, -1, style = wx.LC_REPORT,
@@ -22,7 +22,9 @@ class ImportPresentation(wx.Frame):
       lectureList.Append(('308', 'Week 10'))
 
       select = wx.Button(self, -1, 'Select')
+      select.Bind(wx.EVT_BUTTON, SelectPresentation)
       cancel = wx.Button(self, -1, 'Cancel')
+      cancel.Bind(wx.EVT_BUTTON, CancelSelectPresentation)
 
       sizer = wx.BoxSizer(wx.VERTICAL)
       horiSizer = wx.BoxSizer(wx.HORIZONTAL)

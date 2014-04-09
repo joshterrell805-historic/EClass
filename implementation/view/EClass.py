@@ -17,8 +17,9 @@ class EClass(wx.Frame):
       self.loginWindow = LoginWindow(self.LoginSuccessful, self.Exit)
       self.loginWindow.Show()
 
-      self.initialPrompt = InitialPrompt(self, self.CreatePresentation, self.UsePresentation)
-      self.initialPrompt.Show()  
+      self.initialPrompt = InitialPrompt(self, self.CreatePresentation, 
+         self.UsePresentation
+      )
 
    def AddMenubar(self):
       menuBar = wx.MenuBar()
@@ -42,11 +43,21 @@ class EClass(wx.Frame):
       sys.exit()
 
    def CreatePresentation(self, event):
-      self.initialPrompt.Destroy()
+      self.initialPrompt.Hide()
       print('Create Presentation')
 
    def UsePresentation(self, event):
-      self.initialPrompt.Destroy()
-      self.importPresentation = ImportPresentation()
+      self.initialPrompt.Hide()
+      self.importPresentation = ImportPresentation(self.SelectPresentation, 
+         self.CancelSelectPresentation
+      )
       self.importPresentation.Show()
       print('Use Presentation')
+
+   def SelectPresentation(self, event):
+      print('Selected Presentation')
+
+   def CancelSelectPresentation(self, event):
+      self.initialPrompt.Show()
+      self.importPresentation.Destroy()
+      print('Cancel Select Presentation')
