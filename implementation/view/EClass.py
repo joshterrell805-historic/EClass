@@ -57,6 +57,11 @@ class EClass(wx.Frame):
       print('Use Presentation')
 
    def SelectPresentation(self, event):
+      """
+      Controller for the Select buttin in the ImportPresentation Window. Gets the
+      Presentation file path from the ImportPresentation object instantiates
+      a new Presentation object with the path and calls ShowPresentation().
+      """
       self.presentation = Presentation(self.importPresentation
          .GetPresentationPath()
       )
