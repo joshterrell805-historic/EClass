@@ -5,8 +5,7 @@ class ImportPresentation(wx.Frame):
    def __init__(self, SelectPresentation, CancelSelectPresentation):
 
       no_resize = wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | 
-         wx.RESIZE_BOX | 
-         wx.MAXIMIZE_BOX
+         wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.CLOSE_BOX
       )
 
       super(ImportPresentation, self).__init__(None, -1, 'Presentation Import',

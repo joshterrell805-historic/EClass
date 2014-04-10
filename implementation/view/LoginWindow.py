@@ -5,8 +5,7 @@ class LoginWindow(wx.Frame):
    def __init__(self, onSuccess, onCancel):
 
       no_resize = wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | 
-         wx.RESIZE_BOX | 
-         wx.MAXIMIZE_BOX
+         wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.CLOSE_BOX
       )
 
       super(LoginWindow, self).__init__(None, -1, 'Login', 

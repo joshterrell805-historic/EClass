@@ -63,6 +63,7 @@ class EClass(wx.Frame):
       self.presentation = Presentation(self.importPresentation
          .GetPresentationPath()
       )
+      self.importPresentation.Destroy()
       self.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
