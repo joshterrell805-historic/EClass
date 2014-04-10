@@ -1,11 +1,12 @@
 import wx
 import sys
 
+sys.path.insert(0, '..\model')
 from LoginWindow import LoginWindow
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
-sys.path.insert(0, '..\model')
 from Presentation import Presentation
+from Person import Person
 
 class EClass(wx.Frame):
    """EClass is a window"""
@@ -38,6 +39,10 @@ class EClass(wx.Frame):
       self.SetMenuBar(menuBar)
 
    def LoginSuccessful(self, event):
+      user = Person(self.loginWindow.GetUsername(), self.loginWindow.GetPassword
+         ()
+      )
+      user.Login()
       self.loginWindow.Close()
       self.Show()
 
@@ -46,7 +51,6 @@ class EClass(wx.Frame):
 
    def CreatePresentation(self, event):
       self.initialPrompt.Hide()
-      print('Create Presentation')
 
    def UsePresentation(self, event):
       self.initialPrompt.Hide()
@@ -54,14 +58,8 @@ class EClass(wx.Frame):
          self.CancelSelectPresentation
       )
       self.importPresentation.Show()
-      print('Use Presentation')
 
    def SelectPresentation(self, event):
-      """
-      Controller for the Select buttin in the ImportPresentation Window. Gets the
-      Presentation file path from the ImportPresentation object instantiates
-      a new Presentation object with the path and calls ShowPresentation().
-      """
       self.presentation = Presentation(self.importPresentation
          .GetPresentationPath()
       )
@@ -70,4 +68,3 @@ class EClass(wx.Frame):
    def CancelSelectPresentation(self, event):
       self.initialPrompt.Show()
       self.importPresentation.Destroy()
-      print('Cancel Select Presentation')

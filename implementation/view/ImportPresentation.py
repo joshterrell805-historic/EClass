@@ -3,7 +3,15 @@ import wx
 class ImportPresentation(wx.Frame):
    
    def __init__(self, SelectPresentation, CancelSelectPresentation):
-      super(ImportPresentation, self).__init__(None, -1, 'Presentation Import')
+
+      no_resize = wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER | 
+         wx.RESIZE_BOX | 
+         wx.MAXIMIZE_BOX
+      )
+
+      super(ImportPresentation, self).__init__(None, -1, 'Presentation Import',
+         style = no_resize      
+      )
 
       self.presentationList = wx.GenericDirCtrl(self, -1, style = wx.LC_REPORT,
          size = self.GetSize()
