@@ -5,24 +5,24 @@ class WhiteboardNav(wx.Panel):
    
    def __init__(self, parent, presentation, userType):
       super(WhiteboardNav, self).__init__(parent)
-      self.presentation = presentation
 
+      self.presentation = presentation
       self.whiteboard = wx.TextCtrl(self, style = wx.TE_MULTILINE)
       self.whiteboard.SetEditable(False)
       
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (100, 100)
       )
-      previousSlideButton.Bind(wx.EVT_BUTTON, MoveToPreviousSlide)
+      previousSlideButton.Bind(wx.EVT_BUTTON, self.MoveToPreviousSlide)
 
       nextSlideButton = wx.Button(self, label = 'Next >>', size = (100, 100))
-      nextSlideButton.Bind(wx.EVT_BUTTON, MoveToNextSlide)
+      nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
 
       syncButton = wx.Button(self, label = 'SYNC', size = (100, 100))
-      syncButton.Bind(wx.EVT_BUTTON, SyncWithPresenter)
+      syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
       
       self.slideTextbox = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER)
-      self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, MoveToSlide)
+      self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
       self.slideTextbox.SetHint('Slide Number')
 
       currSlideText = wx.StaticText(self, -1, label = '1')
@@ -51,14 +51,14 @@ class WhiteboardNav(wx.Panel):
       
       self.SetSizer(mainSizer)
 
-def MoveToPreviousSlide(self, event):
-   self.presentation.MoveToPreviousSlide()
+   def MoveToPreviousSlide(self, event):
+      self.presentation.MoveToPreviousSlide()
 
-def MoveToNextSlide(self, event):
-   self.presentation.MoveToNextSlide()
+   def MoveToNextSlide(self, event):
+      self.presentation.MoveToNextSlide()
 
-def SyncWithPresenter(self, event):
-   self.presentation.SyncWithPresenter()
+   def SyncWithPresenter(self, event):
+      self.presentation.SyncWithPresenter()
 
-def MoveToSlide(self, event):
-   self.presentation.MoveToSlide(self.slideTextbox.GetValue())
+   def MoveToSlide(self, event):
+      self.presentation.MoveToSlide(self.slideTextbox.GetValue())

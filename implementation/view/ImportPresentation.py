@@ -42,13 +42,17 @@ class ImportPresentation(wx.Frame):
 
    def SelectPresentation(self, event):
       self.parent.importPresentation.Hide()
-      self.parent.initialPrompt.Hide()
+      self.parent.initialPrompt.Destroy()
       
-      self.presentation = Presentation(self.parent.importPresentation
+      self.parent.presentation.SetPath(self.parent.importPresentation
          .GetPresentationPath()
       )
-      self.whiteboard = WhiteboardNav(self, self.presentation, Student)
-      self.presentation.ShowPresentation()
+
+      self.parent.whiteBoard = WhiteboardNav(self.parent, 
+         self.parent.presentation, Student
+      )
+
+      self.parent.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()

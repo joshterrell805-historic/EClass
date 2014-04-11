@@ -17,3 +17,6 @@ class Presentation:
 
    def SyncWithPresenter(self):
       print('From Presentation.SyncWithPresenter')
+
+   def SetPath(self, path):
+      self.path = path

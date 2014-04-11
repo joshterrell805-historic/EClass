@@ -27,6 +27,9 @@ class EClass(wx.Frame):
 
       self.Bind(wx.EVT_CLOSE, self.Exit)
 
+      self.presentation = Presentation(path = None)
+      self.whiteboard = None
+
    def AddMenubar(self):
       menuBar = wx.MenuBar()
 
