@@ -3,8 +3,9 @@ from Student import Student
 
 class WhiteboardNav(wx.Panel):
    
-   def __init__(self, parent, userType, MovePrevious, MoveNext, Sync, MoveToSlide):
+   def __init__(self, parent, presentation, userType):
       super(WhiteboardNav, self).__init__(parent)
+      self.presentation = presentation
 
       self.whiteboard = wx.TextCtrl(self, style = wx.TE_MULTILINE)
       self.whiteboard.SetEditable(False)
@@ -12,13 +13,13 @@ class WhiteboardNav(wx.Panel):
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (100, 100)
       )
-      previousSlideButton.Bind(wx.EVT_BUTTON, MovePrevious)
+      previousSlideButton.Bind(wx.EVT_BUTTON, MoveToPreviousSlide)
 
       nextSlideButton = wx.Button(self, label = 'Next >>', size = (100, 100))
-      nextSlideButton.Bind(wx.EVT_BUTTON, MoveNext)
+      nextSlideButton.Bind(wx.EVT_BUTTON, MoveToNextSlide)
 
       syncButton = wx.Button(self, label = 'SYNC', size = (100, 100))
-      syncButton.Bind(wx.EVT_BUTTON, Sync)
+      syncButton.Bind(wx.EVT_BUTTON, SyncWithPresenter)
       
       self.slideTextbox = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER)
       self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, MoveToSlide)
@@ -49,6 +50,15 @@ class WhiteboardNav(wx.Panel):
       mainSizer.AddStretchSpacer(1)
       
       self.SetSizer(mainSizer)
-  
-   def GetNewSlideNum(self):
-      return self.slideTextbox.GetValue()
+
+def MoveToPreviousSlide(self, event):
+   self.presentation.MoveToPreviousSlide()
+
+def MoveToNextSlide(self, event):
+   self.presentation.MoveToNextSlide()
+
+def SyncWithPresenter(self, event):
+   self.presentation.SyncWithPresenter()
+
+def MoveToSlide(self, event):
+   self.presentation.MoveToSlide(self.slideTextbox.GetValue())

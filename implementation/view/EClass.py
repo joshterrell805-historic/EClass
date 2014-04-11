@@ -51,18 +51,6 @@ class EClass(wx.Frame):
    def Exit(self, event):
       sys.exit()
 
-   def MoveToPreviousSlide(self, event):
-      self.presentation.MoveToPreviousSlide()
-
-   def MoveToNextSlide(self, event):
-      self.presentation.MoveToNextSlide()
-
-   def SyncWithPresenter(self, event):
-      self.presentation.SyncWithPresenter()
-
-   def MoveToSlide(self, event):
-      self.presentation.MoveToSlide(self.whiteboard.GetNewSlideNum())
-
    def CreatePresentation(self, event):
       self.initialPrompt.Hide()
 
@@ -80,13 +68,7 @@ class EClass(wx.Frame):
       self.presentation = Presentation(self.importPresentation
          .GetPresentationPath()
       )
-      self.whiteboard = WhiteboardNav(self, Student,
-         self.MoveToPreviousSlide,
-         self.MoveToNextSlide,
-         self.SyncWithPresenter,
-         self.MoveToSlide
-      )
-
+      self.whiteboard = WhiteboardNav(self, self.presentation, Student)
       self.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
