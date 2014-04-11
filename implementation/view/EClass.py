@@ -7,6 +7,8 @@ from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
 from Presentation import Presentation
 from Person import Person
+from Student import Student
+from WhiteboardNav import WhiteboardNav
 
 class EClass(wx.Frame):
    """EClass is a window"""
@@ -49,6 +51,18 @@ class EClass(wx.Frame):
    def Exit(self, event):
       sys.exit()
 
+   def MoveToPreviousSlide(self, event):
+      self.presentation.MoveToPreviousSlide()
+
+   def MoveToNextSlide(self, event):
+      self.presentation.MoveToNextSlide()
+
+   def SyncWithPresenter(self, event):
+      self.presentation.SyncWithPresenter()
+
+   def MoveToSlide(self, event):
+      self.presentation.MoveToSlide(self.whiteboard.GetNewSlideNum())
+
    def CreatePresentation(self, event):
       self.initialPrompt.Hide()
 
@@ -60,10 +74,19 @@ class EClass(wx.Frame):
       self.importPresentation.Show()
 
    def SelectPresentation(self, event):
+      self.importPresentation.Destroy()
+      self.initialPrompt.Destroy()
+      
       self.presentation = Presentation(self.importPresentation
          .GetPresentationPath()
       )
-      self.importPresentation.Destroy()
+      self.whiteboard = WhiteboardNav(self, Student,
+         self.MoveToPreviousSlide,
+         self.MoveToNextSlide,
+         self.SyncWithPresenter,
+         self.MoveToSlide
+      )
+
       self.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
