@@ -1,5 +1,6 @@
 import wx, wx.html
-from Student import Student
+
+from Person.Student import Student
 
 class WhiteboardNav(wx.Panel):
    

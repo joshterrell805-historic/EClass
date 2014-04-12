@@ -1,11 +1,14 @@
 import wx
 import sys
 
-sys.path.insert(0, '../model')
+#view
 from Presentation import Presentation
 from WhiteboardNav import WhiteboardNav
-from Student import Student
-from Person import Person
+
+#model
+sys.path.insert(0, '../model')
+from Person.Student import Student
+from Person.Person import Person
 
 class ImportPresentation(wx.Frame):
    

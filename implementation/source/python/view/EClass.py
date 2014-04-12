@@ -1,14 +1,17 @@
 import wx
 import sys
 
-sys.path.insert(0, '../model')
+#view
 from LoginWindow import LoginWindow
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
-from Presentation import Presentation
-from Person import Person
-from Student import Student
 from WhiteboardNav import WhiteboardNav
+
+#model
+sys.path.insert(0, '../model')
+from Presentation.Presentation import Presentation
+from Person.Person import Person
+from Person.Student import Student
 
 class EClass(wx.Frame):
    """EClass is a window"""
