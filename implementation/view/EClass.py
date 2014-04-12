@@ -7,22 +7,29 @@ from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
 from Presentation import Presentation
 from Person import Person
+from Student import Student
+from WhiteboardNav import WhiteboardNav
 
 class EClass(wx.Frame):
    """EClass is a window"""
 
    def __init__(self):
       super(EClass, self).__init__(None, -1, 'EClass')
-      self.Maximize()
+      #self.Maximize()
+      self.SetClientSizeWH(800, 600)
       self.SetBackgroundColour('#FFFFFF')
       self.AddMenubar()
 
       self.loginWindow = LoginWindow(self.LoginSuccessful, self.Exit)
       self.loginWindow.Show()
 
-      self.initialPrompt = InitialPrompt(self, self.CreatePresentation, 
-         self.UsePresentation
-      )
+      self.initialPrompt = InitialPrompt(self)
+      self.importPresentation = ImportPresentation(self)
+
+      self.Bind(wx.EVT_CLOSE, self.Exit)
+
+      self.presentation = Presentation(path = None)
+      self.whiteboard = None
 
    def AddMenubar(self):
       menuBar = wx.MenuBar()
@@ -48,23 +55,3 @@ class EClass(wx.Frame):
 
    def Exit(self, event):
       sys.exit()
-
-   def CreatePresentation(self, event):
-      self.initialPrompt.Hide()
-
-   def UsePresentation(self, event):
-      self.initialPrompt.Hide()
-      self.importPresentation = ImportPresentation(self.SelectPresentation, 
-         self.CancelSelectPresentation
-      )
-      self.importPresentation.Show()
-
-   def SelectPresentation(self, event):
-      self.presentation = Presentation(self.importPresentation
-         .GetPresentationPath()
-      )
-      self.presentation.ShowPresentation()
-
-   def CancelSelectPresentation(self, event):
-      self.initialPrompt.Show()
-      self.importPresentation.Destroy()
