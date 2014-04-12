@@ -1,4 +1,4 @@
-import wx
+import wx, wx.html
 from Student import Student
 
 class WhiteboardNav(wx.Panel):
@@ -7,18 +7,21 @@ class WhiteboardNav(wx.Panel):
       super(WhiteboardNav, self).__init__(parent)
 
       self.presentation = presentation
-      self.whiteboard = wx.TextCtrl(self, style = wx.TE_MULTILINE)
-      self.whiteboard.SetEditable(False)
+      self.whiteboard = wx.html.HtmlWindow(self, -1, size = (500, 400))
+      self.whiteboard.SetPage("""<p>This is from a piece of HTML, let the
+         lathering begin!</p>"""
+      )
+      self.whiteboard.SetBackgroundColour('#FEEECC')
       
       previousSlideButton = wx.Button(self, label = '<< Previous',
-         size = (100, 100)
+         size = (70, 30)
       )
       previousSlideButton.Bind(wx.EVT_BUTTON, self.MoveToPreviousSlide)
 
-      nextSlideButton = wx.Button(self, label = 'Next >>', size = (100, 100))
+      nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
       nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
 
-      syncButton = wx.Button(self, label = 'SYNC', size = (100, 100))
+      syncButton = wx.Button(self, label = 'SYNC', size = (120, 15))
       syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
       
       self.slideTextbox = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER)
@@ -30,7 +33,9 @@ class WhiteboardNav(wx.Panel):
       navVertSizer = wx.BoxSizer(wx.VERTICAL)
       navVertSizer.AddStretchSpacer(1)
       navVertSizer.Add(currSlideText, 1, wx.CENTER)
-      navVertSizer.Add(self.slideTextbox, 1, wx.CENTER)
+      navVertSizer.Add(self.slideTextbox, 1, flag = wx.BOTTOM|wx.CENTER,
+         border = 20
+      )
       
       #if isinstance(userType, Student):
       navVertSizer.Add(syncButton, 1, wx.CENTER)
@@ -39,7 +44,9 @@ class WhiteboardNav(wx.Panel):
       navHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       navHoriSizer.AddStretchSpacer(1)
       navHoriSizer.Add(previousSlideButton, 1, wx.CENTER)
-      navHoriSizer.Add(navVertSizer, 1, wx.CENTER)
+      navHoriSizer.Add(navVertSizer, 1, flag = wx.LEFT|wx.RIGHT|wx.CENTER,
+         border = 20
+      )
       navHoriSizer.Add(nextSlideButton, 1, wx.CENTER)
       navHoriSizer.AddStretchSpacer(1)
 

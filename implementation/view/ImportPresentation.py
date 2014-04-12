@@ -48,7 +48,7 @@ class ImportPresentation(wx.Frame):
          .GetPresentationPath()
       )
 
-      self.parent.whiteBoard = WhiteboardNav(self.parent, 
+      self.parent.whiteboard = WhiteboardNav(self.parent, 
          self.parent.presentation, Student
       )
 
