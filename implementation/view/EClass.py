@@ -1,7 +1,7 @@
 import wx
 import sys
 
-sys.path.insert(0, '..\model')
+sys.path.insert(0, '../model')
 from LoginWindow import LoginWindow
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
