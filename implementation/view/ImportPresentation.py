@@ -52,6 +52,7 @@ class ImportPresentation(wx.Frame):
          self.parent.presentation, Student
       )
 
+      self.parent.SendSizeEvent()
       self.parent.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):

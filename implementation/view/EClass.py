@@ -15,7 +15,8 @@ class EClass(wx.Frame):
 
    def __init__(self):
       super(EClass, self).__init__(None, -1, 'EClass')
-      self.Maximize()
+      #self.Maximize()
+      self.SetClientSizeWH(800, 600)
       self.SetBackgroundColour('#FFFFFF')
       self.AddMenubar()
 
