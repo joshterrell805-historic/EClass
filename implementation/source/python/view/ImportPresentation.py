@@ -56,8 +56,8 @@ class ImportPresentation(wx.Frame):
 
       eclass = EClass.getInstance()
       eclass.setUpLayerManager()
-      eclass.layerManager = LayerManager(self.parent)
-      eclass.layerManager.Show()
+      self.parent.layerManager = LayerManager(self.parent)
+      self.parent.layerManager.Show()
       eclass.presentation.ShowPresentation()
 
       # TODO, this should be opened in the menu
