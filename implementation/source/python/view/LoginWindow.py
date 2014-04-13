@@ -65,9 +65,9 @@ class LoginWindow(wx.Frame):
    def OnAttempt(self, event):
       username = self.GetUsername()
       password = self.GetPassword()
-      EClass.getInstance().Login(username, password)
+      EClass.GetInstance().Login(username, password)
 
-      if EClass.getInstance().user:
+      if EClass.GetInstance().user:
          self.OnSuccess()
 
    def OnSuccess(self):

@@ -25,7 +25,7 @@ class LayerManager(wx.Frame):
       #currentLayers = self.parent.layerManagerModel
       self.layerDisplay = wx.BoxSizer(wx.VERTICAL)
       self.layers = []
-      for layer in EClass.getInstance().layerManagerModel.layers:
+      for layer in EClass.GetInstance().layerManagerModel.layers:
          view = LayerView(parent, layer)
          self.layers.append(view)
          self.layerDisplay.Add(view.layerListObject(self))
@@ -44,7 +44,7 @@ class LayerManager(wx.Frame):
       self.SetSizer(self.sizer)
 
    def DeleteLayer(self, event):
-      EClass.getInstance().layerManagerModel.DeleteLayer()
+      EClass.GetInstance().layerManagerModel.DeleteLayer()
 
    def NewLayer(self, event):
-      EClass.getInstance().layerManagerModel.NewLayer()
+      EClass.GetInstance().layerManagerModel.NewLayer()

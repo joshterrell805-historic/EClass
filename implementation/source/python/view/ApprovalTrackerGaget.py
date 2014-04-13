@@ -26,15 +26,15 @@ class ApprovalTrackerGaget(wx.Frame):
 
       slider.SetRange(ApprovalTrackerGaget.minVal, ApprovalTrackerGaget.maxVal)
 
-      if isinstance(EClass.getInstance().user, Presenter):
+      if isinstance(EClass.GetInstance().user, Presenter):
          slider.Enable(False)
 
-         EClass.getInstance().user.approvalRating.addSetValueListener(
+         EClass.GetInstance().user.approvalRating.AddListener(
             self.OnValueChanged
          )
 
          # TODO remove this.. this is just so we can see the event in action
-         EClass.getInstance().user.approvalRating.setValue(0.8)
+         EClass.GetInstance().user.approvalRating.SetValue(0.8)
 
       else:
          slider.Enable(True)
@@ -53,7 +53,7 @@ class ApprovalTrackerGaget(wx.Frame):
       ApprovalTrackerGaget.SetApprovalRating(event.GetPosition())
 
    def OnValueChanged(self):
-      percent = EClass.getInstance().user.approvalRating.getValue()
+      percent = EClass.GetInstance().user.approvalRating.GetValue()
 
       self.slider.SetValue(
          ApprovalTrackerGaget.minVal +
@@ -71,13 +71,13 @@ class ApprovalTrackerGaget(wx.Frame):
          (ApprovalTrackerGaget.maxVal - ApprovalTrackerGaget.minVal)
       )
 
-      user = EClass.getInstance().user
-      user.approvalRating.setValue(valAsPercent)
+      user = EClass.GetInstance().user
+      user.approvalRating.SetValue(valAsPercent)
 
 
 # For testing.. this is only run if the file is ran directly.
 if __name__ == "__main__":
    app = wx.App(False)
-   EClass.getInstance().Login('student', 'asdf')
+   EClass.GetInstance().Login('student', 'asdf')
    ApprovalTrackerGaget()
    app.MainLoop()

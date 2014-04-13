@@ -14,7 +14,7 @@ class EClass():
    __instance = None
 
    @staticmethod
-   def getInstance():
+   def GetInstance():
 
       if EClass.__instance == None:
          EClass.__instance = EClass()

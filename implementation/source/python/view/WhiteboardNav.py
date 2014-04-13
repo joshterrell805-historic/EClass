@@ -9,7 +9,7 @@ class WhiteboardNav(wx.Panel):
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
 
-      self.presentation = EClass.getInstance().presentation
+      self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html.HtmlWindow(self, -1, size = (500, 400))
       self.whiteboard.SetPage("""<p>This is from a piece of HTML, let the
          lathering begin!</p>"""
@@ -40,7 +40,7 @@ class WhiteboardNav(wx.Panel):
          border = 20
       )
       
-      #if isinstance(EClass.getInstance().user, Student):
+      #if isinstance(EClass.GetInstance().user, Student):
       navVertSizer.Add(syncButton, 1, wx.CENTER)
       navVertSizer.AddStretchSpacer(1)
 

@@ -43,7 +43,7 @@ class ApprovalRating:
       """
       pass
 
-   def AddSetValueListener(self, listener):
+   def AddListener(self, listener):
       """
       Add a listener to be called whenever the value of this approval rating
       changes.

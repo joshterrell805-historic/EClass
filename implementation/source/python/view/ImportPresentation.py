@@ -47,14 +47,14 @@ class ImportPresentation(wx.Frame):
       self.parent.importPresentation.Hide()
       self.parent.initialPrompt.Destroy()
       
-      EClass.getInstance().presentation.SetPath(self.parent.importPresentation
+      EClass.GetInstance().presentation.SetPath(self.parent.importPresentation
          .GetPresentationPath()
       )
 
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
 
-      eclass = EClass.getInstance()
+      eclass = EClass.GetInstance()
       eclass.setUpLayerManager()
       self.parent.layerManager = LayerManager(self.parent)
       self.parent.layerManager.Show()
