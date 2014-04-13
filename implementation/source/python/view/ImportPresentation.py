@@ -4,11 +4,13 @@ import sys
 #view
 from Presentation import Presentation
 from WhiteboardNav import WhiteboardNav
+from LayerManager import LayerManager
 
 #model
 sys.path.insert(0, '../model')
 from Person.Student import Student
 from Person.Person import Person
+from Presentation.LayerManagerModel import LayerManagerModel
 
 class ImportPresentation(wx.Frame):
    
@@ -57,6 +59,9 @@ class ImportPresentation(wx.Frame):
 
       self.parent.SendSizeEvent()
       self.parent.presentation.ShowPresentation()
+      self.parent.layerManagerModel = LayerManagerModel()
+      self.parent.layerManager = LayerManager(self.parent)
+      self.parent.layerManager.Show()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()
