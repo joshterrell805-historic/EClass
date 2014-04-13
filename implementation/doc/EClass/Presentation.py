@@ -1,14 +1,14 @@
+"""
+Package Presentation defines objects and operations related to the presentation's content and navigation.
+
+There are objects for both the presentation slides and the underlying markup (PresentationHTML). Additionally, this package includes much of the layer functionality. This can be seen in the Layer and LayerPermission objects.
+"""
+
 import sys
 sys.path.insert(0, '../../source/python/model/enum')
 
 # TODO: figure out why it's not recognizing enum then add it as base class for PermissionLevel
 #from enum import Enum
-
-"""
-Module Presentation defines objects and operations related to the presentation's content.
-
-There are objects for both the presentation slides and the underlying markup (PresentationHTML). Additionally, this package includes much of the layer functionality. This can be seen in the Layer and LayerPermission objects.
-"""
 
 class Presentation:
    """
