@@ -60,7 +60,7 @@
 <a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">Package ApprovalTracker is a collection of classes which make up a rating system</tt> </tt>
 <a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">for students to rate a presentation live.</tt> </tt>
 <a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@author: Josh Terrell</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
 <a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
 <a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
 <a name="ApprovalRating"></a><div id="ApprovalRating-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="ApprovalRating-toggle" onclick="return toggle('ApprovalRating');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.ApprovalTracker.ApprovalRating-class.html">ApprovalRating</a><tt class="py-op">:</tt> </tt>
@@ -73,10 +73,10 @@
 <a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">   If an ApprovalRating is owned by a Presenter, it represents the class average.</tt> </tt>
 <a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
 <a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar listeners: (private) a collection of functions to be called when this</tt> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">   model has been updated</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar __listeners: a collection of functions to be called when this</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar __rating: the percentage value between [0, 1] this rating represents</tt> </tt>
 <a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
 <a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
 <a name="ApprovalRating.__init__"></a><div id="ApprovalRating.__init__-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="ApprovalRating.__init__-toggle" onclick="return toggle('ApprovalRating.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.ApprovalTracker.ApprovalRating-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
@@ -89,27 +89,38 @@
 </div><div id="ApprovalRating.SetValue-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ApprovalRating.SetValue-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
 <a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">      Set the the value of this approval rating to a percentage between [0, 1].</tt> </tt>
 <a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">      @param percent: the percentage to set this rating to</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
-<a name="ApprovalRating.GetValue"></a><div id="ApprovalRating.GetValue-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="ApprovalRating.GetValue-toggle" onclick="return toggle('ApprovalRating.GetValue');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.ApprovalTracker.ApprovalRating-class.html#GetValue">GetValue</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ApprovalRating.GetValue-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ApprovalRating.GetValue-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">      Get the percentage value of this approval rating (value between [0, 1]).</tt> </tt>
-<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring">      @return: the value this approval rating represents</tt> </tt>
-<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
-<a name="ApprovalRating.AddSetValueListener"></a><div id="ApprovalRating.AddSetValueListener-def"><a name="L46"></a><tt class="py-lineno">46</tt> <a class="py-toggle" href="#" id="ApprovalRating.AddSetValueListener-toggle" onclick="return toggle('ApprovalRating.AddSetValueListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.ApprovalTracker.ApprovalRating-class.html#AddSetValueListener">AddSetValueListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">listener</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ApprovalRating.AddSetValueListener-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ApprovalRating.AddSetValueListener-expanded"><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring">      Add a listener to be called whenever the value of this approval rating</tt> </tt>
-<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-docstring">      changes.</tt> </tt>
-<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">      @param listener: the function to be added (called with no arguments)</tt> </tt>
-<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">      A side effect of calling this method is that all listeners added via</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">      AddListener are notified that the value has changed.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">      @param percent: the percentage to set this rating to</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.__rating == percent</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="ApprovalRating.GetValue"></a><div id="ApprovalRating.GetValue-def"><a name="L43"></a><tt class="py-lineno">43</tt> <a class="py-toggle" href="#" id="ApprovalRating.GetValue-toggle" onclick="return toggle('ApprovalRating.GetValue');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.ApprovalTracker.ApprovalRating-class.html#GetValue">GetValue</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ApprovalRating.GetValue-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ApprovalRating.GetValue-expanded"><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">      Get the percentage value of this approval rating (value between [0, 1]).</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">      @return: the value this approval rating represents</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: @return == self.__rating &amp;&amp;</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring">      old(self.__rating) == self.__rating</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt>
+<a name="ApprovalRating.AddListener"></a><div id="ApprovalRating.AddListener-def"><a name="L54"></a><tt class="py-lineno">54</tt> <a class="py-toggle" href="#" id="ApprovalRating.AddListener-toggle" onclick="return toggle('ApprovalRating.AddListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.ApprovalTracker.ApprovalRating-class.html#AddListener">AddListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">listener</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ApprovalRating.AddListener-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ApprovalRating.AddListener-expanded"><a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">      Add a listener to be called whenever the value of this approval rating</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">      changes.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">      @param listener: the function to be added (called with no arguments)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.__listeners.contains(listener) &amp;&amp;</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">      len(self.__listeners) == len(old(self.__listeners) + 1)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -142,7 +153,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sat Apr 12 22:10:36 2014
+    Generated by Epydoc 3.0.1 on Sun Apr 13 11:29:29 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

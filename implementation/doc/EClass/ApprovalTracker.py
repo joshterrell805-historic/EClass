@@ -2,7 +2,7 @@
 Package ApprovalTracker is a collection of classes which make up a rating system
 for students to rate a presentation live.
 
-@author: Josh Terrell
+@author: Josh Terrell jmterrel@calpoly.edu
 """
 
 class ApprovalRating:
@@ -15,10 +15,10 @@ class ApprovalRating:
 
    If an ApprovalRating is owned by a Presenter, it represents the class average.
 
-   @author: Josh Terrell
+   @author: Josh Terrell jmterrel@calpoly.edu
 
-   @ivar listeners: (private) a collection of functions to be called when this
-   model has been updated
+   @ivar __listeners: a collection of functions to be called when this
+   @ivar __rating: the percentage value between [0, 1] this rating represents
    """
 
    def __init__(self):
@@ -31,7 +31,12 @@ class ApprovalRating:
       """
       Set the the value of this approval rating to a percentage between [0, 1].
 
+      A side effect of calling this method is that all listeners added via
+      AddListener are notified that the value has changed.
+
       @param percent: the percentage to set this rating to
+
+      @postcondition: self.__rating == percent
       """
       pass
 
@@ -40,6 +45,9 @@ class ApprovalRating:
       Get the percentage value of this approval rating (value between [0, 1]).
 
       @return: the value this approval rating represents
+
+      @postcondition: @return == self.__rating &&
+      old(self.__rating) == self.__rating
       """
       pass
 
@@ -49,5 +57,8 @@ class ApprovalRating:
       changes.
 
       @param listener: the function to be added (called with no arguments)
+
+      @postcondition: self.__listeners.contains(listener) &&
+      len(self.__listeners) == len(old(self.__listeners) + 1)
       """
       pass
