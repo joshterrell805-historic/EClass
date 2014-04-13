@@ -2,6 +2,7 @@
 from Presentation.Presentation import Presentation
 from Person.Person import Person
 from Person.Student import Student
+from Person.Presenter import Presenter
 
 # this model is a singleton which has a reference to other important models
 

@@ -5,6 +5,7 @@ sys.path.insert(0, 'model')
 
 from ApprovalTracker.ApprovalRating import ApprovalRating
 from EClass import EClass
+from Person.Presenter import Presenter
 
 class ApprovalTrackerGaget(wx.Frame):
    
@@ -21,21 +22,44 @@ class ApprovalTrackerGaget(wx.Frame):
       slider = wx.Slider(self,
          style = wx.SL_VERTICAL | wx.SL_LABELS | wx.SL_INVERSE
       )
+      self.slider = slider
 
       slider.SetRange(ApprovalTrackerGaget.minVal, ApprovalTrackerGaget.maxVal)
 
-      slider.SetValue(
-         (ApprovalTrackerGaget.maxVal - ApprovalTrackerGaget.minVal) / 2
-      )
+      if isinstance(EClass.getInstance().user, Presenter):
+         slider.Enable(False)
 
-      ApprovalTrackerGaget.SetApprovalRating(slider.GetValue())
+         EClass.getInstance().user.approvalRating.addSetValueListener(
+            self.OnValueChanged
+         )
 
-      self.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
+         # TODO remove this.. this is just so we can see the event in action
+         EClass.getInstance().user.approvalRating.setValue(0.8)
+
+      else:
+         slider.Enable(True)
+         slider.SetValue(
+            (ApprovalTrackerGaget.maxVal - ApprovalTrackerGaget.minVal) / 2
+         )
+
+         ApprovalTrackerGaget.SetApprovalRating(slider.GetValue())
+
+         self.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
+
 
       self.Show()
 
    def OnSlide(self, event):
       ApprovalTrackerGaget.SetApprovalRating(event.GetPosition())
+
+   def OnValueChanged(self):
+      percent = EClass.getInstance().user.approvalRating.getValue()
+
+      self.slider.SetValue(
+         ApprovalTrackerGaget.minVal +
+         percent * (ApprovalTrackerGaget.maxVal - ApprovalTrackerGaget.minVal)
+      )
+
 
    @staticmethod
    def SetApprovalRating(rating):
