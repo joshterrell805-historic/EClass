@@ -1,0 +1,5 @@
+Ask about not having package.html files (content inside package .py file for docs instead)
+Separate views into packages?
+Pydoc for just the model or also the views?
+Author names in only the doc files or also the source files?
+Do property getters and setters count towards the method count requirement?
