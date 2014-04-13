@@ -3,10 +3,12 @@ import sys
 
 sys.path.insert(0, 'model')
 sys.path.insert(0, 'view')
-from EClass import EClass
+
+from LoginWindow import LoginWindow
+
 
 if __name__ == "__main__":
    app = wx.App(False)
-   EClass = EClass()
+   LoginWindow()
    app.MainLoop()
    sys.exit(1)

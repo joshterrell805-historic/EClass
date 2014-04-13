@@ -1,8 +1,14 @@
 import wx
+import sys
+
+from EClassWindow import EClassWindow
+
+sys.path.insert(0, 'model')
+from EClass import EClass
 
 class LoginWindow(wx.Frame):
    
-   def __init__(self, onSuccess, onCancel):
+   def __init__(self):
 
       no_resize = wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER
          | wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.CLOSE_BOX
@@ -30,12 +36,12 @@ class LoginWindow(wx.Frame):
       passwordHorizontalSizer.AddStretchSpacer(2)
 
       button = wx.Button(self, label = 'Login')
-      button.Bind(wx.EVT_BUTTON, onSuccess)
+      button.Bind(wx.EVT_BUTTON, self.OnAttempt)
       buttonsHorizontalSizer.AddStretchSpacer(2)
       buttonsHorizontalSizer.Add(button, 1, wx.ALIGN_CENTER)
 
       button = wx.Button(self, label = 'Cancel')
-      button.Bind(wx.EVT_BUTTON, onCancel)
+      button.Bind(wx.EVT_BUTTON, self.OnCancel)
       buttonsHorizontalSizer.Add(button, 1, wx.ALIGN_CENTER)
       buttonsHorizontalSizer.AddStretchSpacer(2)
 
@@ -48,8 +54,25 @@ class LoginWindow(wx.Frame):
       sizer.SetMinSize(size = (1000,1000))
       self.SetSizer(sizer)
 
+      self.Show()
+
    def GetUsername(self):
       return self.usernameTextbox.GetValue()
 
    def GetPassword(self):
       return self.passwordTextbox.GetValue()
+
+   def OnAttempt(self, event):
+      username = self.GetUsername()
+      password = self.GetPassword()
+      EClass.getInstance().Login(username, password)
+
+      if EClass.getInstance().user:
+         self.OnSuccess()
+
+   def OnSuccess(self):
+      self.Close()
+      EClassWindow()
+
+   def OnCancel(self, event):
+      sys.exit()
