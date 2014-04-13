@@ -6,9 +6,9 @@ There are objects for both a student and a presenter. Additionally, there are ob
 
 class Person:
    """
-   Person is a bla bla bla.
+   Person is a class that is instantiated when someone logs into the EClass.
 
-   @author: Your Mom, Joel, His mom
+   @author: Kevin Le
    """
 
    def __init__(self, asdf):
@@ -16,9 +16,6 @@ class Person:
       Build an instance of a person.
 
       @param self: self is the instance of this object
-      @param asdf: asdf is your mom
+      @param asdf: trash for now
 
-      @requires: 7 > 1
-      @precondition: self == Josh
-      @postcondition: !asdf == True
       """
