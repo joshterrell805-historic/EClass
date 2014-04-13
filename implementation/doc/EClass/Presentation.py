@@ -79,3 +79,63 @@ class PermissionLevel():
    @ivar Normal: The student may draw on his own layers, and may ask to add his layer to the presenter's layer stack by "push"ing that layer.
    @ivar Lockdown: The student may not draw on his own layers on his own machine and he may not push a layer.
    """
+   
+class Layer:
+   """
+   A layer is a overlay on top of slides, which the user can draw or write on.
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+
+   @ivar objects: A Collection of LayerObjects that represent all graphics on a Layer
+   @ivar opacity: A double representing how transparent a Layer is
+   @ivar visible: Boolean value representing if a Layer can or cannot be seen
+   @ivar permissions: The LayerPermissions for a given Layer
+   @ivar name: Name of the given Layer
+   @ivar locked: Boolean determining whether the user can edit this layer.
+   """
+   def __init__(self, name, lock):
+      """
+      Initialize a Layer.
+
+      @param name: The name of the new layer.
+      @param Whether the layer is locked.
+      """
+      pass
+
+   def changePermissions(self):
+      """
+      Set the selected layer's permissions.
+
+      @postcondition: self.permissions != old(self.permissions)
+      """
+      print('From LayerManager.DeleteLayer()')
+
+class LayerManagerModel:
+   """
+   Manages the layers attached to the current slide
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+
+   @ivar layers: A Collection of Layers that represent all graphics on a Slide
+   """
+   def __init__(self):
+      """
+      Initialize a LayerManagerModel.
+      """
+      pass
+
+   def DeleteLayer(self):
+      """
+      Delete the selected slide
+
+      @postcondition: self.layers.count() == old(self.layers.count()) - 1
+      """
+      print('From LayerManager.DeleteLayer()')
+
+   def NewLayer(self):
+      """
+      Creates a New Layer for the current Slide
+
+      @postcondition: self.layers.count() == old(self.layers.count()) + 1
+      """
+      print('From LayerManager.NewLayer()')
