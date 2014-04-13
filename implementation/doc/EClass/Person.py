@@ -8,7 +8,7 @@ class Person:
    """
    Person is a class that is instantiated when someone logs into the EClass.
 
-   @author: Kevin Le
+   @author: Kevin Le (kle17@calpoly.edu)
    """
 
    def __init__(self, asdf):

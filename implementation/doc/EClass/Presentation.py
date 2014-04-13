@@ -14,7 +14,7 @@ class Presentation:
    """
    A Presentation is a collection of slides and their respective layers which is displayed at the center of the EClass.
 
-   @author: Joel Wilcox (jnwilcox@calpoly.edu)
+   @author: Joel Wilcox (jnwilcox@calpoly.edu), Kevin Le (kle17@calpoly.edu)
 
    @ivar currentSlide: Refers to the current slide being displayed.
    @ivar slides: Contains each of the slides in a presentation.
