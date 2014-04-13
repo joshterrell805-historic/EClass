@@ -2,13 +2,11 @@ import wx
 import sys
 
 #view
-from Presentation import Presentation
 from WhiteboardNav import WhiteboardNav
 
 #model
-sys.path.insert(0, '../model')
-from Person.Student import Student
-from Person.Person import Person
+sys.path.insert(0, 'model')
+from EClass import EClass
 
 class ImportPresentation(wx.Frame):
    
@@ -47,16 +45,13 @@ class ImportPresentation(wx.Frame):
       self.parent.importPresentation.Hide()
       self.parent.initialPrompt.Destroy()
       
-      self.parent.presentation.SetPath(self.parent.importPresentation
+      EClass.getInstance().presentation.SetPath(self.parent.importPresentation
          .GetPresentationPath()
       )
 
-      self.parent.whiteboard = WhiteboardNav(self.parent, 
-         self.parent.presentation, Student
-      )
-
+      self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
-      self.parent.presentation.ShowPresentation()
+      EClass.getInstance().presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()
