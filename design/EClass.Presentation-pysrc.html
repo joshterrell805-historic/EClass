@@ -56,22 +56,87 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="EClass.Presentation-module.html">Module EClass.Presentation</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">Module Presentation defines objects and operations related to the presentation's content.</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">There are objects for both the presentation slides and the underlying markup (PresentationHTML). Additionally, this package includes much of the layer functionality. This can be seen in the Layer and LayerPermission objects.</tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
-<a name="Presentation"></a><div id="Presentation-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="Presentation-toggle" onclick="return toggle('Presentation');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html">Presentation</a><tt class="py-op">:</tt> </tt>
-</div><div id="Presentation-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Presentation-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">   asdf</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">insert</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-string">'../../source/python/model/enum'</tt><tt class="py-op">)</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment">#import enum</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-string">Module Presentation defines objects and operations related to the presentation's content.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-string">There are objects for both the presentation slides and the underlying markup (PresentationHTML). Additionally, this package includes much of the layer functionality. This can be seen in the Layer and LayerPermission objects.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
 <a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
-<a name="Presentation.rawr"></a><div id="Presentation.rawr-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="Presentation.rawr-toggle" onclick="return toggle('Presentation.rawr');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#rawr">rawr</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Presentation.rawr-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Presentation.rawr-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">      asdfasdfasdf</tt> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-</div></div><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="Presentation"></a><div id="Presentation-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="Presentation-toggle" onclick="return toggle('Presentation');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html">Presentation</a><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Presentation-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">   A Presentation is a collection of slides and their respective layers which is displayed at the center of the EClass.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Joel Wilcox (jnwilcox@calpoly.edu)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar currentSlide: Refers to the current slide being displayed.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar slides: Contains each of the slides in a presentation.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="Presentation.__init__"></a><div id="Presentation.__init__-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="Presentation.__init__-toggle" onclick="return toggle('Presentation.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation.__init__-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Presentation.__init__-expanded"><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize a Presentation.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">      @param path: The path to the presentation file.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="Presentation.MoveToNextSlide"></a><div id="Presentation.MoveToNextSlide-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="Presentation.MoveToNextSlide-toggle" onclick="return toggle('Presentation.MoveToNextSlide');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#MoveToNextSlide">MoveToNextSlide</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation.MoveToNextSlide-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Presentation.MoveToNextSlide-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">      Set the current slide to the next consecutive slide.</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.slides.index(self.currentSlide) != len(self.slides) - 1</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.slides.index(self.currentSlide) == self.slides.index(old(self.currentSlide)) + 1</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">      <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">'From Presentation.MoveToNextSlide()'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="Presentation.MoveToPreviousSlide"></a><div id="Presentation.MoveToPreviousSlide-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="Presentation.MoveToPreviousSlide-toggle" onclick="return toggle('Presentation.MoveToPreviousSlide');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#MoveToPreviousSlide">MoveToPreviousSlide</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation.MoveToPreviousSlide-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Presentation.MoveToPreviousSlide-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring">      Set the current slide to the previous slide.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.slides.index(self.currentSlide) != 0</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.slides.index(self.currentSlide) == self.slides.index(old(self.currentSlide)) - 1</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">      <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">'From Presentation.MoveToPreviousSlide()'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="Presentation.MoveToSlide"></a><div id="Presentation.MoveToSlide-def"><a name="L50"></a><tt class="py-lineno">50</tt> <a class="py-toggle" href="#" id="Presentation.MoveToSlide-toggle" onclick="return toggle('Presentation.MoveToSlide');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#MoveToSlide">MoveToSlide</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">slideNum</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation.MoveToSlide-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Presentation.MoveToSlide-expanded"><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">      Set the current slide to the slide at a given index.</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">      @param slideNum: The index of the new slide to display.</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: slideNum &gt;= 0 &amp;&amp; slideNum &lt; len(self.slides)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.slides.index(self.currentSlide) == slideNum</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">      <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">'From Presentation.MoveToSlide()'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"> </tt>
+<a name="Presentation.SyncWithPresenter"></a><div id="Presentation.SyncWithPresenter-def"><a name="L62"></a><tt class="py-lineno">62</tt> <a class="py-toggle" href="#" id="Presentation.SyncWithPresenter-toggle" onclick="return toggle('Presentation.SyncWithPresenter');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#SyncWithPresenter">SyncWithPresenter</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation.SyncWithPresenter-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Presentation.SyncWithPresenter-expanded"><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">      Set the current slide to the slide being viewed by the presenter.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.slides.index(self.currentSlide) != self.slides.index(old(self.currentSlide))</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">      <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">'From Presentation.SyncWithPresenter'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt>
+<a name="PermissionLevel"></a><div id="PermissionLevel-def"><a name="L71"></a><tt class="py-lineno">71</tt> <a class="py-toggle" href="#" id="PermissionLevel-toggle" onclick="return toggle('PermissionLevel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.PermissionLevel-class.html">PermissionLevel</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PermissionLevel-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="PermissionLevel-expanded"><a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring">   A PermissionLevel is an Enum of the three presentation permission levels used for students.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Joel Wilcox (jnwilcox@calpoly.edu)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Unrestricted: The student may draw on his own layers and push layers to the public stack freely.</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Normal: The student may draw on his own layers, and may ask to add his layer to the presenter's layer stack by "push"ing that layer.</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Lockdown: The student may not draw on his own layers on his own machine and he may not push a layer.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -104,7 +169,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Apr 13 11:29:29 2014
+    Generated by Epydoc 3.0.1 on Sun Apr 13 12:50:48 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

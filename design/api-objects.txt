@@ -23,5 +23,15 @@ EClass.EClass.presentation	EClass.EClass-class.html#presentation
 EClass.EClass.__init__	EClass.EClass-class.html#__init__
 EClass.Person.Person	EClass.Person.Person-class.html
 EClass.Person.Person.__init__	EClass.Person.Person-class.html#__init__
+EClass.Presentation.PermissionLevel	EClass.Presentation.PermissionLevel-class.html
+EClass.Presentation.PermissionLevel.Lockdown	EClass.Presentation.PermissionLevel-class.html#Lockdown
+EClass.Presentation.PermissionLevel.Unrestricted	EClass.Presentation.PermissionLevel-class.html#Unrestricted
+EClass.Presentation.PermissionLevel.Normal	EClass.Presentation.PermissionLevel-class.html#Normal
 EClass.Presentation.Presentation	EClass.Presentation.Presentation-class.html
-EClass.Presentation.Presentation.rawr	EClass.Presentation.Presentation-class.html#rawr
+EClass.Presentation.Presentation.slides	EClass.Presentation.Presentation-class.html#slides
+EClass.Presentation.Presentation.MoveToPreviousSlide	EClass.Presentation.Presentation-class.html#MoveToPreviousSlide
+EClass.Presentation.Presentation.currentSlide	EClass.Presentation.Presentation-class.html#currentSlide
+EClass.Presentation.Presentation.MoveToSlide	EClass.Presentation.Presentation-class.html#MoveToSlide
+EClass.Presentation.Presentation.SyncWithPresenter	EClass.Presentation.Presentation-class.html#SyncWithPresenter
+EClass.Presentation.Presentation.MoveToNextSlide	EClass.Presentation.Presentation-class.html#MoveToNextSlide
+EClass.Presentation.Presentation.__init__	EClass.Presentation.Presentation-class.html#__init__
