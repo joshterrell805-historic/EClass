@@ -36,7 +36,7 @@ class Presentation:
 
       @postcondition: self.slides.index(self.currentSlide) == self.slides.index(old(self.currentSlide)) + 1
       """
-      print('From Presentation.MoveToNextSlide()')
+      pass
 
    def MoveToPreviousSlide(self):
       """
@@ -46,7 +46,7 @@ class Presentation:
 
       @postcondition: self.slides.index(self.currentSlide) == self.slides.index(old(self.currentSlide)) - 1
       """
-      print('From Presentation.MoveToPreviousSlide()')
+      pass
 
    def MoveToSlide(self, slideNum):
       """
@@ -58,7 +58,7 @@ class Presentation:
 
       @postcondition: self.slides.index(self.currentSlide) == slideNum
       """
-      print('From Presentation.MoveToSlide()')
+      pass
 
    def SyncWithPresenter(self):
       """
@@ -66,7 +66,7 @@ class Presentation:
 
       @postcondition: self.slides.index(self.currentSlide) != self.slides.index(old(self.currentSlide))
       """
-      print('From Presentation.SyncWithPresenter')
+      pass
 
 
 class PermissionLevel():
@@ -108,7 +108,7 @@ class Layer:
 
       @postcondition: self.permissions != old(self.permissions)
       """
-      print('From LayerManager.DeleteLayer()')
+      pass
       
    def ToggleLock(self):
       """
@@ -116,7 +116,7 @@ class Layer:
 
       @postcondition: self.locked != old(self.locked)
       """
-      print('From Layer.lock()')
+      pass
       
    def ToggleVisible(self):
       """
@@ -124,7 +124,7 @@ class Layer:
 
       @postcondition: self.visible != old(self.visible)
       """
-      print('From Layer.toggleVisible()')
+      pass
 
 class LayerManagerModel:
    """
@@ -146,7 +146,7 @@ class LayerManagerModel:
 
       @postcondition: self.layers.count() == old(self.layers.count()) - 1
       """
-      print('From LayerManager.DeleteLayer()')
+      pass
 
    def NewLayer(self):
       """
@@ -154,7 +154,7 @@ class LayerManagerModel:
 
       @postcondition: self.layers.count() == old(self.layers.count()) + 1
       """
-      print('From LayerManager.NewLayer()')
+      pass
       
    def ChangeOpacity(self, index):
       """
@@ -162,4 +162,4 @@ class LayerManagerModel:
 
       @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
       """
-      print('From LayerManager.NewLayer')
+      pass
