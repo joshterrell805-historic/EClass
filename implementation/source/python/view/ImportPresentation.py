@@ -52,10 +52,11 @@ class ImportPresentation(wx.Frame):
 
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
-      self.parent.layerManagerModel = LayerManagerModel()
-      self.parent.layerManager = LayerManager(self.parent)
-      self.parent.layerManager.Show()
-      EClass.getInstance().presentation.ShowPresentation()
+      eclass = EClass.getInstance()
+      eclass.setUpLayerManager()
+      eclass.layerManager = LayerManager(self.parent)
+      eclass.layerManager.Show()
+      eclass.presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()

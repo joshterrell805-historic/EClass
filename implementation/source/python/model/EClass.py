@@ -2,6 +2,8 @@
 from Presentation.Presentation import Presentation
 from Person.Person import Person
 from Person.Student import Student
+from Presentation.Layer import Layer
+from Presentation.LayerManagerModel import LayerManagerModel
 
 # this model is a singleton which has a reference to other important models
 
@@ -30,3 +32,7 @@ class EClass():
       # valid credentials?
       if True:
          self.user = Person(username, password)
+         
+   def setUpLayerManager(self):
+      self.layerManagerModel = LayerManagerModel()
+      
