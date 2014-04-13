@@ -162,4 +162,4 @@ class LayerManagerModel:
 
       @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
       """
-      print('From LayerManager.NewLayer")
+      print('From LayerManager.NewLayer')

@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.ApprovalTracker.ApprovalRating</title>
+  <title>EClass.Presentation.Layer</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,8 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.ApprovalTracker-module.html" onclick="show_private();">Module&nbsp;ApprovalTracker</a> ::
-        Class&nbsp;ApprovalRating
+        <a href="EClass.Presentation-module.html">Module&nbsp;Presentation</a> ::
+        Class&nbsp;Layer
       </span>
     </td>
     <td>
@@ -49,24 +49,20 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.ApprovalTracker.ApprovalRating-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.Presentation.Layer-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class ApprovalRating</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating">source&nbsp;code</a></span></p>
-<p>ApprovalRating is a value which represents the approval of the 
-  presentation at this very instant.</p>
-  <p>If an ApprovalRating is owned by a Student, it represents that 
-  student's rating.</p>
-  <p>If an ApprovalRating is owned by a Presenter, it represents the class 
-  average.</p>
+<h1 class="epydoc">Class Layer</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer">source&nbsp;code</a></span></p>
+<p>A layer is a overlay on top of slides, which the user can draw or 
+  write on.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Josh Terrell jmterrel@calpoly.edu
+        Andrew Lisowski (alisowsk@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -91,10 +87,12 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Initialize an Approval Rating.</td>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">lock</span>)</span><br />
+      Initialize a Layer.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -108,12 +106,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.ApprovalTracker.ApprovalRating-class.html#SetValue" class="summary-sig-name">SetValue</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">percent</span>)</span><br />
-      Set the the value of this approval rating to a percentage between [0,
-      1].</td>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ChangePermissions" class="summary-sig-name">ChangePermissions</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Set the selected layer's permissions.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.SetValue">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangePermissions">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -127,11 +123,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.ApprovalTracker.ApprovalRating-class.html#GetValue" class="summary-sig-name">GetValue</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Get the percentage value of this approval rating (value between [0, 
-      1]).</td>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ToggleLock" class="summary-sig-name">ToggleLock</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Set the lock state of a layer.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.GetValue">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleLock">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -145,12 +140,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.ApprovalTracker.ApprovalRating-class.html#AddListener" class="summary-sig-name">AddListener</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">listener</span>)</span><br />
-      Add a listener to be called whenever the value of this approval 
-      rating changes.</td>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ToggleVisible" class="summary-sig-name">ToggleVisible</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Set the visibility of a layer.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.AddListener">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleVisible">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -176,20 +169,52 @@
     </table>
   </td>
 </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__listeners"></a><span class="summary-name">__listeners</span><br />
-      a collection of functions to be called when this
+        <a name="locked"></a><span class="summary-name">locked</span><br />
+      Boolean determining whether the user can edit this layer.
     </td>
   </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__rating"></a><span class="summary-name">__rating</span><br />
-      the percentage value between [0, 1] this rating represents
+        <a name="name"></a><span class="summary-name">name</span><br />
+      Name of the given Layer
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="objects"></a><span class="summary-name">objects</span><br />
+      A Collection of LayerObjects that represent all graphics on a Layer
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="opacity"></a><span class="summary-name">opacity</span><br />
+      A double representing how transparent a Layer is
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="permissions"></a><span class="summary-name">permissions</span><br />
+      The LayerPermissions for a given Layer
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="visible"></a><span class="summary-name">visible</span><br />
+      Boolean value representing if a Layer can or cannot be seen
     </td>
   </tr>
 </table>
@@ -211,88 +236,95 @@
   </td>
 </tr>
 </table>
-<a name="SetValue"></a>
+<a name="__init__"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">SetValue</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">percent</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">lock</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.SetValue">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the the value of this approval rating to a percentage between [0, 
-  1].</p>
-  <p>A side effect of calling this method is that all listeners added via 
-  AddListener are notified that the value has changed.</p>
+  <p>Initialize a Layer.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>percent</code></strong> - the percentage to set this rating to</li>
+        <li><strong class="pname"><code>name</code></strong> - The name of the new layer. @param Whether the layer is locked.</li>
     </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.__rating == percent
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="GetValue"></a>
+<a name="ChangePermissions"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetValue</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangePermissions</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.GetValue">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangePermissions">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Get the percentage value of this approval rating (value between [0, 
-  1]).</p>
+  <p>Set the selected layer's permissions.</p>
   <dl class="fields">
-    <dt>Returns:</dt>
-        <dd>the value this approval rating represents</dd>
   </dl>
 <div class="fields">      <p><strong>Postcondition:</strong>
-        @return == self.__rating &amp;&amp; old(self.__rating) == 
-        self.__rating
+        self.permissions != old(self.permissions)
       </p>
 </div></td></tr></table>
 </div>
-<a name="AddListener"></a>
+<a name="ToggleLock"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">AddListener</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">listener</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleLock</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.AddListener">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleLock">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Add a listener to be called whenever the value of this approval rating
-  changes.</p>
+  <p>Set the lock state of a layer.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>listener</code></strong> - the function to be added (called with no arguments)</li>
-    </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Postcondition:</strong>
-        self.__listeners.contains(listener) &amp;&amp; 
-        len(self.__listeners) == len(old(self.__listeners) + 1)
+        self.locked != old(self.locked)
+      </p>
+</div></td></tr></table>
+</div>
+<a name="ToggleVisible"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleVisible</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleVisible">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the visibility of a layer.</p>
+  <dl class="fields">
+  </dl>
+<div class="fields">      <p><strong>Postcondition:</strong>
+        self.visible != old(self.visible)
       </p>
 </div></td></tr></table>
 </div>
