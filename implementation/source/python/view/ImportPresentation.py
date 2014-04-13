@@ -3,6 +3,7 @@ import sys
 
 #view
 from WhiteboardNav import WhiteboardNav
+from ApprovalTrackerGaget import ApprovalTrackerGaget
 
 #model
 sys.path.insert(0, 'model')
@@ -52,6 +53,8 @@ class ImportPresentation(wx.Frame):
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
       EClass.getInstance().presentation.ShowPresentation()
+      # TODO, this should be opened in the menu
+      ApprovalTrackerGaget()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()
