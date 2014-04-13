@@ -14,30 +14,30 @@ class StudentPermissions(object):
 
    @property
    def presPermLevel(self):
-      print('From StudentPermissions.presPermLevel getter')
+      print('From StudentPermissions.presPermLevel.getter')
       return self._presPermLevel
 
    @presPermLevel.setter
    def presPermLevel(self, value):
-      print('From StudentPermissions.presPermLevel setter')
+      print('From StudentPermissions.presPermLevel.setter')
       self._presPermLevel = value
 
    @property
    def canRaiseHand(self):
-      print('From StudentPermissions.canRaiseHand getter')
+      print('From StudentPermissions.canRaiseHand.getter')
       return self._canRaiseHand
 
    @canRaiseHand.setter
    def canRaiseHand(self, value):
-      print('From StudentPermissions.canRaiseHand setter')
+      print('From StudentPermissions.canRaiseHand.setter')
       self._canRaiseHand = value
 
    @property
    def canPushLayer(self):
-      print('From StudentPermissions.canPushLayer getter')
+      print('From StudentPermissions.canPushLayer.getter')
       return self._canPushLayer
 
    @canPushLayer.setter
    def canPushLayer(self, value):
-      print('From StudentPermissions.canPushLayer setter')
+      print('From StudentPermissions.canPushLayer.setter')
       self._canPushLayer = value

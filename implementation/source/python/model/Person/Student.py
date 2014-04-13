@@ -9,10 +9,10 @@ class Student(Person):
 
    @property
    def permissions(self):
-      print('From Student.permissions getter')
+      print('From Student.permissions.getter')
       return self._permissions
 
    @permissions.setter
    def permissions(self, value):
-      print('From Student.permissions setter')
+      print('From Student.permissions.setter')
       self._permissions = value
