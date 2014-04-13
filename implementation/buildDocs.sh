@@ -1,3 +1,3 @@
 #!/bin/bash
 
-epydoc -v doc/*.py -o ../design/
+epydoc -v doc/EClass/*.py -o ../design/
