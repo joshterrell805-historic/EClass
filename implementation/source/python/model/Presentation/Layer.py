@@ -7,5 +7,11 @@ class Layer:
       self.name = name
       self.locked = lock
 
-   def changePermissions(self):
-      print('From LayerManager.DeleteLayer()')
+   def ChangePermissions(self):
+      print('From Layer.ChangePermissions()')
+      
+   def ToggleLock(self):
+      print('From Layer.ToggleLock()')
+      
+   def ToggleVisible(self):
+      print('From Layer.ToggleVisible()')

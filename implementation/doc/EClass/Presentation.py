@@ -102,13 +102,29 @@ class Layer:
       """
       pass
 
-   def changePermissions(self):
+   def ChangePermissions(self):
       """
       Set the selected layer's permissions.
 
       @postcondition: self.permissions != old(self.permissions)
       """
       print('From LayerManager.DeleteLayer()')
+      
+   def ToggleLock(self):
+      """
+      Set the lock state of a layer.
+
+      @postcondition: self.locked != old(self.locked)
+      """
+      print('From Layer.lock()')
+      
+   def ToggleVisible(self):
+      """
+      Set the visibility of a layer.
+
+      @postcondition: self.visible != old(self.visible)
+      """
+      print('From Layer.toggleVisible()')
 
 class LayerManagerModel:
    """
@@ -139,3 +155,11 @@ class LayerManagerModel:
       @postcondition: self.layers.count() == old(self.layers.count()) + 1
       """
       print('From LayerManager.NewLayer()')
+      
+   def ChangeOpacity(self, index):
+      """
+      Changes opacity of selected layer
+
+      @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
+      """
+      print('From LayerManager.NewLayer")

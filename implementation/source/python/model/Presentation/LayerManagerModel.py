@@ -10,3 +10,6 @@ class LayerManagerModel:
 
    def NewLayer(self):
       print('From LayerManager.NewLayer()')
+      
+   def ChangeOpacity(self, index):
+      print('From LayerManager.ChangeOpacity()')
