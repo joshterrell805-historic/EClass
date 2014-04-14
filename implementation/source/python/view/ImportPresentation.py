@@ -54,9 +54,7 @@ class ImportPresentation(wx.Frame):
 
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
-
-      eclass = EClass.GetInstance()
-      eclass.setUpLayerManager()
+   
       self.parent.layerManager = LayerManager(self.parent)
       self.parent.layerManager.Show()
       eclass.presentation.ShowPresentation()
