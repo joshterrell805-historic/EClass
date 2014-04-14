@@ -1,8 +1,16 @@
 import wx
+import sys
+
+sys.path.insert(0, 'model/Forum')
+from EClass import EClass
+
+from ForumModel import ForumModel
 
 class Forum(wx.Frame):
    def __init__(self):
       super(Forum, self).__init__(None, -1, 'Forum')
+
+      self.forumModel = ForumModel()
 
       self.SetClientSizeWH(500, 600)
 
@@ -33,7 +41,7 @@ class Forum(wx.Frame):
       self.Show()
 
    def SendMessage(self, event):
-      EClass.GetInstance().ForumModel.SendMessage()
+      self.forumModel.SendMessage()
 
    def CloseForum(self, event):
-      EClass.GetInstance().ForumModel.CloseForum()
+      self.forumModel.CloseForum()

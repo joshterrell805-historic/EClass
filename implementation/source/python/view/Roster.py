@@ -1,10 +1,17 @@
 import wx
+import sys
+
+sys.path.insert(0, 'model/Person')
+from EClass import EClass
 
 from RosterItem import RosterItem
+from RosterModel import RosterModel
 
 class Roster(wx.Frame):
    def __init__(self):
       super(Roster, self).__init__(None, -1, 'Roster')
+
+      self.rosterModel = RosterModel()
 
       self.rosterItem1 = RosterItem(self)
       self.rosterItem2 = RosterItem(self)
@@ -17,6 +24,7 @@ class Roster(wx.Frame):
 
       attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
       attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
+      attendance.SetForegroundColour('#FFFFFF')
       attendance.SetBackgroundColour('#0041C2')
       
       inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
@@ -61,4 +69,4 @@ class Roster(wx.Frame):
       self.Show()
 
    def Test(self, event):
-      EClass.GetInstance().RosterModel.Test()
+      self.rosterModel.Test()
