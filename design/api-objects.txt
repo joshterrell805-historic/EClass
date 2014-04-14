@@ -83,8 +83,9 @@ EClass.Presentation.Presentation.slides	EClass.Presentation.Presentation-class.h
 EClass.Presentation.Presentation.MoveToPreviousSlide	EClass.Presentation.Presentation-class.html#MoveToPreviousSlide
 EClass.Presentation.Presentation.currentSlide	EClass.Presentation.Presentation-class.html#currentSlide
 EClass.Presentation.Presentation.MoveToSlide	EClass.Presentation.Presentation-class.html#MoveToSlide
+EClass.Presentation.Presentation.__init__	EClass.Presentation.Presentation-class.html#__init__
 EClass.Presentation.Presentation.SyncWithPresenter	EClass.Presentation.Presentation-class.html#SyncWithPresenter
 EClass.Presentation.Presentation.path	EClass.Presentation.Presentation-class.html#path
 EClass.Presentation.Presentation.SetPath	EClass.Presentation.Presentation-class.html#SetPath
 EClass.Presentation.Presentation.MoveToNextSlide	EClass.Presentation.Presentation-class.html#MoveToNextSlide
-EClass.Presentation.Presentation.__init__	EClass.Presentation.Presentation-class.html#__init__
+EClass.Presentation.Presentation.GetSlideNum	EClass.Presentation.Presentation-class.html#GetSlideNum
