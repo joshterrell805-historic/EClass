@@ -29,7 +29,7 @@ class Student(Person):
    
    @author: Joel Wilcox (jnwilcox@calpoly.edu)
 
-   @ivar _permissions: The student's set of permissions.
+   @ivar permissions: The student's set of permissions.
    @ivar kicked: Boolean indicating if the student has been kicked.
    @ivar present: Boolean indicating if the student is present.
    """
@@ -44,15 +44,15 @@ class Student(Person):
       """
       pass
 
-   @property
-   def permissions(self):
+   def GetPermissions(self):
       """
       Get the Student's permissions.
+
+      @return: self.permissions
       """
       pass
 
-   @permissions.setter
-   def permissions(self, value):
+   def SetPermissions(self, value):
       """
       Set the student's permissions with a new StudentPermissions object.
 
@@ -60,7 +60,7 @@ class Student(Person):
 
       @precondition: isinstance(value, StudentPermissions) == True
 
-      @postcondition: self._permissions == value
+      @postcondition: self.permissions == value
       """
       pass
 
@@ -71,9 +71,9 @@ class StudentPermissions(object):
 
    @author: Joel Wilcox (jnwilcox@calpoly.edu)
 
-   @ivar _presPermLevel: A student's PermissionLevel for presentation and layer interactions.
-   @ivar _canRaiseHand: Boolean indicating if a student is allowed to raise their hand and ask a question.
-   @ivar _canPushLayer: Boolean indicating if a student is allowed to push a layer to the presenter's stack.
+   @ivar presPermLevel: A student's PermissionLevel for presentation and layer interactions.
+   @ivar canRaiseHand: Boolean indicating if a student is allowed to raise their hand and ask a question.
+   @ivar canPushLayer: Boolean indicating if a student is allowed to push a layer to the presenter's stack.
    """
 
    def __init__(self, presPermLevel, canRaiseHand, canPushLayer):
@@ -86,15 +86,15 @@ class StudentPermissions(object):
       """
       pass
 
-   @property
-   def presPermLevel(self):
+   def GetPresPermLevel(self):
       """
       Get the student's current presentation PermissionLevel.
+
+      @return: self.presPermLevel
       """
       pass
 
-   @presPermLevel.setter
-   def presPermLevel(self, value):
+   def SetPresPermLevel(self, value):
       """
       Set the student's PermissionLevel with a new PermissionLevel.
 
@@ -102,19 +102,19 @@ class StudentPermissions(object):
 
       @precondition: isinstance(value, PermissionLevel) == True
 
-      @postcondition: self._presPermLevel == value
+      @postcondition: self.presPermLevel == value
       """
       pass
 
-   @property
-   def canRaiseHand(self):
+   def CanRaiseHand(self):
       """
       Get the student's current permission for raising their hand.
+
+      @return: self.canRaiseHand
       """
       pass
 
-   @canRaiseHand.setter
-   def canRaiseHand(self, value):
+   def SetCanRaiseHand(self, value):
       """
       Set the student's ability to raise their hand.
 
@@ -122,19 +122,19 @@ class StudentPermissions(object):
 
       @precondition: value == True or value == False
 
-      @postcondition: self._canRaiseHand == value
+      @postcondition: self.canRaiseHand == value
       """
       pass
 
-   @property
-   def canPushLayer(self):
+   def CanPushLayer(self):
       """
       Get the student's current permission for pushing a layer.
+
+      @return: self.canPushLayer
       """
       pass
 
-   @canPushLayer.setter
-   def canPushLayer(self, value):
+   def SetCanPushLayer(self, value):
       """
       Set the student's ability to push a layer to the presenter's stack.
 
@@ -142,6 +142,6 @@ class StudentPermissions(object):
 
       @precondition: value == True or value == False
 
-      @postcondition: self._canPushLayer == value
+      @postcondition: self.canPushLayer == value
       """
       pass

@@ -8,36 +8,30 @@ class StudentPermissions(object):
    def __init__(self, presPermLevel = PermissionLevel.Normal,
       canRaiseHand = True, canPushLayer = True
    ):
-      self._presPermLevel = presPermLevel
-      self._canRaiseHand = canRaiseHand
-      self._canPushLayer = canPushLayer
+      self.presPermLevel = presPermLevel
+      self.canRaiseHand = canRaiseHand
+      self.canPushLayer = canPushLayer
 
-   @property
-   def presPermLevel(self):
-      print('From StudentPermissions.presPermLevel.getter')
-      return self._presPermLevel
+   def GetPresPermLevel(self):
+      print('From StudentPermissions.GetPresPermLevel()')
+      return self.presPermLevel
 
-   @presPermLevel.setter
-   def presPermLevel(self, value):
-      print('From StudentPermissions.presPermLevel.setter')
-      self._presPermLevel = value
+   def SetPresPermLevel(self, value):
+      print('From StudentPermissions.SetPresPermLevel()')
+      self.presPermLevel = value
 
-   @property
-   def canRaiseHand(self):
-      print('From StudentPermissions.canRaiseHand.getter')
-      return self._canRaiseHand
+   def CanRaiseHand(self):
+      print('From StudentPermissions.CanRaiseHand()')
+      return self.canRaiseHand
 
-   @canRaiseHand.setter
-   def canRaiseHand(self, value):
-      print('From StudentPermissions.canRaiseHand.setter')
-      self._canRaiseHand = value
+   def SetCanRaiseHand(self, value):
+      print('From StudentPermissions.SetCanRaiseHand()')
+      self.canRaiseHand = value
 
-   @property
-   def canPushLayer(self):
-      print('From StudentPermissions.canPushLayer.getter')
-      return self._canPushLayer
+   def CanPushLayer(self):
+      print('From StudentPermissions.CanPushLayer()')
+      return self.canPushLayer
 
-   @canPushLayer.setter
-   def canPushLayer(self, value):
-      print('From StudentPermissions.canPushLayer.setter')
-      self._canPushLayer = value
+   def SetCanPushLayer(self, value):
+      print('From StudentPermissions.SetCanPushLayer()')
+      self.canPushLayer = value

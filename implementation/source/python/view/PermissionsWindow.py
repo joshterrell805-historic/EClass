@@ -72,17 +72,17 @@ class PermissionsWindow(wx.Frame):
       self.Show()
 
    def OnAccept(self, event):
-      perms = self.student.permissions
+      perms = self.student.GetPermissions()
       
       if self.radioUnrestricted.GetValue() == True:
-         perms.presPermLevel = PermissionLevel.Unrestricted
+         perms.SetPresPermLevel(PermissionLevel.Unrestricted)
       elif self.radioLockdown.GetValue() == True:
-         perms.presPermLevel = PermissionLevel.Lockdown
+         perms.SetPresPermLevel(PermissionLevel.Lockdown)
       else:
-         perms.presPermLevel = PermissionLevel.Normal
+         perms.SetPresPermLevel(PermissionLevel.Normal)
 
-      perms.canRaiseHand = self.checkRaiseHand.GetValue()
-      perms.canPushLayer = self.checkPushLayer.GetValue()
+      perms.SetCanRaiseHand(self.checkRaiseHand.GetValue())
+      perms.SetCanPushLayer(self.checkPushLayer.GetValue())
       self.Destroy()
       
    def OnCancel(self, event):
