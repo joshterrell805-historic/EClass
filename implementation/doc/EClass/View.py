@@ -10,9 +10,9 @@ class WhiteboardNav(wx.Panel):
    
    @author: Joel Wilcox (jnwilcox@calpoly.edu)
 
-   @ivar presentation: A reference to the current presentation.
-   @ivar whiteboard: The HTML window which displays the current slide.
-   @ivar slideTextBox: A text box which can be given a slide number to navigate to.
+   @ivar presentation: A reference to the current presentation
+   @ivar whiteboard: The HTML window which displays the current slide
+   @ivar slideTextBox: A text box which can be given a slide number to navigate to
    """
 
    def __init__(self, parent):
@@ -26,7 +26,7 @@ class WhiteboardNav(wx.Panel):
       """
       Change the current slide to the previous slide.
 
-      @param event: The event that called this method.
+      @param event: The event that called this method
       """
       pass
 
@@ -34,7 +34,7 @@ class WhiteboardNav(wx.Panel):
       """
       Change the current slide to the next slide.
 
-      @param event: The event that called this method.
+      @param event: The event that called this method
       """
       pass
 
@@ -42,7 +42,7 @@ class WhiteboardNav(wx.Panel):
       """
       Change the student's current slide to the presenter's current slide.
 
-      @param event: The event that called this method.
+      @param event: The event that called this method
       """
       pass
 
@@ -50,7 +50,47 @@ class WhiteboardNav(wx.Panel):
       """
       Change the current slide to the specified slide (via the slide TextBox).
 
-      @param event: The event that called this method.
+      @param event: The event that called this method
+      """
+      pass
+
+
+class PermissionsWindow(wx.Frame):
+   """
+   PermissionsWindow defines the window used to display and access a student's permissions.
+   
+   @author: Joel Wilcox (jnwilcox@calpoly.edu)
+
+   @ivar student: A reference to the student whose permissions are being accessed
+   @ivar radioUnrestricted: A radio button for the Unrestricted permission level
+   @ivar radioNormal: A radio button for the Normal permission level
+   @ivar radioLockdown: A radio button for the Lockdown permission level
+   @ivar checkRaiseHand: A checkbox for the "Raise a hand" permission
+   @ivar checkPushLayer: A checkbox for the "Push a layer" permission
+   """
+   
+   def __init__(self, student):
+      """
+      Initialize the WhiteboardNav view.
+
+      @param student: The student whose permissions are being accessed
+      """
+      pass
+
+   def OnAccept(self, event):
+      """
+      Update the student's permissions based on the current state of the radio buttons and checkboxes.
+      Close the window.
+
+      @param event: The event that called this method
+      """
+      pass
+      
+   def OnCancel(self, event):
+      """
+      Close the window without making changes to the student's permissions.
+
+      @param event: The event that called this method
       """
       pass
 
