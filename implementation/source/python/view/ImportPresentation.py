@@ -5,7 +5,6 @@ import sys
 from WhiteboardNav import WhiteboardNav
 from LayerManager import LayerManager
 from ApprovalTrackerGaget import ApprovalTrackerGaget
-from Forum import Forum
 
 #model
 sys.path.insert(0, 'model')
@@ -60,7 +59,6 @@ class ImportPresentation(wx.Frame):
       eclass.presentation.ShowPresentation()
 
       # TODO, this should be opened in the menu
-      Forum()
       ApprovalTrackerGaget()
 
    def CancelSelectPresentation(self, event):

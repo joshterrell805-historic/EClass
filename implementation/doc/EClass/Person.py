@@ -145,3 +145,18 @@ class StudentPermissions(object):
       @postcondition: self.canPushLayer == value
       """
       pass
+
+class Roster:
+   """
+   A Roster contains all of the students in the class and methods to manage the students.
+
+   @author: Carson Carroll (ccarro03@calpoly.edu)
+   """
+
+   def __init__(self):
+      """
+      Build an instance of a roster.
+
+      @param self: self is the instance of this object
+      """
+      pass

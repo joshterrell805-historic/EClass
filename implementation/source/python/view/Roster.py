@@ -20,7 +20,7 @@ class Roster(wx.Frame):
       self.rosterItem5 = RosterItem(self)
       self.rosterItem6 = RosterItem(self)
 
-      self.SetClientSizeWH(300, 675)
+      self.SetClientSizeWH(300, 645)
 
       attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
       attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
@@ -41,9 +41,6 @@ class Roster(wx.Frame):
       remoteAccessPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
       remoteAccessPanel.SetBackgroundColour('#FEEECC')
 
-      testButton = wx.Button(self, label = 'Test', size = (100, 30))
-      testButton.Bind(wx.EVT_BUTTON, self.Test)
-
       rosterVertSizer = wx.BoxSizer(wx.VERTICAL)
       rosterVertSizer.AddStretchSpacer(1)
       rosterVertSizer.Add(attendance, 1, wx.CENTER)
@@ -61,7 +58,6 @@ class Roster(wx.Frame):
       rosterVertSizer.Add(self.rosterItem6, 1, wx.CENTER)
 
       rosterVertSizer.Add(remoteAccessPanel, 1, wx.CENTER)
-      rosterVertSizer.Add(testButton, 1, wx.CENTER)
       rosterVertSizer.AddStretchSpacer(1)
 
       self.SetSizer(rosterVertSizer)

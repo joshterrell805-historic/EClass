@@ -45,3 +45,4 @@ class Forum(wx.Frame):
 
    def CloseForum(self, event):
       self.forumModel.CloseForum()
+      self.Close()
