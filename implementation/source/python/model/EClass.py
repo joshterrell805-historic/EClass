@@ -31,13 +31,18 @@ class EClass():
    def Login(self, username, password):
       print('From EClass.Login(): ' + username + ' ' + password)
 
-      if username == 'presenter':
-         self.user = Presenter(username, password)
-      elif username == 'student':
-         self.user = Student(username, password)
-      else:
-         # for now just assume it's a student
-         self.user = Student(username, password)
+      if (self.Authorize(username, password)):
+         if username == 'presenter':
+            self.user = Presenter(username, password)
+         elif username == 'student':
+            self.user = Student(username, password)
+         else:
+            # for now just assume it's a student
+            self.user = Student(username, password)
+
+   def Authorize(self, username, password):
+      print('From EClass.Authorize(): Passed')
+      return True
 
    def setUpLayerManager(self):
       self.layerManagerModel = LayerManagerModel()

@@ -2,6 +2,8 @@ EClass	EClass-module.html
 EClass.__package__	EClass-module.html#__package__
 EClass.ApprovalTracker	EClass.ApprovalTracker-module.html
 EClass.ApprovalTracker.__package__	EClass.ApprovalTracker-module.html#__package__
+EClass.EClass	EClass.EClass-module.html
+EClass.EClass.__package__	EClass.EClass-module.html#__package__
 EClass.Person	EClass.Person-module.html
 EClass.Person.__package__	EClass.Person-module.html#__package__
 EClass.Presentation	EClass.Presentation-module.html
@@ -21,6 +23,14 @@ EClass.EClass.user	EClass.EClass-class.html#user
 EClass.EClass.Login	EClass.EClass-class.html#Login
 EClass.EClass.presentation	EClass.EClass-class.html#presentation
 EClass.EClass.__init__	EClass.EClass-class.html#__init__
+EClass.EClass.EClass	EClass.EClass.EClass-class.html
+EClass.EClass.EClass.Authorize	EClass.EClass.EClass-class.html#Authorize
+EClass.EClass.EClass.GetInstance	EClass.EClass.EClass-class.html#GetInstance
+EClass.EClass.EClass.layerManagerModel	EClass.EClass.EClass-class.html#layerManagerModel
+EClass.EClass.EClass.user	EClass.EClass.EClass-class.html#user
+EClass.EClass.EClass.Login	EClass.EClass.EClass-class.html#Login
+EClass.EClass.EClass.presentation	EClass.EClass.EClass-class.html#presentation
+EClass.EClass.EClass.__init__	EClass.EClass.EClass-class.html#__init__
 EClass.Person.Person	EClass.Person.Person-class.html
 EClass.Person.Person.__init__	EClass.Person.Person-class.html#__init__
 EClass.Person.Student	EClass.Person.Student-class.html
@@ -68,6 +78,7 @@ EClass.Presentation.Presentation.MoveToPreviousSlide	EClass.Presentation.Present
 EClass.Presentation.Presentation.currentSlide	EClass.Presentation.Presentation-class.html#currentSlide
 EClass.Presentation.Presentation.MoveToSlide	EClass.Presentation.Presentation-class.html#MoveToSlide
 EClass.Presentation.Presentation.SyncWithPresenter	EClass.Presentation.Presentation-class.html#SyncWithPresenter
+EClass.Presentation.Presentation.path	EClass.Presentation.Presentation-class.html#path
 EClass.Presentation.Presentation.SetPath	EClass.Presentation.Presentation-class.html#SetPath
 EClass.Presentation.Presentation.MoveToNextSlide	EClass.Presentation.Presentation-class.html#MoveToNextSlide
 EClass.Presentation.Presentation.__init__	EClass.Presentation.Presentation-class.html#__init__

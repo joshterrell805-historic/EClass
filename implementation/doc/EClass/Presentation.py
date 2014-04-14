@@ -18,6 +18,7 @@ class Presentation:
 
    @ivar currentSlide: Refers to the current slide being displayed.
    @ivar slides: Contains each of the slides in a presentation.
+   @ivar path: Refers to the current file system path of the backing presentation file.
    """
 
    def __init__(self, path):
