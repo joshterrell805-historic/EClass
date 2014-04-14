@@ -6,10 +6,10 @@ class Roster(wx.Frame):
    def __init__(self):
       super(Roster, self).__init__(None, -1, 'Roster')
 
-      #self.rosterItem1 = RosterItem()
-      #self.rosterItem2 = RosterItem()
+      self.rosterItem1 = RosterItem(self)
+      self.rosterItem2 = RosterItem(self)
 
-      self.SetClientSizeWH(300, 600)
+      self.SetClientSizeWH(300, 675)
 
       attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
       attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
@@ -38,6 +38,10 @@ class Roster(wx.Frame):
       rosterVertSizer.AddStretchSpacer(1)
       rosterVertSizer.Add(attendance, 1, wx.CENTER)
       rosterVertSizer.Add(inClassText, 1, wx.CENTER)
+
+      rosterVertSizer.Add(self.rosterItem1, 1, wx.CENTER)
+      rosterVertSizer.Add(self.rosterItem2, 1, wx.CENTER)
+      
       rosterVertSizer.Add(studentListPanel, 1, wx.CENTER)
       rosterVertSizer.Add(remoteAccessText, 1, wx.CENTER)
       rosterVertSizer.Add(remoteAccessPanel, 1, wx.CENTER)
