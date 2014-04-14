@@ -56,7 +56,7 @@ class ImportPresentation(wx.Frame):
    
       self.parent.layerManager = LayerManager(self.parent)
       self.parent.layerManager.Show()
-      eclass.presentation.ShowPresentation()
+      EClass.GetInstance().presentation.ShowPresentation()
 
       # TODO, this should be opened in the menu
       ApprovalTrackerGaget()

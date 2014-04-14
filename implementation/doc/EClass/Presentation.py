@@ -76,6 +76,16 @@ class Presentation:
       @precondition: path != NULL
       @postcondition: self.path == path
       """
+      pass
+
+   def GetSlideNum(self):
+      """
+      Gets the current slide that the presentation is on.
+
+      @precondition: self.slideNum >= 1 && self.slideNum < self.numSlides
+      @return: the current slide number.
+      """
+      pass
 
 
 class PermissionLevel():

@@ -6,6 +6,10 @@ from EClass import EClass
 
 from RosterItemModel import RosterItemModel
 
+sys.path.insert(0, '../model')
+from Person.Student import Student
+from PermissionsWindow import PermissionsWindow
+
 class RosterItem(wx.Panel):
    def __init__(self, parent):
       super(RosterItem, self).__init__(parent, -1, size = (300, 40))
@@ -21,7 +25,7 @@ class RosterItem(wx.Panel):
       self.layersButton = wx.Button(self, label = 'Layers', size = (60, 30))
       self.layersButton.Bind(wx.EVT_BUTTON, self.LayersButton)
       self.permissionsButton = wx.Button(self, label = 'Permissions', size = (90, 30))
-      self.permissionsButton.Bind(wx.EVT_BUTTON, self.PermissionsButton)
+      self.permissionsButton.Bind(wx.EVT_BUTTON, self.OpenPermissions)
 
       rosterItemHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       rosterItemHoriSizer.AddStretchSpacer(1)
@@ -42,3 +46,5 @@ class RosterItem(wx.Panel):
 
    def PermissionsButton(self, event):
       self.rosterItemModel.Permissions()
+   def OpenPermissions(self, event):
+      PermissionsWindow(Student("dummy", "ymmud")) # Dummy student for now
