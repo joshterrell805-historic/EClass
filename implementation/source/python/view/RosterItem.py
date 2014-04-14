@@ -9,7 +9,7 @@ class RosterItem(wx.Panel):
       self.SetBackgroundColour('#FFFFFF')
 
       self.handButton = wx.Button(self, label = 'Hand', size = (50, 30))
-      self.modeButton = wx.Button(self, label = 'Mode', size = (50, 30))
+      self.modeButton = wx.Button(self, label = 'Layers', size = (60, 30))
       self.permissionsButton = wx.Button(self, label = 'Permissions', size = (90, 30))
 
       rosterItemHoriSizer = wx.BoxSizer(wx.HORIZONTAL)

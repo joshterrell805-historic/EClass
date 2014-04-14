@@ -8,6 +8,10 @@ class Roster(wx.Frame):
 
       self.rosterItem1 = RosterItem(self)
       self.rosterItem2 = RosterItem(self)
+      self.rosterItem3 = RosterItem(self)
+      self.rosterItem4 = RosterItem(self)
+      self.rosterItem5 = RosterItem(self)
+      self.rosterItem6 = RosterItem(self)
 
       self.SetClientSizeWH(300, 675)
 
@@ -19,16 +23,14 @@ class Roster(wx.Frame):
       inClassText.SetValue('In Class')
       inClassText.SetBackgroundColour('#5CB3FF')
 
-      studentListPanel = wx.Panel(self, size = (300, 300), style = wx.TE_CENTRE)
+      studentListPanel = wx.Panel(self, size = (300, 220), style = wx.TE_CENTRE)
       studentListPanel.SetBackgroundColour('#FEEECC')
-      #studentListPanel.Add(rosterItem1)
-      #studentListPanel.Add(rosterItem2)
 
       remoteAccessText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
       remoteAccessText.SetValue('Remote Access')
       remoteAccessText.SetBackgroundColour('#5CB3FF')
 
-      remoteAccessPanel = wx.Panel(self, size = (300, 130), style = wx.TE_CENTRE)
+      remoteAccessPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
       remoteAccessPanel.SetBackgroundColour('#FEEECC')
 
       testButton = wx.Button(self, label = 'Test', size = (100, 30))
@@ -41,9 +43,15 @@ class Roster(wx.Frame):
 
       rosterVertSizer.Add(self.rosterItem1, 1, wx.CENTER)
       rosterVertSizer.Add(self.rosterItem2, 1, wx.CENTER)
+      rosterVertSizer.Add(self.rosterItem3, 1, wx.CENTER)
+      rosterVertSizer.Add(self.rosterItem4, 1, wx.CENTER)
       
       rosterVertSizer.Add(studentListPanel, 1, wx.CENTER)
       rosterVertSizer.Add(remoteAccessText, 1, wx.CENTER)
+
+      rosterVertSizer.Add(self.rosterItem5, 1, wx.CENTER)
+      rosterVertSizer.Add(self.rosterItem6, 1, wx.CENTER)
+
       rosterVertSizer.Add(remoteAccessPanel, 1, wx.CENTER)
       rosterVertSizer.Add(testButton, 1, wx.CENTER)
       rosterVertSizer.AddStretchSpacer(1)
