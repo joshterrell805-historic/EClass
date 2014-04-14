@@ -109,8 +109,6 @@ class ImportPresentation(wx.Frame):
       Creates a ImportPresentation window to select which HTMLpresentation to open.
       
       @param parent: the parant EClassWindow which import presentation needs to talk to.
-
-      @postcondition: self != None
       """
       pass
 
@@ -120,7 +118,6 @@ class ImportPresentation(wx.Frame):
       Other items such as the Whiteboard, LayerManager, Forum, and ApprovalTracker are also instantiated.
    
       @param event: The mouseclick event which calls this function.
-      @precondition: self != None
       @postcondition: self.parant.whiteboard != None && self.parant.layerManager != None
       """
       pass
@@ -157,7 +154,6 @@ class InitialPrompt(wx.Panel):
 
       @param parant: The parant EClassWindow to set self.parant to.
       @precondition: parant != None
-      @postcondition: self != None
       """
       pass
 
