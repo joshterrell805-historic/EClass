@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.LayerView.LayerView</title>
+  <title>EClass.View.PermissionsWindow</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,8 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.LayerView-module.html">Module&nbsp;LayerView</a> ::
-        Class&nbsp;LayerView
+        <a href="EClass.View-module.html">Module&nbsp;View</a> ::
+        Class&nbsp;PermissionsWindow
       </span>
     </td>
     <td>
@@ -49,30 +49,39 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.LayerView.LayerView-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View.PermissionsWindow-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class LayerView</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class PermissionsWindow</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-     object --+                
-              |                
-wx._core.Object --+            
-                  |            
-wx._core.EvtHandler --+        
-                      |        
-        wx._core.Window --+    
-                          |    
-          wx._windows.Panel --+
-                              |
-                             <strong class="uidshort">LayerView</strong>
+     object --+                    
+              |                    
+wx._core.Object --+                
+                  |                
+wx._core.EvtHandler --+            
+                      |            
+        wx._core.Window --+        
+                          |        
+ wx._windows.TopLevelWindow --+    
+                              |    
+              wx._windows.Frame --+
+                                  |
+                                 <strong class="uidshort">PermissionsWindow</strong>
 </pre>
 
 <hr />
-<!-- ==================== INSTANCE METHODS ==================== -->
+<p>PermissionsWindow defines the window used to display and access a 
+  student's permissions.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Joel Wilcox (jnwilcox@calpoly.edu)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -91,34 +100,15 @@ wx._core.EvtHandler --+
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#layerListObject" class="summary-sig-name">layerListObject</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parent</span>)</span><br />
-      Set the selected layer's permissions.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.layerListObject">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">EvtHandler</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parent</span>,
-        <span class="summary-sig-arg">layer</span>)</span><br />
-      Initialize a Layer View.</td>
+          <td><span class="summary-sig"><a href="EClass.View.PermissionsWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Initialize the WhiteboardNav view.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -132,11 +122,12 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#changePermissions" class="summary-sig-name">changePermissions</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.PermissionsWindow-class.html#OnAccept" class="summary-sig-name">OnAccept</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the selected layer's permissions.</td>
+      Update the student's permissions based on the current state of the 
+      radio buttons and checkboxes.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.changePermissions">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow.OnAccept">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -150,29 +141,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#ToggleVisible" class="summary-sig-name">ToggleVisible</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.PermissionsWindow-class.html#OnCancel" class="summary-sig-name">OnCancel</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the visibility of a layer.</td>
+      Close the window without making changes to the student's permissions.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleVisible">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#ToggleLock" class="summary-sig-name">ToggleLock</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Set the lock state of a layer.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleLock">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow.OnCancel">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -182,9 +155,59 @@ wx._core.EvtHandler --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>Create</code>,
-      <code>SetFocusIgnoringChildren</code>,
+      <code>CreateStatusBar</code>,
+      <code>CreateToolBar</code>,
+      <code>DoGiveHelp</code>,
+      <code>DoMenuUpdates</code>,
+      <code>FindItemInMenuBar</code>,
+      <code>GetMenuBar</code>,
+      <code>GetStatusBar</code>,
+      <code>GetStatusBarPane</code>,
+      <code>GetToolBar</code>,
+      <code>PopStatusText</code>,
+      <code>ProcessCommand</code>,
+      <code>PushStatusText</code>,
+      <code>SetMenuBar</code>,
+      <code>SetStatusBar</code>,
+      <code>SetStatusBarPane</code>,
+      <code>SetStatusText</code>,
+      <code>SetStatusWidths</code>,
+      <code>SetToolBar</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>CenterOnScreen</code>,
+      <code>CentreOnScreen</code>,
+      <code>EnableCloseButton</code>,
+      <code>GetDefaultItem</code>,
+      <code>GetIcon</code>,
+      <code>GetTitle</code>,
+      <code>GetTmpDefaultItem</code>,
+      <code>Iconize</code>,
+      <code>IsActive</code>,
+      <code>IsAlwaysMaximized</code>,
+      <code>IsFullScreen</code>,
+      <code>IsIconized</code>,
+      <code>IsMaximized</code>,
+      <code>MacGetMetalAppearance</code>,
+      <code>MacGetTopLevelWindowRef</code>,
+      <code>MacGetUnifiedAppearance</code>,
+      <code>MacSetMetalAppearance</code>,
+      <code>Maximize</code>,
+      <code>OSXIsModified</code>,
+      <code>OSXSetModified</code>,
+      <code>RequestUserAttention</code>,
+      <code>Restore</code>,
+      <code>SetDefaultItem</code>,
+      <code>SetIcon</code>,
+      <code>SetIcons</code>,
+      <code>SetRepresentedFilename</code>,
+      <code>SetShape</code>,
+      <code>SetTitle</code>,
+      <code>SetTmpDefaultItem</code>,
+      <code>ShowFullScreen</code>,
+      <code>ShowWithoutActivating</code>,
       <code>__repr__</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
@@ -512,8 +535,11 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>GetClassDefaultAttributes</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>GetDefaultSize</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>FindFocus</code>,
@@ -522,6 +548,72 @@ wx._core.EvtHandler --+
       <code>ReleaseControlId</code>,
       <code>UnreserveControlId</code>
       </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="checkPushLayer"></a><span class="summary-name">checkPushLayer</span><br />
+      A checkbox for the &quot;Push a layer&quot; permission
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="checkRaiseHand"></a><span class="summary-name">checkRaiseHand</span><br />
+      A checkbox for the &quot;Raise a hand&quot; permission
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="radioLockdown"></a><span class="summary-name">radioLockdown</span><br />
+      A radio button for the Lockdown permission level
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="radioNormal"></a><span class="summary-name">radioNormal</span><br />
+      A radio button for the Normal permission level
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="radioUnrestricted"></a><span class="summary-name">radioUnrestricted</span><br />
+      A radio button for the Unrestricted permission level
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="student"></a><span class="summary-name">student</span><br />
+      A reference to the student whose permissions are being accessed
     </td>
   </tr>
 </table>
@@ -544,8 +636,19 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
+      <code>MenuBar</code>,
+      <code>StatusBar</code>,
+      <code>StatusBarPane</code>,
+      <code>ToolBar</code>,
       <code>thisown</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>DefaultItem</code>,
+      <code>Icon</code>,
+      <code>OSXModified</code>,
+      <code>Title</code>,
+      <code>TmpDefaultItem</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>AcceleratorTable</code>,
@@ -642,32 +745,6 @@ wx._core.EvtHandler --+
   </td>
 </tr>
 </table>
-<a name="layerListObject"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">layerListObject</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parent</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.layerListObject">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Set the selected layer's permissions.</p>
-  <dl class="fields">
-  </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        self.layer != None
-      </p>
-      <p><strong>Postcondition:</strong>
-        self.layer == old(self.layer)
-      </p>
-</div></td></tr></table>
-</div>
 <a name="__init__"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -676,21 +753,19 @@ wx._core.EvtHandler --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parent</span>,
-        <span class="sig-arg">layer</span>)</span>
+        <span class="sig-arg">student</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initialize a Layer View.</p>
+  <p>Initialize the WhiteboardNav view.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>parent</code></strong> - The class that initialized this view.</li>
-        <li><strong class="pname"><code>layer</code></strong> - The layer to be shown.</li>
+        <li><strong class="pname"><code>student</code></strong> - The student whose permissions are being accessed</li>
     </ul></dd>
     <dt>Returns: EvtHandler</dt>
     <dt>Overrides:
@@ -699,74 +774,55 @@ wx._core.EvtHandler --+
   </dl>
 </td></tr></table>
 </div>
-<a name="changePermissions"></a>
+<a name="OnAccept"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">changePermissions</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnAccept</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.changePermissions">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow.OnAccept">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the selected layer's permissions.</p>
+  <p>Update the student's permissions based on the current state of the 
+  radio buttons and checkboxes. Close the window.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
+    </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.permissions != old(self.permissions)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="ToggleVisible"></a>
+<a name="OnCancel"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleVisible</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnCancel</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleVisible">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#PermissionsWindow.OnCancel">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the visibility of a layer.</p>
+  <p>Close the window without making changes to the student's 
+  permissions.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
+    </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.visible != old(self.visible)
-      </p>
-</div></td></tr></table>
-</div>
-<a name="ToggleLock"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleLock</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleLock">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Set the lock state of a layer.</p>
-  <dl class="fields">
-  </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.locked != old(self.locked)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->

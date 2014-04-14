@@ -110,6 +110,16 @@ EClass.View.LoginWindow.GetPassword	EClass.View.LoginWindow-class.html#GetPasswo
 EClass.View.LoginWindow.OnCancel	EClass.View.LoginWindow-class.html#OnCancel
 EClass.View.LoginWindow.OnAttempt	EClass.View.LoginWindow-class.html#OnAttempt
 EClass.View.LoginWindow.__init	EClass.View.LoginWindow-class.html#__init
+EClass.View.PermissionsWindow	EClass.View.PermissionsWindow-class.html
+EClass.View.PermissionsWindow.radioUnrestricted	EClass.View.PermissionsWindow-class.html#radioUnrestricted
+EClass.View.PermissionsWindow.checkPushLayer	EClass.View.PermissionsWindow-class.html#checkPushLayer
+EClass.View.PermissionsWindow.OnAccept	EClass.View.PermissionsWindow-class.html#OnAccept
+EClass.View.PermissionsWindow.checkRaiseHand	EClass.View.PermissionsWindow-class.html#checkRaiseHand
+EClass.View.PermissionsWindow.OnCancel	EClass.View.PermissionsWindow-class.html#OnCancel
+EClass.View.PermissionsWindow.radioLockdown	EClass.View.PermissionsWindow-class.html#radioLockdown
+EClass.View.PermissionsWindow.__init__	EClass.View.PermissionsWindow-class.html#__init__
+EClass.View.PermissionsWindow.student	EClass.View.PermissionsWindow-class.html#student
+EClass.View.PermissionsWindow.radioNormal	EClass.View.PermissionsWindow-class.html#radioNormal
 EClass.View.WhiteboardNav	EClass.View.WhiteboardNav-class.html
 EClass.View.WhiteboardNav.presentation	EClass.View.WhiteboardNav-class.html#presentation
 EClass.View.WhiteboardNav.MoveToSlide	EClass.View.WhiteboardNav-class.html#MoveToSlide
