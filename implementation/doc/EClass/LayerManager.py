@@ -1,4 +1,4 @@
-class LayerManager(wx.Frame):
+class LayerManager:
    """
    A Presentation is a collection of slides and their respective layers which is displayed at the center of the EClass.
 
