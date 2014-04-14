@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.Presentation.Layer</title>
+  <title>EClass.Person.StudentPermissions</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,8 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.Presentation-module.html">Module&nbsp;Presentation</a> ::
-        Class&nbsp;Layer
+        <a href="EClass.Person-module.html">Module&nbsp;Person</a> ::
+        Class&nbsp;StudentPermissions
       </span>
     </td>
     <td>
@@ -49,20 +49,27 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.Presentation.Layer-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.Person.StudentPermissions-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class Layer</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer">source&nbsp;code</a></span></p>
-<p>A layer is a overlay on top of slides, which the user can draw or 
-  write on.</p>
+<h1 class="epydoc">Class StudentPermissions</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Person-pysrc.html#StudentPermissions">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">StudentPermissions</strong>
+</pre>
+
+<hr />
+<p>StudentPermissions has various access rights to tools that the student
+  can use.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Andrew Lisowski (alisowsk@calpoly.edu)
+        Joel Wilcox (jnwilcox@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -87,12 +94,13 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">name</span>,
-        <span class="summary-sig-arg">lock</span>)</span><br />
-      Initialize a Layer.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.StudentPermissions-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">presPermLevel</span>,
+        <span class="summary-sig-arg">canRaiseHand</span>,
+        <span class="summary-sig-arg">canPushLayer</span>)</span><br />
+      Initialize a StudentPermissions object.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Person-pysrc.html#StudentPermissions.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -100,55 +108,22 @@
       
     </td>
   </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ChangePermissions" class="summary-sig-name">ChangePermissions</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Set the selected layer's permissions.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangePermissions">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ToggleLock" class="summary-sig-name">ToggleLock</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Set the lock state of a layer.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleLock">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ToggleVisible" class="summary-sig-name">ToggleVisible</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Set the visibility of a layer.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleVisible">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -169,52 +144,79 @@
     </table>
   </td>
 </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_canPushLayer"></a><span class="summary-name">_canPushLayer</span><br />
+      Boolean indicating if a student is allowed to push a layer to the 
+      presenter's stack.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_canRaiseHand"></a><span class="summary-name">_canRaiseHand</span><br />
+      Boolean indicating if a student is allowed to raise their hand and 
+      ask a question.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_presPermLevel"></a><span class="summary-name">_presPermLevel</span><br />
+      A student's PermissionLevel for presentation and layer interactions.
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="locked"></a><span class="summary-name">locked</span><br />
-      Boolean determining whether the user can edit this layer.
+        <a href="EClass.Person.StudentPermissions-class.html#presPermLevel" class="summary-name">presPermLevel</a><br />
+      Get the student's current presentation PermissionLevel.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="name"></a><span class="summary-name">name</span><br />
-      Name of the given Layer
+        <a href="EClass.Person.StudentPermissions-class.html#canRaiseHand" class="summary-name">canRaiseHand</a><br />
+      Get the student's current permission for raising their hand.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="objects"></a><span class="summary-name">objects</span><br />
-      A Collection of LayerObjects that represent all graphics on a Layer
+        <a href="EClass.Person.StudentPermissions-class.html#canPushLayer" class="summary-name">canPushLayer</a><br />
+      Get the student's current permission for pushing a layer.
     </td>
   </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="opacity"></a><span class="summary-name">opacity</span><br />
-      A double representing how transparent a Layer is
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="permissions"></a><span class="summary-name">permissions</span><br />
-      The LayerPermissions for a given Layer
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="visible"></a><span class="summary-name">visible</span><br />
-      Boolean value representing if a Layer can or cannot be seen
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -244,89 +246,110 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">name</span>,
-        <span class="sig-arg">lock</span>)</span>
+        <span class="sig-arg">presPermLevel</span>,
+        <span class="sig-arg">canRaiseHand</span>,
+        <span class="sig-arg">canPushLayer</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#StudentPermissions.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initialize a Layer.</p>
+  <p>Initialize a StudentPermissions object.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>name</code></strong> - The name of the new layer. @param Whether the layer is locked.</li>
+        <li><strong class="pname"><code>presPermLevel</code></strong> - A presentaton PermissionLevel for a student.</li>
+        <li><strong class="pname"><code>canRaiseHand</code></strong> - Boolean indicating if a student is allowed to raise their hand 
+          and ask a question.</li>
+        <li><strong class="pname"><code>canPushLayer</code></strong> - Boolean indicating if a student is allowed to push a layer to the
+          presenter's stack.</li>
     </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
   </dl>
 </td></tr></table>
 </div>
-<a name="ChangePermissions"></a>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="presPermLevel"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangePermissions</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangePermissions">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Set the selected layer's permissions.</p>
+  <h3 class="epydoc">presPermLevel</h3>
+  <p>Get the student's current presentation PermissionLevel.</p>
   <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.presPermLevel(<span class="summary-sig-arg">self</span>)</span>
+        - Get the student's current presentation PermissionLevel.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.presPermLevel(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+        - Set the student's PermissionLevel with a new PermissionLevel.
+    </dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.permissions != old(self.permissions)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="ToggleLock"></a>
+<a name="canRaiseHand"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleLock</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleLock">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Set the lock state of a layer.</p>
+  <h3 class="epydoc">canRaiseHand</h3>
+  <p>Get the student's current permission for raising their hand.</p>
   <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.canRaiseHand(<span class="summary-sig-arg">self</span>)</span>
+        - Get the student's current permission for raising their hand.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.canRaiseHand(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+        - Set the student's ability to raise their hand.
+    </dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.locked != old(self.locked)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="ToggleVisible"></a>
+<a name="canPushLayer"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleVisible</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleVisible">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Set the visibility of a layer.</p>
+  <h3 class="epydoc">canPushLayer</h3>
+  <p>Get the student's current permission for pushing a layer.</p>
   <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.canPushLayer(<span class="summary-sig-arg">self</span>)</span>
+        - Get the student's current permission for pushing a layer.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.canPushLayer(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+        - Set the student's ability to push a layer to the presenter's stack.
+    </dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.visible != old(self.visible)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->

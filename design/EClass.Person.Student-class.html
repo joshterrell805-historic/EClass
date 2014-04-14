@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.ApprovalTracker.ApprovalRating</title>
+  <title>EClass.Person.Student</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,8 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.ApprovalTracker-module.html" onclick="show_private();">Module&nbsp;ApprovalTracker</a> ::
-        Class&nbsp;ApprovalRating
+        <a href="EClass.Person-module.html">Module&nbsp;Person</a> ::
+        Class&nbsp;Student
       </span>
     </td>
     <td>
@@ -49,24 +49,29 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.ApprovalTracker.ApprovalRating-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.Person.Student-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class ApprovalRating</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating">source&nbsp;code</a></span></p>
-<p>ApprovalRating is a value which represents the approval of the 
-  presentation at this very instant.</p>
-  <p>If an ApprovalRating is owned by a Student, it represents that 
-  student's rating.</p>
-  <p>If an ApprovalRating is owned by a Presenter, it represents the class 
-  average.</p>
+<h1 class="epydoc">Class Student</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Person-pysrc.html#Student">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="EClass.Person.Person-class.html">Person</a> --+
+         |
+        <strong class="uidshort">Student</strong>
+</pre>
+
+<hr />
+<p>Student contains informaton on the student. It contains things like if
+  they are here, if their hand is raised, layers they might want to push, 
+  current approval, and their permissions/restrictions to how they use the 
+  app.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Josh Terrell jmterrel@calpoly.edu
+        Joel Wilcox (jnwilcox@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -91,66 +96,13 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Initialize an Approval Rating.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.Student-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">password</span>,
+        <span class="summary-sig-arg">permissions</span>)</span><br />
+      Initialize a Student.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.ApprovalTracker.ApprovalRating-class.html#SetValue" class="summary-sig-name">SetValue</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">percent</span>)</span><br />
-      Set the the value of this approval rating to a percentage between [0,
-      1].</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.SetValue">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.ApprovalTracker.ApprovalRating-class.html#GetValue" class="summary-sig-name">GetValue</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Get the percentage value of this approval rating (value between [0, 
-      1]).</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.GetValue">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.ApprovalTracker.ApprovalRating-class.html#AddListener" class="summary-sig-name">AddListener</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">listener</span>)</span><br />
-      Add a listener to be called whenever the value of this approval 
-      rating changes.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.AddListener">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Student.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -180,16 +132,50 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__listeners"></a><span class="summary-name">__listeners</span><br />
-      a collection of functions to be called when this
+        <a name="_permissions"></a><span class="summary-name">_permissions</span><br />
+      The student's set of permissions.
     </td>
   </tr>
-<tr class="private">
+<tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__rating"></a><span class="summary-name">__rating</span><br />
-      the percentage value between [0, 1] this rating represents
+        <a name="kicked"></a><span class="summary-name">kicked</span><br />
+      Boolean indicating if the student has been kicked.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="present"></a><span class="summary-name">present</span><br />
+      Boolean indicating if the student is present.
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="EClass.Person.Student-class.html#permissions" class="summary-name">permissions</a><br />
+      Get the Student's permissions.
     </td>
   </tr>
 </table>
@@ -211,90 +197,76 @@
   </td>
 </tr>
 </table>
-<a name="SetValue"></a>
+<a name="__init__"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">SetValue</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">percent</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">password</span>,
+        <span class="sig-arg">permissions</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.SetValue">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Student.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the the value of this approval rating to a percentage between [0, 
-  1].</p>
-  <p>A side effect of calling this method is that all listeners added via 
-  AddListener are notified that the value has changed.</p>
+  <p>Initialize a Student.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>percent</code></strong> - the percentage to set this rating to</li>
+        <li><strong class="pname"><code>username</code></strong> - The student's username</li>
+        <li><strong class="pname"><code>password</code></strong> - The student's password</li>
+        <li><strong class="pname"><code>permissions</code></strong> - The student's initial set of permissions</li>
     </ul></dd>
+    <dt>Overrides:
+        <a href="EClass.Person.Person-class.html#__init__">Person.__init__</a>
+    </dt>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.__rating == percent
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="GetValue"></a>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="permissions"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetValue</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.GetValue">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Get the percentage value of this approval rating (value between [0, 
-  1]).</p>
+  <h3 class="epydoc">permissions</h3>
+  <p>Get the Student's permissions.</p>
   <dl class="fields">
-    <dt>Returns:</dt>
-        <dd>the value this approval rating represents</dd>
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.permissions(<span class="summary-sig-arg">self</span>)</span>
+        - Get the Student's permissions.
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.permissions(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+        - Set the student's permissions with a new StudentPermissions object.
+    </dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        @return == self.__rating &amp;&amp; old(self.__rating) == 
-        self.__rating
-      </p>
-</div></td></tr></table>
-</div>
-<a name="AddListener"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">AddListener</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">listener</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.ApprovalTracker-pysrc.html#ApprovalRating.AddListener">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Add a listener to be called whenever the value of this approval rating
-  changes.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>listener</code></strong> - the function to be added (called with no arguments)</li>
-    </ul></dd>
-  </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.__listeners.contains(listener) &amp;&amp; 
-        len(self.__listeners) == len(old(self.__listeners) + 1)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
