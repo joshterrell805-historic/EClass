@@ -57,6 +57,7 @@ class Roster(wx.Frame):
       rosterVertSizer.AddStretchSpacer(1)
 
       self.SetSizer(rosterVertSizer)
+      self.SendSizeEvent()
       self.Show()
 
    def Test(self, event):
