@@ -14,6 +14,7 @@ EClass.ApprovalTracker.ApprovalRating.GetValue	EClass.ApprovalTracker.ApprovalRa
 EClass.ApprovalTracker.ApprovalRating.__listeners	EClass.ApprovalTracker.ApprovalRating-class.html#__listeners
 EClass.ApprovalTracker.ApprovalRating.__init__	EClass.ApprovalTracker.ApprovalRating-class.html#__init__
 EClass.EClass	EClass.EClass-class.html
+EClass.EClass.Authorize	EClass.EClass-class.html#Authorize
 EClass.EClass.GetInstance	EClass.EClass-class.html#GetInstance
 EClass.EClass.SetUpLayerManager	EClass.EClass-class.html#SetUpLayerManager
 EClass.EClass.layerManagerModel	EClass.EClass-class.html#layerManagerModel

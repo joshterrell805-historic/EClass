@@ -19,7 +19,7 @@ class EClass():
    @ivar user: the logged in user (None for no logged in user)
    @ivar layerManagerModel: the model for the Layer Manager
 
-   @author: Josh Terrell jmterrel@calpoly.edu
+   @author: Josh Terrell jmterrel@calpoly.edu, Kevin Le kle17@calpoly.edu
    """
 
    def __init__(self):
@@ -55,6 +55,15 @@ class EClass():
       @precondition: self.user == None
       """
       pass
+
+   def Authorize(self, username, password):
+      """
+      Try to authorize the user using the username/password combination.
+
+      @param username: the username of the user 
+      @param password: the password of the user
+      @return: True or false depending if possible to authorize.
+      """
 
    def SetUpLayerManager(self):
       """
