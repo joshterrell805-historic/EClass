@@ -53,3 +53,141 @@ class WhiteboardNav(wx.Panel):
       @param event: The event that called this method.
       """
       pass
+
+class ImportPresentation(wx.Frame):
+   """
+   A ImportPresentation is a window that allows the importing of an already made HTMLpresentation document
+
+   @author: Kevin Le (kle17@calpoly.edu)
+
+   @ivar parent: The EClassWindow parent which needs the path of the HTML document
+   @ivar presentationList: The directory structure which displays folders and files in the window.
+   """
+
+   def __init__(self, parent):
+      """
+      Creates a ImportPresentation window to select which HTMLpresentation to open.
+      
+      @param parent: the parant EClassWindow which import presentation needs to talk to.
+
+      @postcondition: self != None
+      """
+      pass
+
+   def SelectPresentation(self, event):
+      """
+      Selects the highlighted presentation file and passes the path to EClassWindow.
+      Other items such as the Whiteboard, LayerManager, Forum, and ApprovalTracker are also instantiated.
+   
+      @param event: The mouseclick event which calls this function.
+      @precondition: self != None
+      @postcondition: self.parant.whiteboard != None && self.parant.layerManager != None
+      """
+      pass
+
+   def CancelSelectPresentation(self, event):
+      """
+      Cancels ImportPresentation prompt and returns to the main screen.
+
+      @param event: The mouseclick event which calls this function.
+      @postcondition: self.Show() == False
+      """
+      pass
+
+   def GetPresentationPath(self):
+      """
+      Returns a string of the selected file path.
+
+      @return: The string of the selected file path.
+      """
+      pass
+
+class InitialPrompt(wx.Panel):
+   """
+   InitialPrompt represents the panel that the user first sees to either create or open a new presentation.
+   
+   @ivar parant: The parant EClassWindow which talks to the panel.
+   """
+
+   def __init__(self, parant):
+      """
+      Puts the panal on to the parant EClassWindow.
+
+      @param parant: The parant EClassWindow to set self.parant to.
+      @precondition: parant != None
+      @postcondition: self != None
+      """
+      pass
+
+   def CreatePresentation(self, event):
+      """
+      Function whichs chooses to bring up the create a presentation prompt.
+      InitialPrompt is hidden if called.
+
+      @param event: Mouseclick event which calls this function.
+      @postcondition: self.Shown() == False
+      """
+      pass
+
+   def UsePresentation(self, event):
+      """
+      Function which chooses to bring up the open a presentation prompt.
+      Initial prompt is hidden if called.
+
+      @param event: Mouseclick event which calls this function.
+      @postcondition: self.Shown() == False && self.parant.importPresentation.Shown == True
+      """
+      pass
+
+class LoginWindow(wx.Frame):
+   """
+   LoginWindow is the window that is shown when the application is first launched.
+   The user is prompted for a username and password. If the username and password are
+   valid, the user can then launch the main EClassWindow.
+   """
+
+   def __init(self):
+      """
+      Initialized all buttons on the window and the appropriate sizers. Textboxes are also
+      made for the user to enter their credentials.
+      """
+      pass
+
+   def GetUsername(self):
+      """
+      This function returns the text entered into the username textbox.
+
+      @return: The username string.
+      """
+      pass
+
+   def GetPassword(self):
+      """
+      This function returns the text entered into the password textbox.
+      
+      @return: The password string.
+      """
+      pass
+
+   def OnAttempt(self, event):
+      """
+      Attempts to log the user into the EClass using the credentials.
+
+      @postcondition: User is either logged in or not
+      """
+      pass
+
+   def OnSuccess(self):
+      """
+      The user has successfully logged in and the EClassWindow is to be launched.
+      
+      @precondition: User successfully logged in
+      @postcondition: EClassWindow != None
+      """
+      pass
+
+   def OnCancel(self, event):
+      """
+      The entire program exits if cancel is clicked.
+      """
+      pass

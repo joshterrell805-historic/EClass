@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.LayerView.LayerView</title>
+  <title>EClass.View.WhiteboardNav</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,8 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.LayerView-module.html">Module&nbsp;LayerView</a> ::
-        Class&nbsp;LayerView
+        <a href="EClass.View-module.html">Module&nbsp;View</a> ::
+        Class&nbsp;WhiteboardNav
       </span>
     </td>
     <td>
@@ -49,14 +49,14 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.LayerView.LayerView-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View.WhiteboardNav-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class LayerView</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class WhiteboardNav</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav">source&nbsp;code</a></span></p>
 <pre class="base-tree">
      object --+                
               |                
@@ -68,11 +68,19 @@ wx._core.EvtHandler --+
                           |    
           wx._windows.Panel --+
                               |
-                             <strong class="uidshort">LayerView</strong>
+                             <strong class="uidshort">WhiteboardNav</strong>
 </pre>
 
 <hr />
-<!-- ==================== INSTANCE METHODS ==================== -->
+<p>WhiteboardNav defines the view for the whiteboard (where slides will 
+  be displayed) as well as the navigation controls for changing the current
+  slide.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Joel Wilcox (jnwilcox@calpoly.edu)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -91,34 +99,15 @@ wx._core.EvtHandler --+
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#layerListObject" class="summary-sig-name">layerListObject</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parent</span>)</span><br />
-      Set the selected layer's permissions.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.layerListObject">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">EvtHandler</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parent</span>,
-        <span class="summary-sig-arg">layer</span>)</span><br />
-      Initialize a Layer View.</td>
+          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parent</span>)</span><br />
+      Initialize the WhiteboardNav view.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -132,11 +121,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#changePermissions" class="summary-sig-name">changePermissions</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToPreviousSlide" class="summary-sig-name">MoveToPreviousSlide</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the selected layer's permissions.</td>
+      Change the current slide to the previous slide.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.changePermissions">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToPreviousSlide">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -150,11 +139,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#ToggleVisible" class="summary-sig-name">ToggleVisible</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToNextSlide" class="summary-sig-name">MoveToNextSlide</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the visibility of a layer.</td>
+      Change the current slide to the next slide.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleVisible">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToNextSlide">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -168,11 +157,30 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerView.LayerView-class.html#ToggleLock" class="summary-sig-name">ToggleLock</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#SyncWithPresenter" class="summary-sig-name">SyncWithPresenter</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the lock state of a layer.</td>
+      Change the student's current slide to the presenter's current slide.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleLock">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.SyncWithPresenter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToSlide" class="summary-sig-name">MoveToSlide</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span><br />
+      Change the current slide to the specified slide (via the slide 
+      TextBox).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -525,6 +533,48 @@ wx._core.EvtHandler --+
     </td>
   </tr>
 </table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="presentation"></a><span class="summary-name">presentation</span><br />
+      A reference to the current presentation.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="slideTextBox"></a><span class="summary-name">slideTextBox</span><br />
+      A text box which can be given a slide number to navigate to.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="whiteboard"></a><span class="summary-name">whiteboard</span><br />
+      The HTML window which displays the current slide.
+    </td>
+  </tr>
+</table>
 <!-- ==================== PROPERTIES ==================== -->
 <a name="section-Properties"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -642,32 +692,6 @@ wx._core.EvtHandler --+
   </td>
 </tr>
 </table>
-<a name="layerListObject"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">layerListObject</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parent</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.layerListObject">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Set the selected layer's permissions.</p>
-  <dl class="fields">
-  </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        self.layer != None
-      </p>
-      <p><strong>Postcondition:</strong>
-        self.layer == old(self.layer)
-      </p>
-</div></td></tr></table>
-</div>
 <a name="__init__"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -676,21 +700,19 @@ wx._core.EvtHandler --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parent</span>,
-        <span class="sig-arg">layer</span>)</span>
+        <span class="sig-arg">parent</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initialize a Layer View.</p>
+  <p>Initialize the WhiteboardNav view.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>parent</code></strong> - The class that initialized this view.</li>
-        <li><strong class="pname"><code>layer</code></strong> - The layer to be shown.</li>
+        <li><strong class="pname"><code>parent</code></strong> - The current instance of the main EClass view</li>
     </ul></dd>
     <dt>Returns: EvtHandler</dt>
     <dt>Overrides:
@@ -699,74 +721,103 @@ wx._core.EvtHandler --+
   </dl>
 </td></tr></table>
 </div>
-<a name="changePermissions"></a>
+<a name="MoveToPreviousSlide"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">changePermissions</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToPreviousSlide</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.changePermissions">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToPreviousSlide">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the selected layer's permissions.</p>
+  <p>Change the current slide to the previous slide.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method.</li>
+    </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.permissions != old(self.permissions)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="ToggleVisible"></a>
+<a name="MoveToNextSlide"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleVisible</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToNextSlide</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleVisible">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToNextSlide">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the visibility of a layer.</p>
+  <p>Change the current slide to the next slide.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method.</li>
+    </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.visible != old(self.visible)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="ToggleLock"></a>
+<a name="SyncWithPresenter"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleLock</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SyncWithPresenter</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerView-pysrc.html#LayerView.ToggleLock">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.SyncWithPresenter">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the lock state of a layer.</p>
+  <p>Change the student's current slide to the presenter's current 
+  slide.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method.</li>
+    </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.locked != old(self.locked)
-      </p>
-</div></td></tr></table>
+</td></tr></table>
+</div>
+<a name="MoveToSlide"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToSlide</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Change the current slide to the specified slide (via the slide 
+  TextBox).</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
