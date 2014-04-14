@@ -105,6 +105,8 @@ class ImportPresentation(wx.Frame):
 class InitialPrompt(wx.Panel):
    """
    InitialPrompt represents the panel that the user first sees to either create or open a new presentation.
+
+   @author: Kevin Le (kle17@calpoly.edu)
    
    @ivar parant: The parant EClassWindow which talks to the panel.
    """
@@ -144,6 +146,8 @@ class LoginWindow(wx.Frame):
    LoginWindow is the window that is shown when the application is first launched.
    The user is prompted for a username and password. If the username and password are
    valid, the user can then launch the main EClassWindow.
+
+   @author: Kevin Le (kle17@calpoly.edu)
    """
 
    def __init(self):
