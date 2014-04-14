@@ -15,6 +15,7 @@ class EClass():
 
    @staticmethod
    def GetInstance():
+      print('In EClass.GetInstance(): ')
 
       if EClass.__instance == None:
          EClass.__instance = EClass()
@@ -40,4 +41,6 @@ class EClass():
          self.user = Student(username, password)
 
    def setUpLayerManager(self):
+      print('In EClass.setUpLayerManager()')
+
       self.layerManagerModel = LayerManagerModel()
