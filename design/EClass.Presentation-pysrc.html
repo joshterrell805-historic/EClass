@@ -125,103 +125,111 @@
 <a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.slides.index(self.currentSlide) != self.slides.index(old(self.currentSlide))</tt> </tt>
 <a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
-<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
-<a name="PermissionLevel"></a><div id="PermissionLevel-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="PermissionLevel-toggle" onclick="return toggle('PermissionLevel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.PermissionLevel-class.html">PermissionLevel</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="PermissionLevel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PermissionLevel-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
-<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">   A PermissionLevel is an Enum of the three presentation permission levels used for students.</tt> </tt>
-<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Joel Wilcox (jnwilcox@calpoly.edu)</tt> </tt>
-<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Unrestricted: The student may draw on his own layers and push layers to the public stack freely.</tt> </tt>
-<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Normal: The student may draw on his own layers, and may ask to add his layer to the presenter's layer stack by "push"ing that layer.</tt> </tt>
-<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Lockdown: The student may not draw on his own layers on his own machine and he may not push a layer.</tt> </tt>
-<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
-</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    </tt>
-<a name="Layer"></a><div id="Layer-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="Layer-toggle" onclick="return toggle('Layer');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html">Layer</a><tt class="py-op">:</tt> </tt>
-</div><div id="Layer-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Layer-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
-<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">   A layer is a overlay on top of slides, which the user can draw or write on.</tt> </tt>
-<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Andrew Lisowski (alisowsk@calpoly.edu)</tt> </tt>
-<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar objects: A Collection of LayerObjects that represent all graphics on a Layer</tt> </tt>
-<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar opacity: A double representing how transparent a Layer is</tt> </tt>
-<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar visible: Boolean value representing if a Layer can or cannot be seen</tt> </tt>
-<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar permissions: The LayerPermissions for a given Layer</tt> </tt>
-<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar name: Name of the given Layer</tt> </tt>
-<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar locked: Boolean determining whether the user can edit this layer.</tt> </tt>
-<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
-<a name="Layer.__init__"></a><div id="Layer.__init__-def"><a name="L96"></a><tt class="py-lineno"> 96</tt> <a class="py-toggle" href="#" id="Layer.__init__-toggle" onclick="return toggle('Layer.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">lock</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Layer.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.__init__-expanded"><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize a Layer.</tt> </tt>
-<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">      @param name: The name of the new layer.</tt> </tt>
-<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">      @param Whether the layer is locked.</tt> </tt>
-<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
-<a name="Layer.ChangePermissions"></a><div id="Layer.ChangePermissions-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="Layer.ChangePermissions-toggle" onclick="return toggle('Layer.ChangePermissions');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#ChangePermissions">ChangePermissions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Layer.ChangePermissions-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.ChangePermissions-expanded"><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">      Set the selected layer's permissions.</tt> </tt>
-<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.permissions != old(self.permissions)</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="Presentation.SetPath"></a><div id="Presentation.SetPath-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="Presentation.SetPath-toggle" onclick="return toggle('Presentation.SetPath');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Presentation-class.html#SetPath">SetPath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Presentation.SetPath-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Presentation.SetPath-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">      Set the current path of the presentation file.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: path != NULL</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.path == path</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div></div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="PermissionLevel"></a><div id="PermissionLevel-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="PermissionLevel-toggle" onclick="return toggle('PermissionLevel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.PermissionLevel-class.html">PermissionLevel</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PermissionLevel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PermissionLevel-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">   A PermissionLevel is an Enum of the three presentation permission levels used for students.</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Joel Wilcox (jnwilcox@calpoly.edu)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Unrestricted: The student may draw on his own layers and push layers to the public stack freely.</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Normal: The student may draw on his own layers, and may ask to add his layer to the presenter's layer stack by "push"ing that layer.</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar Lockdown: The student may not draw on his own layers on his own machine and he may not push a layer.</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+</div><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    </tt>
+<a name="Layer"></a><div id="Layer-def"><a name="L91"></a><tt class="py-lineno"> 91</tt> <a class="py-toggle" href="#" id="Layer-toggle" onclick="return toggle('Layer');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html">Layer</a><tt class="py-op">:</tt> </tt>
+</div><div id="Layer-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Layer-expanded"><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">   A layer is a overlay on top of slides, which the user can draw or write on.</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Andrew Lisowski (alisowsk@calpoly.edu)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar objects: A Collection of LayerObjects that represent all graphics on a Layer</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar opacity: A double representing how transparent a Layer is</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar visible: Boolean value representing if a Layer can or cannot be seen</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar permissions: The LayerPermissions for a given Layer</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar name: Name of the given Layer</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar locked: Boolean determining whether the user can edit this layer.</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="Layer.__init__"></a><div id="Layer.__init__-def"><a name="L104"></a><tt class="py-lineno">104</tt> <a class="py-toggle" href="#" id="Layer.__init__-toggle" onclick="return toggle('Layer.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">lock</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Layer.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.__init__-expanded"><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize a Layer.</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">      @param name: The name of the new layer.</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">      @param Whether the layer is locked.</tt> </tt>
 <a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">       </tt>
-<a name="Layer.ToggleLock"></a><div id="Layer.ToggleLock-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="Layer.ToggleLock-toggle" onclick="return toggle('Layer.ToggleLock');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#ToggleLock">ToggleLock</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Layer.ToggleLock-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.ToggleLock-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">      Set the lock state of a layer.</tt> </tt>
+</div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="Layer.ChangePermissions"></a><div id="Layer.ChangePermissions-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="Layer.ChangePermissions-toggle" onclick="return toggle('Layer.ChangePermissions');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#ChangePermissions">ChangePermissions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Layer.ChangePermissions-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.ChangePermissions-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">      Set the selected layer's permissions.</tt> </tt>
 <a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.locked != old(self.locked)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.permissions != old(self.permissions)</tt> </tt>
 <a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
 </div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">       </tt>
-<a name="Layer.ToggleVisible"></a><div id="Layer.ToggleVisible-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="Layer.ToggleVisible-toggle" onclick="return toggle('Layer.ToggleVisible');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#ToggleVisible">ToggleVisible</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Layer.ToggleVisible-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.ToggleVisible-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">      Set the visibility of a layer.</tt> </tt>
+<a name="Layer.ToggleLock"></a><div id="Layer.ToggleLock-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="Layer.ToggleLock-toggle" onclick="return toggle('Layer.ToggleLock');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#ToggleLock">ToggleLock</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Layer.ToggleLock-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.ToggleLock-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">      Set the lock state of a layer.</tt> </tt>
 <a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.visible != old(self.visible)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.locked != old(self.locked)</tt> </tt>
 <a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
-<a name="LayerManagerModel"></a><div id="LayerManagerModel-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="LayerManagerModel-toggle" onclick="return toggle('LayerManagerModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html">LayerManagerModel</a><tt class="py-op">:</tt> </tt>
-</div><div id="LayerManagerModel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="LayerManagerModel-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
-<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">   Manages the layers attached to the current slide</tt> </tt>
+</div><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">       </tt>
+<a name="Layer.ToggleVisible"></a><div id="Layer.ToggleVisible-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="Layer.ToggleVisible-toggle" onclick="return toggle('Layer.ToggleVisible');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.Layer-class.html#ToggleVisible">ToggleVisible</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Layer.ToggleVisible-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Layer.ToggleVisible-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">      Set the visibility of a layer.</tt> </tt>
 <a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Andrew Lisowski (alisowsk@calpoly.edu)</tt> </tt>
-<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar layers: A Collection of Layers that represent all graphics on a Slide</tt> </tt>
-<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
-<a name="LayerManagerModel.__init__"></a><div id="LayerManagerModel.__init__-def"><a name="L137"></a><tt class="py-lineno">137</tt> <a class="py-toggle" href="#" id="LayerManagerModel.__init__-toggle" onclick="return toggle('LayerManagerModel.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="LayerManagerModel.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.__init__-expanded"><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize a LayerManagerModel.</tt> </tt>
-<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
-<a name="LayerManagerModel.DeleteLayer"></a><div id="LayerManagerModel.DeleteLayer-def"><a name="L143"></a><tt class="py-lineno">143</tt> <a class="py-toggle" href="#" id="LayerManagerModel.DeleteLayer-toggle" onclick="return toggle('LayerManagerModel.DeleteLayer');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#DeleteLayer">DeleteLayer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="LayerManagerModel.DeleteLayer-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.DeleteLayer-expanded"><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring">      Delete the selected slide</tt> </tt>
-<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.layers.count() == old(self.layers.count()) - 1</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.visible != old(self.visible)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="LayerManagerModel"></a><div id="LayerManagerModel-def"><a name="L137"></a><tt class="py-lineno">137</tt> <a class="py-toggle" href="#" id="LayerManagerModel-toggle" onclick="return toggle('LayerManagerModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html">LayerManagerModel</a><tt class="py-op">:</tt> </tt>
+</div><div id="LayerManagerModel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="LayerManagerModel-expanded"><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">   Manages the layers attached to the current slide</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Andrew Lisowski (alisowsk@calpoly.edu)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar layers: A Collection of Layers that represent all graphics on a Slide</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="LayerManagerModel.__init__"></a><div id="LayerManagerModel.__init__-def"><a name="L145"></a><tt class="py-lineno">145</tt> <a class="py-toggle" href="#" id="LayerManagerModel.__init__-toggle" onclick="return toggle('LayerManagerModel.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LayerManagerModel.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.__init__-expanded"><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize a LayerManagerModel.</tt> </tt>
 <a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
 </div><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"> </tt>
-<a name="LayerManagerModel.NewLayer"></a><div id="LayerManagerModel.NewLayer-def"><a name="L151"></a><tt class="py-lineno">151</tt> <a class="py-toggle" href="#" id="LayerManagerModel.NewLayer-toggle" onclick="return toggle('LayerManagerModel.NewLayer');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#NewLayer">NewLayer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="LayerManagerModel.NewLayer-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.NewLayer-expanded"><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">      Creates a New Layer for the current Slide</tt> </tt>
+<a name="LayerManagerModel.DeleteLayer"></a><div id="LayerManagerModel.DeleteLayer-def"><a name="L151"></a><tt class="py-lineno">151</tt> <a class="py-toggle" href="#" id="LayerManagerModel.DeleteLayer-toggle" onclick="return toggle('LayerManagerModel.DeleteLayer');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#DeleteLayer">DeleteLayer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LayerManagerModel.DeleteLayer-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.DeleteLayer-expanded"><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">      Delete the selected slide</tt> </tt>
 <a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.layers.count() == old(self.layers.count()) + 1</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.layers.count() == old(self.layers.count()) - 1</tt> </tt>
 <a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">       </tt>
-<a name="LayerManagerModel.ChangeOpacity"></a><div id="LayerManagerModel.ChangeOpacity-def"><a name="L159"></a><tt class="py-lineno">159</tt> <a class="py-toggle" href="#" id="LayerManagerModel.ChangeOpacity-toggle" onclick="return toggle('LayerManagerModel.ChangeOpacity');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#ChangeOpacity">ChangeOpacity</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">index</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="LayerManagerModel.ChangeOpacity-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.ChangeOpacity-expanded"><a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">      Changes opacity of selected layer</tt> </tt>
+</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="LayerManagerModel.NewLayer"></a><div id="LayerManagerModel.NewLayer-def"><a name="L159"></a><tt class="py-lineno">159</tt> <a class="py-toggle" href="#" id="LayerManagerModel.NewLayer-toggle" onclick="return toggle('LayerManagerModel.NewLayer');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#NewLayer">NewLayer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LayerManagerModel.NewLayer-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.NewLayer-expanded"><a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">      Creates a New Layer for the current Slide</tt> </tt>
 <a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.layers.count() == old(self.layers.count()) + 1</tt> </tt>
 <a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+</div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">       </tt>
+<a name="LayerManagerModel.ChangeOpacity"></a><div id="LayerManagerModel.ChangeOpacity-def"><a name="L167"></a><tt class="py-lineno">167</tt> <a class="py-toggle" href="#" id="LayerManagerModel.ChangeOpacity-toggle" onclick="return toggle('LayerManagerModel.ChangeOpacity');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Presentation.LayerManagerModel-class.html#ChangeOpacity">ChangeOpacity</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">index</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LayerManagerModel.ChangeOpacity-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="LayerManagerModel.ChangeOpacity-expanded"><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">      Changes opacity of selected layer</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -254,7 +262,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Apr 13 18:08:43 2014
+    Generated by Epydoc 3.0.1 on Mon Apr 14 09:36:33 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

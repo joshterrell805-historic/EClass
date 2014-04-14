@@ -68,6 +68,14 @@ class Presentation:
       """
       pass
 
+   def SetPath(self, path):
+      """
+      Set the current path of the presentation file.
+
+      @precondition: path != NULL
+      @postcondition: self.path == path
+      """
+
 
 class PermissionLevel():
    """
