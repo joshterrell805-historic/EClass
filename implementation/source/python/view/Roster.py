@@ -1,10 +1,17 @@
 import wx
+import sys
+
+sys.path.insert(0, 'model/Person')
+from EClass import EClass
 
 from RosterItem import RosterItem
+from RosterModel import RosterModel
 
 class Roster(wx.Frame):
    def __init__(self):
       super(Roster, self).__init__(None, -1, 'Roster')
+
+      self.rosterModel = RosterModel()
 
       self.rosterItem1 = RosterItem(self)
       self.rosterItem2 = RosterItem(self)
@@ -13,10 +20,11 @@ class Roster(wx.Frame):
       self.rosterItem5 = RosterItem(self)
       self.rosterItem6 = RosterItem(self)
 
-      self.SetClientSizeWH(300, 675)
+      self.SetClientSizeWH(300, 645)
 
       attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
       attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
+      attendance.SetForegroundColour('#FFFFFF')
       attendance.SetBackgroundColour('#0041C2')
       
       inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
@@ -32,9 +40,6 @@ class Roster(wx.Frame):
 
       remoteAccessPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
       remoteAccessPanel.SetBackgroundColour('#FEEECC')
-
-      testButton = wx.Button(self, label = 'Test', size = (100, 30))
-      testButton.Bind(wx.EVT_BUTTON, self.Test)
 
       rosterVertSizer = wx.BoxSizer(wx.VERTICAL)
       rosterVertSizer.AddStretchSpacer(1)
@@ -53,12 +58,26 @@ class Roster(wx.Frame):
       rosterVertSizer.Add(self.rosterItem6, 1, wx.CENTER)
 
       rosterVertSizer.Add(remoteAccessPanel, 1, wx.CENTER)
-      rosterVertSizer.Add(testButton, 1, wx.CENTER)
       rosterVertSizer.AddStretchSpacer(1)
 
       self.SetSizer(rosterVertSizer)
       self.SendSizeEvent()
+
+      self.Kick()
+      self.ChangePermissions()
+      self.AddStudent()
+      self.Remove()
+
       self.Show()
 
-   def Test(self, event):
-      EClass.GetInstance().RosterModel.Test()
+   def Kick(self):
+      self.rosterModel.KickStudent()
+
+   def ChangePermissions(self):
+      self.rosterModel.ChangeStudentPermissions()
+
+   def AddStudent(self):
+      self.rosterModel.AddNewStudent()
+
+   def Remove(self):
+      self.rosterModel.RemoveStudent()

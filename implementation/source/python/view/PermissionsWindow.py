@@ -9,13 +9,9 @@ class PermissionsWindow(wx.Frame):
    
    def __init__(self, student):
 
-      no_resize = wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER
-         | wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.CLOSE_BOX
-      )
-
-      super(PermissionsWindow, self).__init__(None, -1, 'Permissions: Temp Name',
-         style = no_resize | wx.TAB_TRAVERSAL
-      )
+      super(PermissionsWindow, self).__init__(None, -1, 'Permissions: Temp Name')
+      self.SetBackgroundColour('#FFFFFF')
+      
       self.student = student
 
       self.radioUnrestricted = wx.RadioButton(self, label = 'Unrestricted',
@@ -58,8 +54,8 @@ class PermissionsWindow(wx.Frame):
 
       sizer2 = wx.BoxSizer(wx.HORIZONTAL)
       sizer2.AddStretchSpacer(1)
-      sizer2.Add(whiteboardSizer)
-      sizer2.Add(requestsSizer)
+      sizer2.Add(whiteboardSizer, 1, wx.ALIGN_TOP)
+      sizer2.Add(requestsSizer, 1, wx.ALIGN_TOP)
       sizer2.AddStretchSpacer(1)
 
       sizer.AddStretchSpacer(1)

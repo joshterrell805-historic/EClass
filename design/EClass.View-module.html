@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>doc.Presentation</title>
+  <title>EClass.View</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -16,7 +16,7 @@
   <tr valign="middle">
   <!-- Home link -->
       <th>&nbsp;&nbsp;&nbsp;<a
-        href="doc-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -37,8 +37,8 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="doc-module.html">Package&nbsp;doc</a> ::
-        Module&nbsp;Presentation
+        <a href="EClass-module.html">Package&nbsp;EClass</a> ::
+        Module&nbsp;View
       </span>
     </td>
     <td>
@@ -48,20 +48,16 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="doc.Presentation-module.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View-module.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module Presentation</h1><p class="nomargin-top"><span class="codelink"><a href="doc.Presentation-pysrc.html">source&nbsp;code</a></span></p>
-<p>Module Presentation defines objects and operations related to the 
-  presentation's content.</p>
-  <p>There are objects for both the presentation slides and the underlying 
-  markup (PresentationHTML). Additionally, this package includes much of 
-  the layer functionality. This can be seen in the Layer and 
-  LayerPermission objects.</p>
+<h1 class="epydoc">Module View</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html">source&nbsp;code</a></span></p>
+<p>Package View defines all views and GUIs that correspond to the EClass 
+  model.</p>
 
 <!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
@@ -84,8 +80,46 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="doc.Presentation.Presentation-class.html" class="summary-name">Presentation</a><br />
-      asdf
+        <a href="EClass.View.WhiteboardNav-class.html" class="summary-name">WhiteboardNav</a><br />
+      WhiteboardNav defines the view for the whiteboard (where slides 
+        will be displayed) as well as the navigation controls for changing 
+        the current slide.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="EClass.View.PermissionsWindow-class.html" class="summary-name">PermissionsWindow</a><br />
+      PermissionsWindow defines the window used to display and access a 
+        student's permissions.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="EClass.View.ImportPresentation-class.html" class="summary-name">ImportPresentation</a><br />
+      A ImportPresentation is a window that allows the importing of an 
+        already made HTMLpresentation document
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="EClass.View.InitialPrompt-class.html" class="summary-name">InitialPrompt</a><br />
+      InitialPrompt represents the panel that the user first sees to 
+        either create or open a new presentation.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="EClass.View.LoginWindow-class.html" class="summary-name">LoginWindow</a><br />
+      LoginWindow is the window that is shown when the application is 
+        first launched.
     </td>
   </tr>
 </table>
@@ -110,7 +144,7 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code>
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'EClass'"><code class="variable-quote">'</code><code class="variable-string">EClass</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
@@ -120,7 +154,7 @@
   <tr valign="middle">
   <!-- Home link -->
       <th>&nbsp;&nbsp;&nbsp;<a
-        href="doc-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -140,7 +174,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sat Apr 12 22:05:58 2014
+    Generated by Epydoc 3.0.1 on Mon Apr 14 17:12:14 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

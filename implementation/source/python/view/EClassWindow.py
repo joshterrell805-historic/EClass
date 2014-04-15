@@ -3,7 +3,12 @@ import sys
 
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
+<<<<<<< HEAD
 from LayerManager import LayerManager
+=======
+from Roster import Roster
+from Forum import Forum
+>>>>>>> 7935bbfe541849e06cb15c0a6b2003d6ee4f4c06
 
 class EClassWindow(wx.Frame):
 
@@ -80,11 +85,13 @@ class EClassWindow(wx.Frame):
       menuBar.Append(viewMenu, 'View')
       showRosterMenuItem = viewMenu.Append(ID_VIEW_SHOWROSTER, 'Show Roster', 'Shows the roster window.', wx.ITEM_CHECK)
       # self.Bind(wx.EVT_MENU, self.ToggleRoster, self.showRosterMenuItem)
+      self.Bind(wx.EVT_MENU, self.ShowRoster, showRosterMenuItem)
       showDrawingToolsMenuItem = viewMenu.Append(ID_VIEW_SHOWDRAWINGTOOLS, 'Show Drawing Tools', 'Shows the drawing tools window.', wx.ITEM_CHECK)
       showLayerManagerMenuItem = viewMenu.Append(ID_VIEW_SHOWLAYERMANAGER, 'Show Layer Manager', 'Shows the layer manager window.', wx.ITEM_CHECK)
       self.Bind(wx.EVT_MENU, self.ToggleLayerManager, showLayerManagerMenuItem)
       showApprovalTrackerMenuItem = viewMenu.Append(ID_VIEW_SHOWAPPROVALTRACKER, 'Show Approval Tracker', 'Shows the approval tracker window.', wx.ITEM_CHECK)
       showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
+      self.Bind(wx.EVT_MENU, self.ShowForum, showForumMenuItem)
       viewMenu.AppendSeparator()
       zoomInMenuItem = viewMenu.Append(ID_VIEW_ZOOMIN, 'Zoom In\tCtrl+=', 'Zooms into the screen.')
       zoomOutMenuItem = viewMenu.Append(ID_VIEW_ZOOMOUT, 'Zoom Out\tCtrl+-', 'Zooms out of the screen.')
@@ -97,6 +104,12 @@ class EClassWindow(wx.Frame):
 
    def Quit(self, e):
       self.Close()
+
+   def ShowRoster(self, event):
+      Roster()
+
+   def ShowForum(self, event):
+      Forum()
 
    # def ToggleRoster(self, e):
    #    if self.showRosterMenuItem.IsChecked():

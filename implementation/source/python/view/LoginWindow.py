@@ -2,7 +2,6 @@ import wx
 import sys
 
 from EClassWindow import EClassWindow
-from Roster import Roster
 
 sys.path.insert(0, 'model')
 from EClass import EClass
@@ -74,8 +73,6 @@ class LoginWindow(wx.Frame):
    def OnSuccess(self):
       self.Close()
       EClassWindow()
-      #TODO move this call of roster to appropriate spot
-      Roster()
 
    def OnCancel(self, event):
       sys.exit()
