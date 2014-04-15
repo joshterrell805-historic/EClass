@@ -24,9 +24,9 @@ class DrawingTools:
 
    @author: Mike Sevilla (mjsevill@calpoly.edu)
 
-   @ivar: pencilTool: Tool that simulates drawing with a pencil on the layer
-   @ivar: handTool: Tool that is used to grab, move, or manipulate LayerObjects on a layer
-   @ivar: attachmentTool: Tool that allows users to upload external media such as images to a presentation
-   @ivar: textTool: Tool that creates text boxes
-   @ivar: basicShapesTool: Tool that allows a user to create basic shapes on the layer (circle, square, triangle)
+   @ivar pencilTool: Tool that simulates drawing with a pencil on the layer
+   @ivar handTool: Tool that is used to grab, move, or manipulate LayerObjects on a layer
+   @ivar attachmentTool: Tool that allows users to upload external media such as images to a presentation
+   @ivar textTool: Tool that creates text boxes
+   @ivar basicShapesTool: Tool that allows a user to create basic shapes on the layer (circle, square, triangle)
    """
