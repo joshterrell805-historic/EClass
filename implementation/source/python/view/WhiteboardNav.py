@@ -11,8 +11,8 @@ class WhiteboardNav(wx.Panel):
 
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html.HtmlWindow(self, -1, size = (500, 400))
-      self.whiteboard.SetPage("""<p>This is from a piece of HTML, let the
-         lathering begin!</p>"""
+      self.whiteboard.SetPage("""<p>This is from a piece of HTML. <strong>Bold
+         text works 50% of the time, all of the time.</strong></p>"""
       )
       self.whiteboard.SetBackgroundColour('#FEEECC')
       
