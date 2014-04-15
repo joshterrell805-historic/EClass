@@ -146,7 +146,7 @@ class StudentPermissions(object):
       """
       pass
 
-class Roster:
+class RosterModel:
    """
    A Roster contains all of the students in the class and methods to manage the students.
 
