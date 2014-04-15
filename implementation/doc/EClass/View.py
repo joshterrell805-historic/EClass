@@ -411,3 +411,11 @@ class LayerView:
       @postcondition: self.locked != old(self.locked)
       """
       pass
+
+class EClassWindow:
+   """
+   EClassWindow is the main window for the EClass program. It contains the
+   menubar,the whiteboard, and the navigation panel.
+
+   @author: Josh Terrell jmterrel@calpoly.edu
+   """
