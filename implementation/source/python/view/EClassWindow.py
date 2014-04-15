@@ -3,12 +3,9 @@ import sys
 
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
-<<<<<<< HEAD
 from LayerManager import LayerManager
-=======
 from Roster import Roster
 from Forum import Forum
->>>>>>> 7935bbfe541849e06cb15c0a6b2003d6ee4f4c06
 
 class EClassWindow(wx.Frame):
 
