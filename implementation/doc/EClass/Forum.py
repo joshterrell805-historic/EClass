@@ -22,7 +22,7 @@ class ForumModel:
       """
       pass
 
-   def AddMessage(self, message):
+   def SendMessage(self, message):
       """
       Puts a new Message into the list of current messages.
 

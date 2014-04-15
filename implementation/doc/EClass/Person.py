@@ -157,35 +157,10 @@ class RosterModel:
 
    def __init__(self, students):
       """
-      Build an instance of a roster.
+      Builds an instance of a roster.
 
       @param self: self is the instance of this object.
       @param students: A list of students in the class.
-      """
-      pass
-
-   def KickStudent(self, student):
-      """
-      Kicks a student from the class setting a student's kicked flag to true.
-
-      @param student: The student that is to be kicked from the class.
-
-      @precondition: student != None and !self.students.IsEmpty() and self.students.contains(student)
-
-      @postcondition: old(student.IsKicked()) != student.IsKicked()
-      """
-      pass
-
-   def ChangeStudentPermissions(self, student, permissions):
-      """
-      Sets the permissions for a given student.
-
-      @param student: The student whose permissions is to be changed.
-      @param permissions: The permission level to be set for the given student.
-
-      @precondition: permissions != None and student != None and !self.students.IsEmpty() and self.students.contains(student)
-
-      @postcondition: student.getStudentPermissions() == permissions
       """
       pass
 
@@ -210,5 +185,36 @@ class RosterModel:
       @precondition: student != None and self.student.contains(student)
 
       @postcondition: !self.students.contains(student) and self.students.contains(student) == false
+      """
+      pass
+
+class RosterItemModel:
+   """
+   A RosterItem contains an individual student's first and last name as long as buttons for 
+   student question asking, pushing layers, and permission setting.
+
+   @author: Carson Carroll (ccarro03@calpoly.edu)
+
+   @ivar student: The student the RosterItem represents.
+   """
+
+   def __init__(self, student):
+      """
+      Builds an instance of a RosterItem.
+
+      @param self: self is the instance of this object.
+      @param students: A student for the RosterItem to represent.
+      """
+      pass
+
+   def Hand(self):
+      """
+      Allows a student to ask a question.
+      """
+      pass
+
+   def Layers(self):
+      """
+      Allows a student to push private layers.
       """
       pass

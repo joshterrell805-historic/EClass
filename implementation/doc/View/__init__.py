@@ -2,7 +2,7 @@
 Package View defines all views and GUIs that correspond to the EClass model.
 """
 
-__all__ = ["WhiteboardNav", "PermissionsWindow", "ImportPresentation", "InitialPrompt", "LoginWindow"]
+__all__ = ["WhiteboardNav", "PermissionsWindow", "ImportPresentation", "InitialPrompt", "LoginWindow", "Roster", "Forum", "RosterItem"]
 
 import wx
 
@@ -188,7 +188,7 @@ class LoginWindow(wx.Frame):
    @author: Kevin Le (kle17@calpoly.edu)
    """
 
-   def __init(self):
+   def __init__(self):
       """
       Initialized all buttons on the window and the appropriate sizers. Textboxes are also
       made for the user to enter their credentials.
@@ -231,5 +231,102 @@ class LoginWindow(wx.Frame):
    def OnCancel(self, event):
       """
       The entire program exits if cancel is clicked.
+      """
+      pass
+
+class Roster(wx.Frame):
+   """
+   Roster is the window that is shown when the user presses the 'Show Roster' menu
+   item from the 'View' menu. The roster is populated with the student's names in
+   the class.
+
+   @author: Carson Carroll (ccarro03@calpoly.edu)
+   """
+
+   def __init__(self):
+      """
+      Initializes all buttons on the window and the appropriate sizers. RosterItem's
+      populate the appropriate panel to display the students in the roster.
+      """
+      pass
+
+   def AddStudent(self, event):
+      """
+      Adds a student to the roster.
+      """
+      pass
+
+   def Remove(self, event):
+      """
+      Removes a student from the roster.
+      """
+      pass
+
+class Forum(wx.Frame):
+   """
+   Forum is the window that is shown when the user presses the 'Show Forum' menu
+   item from the 'View' menu. The forum contains messages that users have sent 
+   to each other as well as a field for user to enter text for a new message.
+
+   @author: Carson Carroll (ccarro03@calpoly.edu)
+   """
+
+   def __init__(self):
+      """
+      Initializes all buttons on the window and the appropriate sizers. Two TextCtrl's
+      are initialized with one being READONLY and one supporting MULTILINE input.
+      """
+      pass
+
+   def SendMessage(self, event):
+      """
+      Appends the newly created message to the end of the messages list which is then
+      displayed in the READONLY TextCtrl.
+      """
+      pass
+
+   def CloseForum(self, event):
+      """
+      Closes the forum window.
+      """
+      pass
+
+   def Refresh(self):
+      """
+      Refreshes the messages list.
+      """
+      pass
+
+class RosterItem(wx.Panel):
+   """
+   RosterItem is the panel that displays a student's first and last name along with three
+   buttons for question asking, pushing layers, and student permissions.  A RosterItem is what
+   populates the roster.
+
+   @author: Carson Carroll (ccarro03@calpoly.edu)
+   """
+
+   def __init__(self, parent):
+      """
+      Initializes all buttons on the panel and the appropriate sizers. The first name and last
+      name are set as well.
+      """
+      pass
+
+   def HandButton(self, event):
+      """
+      Shows whether a student has a question or not.
+      """
+      pass
+
+   def LayersButton(self, event):
+      """
+      Shows whether a student has pushed a layer or not.
+      """
+      pass
+
+   def OpenPermissions(self, event):
+      """
+      Opens the StudentPermissions window where the student's permissions can be set.
       """
       pass

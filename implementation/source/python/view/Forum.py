@@ -39,7 +39,6 @@ class Forum(wx.Frame):
 
       self.SetSizer(forumVertSizer)
 
-      self.AddMessage()
       self.Refresh()
 
       self.Show()
@@ -49,9 +48,6 @@ class Forum(wx.Frame):
 
    def CloseForum(self, event):
       self.Close()
-
-   def AddMessage(self):
-      self.forumModel.AddMessage()
 
    def Refresh(self):
       self.forumModel.Refresh()
