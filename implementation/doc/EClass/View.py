@@ -328,3 +328,86 @@ class RosterItem(wx.Panel):
       Opens the StudentPermissions window where the student's permissions can be set.
       """
       pass
+
+class LayerManager:
+   """
+   A Presentation is a collection of slides and their respective layers which is displayed at the center of the EClass.
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+   """
+   def __init__(self, parent):
+      """
+      Initialize a Layer Manager View.
+
+      @param parent: The class that initialized this view..
+      """
+      pass
+
+   def DeleteLayer(self, event):
+      """
+      Delete the selected slide
+
+      @postcondition: self.layers.count() == old(self.layers.count()) - 1
+      """
+      pass
+
+   def NewLayer(self, event):
+      """
+      Creates a New Layer for the current Slide
+
+      @postcondition: self.layers.count() == old(self.layers.count()) + 1
+      """
+      pass
+
+   def ChangeOpacity(self, event):
+      """
+      Changes opacity of selected layer
+
+      @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
+      """
+      pass
+      
+class LayerView:
+   """
+   A view for a layer in the layer manager.
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+   """
+   def layerListObject(self, parent):
+      """
+      Sizer formatting for layer.
+      """
+      pass
+
+   def __init__(self, parent, layer):
+      """
+      Initialize a Layer View.
+
+      @param parent: The class that initialized this view.
+      @param layer: The layer to be shown.
+      """
+      pass
+      
+   def changePermissions(self, event):
+      """
+      Set the selected layer's permissions.
+
+      @postcondition: self.permissions != old(self.permissions)
+      """
+      pass
+      
+   def ToggleVisible(self, event):
+      """
+      Set the visibility of a layer.
+
+      @postcondition: self.visible != old(self.visible)
+      """
+      pass
+
+   def ToggleLock(self, event):
+      """
+      Set the lock state of a layer.
+
+      @postcondition: self.locked != old(self.locked)
+      """
+      pass
