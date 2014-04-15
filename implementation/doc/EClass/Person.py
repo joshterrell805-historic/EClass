@@ -203,7 +203,7 @@ class RosterItemModel:
       Builds an instance of a RosterItem.
 
       @param self: self is the instance of this object.
-      @param students: A student for the RosterItem to represent.
+      @param student: A student for the RosterItem to represent.
       """
       pass
 
