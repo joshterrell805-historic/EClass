@@ -2,8 +2,6 @@
 Package View defines all views and GUIs that correspond to the EClass model.
 """
 
-__all__ = ["WhiteboardNav", "PermissionsWindow", "ImportPresentation", "InitialPrompt", "LoginWindow", "Roster", "Forum", "RosterItem"]
-
 import wx
 
 class WhiteboardNav(wx.Panel):
