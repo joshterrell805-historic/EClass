@@ -205,21 +205,79 @@ EClass.Presentation.Presentation" class="py-name" href="#" onclick="return docli
 <a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
 <a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
 </div></div><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
-<a name="Roster"></a><div id="Roster-def"><a name="L149"></a><tt class="py-lineno">149</tt> <a class="py-toggle" href="#" id="Roster-toggle" onclick="return toggle('Roster');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Person.Roster-class.html">Roster</a><tt class="py-op">:</tt> </tt>
-</div><div id="Roster-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Roster-expanded"><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="RosterModel"></a><div id="RosterModel-def"><a name="L149"></a><tt class="py-lineno">149</tt> <a class="py-toggle" href="#" id="RosterModel-toggle" onclick="return toggle('RosterModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Person.RosterModel-class.html">RosterModel</a><tt class="py-op">:</tt> </tt>
+</div><div id="RosterModel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RosterModel-expanded"><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
 <a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-docstring">   A Roster contains all of the students in the class and methods to manage the students.</tt> </tt>
 <a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Carson Carroll (ccarro03@calpoly.edu)</tt> </tt>
-<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
-<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
-<a name="Roster.__init__"></a><div id="Roster.__init__-def"><a name="L156"></a><tt class="py-lineno">156</tt> <a class="py-toggle" href="#" id="Roster.__init__-toggle" onclick="return toggle('Roster.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.Roster-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Roster.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Roster.__init__-expanded"><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-docstring">      Build an instance of a roster.</tt> </tt>
-<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">      @param self: self is the instance of this object</tt> </tt>
-<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar students: The list of students in the class.</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="RosterModel.__init__"></a><div id="RosterModel.__init__-def"><a name="L158"></a><tt class="py-lineno">158</tt> <a class="py-toggle" href="#" id="RosterModel.__init__-toggle" onclick="return toggle('RosterModel.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.RosterModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">students</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RosterModel.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="RosterModel.__init__-expanded"><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">      Builds an instance of a roster.</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">      @param self: self is the instance of this object.</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">      @param students: A list of students in the class.</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
+<a name="RosterModel.AddNewStudent"></a><div id="RosterModel.AddNewStudent-def"><a name="L167"></a><tt class="py-lineno">167</tt> <a class="py-toggle" href="#" id="RosterModel.AddNewStudent-toggle" onclick="return toggle('RosterModel.AddNewStudent');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.RosterModel-class.html#AddNewStudent">AddNewStudent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">student</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RosterModel.AddNewStudent-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="RosterModel.AddNewStudent-expanded"><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">      Takes a student and adds them to the roster.</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">      @param student: The student who is to be added to the roster.</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: student != None and !self.students.contains(student)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: students.contains(student) == true</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="RosterModel.RemoveStudent"></a><div id="RosterModel.RemoveStudent-def"><a name="L179"></a><tt class="py-lineno">179</tt> <a class="py-toggle" href="#" id="RosterModel.RemoveStudent-toggle" onclick="return toggle('RosterModel.RemoveStudent');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.RosterModel-class.html#RemoveStudent">RemoveStudent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">student</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RosterModel.RemoveStudent-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="RosterModel.RemoveStudent-expanded"><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-docstring">      Takes a student and removes them from the roster.</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-docstring">      @param student: The student who is to be removed from the roster.</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: student != None and self.student.contains(student)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: !self.students.contains(student) and self.students.contains(student) == false</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"> </tt>
+<a name="RosterItemModel"></a><div id="RosterItemModel-def"><a name="L191"></a><tt class="py-lineno">191</tt> <a class="py-toggle" href="#" id="RosterItemModel-toggle" onclick="return toggle('RosterItemModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Person.RosterItemModel-class.html">RosterItemModel</a><tt class="py-op">:</tt> </tt>
+</div><div id="RosterItemModel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RosterItemModel-expanded"><a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt class="py-docstring">   A RosterItem contains an individual student's first and last name as long as buttons for </tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt class="py-docstring">   student question asking, pushing layers, and permission setting.</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Carson Carroll (ccarro03@calpoly.edu)</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar student: The student the RosterItem represents.</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="RosterItemModel.__init__"></a><div id="RosterItemModel.__init__-def"><a name="L201"></a><tt class="py-lineno">201</tt> <a class="py-toggle" href="#" id="RosterItemModel.__init__-toggle" onclick="return toggle('RosterItemModel.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.RosterItemModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">student</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RosterItemModel.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="RosterItemModel.__init__-expanded"><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-docstring">      Builds an instance of a RosterItem.</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">      @param self: self is the instance of this object.</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-docstring">      @param student: A student for the RosterItem to represent.</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"> </tt>
+<a name="RosterItemModel.Hand"></a><div id="RosterItemModel.Hand-def"><a name="L210"></a><tt class="py-lineno">210</tt> <a class="py-toggle" href="#" id="RosterItemModel.Hand-toggle" onclick="return toggle('RosterItemModel.Hand');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.RosterItemModel-class.html#Hand">Hand</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RosterItemModel.Hand-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="RosterItemModel.Hand-expanded"><a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt class="py-docstring">      Allows a student to ask a question.</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="RosterItemModel.Layers"></a><div id="RosterItemModel.Layers-def"><a name="L216"></a><tt class="py-lineno">216</tt> <a class="py-toggle" href="#" id="RosterItemModel.Layers-toggle" onclick="return toggle('RosterItemModel.Layers');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Person.RosterItemModel-class.html#Layers">Layers</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RosterItemModel.Layers-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="RosterItemModel.Layers-expanded"><a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt class="py-docstring">      Allows a student to push private layers.</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -252,7 +310,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 14 17:12:14 2014
+    Generated by Epydoc 3.0.1 on Mon Apr 14 20:38:17 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
