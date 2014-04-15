@@ -84,8 +84,8 @@ class EClassWindow(wx.Frame):
       # self.Bind(wx.EVT_MENU, self.ToggleRoster, self.showRosterMenuItem)
       self.Bind(wx.EVT_MENU, self.ShowRoster, showRosterMenuItem)
       showDrawingToolsMenuItem = viewMenu.Append(ID_VIEW_SHOWDRAWINGTOOLS, 'Show Drawing Tools', 'Shows the drawing tools window.', wx.ITEM_CHECK)
-      showLayerManagerMenuItem = viewMenu.Append(ID_VIEW_SHOWLAYERMANAGER, 'Show Layer Manager', 'Shows the layer manager window.', wx.ITEM_CHECK)
-      self.Bind(wx.EVT_MENU, self.ToggleLayerManager, showLayerManagerMenuItem)
+      self.showLayerManagerMenuItem = viewMenu.Append(ID_VIEW_SHOWLAYERMANAGER, 'Show Layer Manager', 'Shows the layer manager window.', wx.ITEM_CHECK)
+      self.Bind(wx.EVT_MENU, self.ToggleLayerManager, self.showLayerManagerMenuItem)
       showApprovalTrackerMenuItem = viewMenu.Append(ID_VIEW_SHOWAPPROVALTRACKER, 'Show Approval Tracker', 'Shows the approval tracker window.', wx.ITEM_CHECK)
       showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
       self.Bind(wx.EVT_MENU, self.ShowForum, showForumMenuItem)
@@ -121,8 +121,14 @@ class EClassWindow(wx.Frame):
    #       self.showDrawingToolsMenuItem.Hide()
 
    def ToggleLayerManager(self, e):
-      self.layerManager = LayerManager(self)
-      layerManager.Show(not showLayerManagerMenuItem.IsChecked())
+      if self.layerManager.visible:
+         self.layerManager.Hide()
+         self.showLayerManagerMenuItem.Check(False)
+      else:
+         self.layerManager.Show()
+         self.showLayerManagerMenuItem.Check(True)
+      self.layerManager.visible = not self.layerManager.visible
+
 
    # def ToggleApprovalTracker(self, e):
    #    if self.showApprovalTrackerMenuItem.IsChecked():
