@@ -24,6 +24,9 @@ class LayerManager(wx.Frame):
 
       self.layerDisplay = wx.BoxSizer(wx.VERTICAL)
       self.layers = []
+
+      EClass.GetInstance().setUpLayerManager()
+
       for layer in EClass.GetInstance().layerManagerModel.layers:
          view = LayerView(self, layer)
          self.layers.append(view)
