@@ -3,6 +3,7 @@ import sys
 
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
+from LayerManager import LayerManager
 
 class EClassWindow(wx.Frame):
 
@@ -78,10 +79,10 @@ class EClassWindow(wx.Frame):
       viewMenu = wx.Menu()
       menuBar.Append(viewMenu, 'View')
       showRosterMenuItem = viewMenu.Append(ID_VIEW_SHOWROSTER, 'Show Roster', 'Shows the roster window.', wx.ITEM_CHECK)
-      # self.Bind(wx.EVT_MENU, self.ToggleRoster, showRosterMenuItem)
+      # self.Bind(wx.EVT_MENU, self.ToggleRoster, self.showRosterMenuItem)
       showDrawingToolsMenuItem = viewMenu.Append(ID_VIEW_SHOWDRAWINGTOOLS, 'Show Drawing Tools', 'Shows the drawing tools window.', wx.ITEM_CHECK)
       showLayerManagerMenuItem = viewMenu.Append(ID_VIEW_SHOWLAYERMANAGER, 'Show Layer Manager', 'Shows the layer manager window.', wx.ITEM_CHECK)
-      # self.Bind(wx.EVT_MENU, self.ToggleLayerManger, showLayerManagerMenuItem)
+      self.Bind(wx.EVT_MENU, self.ToggleLayerManager, showLayerManagerMenuItem)
       showApprovalTrackerMenuItem = viewMenu.Append(ID_VIEW_SHOWAPPROVALTRACKER, 'Show Approval Tracker', 'Shows the approval tracker window.', wx.ITEM_CHECK)
       showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
       viewMenu.AppendSeparator()
@@ -90,6 +91,7 @@ class EClassWindow(wx.Frame):
       zoomToFitMenuItem = viewMenu.Append(ID_VIEW_ZOOMTOFIT, 'Zoom to Fit\tCtrl+0', 'Zooms to the original size of the screen.')
       viewMenu.AppendSeparator()
       fullScreenMenuItem = viewMenu.Append(ID_VIEW_FULLSCREEN, 'Full Screen\tCtrl+F', 'Zooms to full screen.', wx.ITEM_CHECK)
+      self.Bind(wx.EVT_MENU, self.ToggleFullScreen, fullScreenMenuItem)
 
       self.SetMenuBar(menuBar)
 
@@ -108,11 +110,9 @@ class EClassWindow(wx.Frame):
    #    else:
    #       self.showDrawingToolsMenuItem.Hide()
 
-   # def ToggleLayerManger(self, e):
-   #    if self.showLayerManagerMenuItem.IsChecked():
-   #       self.showLayerManagerMenuItem.Show()
-   #    else:
-   #       self.showLayerManagerMenuItem.Hide()
+   def ToggleLayerManager(self, e):
+      self.layerManager = LayerManager(self)
+      layerManager.Show(not showLayerManagerMenuItem.IsChecked())
 
    # def ToggleApprovalTracker(self, e):
    #    if self.showApprovalTrackerMenuItem.IsChecked():
@@ -125,3 +125,6 @@ class EClassWindow(wx.Frame):
    #       self.showForumMenuItem.Show()
    #    else:
    #       self.showForumMenuItem.Hide()
+
+   def ToggleFullScreen(self, e):
+      self.ShowFullScreen(not self.IsFullScreen(), wx.FULLSCREEN_NOCAPTION)
