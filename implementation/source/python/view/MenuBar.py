@@ -69,6 +69,7 @@ class MenuBar:
       self.showRosterMenuItem = viewMenu.Append(ID_VIEW_SHOWROSTER, 'Show Roster', 'Shows the roster window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleRoster, self.showRosterMenuItem)
       showDrawingToolsMenuItem = viewMenu.Append(ID_VIEW_SHOWDRAWINGTOOLS, 'Show Drawing Tools', 'Shows the drawing tools window.', wx.ITEM_CHECK)
+      parent.Bind(wx.EVT_MENU, self.ToggleDrawingTools, showDrawingToolsMenuItem)
       self.showLayerManagerMenuItem = viewMenu.Append(ID_VIEW_SHOWLAYERMANAGER, 'Show Layer Manager', 'Shows the layer manager window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleLayerManager, self.showLayerManagerMenuItem)
       showApprovalTrackerMenuItem = viewMenu.Append(ID_VIEW_SHOWAPPROVALTRACKER, 'Show Approval Tracker', 'Shows the approval tracker window.', wx.ITEM_CHECK)
@@ -97,11 +98,12 @@ class MenuBar:
       #self.roster.Show(not showRosterMenuItem.IsChecked())
 
    def ToggleDrawingTools(self, e):
+      DrawingTools()
       #if self.showDrawingToolsMenuItem.IsChecked():
       #   self.showDrawingToolsMenuItem.Show()
       #else:
       #   self.showDrawingToolsMenuItem.Hide()
-      pass
+      # pass
 
    def ToggleLayerManager(self, e):
       self.layerManager = LayerManager(self.parent)
