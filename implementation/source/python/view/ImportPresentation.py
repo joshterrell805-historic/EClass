@@ -54,12 +54,7 @@ class ImportPresentation(wx.Frame):
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
    
-      self.parent.layerManager = LayerManager(self.parent)
-      self.parent.layerManager.Show()
       EClass.GetInstance().presentation.ShowPresentation()
-
-      # TODO, this should be opened in the menu
-      ApprovalTrackerGaget()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()

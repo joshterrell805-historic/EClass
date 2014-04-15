@@ -3,11 +3,6 @@ import sys
 
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
-from LayerManager import LayerManager
-from Roster import Roster
-from Forum import Forum
-from DrawingTools import DrawingTools
-from ApprovalTrackerGadget import ApprovalTrackerGadget
 from MenuBar import MenuBar
 
 class EClassWindow(wx.Frame):
@@ -17,8 +12,7 @@ class EClassWindow(wx.Frame):
       #self.Maximize()
       self.SetClientSizeWH(800, 600)
       self.SetBackgroundColour('#FFFFFF')
-      self.menuBar = MenuBar()
-      self.SetMenuBar(self.menuBar)
+      self.menuBar = MenuBar(self)
       self.CreateStatusBar()
 
       self.initialPrompt = InitialPrompt(self)
