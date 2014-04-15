@@ -5,5 +5,8 @@ class ForumModel:
    def SendMessage(self):
       print('From Forum.SendMessage()')
 
-   def CloseForum(self):
-      print('From Forum.CloseMessage()')
+   def AddMessage(self):
+      print('From Forum.AddMessage()')
+
+   def Refresh(self):
+      print('From Forum.Refresh()')

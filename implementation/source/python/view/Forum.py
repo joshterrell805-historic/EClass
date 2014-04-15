@@ -38,11 +38,20 @@ class Forum(wx.Frame):
       buttonHoriSizer.AddStretchSpacer(1)
 
       self.SetSizer(forumVertSizer)
+
+      self.AddMessage()
+      self.Refresh()
+
       self.Show()
 
    def SendMessage(self, event):
       self.forumModel.SendMessage()
 
    def CloseForum(self, event):
-      self.forumModel.CloseForum()
       self.Close()
+
+   def AddMessage(self):
+      self.forumModel.AddMessage()
+
+   def Refresh(self):
+      self.forumModel.Refresh()

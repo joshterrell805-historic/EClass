@@ -44,7 +44,5 @@ class RosterItem(wx.Panel):
    def LayersButton(self, event):
       self.rosterItemModel.Layers()
 
-   def PermissionsButton(self, event):
-      self.rosterItemModel.Permissions()
    def OpenPermissions(self, event):
       PermissionsWindow(Student("dummy", "ymmud")) # Dummy student for now

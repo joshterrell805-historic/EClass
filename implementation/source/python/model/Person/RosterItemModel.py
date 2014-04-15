@@ -7,6 +7,3 @@ class RosterItemModel:
 
    def Layers(self):
       print('From Roster.Layers()')
-
-   def Permissions(self):
-      print('From Roster.Permissions()')

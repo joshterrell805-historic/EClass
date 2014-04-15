@@ -62,7 +62,22 @@ class Roster(wx.Frame):
 
       self.SetSizer(rosterVertSizer)
       self.SendSizeEvent()
+
+      self.Kick()
+      self.ChangePermissions()
+      self.AddStudent()
+      self.Remove()
+
       self.Show()
 
-   def Test(self, event):
-      self.rosterModel.Test()
+   def Kick(self):
+      self.rosterModel.KickStudent()
+
+   def ChangePermissions(self):
+      self.rosterModel.ChangeStudentPermissions()
+
+   def AddStudent(self):
+      self.rosterModel.AddNewStudent()
+
+   def Remove(self):
+      self.rosterModel.RemoveStudent()
