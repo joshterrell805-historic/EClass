@@ -41,6 +41,8 @@ EClass.LayerView.LayerView.changePermissions	EClass.LayerView.LayerView-class.ht
 EClass.LayerView.LayerView.__init__	EClass.LayerView.LayerView-class.html#__init__
 EClass.Person.Person	EClass.Person.Person-class.html
 EClass.Person.Person.__init__	EClass.Person.Person-class.html#__init__
+EClass.Person.Roster	EClass.Person.Roster-class.html
+EClass.Person.Roster.__init__	EClass.Person.Roster-class.html#__init__
 EClass.Person.Student	EClass.Person.Student-class.html
 EClass.Person.Student.kicked	EClass.Person.Student-class.html#kicked
 EClass.Person.Student.GetPermissions	EClass.Person.Student-class.html#GetPermissions

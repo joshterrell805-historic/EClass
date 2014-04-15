@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.View.WhiteboardNav</title>
+  <title>View.PermissionsWindow</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -16,7 +16,7 @@
   <tr valign="middle">
   <!-- Home link -->
       <th>&nbsp;&nbsp;&nbsp;<a
-        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+        href="View-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -37,9 +37,8 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.View-module.html">Module&nbsp;View</a> ::
-        Class&nbsp;WhiteboardNav
+        <a href="View-module.html">Package&nbsp;View</a> ::
+        Class&nbsp;PermissionsWindow
       </span>
     </td>
     <td>
@@ -49,32 +48,33 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.View.WhiteboardNav-class.html"
+            >]&nbsp;|&nbsp;<a href="View.PermissionsWindow-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class WhiteboardNav</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class PermissionsWindow</h1><p class="nomargin-top"><span class="codelink"><a href="View-pysrc.html#PermissionsWindow">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-     object --+                
-              |                
-wx._core.Object --+            
-                  |            
-wx._core.EvtHandler --+        
-                      |        
-        wx._core.Window --+    
-                          |    
-          wx._windows.Panel --+
-                              |
-                             <strong class="uidshort">WhiteboardNav</strong>
+     object --+                    
+              |                    
+wx._core.Object --+                
+                  |                
+wx._core.EvtHandler --+            
+                      |            
+        wx._core.Window --+        
+                          |        
+ wx._windows.TopLevelWindow --+    
+                              |    
+              wx._windows.Frame --+
+                                  |
+                                 <strong class="uidshort">PermissionsWindow</strong>
 </pre>
 
 <hr />
-<p>WhiteboardNav defines the view for the whiteboard (where slides will 
-  be displayed) as well as the navigation controls for changing the current
-  slide.</p>
+<p>PermissionsWindow defines the window used to display and access a 
+  student's permissions.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -103,11 +103,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parent</span>)</span><br />
+          <td><span class="summary-sig"><a href="View.PermissionsWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
       Initialize the WhiteboardNav view.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#PermissionsWindow.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -121,11 +121,12 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToPreviousSlide" class="summary-sig-name">MoveToPreviousSlide</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="View.PermissionsWindow-class.html#OnAccept" class="summary-sig-name">OnAccept</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Change the current slide to the previous slide.</td>
+      Update the student's permissions based on the current state of the 
+      radio buttons and checkboxes.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToPreviousSlide">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#PermissionsWindow.OnAccept">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -139,48 +140,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToNextSlide" class="summary-sig-name">MoveToNextSlide</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="View.PermissionsWindow-class.html#OnCancel" class="summary-sig-name">OnCancel</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Change the current slide to the next slide.</td>
+      Close the window without making changes to the student's permissions.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToNextSlide">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#SyncWithPresenter" class="summary-sig-name">SyncWithPresenter</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Change the student's current slide to the presenter's current slide.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.SyncWithPresenter">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToSlide" class="summary-sig-name">MoveToSlide</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Change the current slide to the specified slide (via the slide 
-      TextBox).</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#PermissionsWindow.OnCancel">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -190,9 +154,59 @@ wx._core.EvtHandler --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>Create</code>,
-      <code>SetFocusIgnoringChildren</code>,
+      <code>CreateStatusBar</code>,
+      <code>CreateToolBar</code>,
+      <code>DoGiveHelp</code>,
+      <code>DoMenuUpdates</code>,
+      <code>FindItemInMenuBar</code>,
+      <code>GetMenuBar</code>,
+      <code>GetStatusBar</code>,
+      <code>GetStatusBarPane</code>,
+      <code>GetToolBar</code>,
+      <code>PopStatusText</code>,
+      <code>ProcessCommand</code>,
+      <code>PushStatusText</code>,
+      <code>SetMenuBar</code>,
+      <code>SetStatusBar</code>,
+      <code>SetStatusBarPane</code>,
+      <code>SetStatusText</code>,
+      <code>SetStatusWidths</code>,
+      <code>SetToolBar</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>CenterOnScreen</code>,
+      <code>CentreOnScreen</code>,
+      <code>EnableCloseButton</code>,
+      <code>GetDefaultItem</code>,
+      <code>GetIcon</code>,
+      <code>GetTitle</code>,
+      <code>GetTmpDefaultItem</code>,
+      <code>Iconize</code>,
+      <code>IsActive</code>,
+      <code>IsAlwaysMaximized</code>,
+      <code>IsFullScreen</code>,
+      <code>IsIconized</code>,
+      <code>IsMaximized</code>,
+      <code>MacGetMetalAppearance</code>,
+      <code>MacGetTopLevelWindowRef</code>,
+      <code>MacGetUnifiedAppearance</code>,
+      <code>MacSetMetalAppearance</code>,
+      <code>Maximize</code>,
+      <code>OSXIsModified</code>,
+      <code>OSXSetModified</code>,
+      <code>RequestUserAttention</code>,
+      <code>Restore</code>,
+      <code>SetDefaultItem</code>,
+      <code>SetIcon</code>,
+      <code>SetIcons</code>,
+      <code>SetRepresentedFilename</code>,
+      <code>SetShape</code>,
+      <code>SetTitle</code>,
+      <code>SetTmpDefaultItem</code>,
+      <code>ShowFullScreen</code>,
+      <code>ShowWithoutActivating</code>,
       <code>__repr__</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
@@ -520,8 +534,11 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>GetClassDefaultAttributes</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>GetDefaultSize</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>FindFocus</code>,
@@ -554,24 +571,48 @@ wx._core.EvtHandler --+
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="presentation"></a><span class="summary-name">presentation</span><br />
-      A reference to the current presentation
+        <a name="checkPushLayer"></a><span class="summary-name">checkPushLayer</span><br />
+      A checkbox for the &quot;Push a layer&quot; permission
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="slideTextBox"></a><span class="summary-name">slideTextBox</span><br />
-      A text box which can be given a slide number to navigate to
+        <a name="checkRaiseHand"></a><span class="summary-name">checkRaiseHand</span><br />
+      A checkbox for the &quot;Raise a hand&quot; permission
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="whiteboard"></a><span class="summary-name">whiteboard</span><br />
-      The HTML window which displays the current slide
+        <a name="radioLockdown"></a><span class="summary-name">radioLockdown</span><br />
+      A radio button for the Lockdown permission level
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="radioNormal"></a><span class="summary-name">radioNormal</span><br />
+      A radio button for the Normal permission level
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="radioUnrestricted"></a><span class="summary-name">radioUnrestricted</span><br />
+      A radio button for the Unrestricted permission level
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="student"></a><span class="summary-name">student</span><br />
+      A reference to the student whose permissions are being accessed
     </td>
   </tr>
 </table>
@@ -594,8 +635,19 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
+      <code>MenuBar</code>,
+      <code>StatusBar</code>,
+      <code>StatusBarPane</code>,
+      <code>ToolBar</code>,
       <code>thisown</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>DefaultItem</code>,
+      <code>Icon</code>,
+      <code>OSXModified</code>,
+      <code>Title</code>,
+      <code>TmpDefaultItem</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>AcceleratorTable</code>,
@@ -700,11 +752,11 @@ wx._core.EvtHandler --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parent</span>)</span>
+        <span class="sig-arg">student</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#PermissionsWindow.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -712,7 +764,7 @@ wx._core.EvtHandler --+
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>parent</code></strong> - The current instance of the main EClass view</li>
+        <li><strong class="pname"><code>student</code></strong> - The student whose permissions are being accessed</li>
     </ul></dd>
     <dt>Returns: EvtHandler</dt>
     <dt>Overrides:
@@ -721,22 +773,23 @@ wx._core.EvtHandler --+
   </dl>
 </td></tr></table>
 </div>
-<a name="MoveToPreviousSlide"></a>
+<a name="OnAccept"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToPreviousSlide</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnAccept</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToPreviousSlide">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#PermissionsWindow.OnAccept">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Change the current slide to the previous slide.</p>
+  <p>Update the student's permissions based on the current state of the 
+  radio buttons and checkboxes. Close the window.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -745,72 +798,23 @@ wx._core.EvtHandler --+
   </dl>
 </td></tr></table>
 </div>
-<a name="MoveToNextSlide"></a>
+<a name="OnCancel"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToNextSlide</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnCancel</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToNextSlide">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#PermissionsWindow.OnCancel">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Change the current slide to the next slide.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="SyncWithPresenter"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">SyncWithPresenter</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.SyncWithPresenter">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Change the student's current slide to the presenter's current 
-  slide.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="MoveToSlide"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToSlide</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Change the current slide to the specified slide (via the slide 
-  TextBox).</p>
+  <p>Close the window without making changes to the student's 
+  permissions.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -826,7 +830,7 @@ wx._core.EvtHandler --+
   <tr valign="middle">
   <!-- Home link -->
       <th>&nbsp;&nbsp;&nbsp;<a
-        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+        href="View-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -846,7 +850,7 @@ wx._core.EvtHandler --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 14 17:12:14 2014
+    Generated by Epydoc 3.0.1 on Mon Apr 14 17:10:51 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.View.WhiteboardNav</title>
+  <title>View.LoginWindow</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -16,7 +16,7 @@
   <tr valign="middle">
   <!-- Home link -->
       <th>&nbsp;&nbsp;&nbsp;<a
-        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+        href="View-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -37,9 +37,8 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.View-module.html">Module&nbsp;View</a> ::
-        Class&nbsp;WhiteboardNav
+        <a href="View-module.html">Package&nbsp;View</a> ::
+        Class&nbsp;LoginWindow
       </span>
     </td>
     <td>
@@ -49,36 +48,39 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.View.WhiteboardNav-class.html"
+            >]&nbsp;|&nbsp;<a href="View.LoginWindow-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class WhiteboardNav</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class LoginWindow</h1><p class="nomargin-top"><span class="codelink"><a href="View-pysrc.html#LoginWindow">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-     object --+                
-              |                
-wx._core.Object --+            
-                  |            
-wx._core.EvtHandler --+        
-                      |        
-        wx._core.Window --+    
-                          |    
-          wx._windows.Panel --+
-                              |
-                             <strong class="uidshort">WhiteboardNav</strong>
+     object --+                    
+              |                    
+wx._core.Object --+                
+                  |                
+wx._core.EvtHandler --+            
+                      |            
+        wx._core.Window --+        
+                          |        
+ wx._windows.TopLevelWindow --+    
+                              |    
+              wx._windows.Frame --+
+                                  |
+                                 <strong class="uidshort">LoginWindow</strong>
 </pre>
 
 <hr />
-<p>WhiteboardNav defines the view for the whiteboard (where slides will 
-  be displayed) as well as the navigation controls for changing the current
-  slide.</p>
+<p>LoginWindow is the window that is shown when the application is first 
+  launched. The user is prompted for a username and password. If the 
+  username and password are valid, the user can then launch the main 
+  EClassWindow.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Joel Wilcox (jnwilcox@calpoly.edu)
+        Kevin Le (kle17@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -97,17 +99,16 @@ wx._core.EvtHandler --+
     </table>
   </td>
 </tr>
-<tr>
+<tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">EvtHandler</span>
+      <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parent</span>)</span><br />
-      Initialize the WhiteboardNav view.</td>
+          <td><span class="summary-sig"><a href="View.LoginWindow-class.html#__init" class="summary-sig-name" onclick="show_private();">__init</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Initialized all buttons on the window and the appropriate sizers.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#LoginWindow.__init">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -121,11 +122,10 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToPreviousSlide" class="summary-sig-name">MoveToPreviousSlide</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Change the current slide to the previous slide.</td>
+          <td><span class="summary-sig"><a href="View.LoginWindow-class.html#GetUsername" class="summary-sig-name">GetUsername</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      This function returns the text entered into the username textbox.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToPreviousSlide">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#LoginWindow.GetUsername">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -139,11 +139,10 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToNextSlide" class="summary-sig-name">MoveToNextSlide</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Change the current slide to the next slide.</td>
+          <td><span class="summary-sig"><a href="View.LoginWindow-class.html#GetPassword" class="summary-sig-name">GetPassword</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      This function returns the text entered into the password textbox.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToNextSlide">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#LoginWindow.GetPassword">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -157,11 +156,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#SyncWithPresenter" class="summary-sig-name">SyncWithPresenter</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="View.LoginWindow-class.html#OnAttempt" class="summary-sig-name">OnAttempt</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Change the student's current slide to the presenter's current slide.</td>
+      Attempts to log the user into the EClass using the credentials.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.SyncWithPresenter">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#LoginWindow.OnAttempt">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -175,12 +174,29 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#MoveToSlide" class="summary-sig-name">MoveToSlide</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Change the current slide to the specified slide (via the slide 
-      TextBox).</td>
+          <td><span class="summary-sig"><a href="View.LoginWindow-class.html#OnSuccess" class="summary-sig-name">OnSuccess</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      The user has successfully logged in and the EClassWindow is to be 
+      launched.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>
+            <span class="codelink"><a href="View-pysrc.html#LoginWindow.OnSuccess">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="OnCancel"></a><span class="summary-sig-name">OnCancel</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span><br />
+      The entire program exits if cancel is clicked.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="View-pysrc.html#LoginWindow.OnCancel">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -190,9 +206,60 @@ wx._core.EvtHandler --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>Create</code>,
-      <code>SetFocusIgnoringChildren</code>,
+      <code>CreateStatusBar</code>,
+      <code>CreateToolBar</code>,
+      <code>DoGiveHelp</code>,
+      <code>DoMenuUpdates</code>,
+      <code>FindItemInMenuBar</code>,
+      <code>GetMenuBar</code>,
+      <code>GetStatusBar</code>,
+      <code>GetStatusBarPane</code>,
+      <code>GetToolBar</code>,
+      <code>PopStatusText</code>,
+      <code>ProcessCommand</code>,
+      <code>PushStatusText</code>,
+      <code>SetMenuBar</code>,
+      <code>SetStatusBar</code>,
+      <code>SetStatusBarPane</code>,
+      <code>SetStatusText</code>,
+      <code>SetStatusWidths</code>,
+      <code>SetToolBar</code>,
+      <code>__init__</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>CenterOnScreen</code>,
+      <code>CentreOnScreen</code>,
+      <code>EnableCloseButton</code>,
+      <code>GetDefaultItem</code>,
+      <code>GetIcon</code>,
+      <code>GetTitle</code>,
+      <code>GetTmpDefaultItem</code>,
+      <code>Iconize</code>,
+      <code>IsActive</code>,
+      <code>IsAlwaysMaximized</code>,
+      <code>IsFullScreen</code>,
+      <code>IsIconized</code>,
+      <code>IsMaximized</code>,
+      <code>MacGetMetalAppearance</code>,
+      <code>MacGetTopLevelWindowRef</code>,
+      <code>MacGetUnifiedAppearance</code>,
+      <code>MacSetMetalAppearance</code>,
+      <code>Maximize</code>,
+      <code>OSXIsModified</code>,
+      <code>OSXSetModified</code>,
+      <code>RequestUserAttention</code>,
+      <code>Restore</code>,
+      <code>SetDefaultItem</code>,
+      <code>SetIcon</code>,
+      <code>SetIcons</code>,
+      <code>SetRepresentedFilename</code>,
+      <code>SetShape</code>,
+      <code>SetTitle</code>,
+      <code>SetTmpDefaultItem</code>,
+      <code>ShowFullScreen</code>,
+      <code>ShowWithoutActivating</code>,
       <code>__repr__</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
@@ -520,8 +587,11 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>GetClassDefaultAttributes</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>GetDefaultSize</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>FindFocus</code>,
@@ -530,48 +600,6 @@ wx._core.EvtHandler --+
       <code>ReleaseControlId</code>,
       <code>UnreserveControlId</code>
       </p>
-    </td>
-  </tr>
-</table>
-<!-- ==================== INSTANCE VARIABLES ==================== -->
-<a name="section-InstanceVariables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Instance Variables</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-InstanceVariables"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="presentation"></a><span class="summary-name">presentation</span><br />
-      A reference to the current presentation
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="slideTextBox"></a><span class="summary-name">slideTextBox</span><br />
-      A text box which can be given a slide number to navigate to
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="whiteboard"></a><span class="summary-name">whiteboard</span><br />
-      The HTML window which displays the current slide
     </td>
   </tr>
 </table>
@@ -594,8 +622,19 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
+      <code>MenuBar</code>,
+      <code>StatusBar</code>,
+      <code>StatusBarPane</code>,
+      <code>ToolBar</code>,
       <code>thisown</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>DefaultItem</code>,
+      <code>Icon</code>,
+      <code>OSXModified</code>,
+      <code>Title</code>,
+      <code>TmpDefaultItem</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>AcceleratorTable</code>,
@@ -692,132 +731,116 @@ wx._core.EvtHandler --+
   </td>
 </tr>
 </table>
-<a name="__init__"></a>
-<div>
+<a name="__init"></a>
+<div class="private">
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parent</span>)</span>
-    <br /><em class="fname">(Constructor)</em>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#LoginWindow.__init">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initialize the WhiteboardNav view.</p>
+  <p>Initialized all buttons on the window and the appropriate sizers. 
+  Textboxes are also made for the user to enter their credentials.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>parent</code></strong> - The current instance of the main EClass view</li>
-    </ul></dd>
-    <dt>Returns: EvtHandler</dt>
-    <dt>Overrides:
-        object.__init__
-    </dt>
   </dl>
 </td></tr></table>
 </div>
-<a name="MoveToPreviousSlide"></a>
+<a name="GetUsername"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToPreviousSlide</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetUsername</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToPreviousSlide">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#LoginWindow.GetUsername">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Change the current slide to the previous slide.</p>
+  <p>This function returns the text entered into the username textbox.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>The username string.</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="MoveToNextSlide"></a>
+<a name="GetPassword"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToNextSlide</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetPassword</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToNextSlide">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#LoginWindow.GetPassword">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Change the current slide to the next slide.</p>
+  <p>This function returns the text entered into the password textbox.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>The password string.</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="SyncWithPresenter"></a>
+<a name="OnAttempt"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">SyncWithPresenter</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnAttempt</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.SyncWithPresenter">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#LoginWindow.OnAttempt">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Change the student's current slide to the presenter's current 
-  slide.</p>
+  <p>Attempts to log the user into the EClass using the credentials.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
   </dl>
-</td></tr></table>
+<div class="fields">      <p><strong>Postcondition:</strong>
+        User is either logged in or not
+      </p>
+</div></td></tr></table>
 </div>
-<a name="MoveToSlide"></a>
+<a name="OnSuccess"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">MoveToSlide</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnSuccess</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="View-pysrc.html#LoginWindow.OnSuccess">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Change the current slide to the specified slide (via the slide 
-  TextBox).</p>
+  <p>The user has successfully logged in and the EClassWindow is to be 
+  launched.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
   </dl>
-</td></tr></table>
+<div class="fields">      <p><strong>Precondition:</strong>
+        User successfully logged in
+      </p>
+      <p><strong>Postcondition:</strong>
+        EClassWindow != None
+      </p>
+</div></td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
@@ -826,7 +849,7 @@ wx._core.EvtHandler --+
   <tr valign="middle">
   <!-- Home link -->
       <th>&nbsp;&nbsp;&nbsp;<a
-        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+        href="View-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -846,7 +869,7 @@ wx._core.EvtHandler --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 14 17:12:14 2014
+    Generated by Epydoc 3.0.1 on Mon Apr 14 17:10:51 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
