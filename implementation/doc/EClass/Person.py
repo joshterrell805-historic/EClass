@@ -151,12 +151,64 @@ class Roster:
    A Roster contains all of the students in the class and methods to manage the students.
 
    @author: Carson Carroll (ccarro03@calpoly.edu)
+
+   @ivar students: The list of students in the class.
    """
 
-   def __init__(self):
+   def __init__(self, students):
       """
       Build an instance of a roster.
 
-      @param self: self is the instance of this object
+      @param self: self is the instance of this object.
+      @param students: A list of students in the class.
+      """
+      pass
+
+   def KickStudent(self, student):
+      """
+      Kicks a student from the class setting a student's kicked flag to true.
+
+      @param student: The student that is to be kicked from the class.
+
+      @precondition: student != None and !self.students.IsEmpty() and self.students.contains(student)
+
+      @postcondition: old(student.IsKicked()) != student.IsKicked()
+      """
+      pass
+
+   def ChangeStudentPermissions(self, student, permissions):
+      """
+      Sets the permissions for a given student.
+
+      @param student: The student whose permissions is to be changed.
+      @param permissions: The permission level to be set for the given student.
+
+      @precondition: permissions != None and student != None and !self.students.IsEmpty() and self.students.contains(student)
+
+      @postcondition: student.getStudentPermissions() == permissions
+      """
+      pass
+
+   def AddNewStudent(self, student):
+      """
+      Takes a student and adds them to the roster.
+
+      @param student: The student who is to be added to the roster.
+
+      @precondition: student != None and !self.students.contains(student)
+
+      @postcondition: students.contains(student) == true
+      """
+      pass
+
+   def RemoveStudent(self, student):
+      """
+      Takes a student and removes them from the roster.
+
+      @param student: The student who is to be removed from the roster.
+
+      @precondition: student != None and self.student.contains(student)
+
+      @postcondition: !self.students.contains(student) and self.students.contains(student) == false
       """
       pass
