@@ -10,7 +10,6 @@ from EClass import EClass
 class LayerManager(wx.Frame):
    def __init__(self, parent):
       super(LayerManager, self).__init__(parent, size = (300,400))
-      EClass.GetInstance().setUpLayerManager()
       self.parent = parent
       self.sizer = wx.BoxSizer(wx.VERTICAL)
       self.controls = wx.BoxSizer(wx.HORIZONTAL)
