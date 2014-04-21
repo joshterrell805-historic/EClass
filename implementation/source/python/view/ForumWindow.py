@@ -4,13 +4,13 @@ import sys
 sys.path.insert(0, 'model/Forum')
 from EClass import EClass
 
-from ForumModel import ForumModel
+from Forum import Forum
 
-class Forum(wx.Frame):
+class ForumWindow(wx.Frame):
    def __init__(self):
-      super(Forum, self).__init__(None, -1, 'Forum')
+      super(ForumWindow, self).__init__(None, -1, 'Forum')
 
-      self.forumModel = ForumModel()
+      self.forumModel = Forum()
 
       self.SetClientSizeWH(500, 600)
 

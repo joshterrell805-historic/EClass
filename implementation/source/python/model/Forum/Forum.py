@@ -1,4 +1,4 @@
-class ForumModel:
+class Forum:
    def __init__(self):
       pass
 

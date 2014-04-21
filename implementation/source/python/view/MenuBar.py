@@ -2,7 +2,7 @@ import wx
 import sys
 
 from Roster import Roster
-from Forum import Forum
+from ForumWindow import ForumWindow
 from DrawingTools import DrawingTools
 from ApprovalTrackerGaget import ApprovalTrackerGaget
 from LayerManager import LayerManager
@@ -117,7 +117,7 @@ class MenuBar:
       ApprovalTrackerGaget()
 
    def ToggleForum(self, e):
-      self.forum = Forum()
+      self.forum = ForumWindow()
       #forum.Show(not showForumMenuItem.IsChecked())
 
    def ToggleFullScreen(self, e):
