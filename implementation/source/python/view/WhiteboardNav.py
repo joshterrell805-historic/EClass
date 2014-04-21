@@ -10,7 +10,8 @@ class WhiteboardNav(wx.Panel):
       super(WhiteboardNav, self).__init__(parent)
 
       self.presentation = EClass.GetInstance().presentation
-      self.whiteboard = wx.html.HtmlWindow(self, -1, size = (600, 400))
+      self.whiteboard = wx.html.HtmlWindow(self, -1)
+      self.whiteboard.Layout()
       self.whiteboard.LoadFile(self.presentation.GetPath())
       self.whiteboard.SetBackgroundColour('#FEEECC')
       
@@ -33,13 +34,13 @@ class WhiteboardNav(wx.Panel):
 
       navVertSizer = wx.BoxSizer(wx.VERTICAL)
       navVertSizer.AddStretchSpacer(1)
-      navVertSizer.Add(currSlideText, 1, wx.CENTER)
-      navVertSizer.Add(self.slideTextbox, 1, flag = wx.BOTTOM|wx.CENTER,
+      navVertSizer.Add(currSlideText, 5, wx.CENTER)
+      navVertSizer.Add(self.slideTextbox, 5, flag = wx.BOTTOM|wx.CENTER,
          border = 20
       )
       
       #if isinstance(EClass.GetInstance().user, Student):
-      navVertSizer.Add(syncButton, 1, wx.CENTER)
+      navVertSizer.Add(syncButton, 3, wx.CENTER)
       navVertSizer.AddStretchSpacer(1)
 
       navHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -51,11 +52,14 @@ class WhiteboardNav(wx.Panel):
       navHoriSizer.Add(nextSlideButton, 1, wx.CENTER)
       navHoriSizer.AddStretchSpacer(1)
 
+      boardHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
+      boardHoriSizer.AddStretchSpacer(1)
+      boardHoriSizer.AddWindow(self.whiteboard, 5, wx.EXPAND)
+      boardHoriSizer.AddStretchSpacer(1)
+
       mainSizer = wx.BoxSizer(wx.VERTICAL)
-      mainSizer.AddStretchSpacer(1)
-      mainSizer.Add(self.whiteboard, 1, wx.CENTER)
+      mainSizer.Add(boardHoriSizer, 10, wx.EXPAND)
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
-      mainSizer.AddStretchSpacer(1)
       
       self.SetSizer(mainSizer)
 
