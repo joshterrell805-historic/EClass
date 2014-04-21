@@ -1,4 +1,4 @@
-import wx, wx.html
+import wx, wx.html, wx.html2
 import sys
 
 sys.path.insert(0, 'model')
@@ -10,9 +10,9 @@ class WhiteboardNav(wx.Panel):
       super(WhiteboardNav, self).__init__(parent)
 
       self.presentation = EClass.GetInstance().presentation
-      self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
+      self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
-      self.whiteboard.LoadFile(self.presentation.GetPath())
+      self.whiteboard.LoadURL(self.presentation.GetPath())
       self.whiteboard.SetBackgroundColour('#FEEECC')
       
       previousSlideButton = wx.Button(self, label = '<< Previous',
