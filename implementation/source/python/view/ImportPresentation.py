@@ -53,8 +53,6 @@ class ImportPresentation(wx.Frame):
 
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
-   
-      EClass.GetInstance().presentation.ShowPresentation()
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()

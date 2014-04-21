@@ -10,10 +10,8 @@ class WhiteboardNav(wx.Panel):
       super(WhiteboardNav, self).__init__(parent)
 
       self.presentation = EClass.GetInstance().presentation
-      self.whiteboard = wx.html.HtmlWindow(self, -1, size = (500, 400))
-      self.whiteboard.SetPage("""<p>This is from a piece of HTML. <strong>Bold
-         text works 50% of the time, all of the time.</strong></p>"""
-      )
+      self.whiteboard = wx.html.HtmlWindow(self, -1, size = (600, 400))
+      self.whiteboard.LoadFile(self.presentation.GetPath())
       self.whiteboard.SetBackgroundColour('#FEEECC')
       
       previousSlideButton = wx.Button(self, label = '<< Previous',
