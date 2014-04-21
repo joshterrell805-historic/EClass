@@ -10,7 +10,7 @@ class WhiteboardNav(wx.Panel):
       super(WhiteboardNav, self).__init__(parent)
 
       self.presentation = EClass.GetInstance().presentation
-      self.whiteboard = wx.html.HtmlWindow(self, -1)
+      self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
       self.whiteboard.LoadFile(self.presentation.GetPath())
       self.whiteboard.SetBackgroundColour('#FEEECC')
