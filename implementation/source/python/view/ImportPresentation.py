@@ -42,6 +42,7 @@ class ImportPresentation(wx.Frame):
       horiSizer.AddStretchSpacer(3)
       sizer.Add(horiSizer)
       self.SetSizer(sizer)
+      self.Centre()
 
    def SelectPresentation(self, event):
       self.parent.importPresentation.Hide()

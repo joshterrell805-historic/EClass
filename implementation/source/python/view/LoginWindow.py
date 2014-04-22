@@ -54,6 +54,7 @@ class LoginWindow(wx.Frame):
       sizer.SetMinSize(size = (1000,1000))
       self.SetSizer(sizer)
 
+      self.Centre()
       self.Show()
 
    def GetUsername(self):

@@ -9,7 +9,6 @@ class EClassWindow(wx.Frame):
 
    def __init__(self):
       super(EClassWindow, self).__init__(None, -1, 'EClass')
-      #self.Maximize()
       self.SetClientSizeWH(800, 600)
       self.SetBackgroundColour('#FFFFFF')
       self.menuBar = MenuBar(self)
@@ -20,4 +19,5 @@ class EClassWindow(wx.Frame):
 
       self.Bind(wx.EVT_CLOSE, sys.exit)
 
+      self.Centre()
       self.Show()
