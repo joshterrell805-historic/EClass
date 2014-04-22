@@ -15,7 +15,7 @@ class ForumWindow(wx.Frame):
 
       self.SetClientSizeWH(500, 600)
 
-      self.messagesArea = wx.TextCtrl(self, size = (500, 500), style = wx.TE_READONLY)
+      self.messagesArea = wx.TextCtrl(self, size = (500, 500), style = wx.TE_READONLY | wx.TE_MULTILINE)
       self.messageEntry = wx.TextCtrl(self, size = (500, 50), style = wx.TE_MULTILINE)
       self.messageEntry.SetValue('Enter message here')
 

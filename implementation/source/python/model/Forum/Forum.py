@@ -5,7 +5,6 @@ class Forum:
       self.messagesStack = []
 
    def AddMessage(self, name, time, message):
-      #print('From Forum.SendMessage()')
       message = Message(name, time, message)
       self.messagesStack.append(message)
 

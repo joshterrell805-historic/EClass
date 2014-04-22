@@ -24,7 +24,7 @@ class Roster(wx.Frame):
 
       attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
       attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
-      attendance.SetForegroundColour('#FFFFFF')
+      attendance.SetForegroundColour(wx.WHITE)
       attendance.SetBackgroundColour('#0041C2')
       
       inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
