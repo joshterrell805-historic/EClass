@@ -61,6 +61,7 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
+      self.Show()
 
    def MoveToPreviousSlide(self, event):
       self.presentation.MoveToPreviousSlide()
