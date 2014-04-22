@@ -9,7 +9,6 @@ from EClass import EClass
 class LoginWindow(wx.Frame):
    
    def __init__(self):
-
       no_resize = wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER
          | wx.RESIZE_BOX | wx.MAXIMIZE_BOX | wx.CLOSE_BOX
       )
@@ -18,10 +17,22 @@ class LoginWindow(wx.Frame):
          style = no_resize | wx.TAB_TRAVERSAL
       )
 
+      self.SetBackgroundColour('#FFEDDB')
+
       sizer = wx.BoxSizer(wx.VERTICAL)
+      titleHorizontalSizer = wx.BoxSizer(wx.HORIZONTAL)
       usernameHorizontalSizer = wx.BoxSizer(wx.HORIZONTAL)
       passwordHorizontalSizer = wx.BoxSizer(wx.HORIZONTAL)
       buttonsHorizontalSizer = wx.BoxSizer(wx.HORIZONTAL)
+
+      self.title = wx.StaticText(self, -1, label = '    EClass' + '\n' + 
+      'By CREAMS'
+      )
+      font = wx.Font(18, wx.DECORATIVE, wx.NORMAL, wx.BOLD)
+      self.title.SetFont(font)
+      titleHorizontalSizer.AddStretchSpacer(2)
+      titleHorizontalSizer.Add(self.title, 2)
+      titleHorizontalSizer.AddStretchSpacer(2)
 
       self.usernameTextbox = wx.TextCtrl(self)
       usernameHorizontalSizer.AddStretchSpacer(2)
@@ -46,12 +57,14 @@ class LoginWindow(wx.Frame):
       buttonsHorizontalSizer.AddStretchSpacer(2)
 
       sizer.AddStretchSpacer(1)
+      sizer.Add(titleHorizontalSizer)
+      sizer.AddStretchSpacer(1)
       sizer.Add(usernameHorizontalSizer)
       sizer.Add(passwordHorizontalSizer)
       sizer.AddStretchSpacer(1)
       sizer.Add(buttonsHorizontalSizer)
+      sizer.AddStretchSpacer(1)
 
-      sizer.SetMinSize(size = (1000,1000))
       self.SetSizer(sizer)
 
       self.Centre()
