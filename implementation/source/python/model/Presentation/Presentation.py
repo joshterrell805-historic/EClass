@@ -1,7 +1,8 @@
 class Presentation:
    
    def __init__(self, path):
-      self.path = path
+      path = 
+      self.path = path.replace(" " "")
       self.slideNum = 1
 
    def MoveToNextSlide(self):
