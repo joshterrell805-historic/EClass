@@ -5,4 +5,4 @@ class Message:
       self.text = text
 
    def ToString(self):
-      return self.name + " " + "[" + self.time + "]" + " " + self.text
+      return self.name + " " + "[" + self.time + "]" + ": " + self.text
