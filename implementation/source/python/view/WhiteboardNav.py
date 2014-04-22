@@ -13,7 +13,7 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
       self.whiteboard.LoadURL(self.presentation.GetPath())
-      self.whiteboard.Show()
+
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
       )
