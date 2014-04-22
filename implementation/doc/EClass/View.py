@@ -8,7 +8,7 @@ class WhiteboardNav(wx.Panel):
    """
    WhiteboardNav defines the view for the whiteboard (where slides will be displayed) as well as the navigation controls for changing the current slide.
    
-   @author: Joel Wilcox (jnwilcox@calpoly.edu)
+   @author: Joel Wilcox (jnwilcox@calpoly.edu), Kevin Le (kle17@calpoly.edu)
 
    @ivar presentation: A reference to the current presentation
    @ivar whiteboard: The HTML window which displays the current slide
