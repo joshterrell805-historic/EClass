@@ -50,7 +50,7 @@ class ForumWindow(wx.Frame):
       #datetime.strftime('%m/%d/%Y')
       #currentDateTime = time.strftime('%c')
       currentDateTime = datetime.now()
-      self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M'), self.messageEntry.GetValue())
+      self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M %p'), self.messageEntry.GetValue())
       currentText = self.messagesArea.GetValue()
       self.messagesArea.SetValue(currentText + self.forum.messagesStack.pop().ToString() + "\n")
       self.messageEntry.SetValue("")
