@@ -56,14 +56,15 @@ class LoginWindow(wx.Frame):
       buttonsHorizontalSizer.Add(button, 1, wx.ALIGN_CENTER)
       buttonsHorizontalSizer.AddStretchSpacer(2)
 
+      sizer.AddStretchSpacer(5)
+      sizer.Add(titleHorizontalSizer, 5)
+      sizer.AddStretchSpacer(5)
+      sizer.Add(usernameHorizontalSizer, 5)
       sizer.AddStretchSpacer(1)
-      sizer.Add(titleHorizontalSizer)
-      sizer.AddStretchSpacer(1)
-      sizer.Add(usernameHorizontalSizer)
-      sizer.Add(passwordHorizontalSizer)
+      sizer.Add(passwordHorizontalSizer, 5)
       sizer.AddStretchSpacer(1)
       sizer.Add(buttonsHorizontalSizer)
-      sizer.AddStretchSpacer(1)
+      sizer.AddStretchSpacer(5)
 
       self.SetSizer(sizer)
 
