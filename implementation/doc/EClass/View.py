@@ -260,7 +260,7 @@ class Roster(wx.Frame):
       """
       pass
 
-class Forum(wx.Frame):
+class ForumWindow(wx.Frame):
    """
    Forum is the window that is shown when the user presses the 'Show Forum' menu
    item from the 'View' menu. The forum contains messages that users have sent 

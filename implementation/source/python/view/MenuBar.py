@@ -1,7 +1,7 @@
 import wx
 import sys
 
-from Roster import Roster
+from RosterWindow import RosterWindow
 from ForumWindow import ForumWindow
 from DrawingTools import DrawingTools
 from ApprovalTrackerGaget import ApprovalTrackerGaget
@@ -94,7 +94,7 @@ class MenuBar:
       self.parent.Close()
 
    def ToggleRoster(self, e):
-      self.roster = Roster()
+      self.roster = RosterWindow()
       #self.roster.Show(not showRosterMenuItem.IsChecked())
 
    def ToggleDrawingTools(self, e):

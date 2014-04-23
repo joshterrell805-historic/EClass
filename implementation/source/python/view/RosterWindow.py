@@ -4,21 +4,21 @@ import sys
 sys.path.insert(0, 'model/Person')
 from EClass import EClass
 
-from RosterItem import RosterItem
-from RosterModel import RosterModel
+from RosterItemPanel import RosterItemPanel
+from Roster import Roster
 
-class Roster(wx.Frame):
+class RosterWindow(wx.Frame):
    def __init__(self):
-      super(Roster, self).__init__(None, -1, 'Roster')
+      super(RosterWindow, self).__init__(None, -1, 'Roster')
 
-      self.rosterModel = RosterModel()
+      self.rosterModel = Roster()
 
-      self.rosterItem1 = RosterItem(self)
-      self.rosterItem2 = RosterItem(self)
-      self.rosterItem3 = RosterItem(self)
-      self.rosterItem4 = RosterItem(self)
-      self.rosterItem5 = RosterItem(self)
-      self.rosterItem6 = RosterItem(self)
+      self.rosterItem1 = RosterItemPanel(self)
+      self.rosterItem2 = RosterItemPanel(self)
+      self.rosterItem3 = RosterItemPanel(self)
+      self.rosterItem4 = RosterItemPanel(self)
+      self.rosterItem5 = RosterItemPanel(self)
+      self.rosterItem6 = RosterItemPanel(self)
 
       self.SetClientSizeWH(300, 700)
 

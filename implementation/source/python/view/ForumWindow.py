@@ -46,9 +46,6 @@ class ForumWindow(wx.Frame):
 
    def SendMessage(self, event):
       user = EClass.GetInstance().user
-      #dateTime = datetime(2014, 4, 21)
-      #datetime.strftime('%m/%d/%Y')
-      #currentDateTime = time.strftime('%c')
       currentDateTime = datetime.now()
       self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M %p'), self.messageEntry.GetValue())
       currentText = self.messagesArea.GetValue()

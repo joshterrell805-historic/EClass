@@ -4,17 +4,17 @@ import sys
 sys.path.insert(0, 'model/Person')
 from EClass import EClass
 
-from RosterItemModel import RosterItemModel
+from RosterItem import RosterItem
 
 sys.path.insert(0, '../model')
 from Person.Student import Student
 from PermissionsWindow import PermissionsWindow
 
-class RosterItem(wx.Panel):
+class RosterItemPanel(wx.Panel):
    def __init__(self, parent):
-      super(RosterItem, self).__init__(parent, -1, size = (300, 40))
+      super(RosterItemPanel, self).__init__(parent, -1, size = (300, 40))
 
-      self.rosterItemModel = RosterItemModel()
+      self.rosterItemModel = RosterItem()
 
       self.name = wx.StaticText(self, -1, label = 'First Last')
 

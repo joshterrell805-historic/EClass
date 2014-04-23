@@ -1,4 +1,4 @@
-class RosterItemModel:
+class RosterItem:
    def __init__(self):
       pass
 
