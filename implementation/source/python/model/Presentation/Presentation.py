@@ -1,7 +1,7 @@
 class Presentation:
    
    def __init__(self, path):
-      self.path = path
+      self.SetPath(path)
       self.slideNum = 1
 
    def MoveToNextSlide(self):
@@ -17,7 +17,13 @@ class Presentation:
       print('From Presentation.SyncWithPresenter')
 
    def SetPath(self, path):
-      self.path = path
+      # TODO I don't think we should allow path to be None
+      # (I think it should be in our precondition that path must be a valid
+      # path to an html file)
+      if path != None:
+         self.path = "file://" + path
+      else:
+         self.path = None
 
    def GetPath(self):
       print('From Presentation.GetPath(): ' + self.path)
