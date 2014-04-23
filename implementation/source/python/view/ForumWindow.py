@@ -45,12 +45,16 @@ class ForumWindow(wx.Frame):
       self.Show()
 
    def SendMessage(self, event):
-      user = EClass.GetInstance().user
-      currentDateTime = datetime.now()
-      self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M %p'), self.messageEntry.GetValue())
-      currentText = self.messagesArea.GetValue()
-      self.messagesArea.SetValue(currentText + self.forum.messagesStack.pop().ToString() + "\n")
-      self.messageEntry.SetValue("")
+      if self.messageEntry.GetValue() != "":
+         user = EClass.GetInstance().user
+         currentDateTime = datetime.now()
+         self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M %p'), self.messageEntry.GetValue())
+         currentText = self.messagesArea.GetValue()
+         self.messagesArea.SetValue(currentText + self.forum.messagesStack.pop().ToString() + "\n")
+         self.messageEntry.SetValue("")
+      else:
+         pass
+
 
    def CloseForum(self, event):
       self.Close()
