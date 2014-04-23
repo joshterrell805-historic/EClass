@@ -146,7 +146,7 @@ class StudentPermissions(object):
       """
       pass
 
-class RosterModel:
+class Roster:
    """
    A Roster contains all of the students in the class and methods to manage the students.
 
@@ -188,7 +188,7 @@ class RosterModel:
       """
       pass
 
-class RosterItemModel:
+class RosterItem:
    """
    A RosterItem contains an individual student's first and last name as long as buttons for 
    student question asking, pushing layers, and permission setting.

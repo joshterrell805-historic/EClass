@@ -232,7 +232,7 @@ class LoginWindow(wx.Frame):
       """
       pass
 
-class Roster(wx.Frame):
+class RosterWindow(wx.Frame):
    """
    Roster is the window that is shown when the user presses the 'Show Roster' menu
    item from the 'View' menu. The roster is populated with the student's names in
@@ -295,7 +295,7 @@ class ForumWindow(wx.Frame):
       """
       pass
 
-class RosterItem(wx.Panel):
+class RosterItemPanel(wx.Panel):
    """
    RosterItem is the panel that displays a student's first and last name along with three
    buttons for question asking, pushing layers, and student permissions.  A RosterItem is what
