@@ -12,13 +12,13 @@ from PermissionsWindow import PermissionsWindow
 
 class RosterItemPanel(wx.Panel):
    def __init__(self, parent):
-      super(RosterItemPanel, self).__init__(parent, -1, size = (300, 40))
+      super(RosterItemPanel, self).__init__(parent, -1, size = (300, 70))
 
       self.rosterItemModel = RosterItem()
 
-      self.name = wx.StaticText(self, -1, label = 'First Last')
-
-      self.SetBackgroundColour('#FFFFFF')
+      username = EClass.GetInstance().user.username
+      usernameLabel = wx.StaticText(self, -1, label = 'Cal Poly Username: ')
+      usernameStaticText = wx.StaticText(self, -1, label = username)
 
       self.handButton = wx.Button(self, label = 'Hand', size = (50, 30))
       self.handButton.Bind(wx.EVT_BUTTON, self.HandButton)
@@ -27,16 +27,27 @@ class RosterItemPanel(wx.Panel):
       self.permissionsButton = wx.Button(self, label = 'Permissions', size = (90, 30))
       self.permissionsButton.Bind(wx.EVT_BUTTON, self.OpenPermissions)
 
-      rosterItemHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
-      rosterItemHoriSizer.AddStretchSpacer(1)
-      rosterItemHoriSizer.Add(self.name)
-      rosterItemHoriSizer.AddStretchSpacer(1)
-      rosterItemHoriSizer.Add(self.handButton)
-      rosterItemHoriSizer.Add(self.layersButton)
-      rosterItemHoriSizer.Add(self.permissionsButton)
-      rosterItemHoriSizer.AddStretchSpacer(1)
+      rosterItemButtonSizer = wx.BoxSizer(wx.HORIZONTAL)
+      rosterItemButtonSizer.AddStretchSpacer(1)
+      rosterItemButtonSizer.Add(self.handButton, 1, wx.CENTER)
+      rosterItemButtonSizer.Add(self.layersButton, 1, wx.CENTER)
+      rosterItemButtonSizer.Add(self.permissionsButton, 1, wx.CENTER)
+      rosterItemButtonSizer.AddStretchSpacer(1)
 
-      self.SetSizer(rosterItemHoriSizer)
+      usernameSizer = wx.BoxSizer(wx.HORIZONTAL)
+      usernameSizer.AddStretchSpacer(1)
+      usernameSizer.Add(usernameLabel, 1, wx.CENTER)
+      usernameSizer.Add(usernameStaticText, 1, wx.CENTER)
+      usernameSizer.AddStretchSpacer(1)
+
+      rosterItemMainSizer = wx.BoxSizer(wx.VERTICAL)
+      rosterItemMainSizer.AddStretchSpacer(1)
+      rosterItemMainSizer.Add(rosterItemButtonSizer, 1, wx.CENTER)
+      rosterItemMainSizer.AddStretchSpacer(1)
+      rosterItemMainSizer.Add(usernameSizer, 1, wx.CENTER)
+      rosterItemMainSizer.AddStretchSpacer(1)
+
+      self.SetSizer(rosterItemMainSizer)
 
    def HandButton(self, event):
       self.rosterItemModel.Hand()
