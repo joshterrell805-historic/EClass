@@ -20,11 +20,11 @@ class ApprovalTrackerGaget(wx.Frame):
       )
 
       slider = wx.Slider(self,
-         style = wx.SL_VERTICAL | wx.SL_LABELS | wx.SL_INVERSE
+         minValue = ApprovalTrackerGaget.minVal,
+         maxValue = ApprovalTrackerGaget.maxVal,
+         style = wx.SL_VERTICAL | wx.SL_INVERSE
       )
       self.slider = slider
-
-      slider.SetRange(ApprovalTrackerGaget.minVal, ApprovalTrackerGaget.maxVal)
 
       if isinstance(EClass.GetInstance().user, Presenter):
          slider.Enable(False)
@@ -44,7 +44,7 @@ class ApprovalTrackerGaget(wx.Frame):
 
          ApprovalTrackerGaget.SetApprovalRating(slider.GetValue())
 
-         self.Bind(wx.EVT_SCROLL_CHANGED, self.OnSlide)
+         self.Bind(wx.EVT_SCROLL, self.OnSlide)
 
 
       self.Show()
