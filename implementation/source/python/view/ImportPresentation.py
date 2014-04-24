@@ -51,6 +51,7 @@ class ImportPresentation(wx.Frame):
       EClass.GetInstance().presentation.SetPath(self.parent.importPresentation
          .GetPresentationPath()
       )
+      EClass.GetInstance().presentation.Slidify()
 
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()

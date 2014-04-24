@@ -5,14 +5,17 @@ sys.path.insert(0, 'model')
 from EClass import EClass
 
 class WhiteboardNav(wx.Panel):
-   
+
+   # TODO update documentation (Joel)
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
 
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
-      self.whiteboard.LoadURL(self.presentation.GetPath())
+      self.whiteboard.SetPage(self.presentation.GetSlide(),
+         self.presentation.GetPath()
+      )
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -29,15 +32,16 @@ class WhiteboardNav(wx.Panel):
       self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
       self.slideTextbox.SetHint('Slide Number')
 
-      currSlideText = wx.StaticText(self, -1, label = '1')
+      self.currSlideText = wx.StaticText(self, -1, label = '1')
 
       navVertSizer = wx.BoxSizer(wx.VERTICAL)
       navVertSizer.AddStretchSpacer(1)
-      navVertSizer.Add(currSlideText, 5, wx.CENTER)
+      navVertSizer.Add(self.currSlideText, 5, wx.CENTER)
       navVertSizer.Add(self.slideTextbox, 5, flag = wx.BOTTOM|wx.CENTER,
          border = 20
       )
-      
+
+      # TODO uncomment this later
       #if isinstance(EClass.GetInstance().user, Student):
       navVertSizer.Add(syncButton, 3, wx.CENTER)
       navVertSizer.AddStretchSpacer(1)
@@ -65,12 +69,24 @@ class WhiteboardNav(wx.Panel):
 
    def MoveToPreviousSlide(self, event):
       self.presentation.MoveToPreviousSlide()
+      self.RefreshSlide()
 
    def MoveToNextSlide(self, event):
       self.presentation.MoveToNextSlide()
+      self.RefreshSlide()
 
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter()
+      self.RefreshSlide()
 
    def MoveToSlide(self, event):
-      self.presentation.MoveToSlide(self.slideTextbox.GetValue())
+      self.presentation.MoveToSlide(int(self.slideTextbox.GetValue()))
+      self.slideTextbox.Clear()
+      self.RefreshSlide()
+
+   # TODO add documentation (Joel)
+   def RefreshSlide(self):
+      self.whiteboard.SetPage(self.presentation.GetSlide(),
+         self.presentation.GetPath()
+      )
+      self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
