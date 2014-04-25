@@ -87,8 +87,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Build an instance of a roster.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">students</span>)</span><br />
+      Builds an instance of a roster.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.__init__">source&nbsp;code</a></span>
             
@@ -96,6 +97,68 @@
         </tr>
       </table>
       
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#AddNewStudent" class="summary-sig-name">AddNewStudent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Takes a student and adds them to the roster.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.AddNewStudent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#RemoveStudent" class="summary-sig-name">RemoveStudent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Takes a student and removes them from the roster.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.RemoveStudent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="students"></a><span class="summary-name">students</span><br />
+      The list of students in the class.
     </td>
   </tr>
 </table>
@@ -124,7 +187,8 @@
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">students</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -132,14 +196,76 @@
     </td>
   </tr></table>
   
-  <p>Build an instance of a roster.</p>
+  <p>Builds an instance of a roster.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>self</code></strong> - self is the instance of this object</li>
+        <li><strong class="pname"><code>self</code></strong> - self is the instance of this object.</li>
+        <li><strong class="pname"><code>students</code></strong> - A list of students in the class.</li>
     </ul></dd>
   </dl>
 </td></tr></table>
+</div>
+<a name="AddNewStudent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">AddNewStudent</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">student</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.AddNewStudent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Takes a student and adds them to the roster.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>student</code></strong> - The student who is to be added to the roster.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        student != None and !self.students.contains(student)
+      </p>
+      <p><strong>Postcondition:</strong>
+        students.contains(student) == true
+      </p>
+</div></td></tr></table>
+</div>
+<a name="RemoveStudent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">RemoveStudent</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">student</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.RemoveStudent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Takes a student and removes them from the roster.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>student</code></strong> - The student who is to be removed from the roster.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        student != None and self.student.contains(student)
+      </p>
+      <p><strong>Postcondition:</strong>
+        !self.students.contains(student) and 
+        self.students.contains(student) == false
+      </p>
+</div></td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
@@ -168,7 +294,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 14 17:12:14 2014
+    Generated by Epydoc 3.0.1 on Fri Apr 25 11:10:36 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

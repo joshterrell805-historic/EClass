@@ -62,42 +62,75 @@
 <a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">There are objects for both a forum and a message.</tt> </tt>
 <a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
 <a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
-<a name="ForumModel"></a><div id="ForumModel-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="ForumModel-toggle" onclick="return toggle('ForumModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Forum.ForumModel-class.html">ForumModel</a><tt class="py-op">:</tt> </tt>
-</div><div id="ForumModel-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="ForumModel-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="Forum"></a><div id="Forum-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="Forum-toggle" onclick="return toggle('Forum');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Forum.Forum-class.html">Forum</a><tt class="py-op">:</tt> </tt>
+</div><div id="Forum-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Forum-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
 <a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">   A Forum contains all of the messages from user to user and methods to manage the forum.</tt> </tt>
 <a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Carson Carroll (ccarro03@calpoly.edu)</tt> </tt>
 <a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar messages: The list of messages in the forum.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar messagesStack: A list that is represented like a stack that holds all of the forum's messages.</tt> </tt>
 <a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
 <a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
-<a name="ForumModel.__init__"></a><div id="ForumModel.__init__-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="ForumModel.__init__-toggle" onclick="return toggle('ForumModel.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.ForumModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">messages</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ForumModel.__init__-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ForumModel.__init__-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="Forum.__init__"></a><div id="Forum.__init__-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="Forum.__init__-toggle" onclick="return toggle('Forum.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.Forum-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Forum.__init__-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Forum.__init__-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
 <a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">      Build an instance of the forum.</tt> </tt>
 <a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">      @param self: self is the instance of this object.</tt> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">      @param messages: A list of messages in the forum.</tt> </tt>
-<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
-<a name="ForumModel.SendMessage"></a><div id="ForumModel.SendMessage-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="ForumModel.SendMessage-toggle" onclick="return toggle('ForumModel.SendMessage');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.ForumModel-class.html#SendMessage">SendMessage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ForumModel.SendMessage-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ForumModel.SendMessage-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">      Puts a new Message into the list of current messages.</tt> </tt>
-<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">      @param message: The message that is to be added to the end of the list of messages.</tt> </tt>
-<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.messages != None and message != None and !message.text.IsEmpty()</tt> </tt>
-<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: messages.size() == old(messages.size()) + 1</tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
-<a name="ForumModel.Refresh"></a><div id="ForumModel.Refresh-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="ForumModel.Refresh-toggle" onclick="return toggle('ForumModel.Refresh');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.ForumModel-class.html#Refresh">Refresh</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ForumModel.Refresh-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="ForumModel.Refresh-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring">      Refreshes the list of messages to the most up to date version.</tt> </tt>
-<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="Forum.AddMessage"></a><div id="Forum.AddMessage-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="Forum.AddMessage-toggle" onclick="return toggle('Forum.AddMessage');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.Forum-class.html#AddMessage">AddMessage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">time</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Forum.AddMessage-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Forum.AddMessage-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">      Puts a new Message into the list of current messages.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">      @param name: The username of the user that is to be displayed along with the text of the message.</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">      @param time: The current date and time of when the message was sent.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">      @param message: The message that is to be added to the end of the list of messages.</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.messages != None and message != None and !message.text.IsEmpty()</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: messages.size() == old(messages.size()) + 1</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="Forum.Refresh"></a><div id="Forum.Refresh-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="Forum.Refresh-toggle" onclick="return toggle('Forum.Refresh');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.Forum-class.html#Refresh">Refresh</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Forum.Refresh-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Forum.Refresh-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">      Refreshes the list of messages to the most up to date version.</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="Message"></a><div id="Message-def"><a name="L44"></a><tt class="py-lineno">44</tt> <a class="py-toggle" href="#" id="Message-toggle" onclick="return toggle('Message');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Forum.Message-class.html">Message</a><tt class="py-op">:</tt> </tt>
+</div><div id="Message-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Message-expanded"><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">   A Message contains all of the information for a message including the user's name, the datetime that a message was sent, and the text of the message.</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Carson Carroll (ccarro03@calpoly.edu)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar name: The username of the user.</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar time: The datetime of when the message was sent.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar text: The text of the message.</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"> </tt>
+<a name="Message.__init__"></a><div id="Message.__init__-def"><a name="L55"></a><tt class="py-lineno">55</tt> <a class="py-toggle" href="#" id="Message.__init__-toggle" onclick="return toggle('Message.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.Message-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">time</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Message.__init__-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Message.__init__-expanded"><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">      Builds an instance of a Message.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">      @param self: self is the instance of this object.</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring">      @param name: The username of the user.</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">      @param time: The datetime of when the message was sent.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">      @param text: The text of the message.</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
+<a name="Message.ToString"></a><div id="Message.ToString-def"><a name="L66"></a><tt class="py-lineno">66</tt> <a class="py-toggle" href="#" id="Message.ToString-toggle" onclick="return toggle('Message.ToString');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Forum.Message-class.html#ToString">ToString</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Message.ToString-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="Message.ToString-expanded"><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt class="py-docstring">      Takes the contents of the message: name, datetime, text and formats them all together into a string.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.text != None</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: return self.name + " " + "[" + self.time + "]" + ": " + self.text</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -130,7 +163,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 21 19:16:49 2014
+    Generated by Epydoc 3.0.1 on Fri Apr 25 11:10:37 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

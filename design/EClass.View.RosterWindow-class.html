@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.View.InitialPrompt</title>
+  <title>EClass.View.RosterWindow</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -39,7 +39,7 @@
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
         <a href="EClass.View-module.html">Module&nbsp;View</a> ::
-        Class&nbsp;InitialPrompt
+        Class&nbsp;RosterWindow
       </span>
     </td>
     <td>
@@ -49,35 +49,38 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.View.InitialPrompt-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View.RosterWindow-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class InitialPrompt</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class RosterWindow</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#RosterWindow">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-     object --+                
-              |                
-wx._core.Object --+            
-                  |            
-wx._core.EvtHandler --+        
-                      |        
-        wx._core.Window --+    
-                          |    
-          wx._windows.Panel --+
-                              |
-                             <strong class="uidshort">InitialPrompt</strong>
+     object --+                    
+              |                    
+wx._core.Object --+                
+                  |                
+wx._core.EvtHandler --+            
+                      |            
+        wx._core.Window --+        
+                          |        
+ wx._windows.TopLevelWindow --+    
+                              |    
+              wx._windows.Frame --+
+                                  |
+                                 <strong class="uidshort">RosterWindow</strong>
 </pre>
 
 <hr />
-<p>InitialPrompt represents the panel that the user first sees to either 
-  create or open a new presentation.</p>
+<p>Roster is the window that is shown when the user presses the 'Show 
+  Roster' menu item from the 'View' menu. The roster is populated with the 
+  student's names in the class.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Kevin Le (kle17@calpoly.edu)
+        Carson Carroll (ccarro03@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -102,11 +105,10 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.InitialPrompt-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">parant</span>)</span><br />
-      Puts the panal on to the parant EClassWindow.</td>
+          <td><span class="summary-sig"><a href="EClass.View.RosterWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Initializes all buttons on the window and the appropriate sizers.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#RosterWindow.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -120,11 +122,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.InitialPrompt-class.html#CreatePresentation" class="summary-sig-name">CreatePresentation</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a name="AddStudent"></a><span class="summary-sig-name">AddStudent</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Function whichs chooses to bring up the create a presentation prompt.</td>
+      Adds a student to the roster.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt.CreatePresentation">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#RosterWindow.AddStudent">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -138,11 +140,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.InitialPrompt-class.html#UsePresentation" class="summary-sig-name">UsePresentation</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a name="Remove"></a><span class="summary-sig-name">Remove</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Function which chooses to bring up the open a presentation prompt.</td>
+      Removes a student from the roster.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt.UsePresentation">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#RosterWindow.Remove">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -152,9 +154,59 @@ wx._core.EvtHandler --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>Create</code>,
-      <code>SetFocusIgnoringChildren</code>,
+      <code>CreateStatusBar</code>,
+      <code>CreateToolBar</code>,
+      <code>DoGiveHelp</code>,
+      <code>DoMenuUpdates</code>,
+      <code>FindItemInMenuBar</code>,
+      <code>GetMenuBar</code>,
+      <code>GetStatusBar</code>,
+      <code>GetStatusBarPane</code>,
+      <code>GetToolBar</code>,
+      <code>PopStatusText</code>,
+      <code>ProcessCommand</code>,
+      <code>PushStatusText</code>,
+      <code>SetMenuBar</code>,
+      <code>SetStatusBar</code>,
+      <code>SetStatusBarPane</code>,
+      <code>SetStatusText</code>,
+      <code>SetStatusWidths</code>,
+      <code>SetToolBar</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>CenterOnScreen</code>,
+      <code>CentreOnScreen</code>,
+      <code>EnableCloseButton</code>,
+      <code>GetDefaultItem</code>,
+      <code>GetIcon</code>,
+      <code>GetTitle</code>,
+      <code>GetTmpDefaultItem</code>,
+      <code>Iconize</code>,
+      <code>IsActive</code>,
+      <code>IsAlwaysMaximized</code>,
+      <code>IsFullScreen</code>,
+      <code>IsIconized</code>,
+      <code>IsMaximized</code>,
+      <code>MacGetMetalAppearance</code>,
+      <code>MacGetTopLevelWindowRef</code>,
+      <code>MacGetUnifiedAppearance</code>,
+      <code>MacSetMetalAppearance</code>,
+      <code>Maximize</code>,
+      <code>OSXIsModified</code>,
+      <code>OSXSetModified</code>,
+      <code>RequestUserAttention</code>,
+      <code>Restore</code>,
+      <code>SetDefaultItem</code>,
+      <code>SetIcon</code>,
+      <code>SetIcons</code>,
+      <code>SetRepresentedFilename</code>,
+      <code>SetShape</code>,
+      <code>SetTitle</code>,
+      <code>SetTmpDefaultItem</code>,
+      <code>ShowFullScreen</code>,
+      <code>ShowWithoutActivating</code>,
       <code>__repr__</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
@@ -481,8 +533,11 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
       <code>GetClassDefaultAttributes</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>GetDefaultSize</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>FindFocus</code>,
@@ -491,32 +546,6 @@ wx._core.EvtHandler --+
       <code>ReleaseControlId</code>,
       <code>UnreserveControlId</code>
       </p>
-    </td>
-  </tr>
-</table>
-<!-- ==================== INSTANCE VARIABLES ==================== -->
-<a name="section-InstanceVariables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Instance Variables</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-InstanceVariables"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="parant"></a><span class="summary-name">parant</span><br />
-      The parant EClassWindow which talks to the panel.
     </td>
   </tr>
 </table>
@@ -539,8 +568,19 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
+      <code>MenuBar</code>,
+      <code>StatusBar</code>,
+      <code>StatusBarPane</code>,
+      <code>ToolBar</code>,
       <code>thisown</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
+      <code>DefaultItem</code>,
+      <code>Icon</code>,
+      <code>OSXModified</code>,
+      <code>Title</code>,
+      <code>TmpDefaultItem</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>AcceleratorTable</code>,
@@ -644,87 +684,24 @@ wx._core.EvtHandler --+
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">parant</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#RosterWindow.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Puts the panal on to the parant EClassWindow.</p>
+  <p>Initializes all buttons on the window and the appropriate sizers. 
+  RosterItem's populate the appropriate panel to display the students in 
+  the roster.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>parant</code></strong> - The parant EClassWindow to set self.parant to.</li>
-    </ul></dd>
     <dt>Returns: EvtHandler</dt>
     <dt>Overrides:
         object.__init__
     </dt>
   </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        parant != None
-      </p>
-</div></td></tr></table>
-</div>
-<a name="CreatePresentation"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">CreatePresentation</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt.CreatePresentation">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Function whichs chooses to bring up the create a presentation prompt. 
-  InitialPrompt is hidden if called.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - Mouseclick event which calls this function.</li>
-    </ul></dd>
-  </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.Shown() == False
-      </p>
-</div></td></tr></table>
-</div>
-<a name="UsePresentation"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">UsePresentation</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#InitialPrompt.UsePresentation">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Function which chooses to bring up the open a presentation prompt. 
-  Initial prompt is hidden if called.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - Mouseclick event which calls this function.</li>
-    </ul></dd>
-  </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.Shown() == False &amp;&amp; 
-        self.parant.importPresentation.Shown == True
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
