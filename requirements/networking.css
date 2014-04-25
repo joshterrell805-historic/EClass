@@ -1,0 +1,47 @@
+.page-title
+{
+   width: 100%;
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+body
+{
+   margin-left: 4%;
+   margin-right: 4%;
+   margin-top: 2%;
+   margin-bottom: 2%;
+}
+
+#contents
+{
+   padding: 15px;
+   background-color: #eee;
+   width: 100%;
+}
+
+.application-description
+{
+   vertical-align: top;
+   display: inline-block;
+   float: right;
+}
+.application-title
+{
+   vertical-align: top;
+   display: inline-block;
+   float: left;
+}
+
+#plugin-method-contract
+{
+   padding: 8px;
+   background-color: #eeb;
+}
+
+.class-definition,
+div.class-definition p
+{
+   margin-left: 25px;
+}
+

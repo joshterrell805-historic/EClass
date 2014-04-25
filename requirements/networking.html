@@ -1,0 +1,323 @@
+<html>
+<head>
+   <title>Networking in EClass</title>
+   <link rel="stylesheet" type="text/css" href="networking.css">
+</head>
+<body>
+   <h2 class="page-title" id="top">Networking in EClass</h2>
+   <p>This document contains conceptual information about how EClass communcates
+   with other programs over the network. There are three types of applications
+   used in networking:</p>
+   <dl>
+      <dt>EClass (presenter)</dt>
+         <dd>This is the application that 
+         the presenter runs. For networking, this progam is the
+         server that all students connect to to view a lecture, post messages to
+         the forum, etc. See <a href="presenter-overview.html">
+         Presenter UI Overview</a>.</dd>
+      <dt>EClass (student)</dt>
+         <dd>This is the application the student uses
+         to connect to a presentation. Here the student may take notes, ask a
+         question, rate a presentation, etc. See
+         <a href="student-ui-overview.html">Student UI Overview</a>.</dd>
+      <dt>Central Server</dt>
+         <dd>This application is the central server used behind the scenes by 
+         both the student
+         and the presenter applications for authentication purposes.
+         When the user logs in, his credentials are
+         sent to this server. Also, this server is responsible for obtaining
+         informaiton about which classes a student is enrolled in and which
+         classes a presenter may open a presentation for.</dd>
+   </dl>
+   <div id="contents">
+      Contents:
+      <ul>
+         <li><a href="#central-server">Central Server</a></li>
+         <li><a href="#authentication-plugin">Authentication Plugin</a></li>
+         <li><a href="#login">Student/Presenter Authentication</a></li>
+         <li><a href="#host-presentation">Hosting a Presentation</a>
+            </li>
+         <li><a href="#join-presentation">Joining a Presentation</a>
+            </li>
+         <li><a href="#connectivity">Log out, stop hosting a presentation, and
+            connection lost</a>
+      </ul>
+   </div>
+
+   <h3 id="central-server">Central Server</h3>
+   <p>The central server is the server that EClass connects to
+   when the user attempts to login. There is one
+   central server per school or other presentation facility.</p>
+   <p>In authentication, the central server calls a user-plugin. Using 
+   a plugin allows different schools to implement different login procedures
+   depending on the software the school uses for student/professor
+   authentication. The authentication plugin gets called
+   by the central server with the username and the password, and is
+   responsible for responding with whether the credentials are valid (as
+   well as some other information). See <a href="#authentication-plugin">
+   Authentication Plugin</a>.</p>
+   <p>With the information obtained from the authentication plugin, the
+   central server holds a list of the logged in students and professors
+   and the courses
+   they are enrolled in. When a student authenticates, he receives the
+   courses he is enrolled in so he may join a presentation. When a presenter
+   logs in and chooses to host a presentation, he chooses from a list of
+   classes he
+   may present for. These lists are discussed
+   further in <a href="#login">Student/Presenter Authentication</a>,
+   <a href="#join-presentation">Joining a Presentation (student)</a>, and
+   <a href="#host-presentation">Hosting a Presentation (presenter)</a>.</p>
+   <p>Return to the <a href="#top">top</a> of this page.</p>
+
+
+   <h3 id="authentication-plugin">Authentication plugin</h3>
+   <p>The authentication plugin is called by the central server when a user
+   attempts
+   to authenticate. This plugin is a python module with two functions:
+   <tt>login</tt> and <tt>logout</tt>.</p>
+   <dl id="plugin-method-contract">
+      <dt>login(username, password)</dt>
+         <dd><p>Called when a user attempts to login. The return value may be
+         one of the following:</p>
+         <dl>
+            <dt>success (an object with the following properties)</dt>
+               <dd>
+                  <p>success (required) [boolean] must be true</p>
+                  <p>role (required) [string] 'presenter' or 'student'</p>
+                  <p>lastname (required) [string] the lastname of the user</p>
+                  <p>firstname (required) [string] the firstname of the user</p>
+                  <p>classes (required) [array of class-objects] the classes for
+                     this
+                     presenter or student. The attributes of a class object
+                     depend
+                     on whether the user is a student or a presenter.
+                     <dl class="class-definition">
+                        <dt>student class-object attributes</dt>
+                           <dd>
+                              <p>name (required) [string] the name of the class
+                                 </p>
+                              <p>firstname (required) [string] the first name
+                                 of the presenter who teaches this class</p>
+                              <p>lastname (required) [string] the last name
+                                 of the presenter who teaches this class</p>
+                           </dd>
+                        <dt>presenter class-object attributes</dt>
+                           <dd>
+                              <p>name (required) [string] the name of the class
+                                 </p>
+                              <p>students (required) [array of student-objects]
+                                 a list of the students that are enrolled in the
+                                 course
+                                 </p>
+                              <div class="class-definition">student-object
+                                 attributes
+                                 <p>firstname (required) [string] first name
+                                    of the student</p>
+                                 <p>lastname (required) [string] last name
+                                    of the student</p>
+                                 <p>username (required) [string] username of
+                                    the student</p>
+                              </div>
+                           </dd>
+                     </dl>
+                  </p>
+                  <p>token (optional) [string] the string to pass to logout
+                     when this user logs out</p>
+               </dd>
+            <dt>failure (an object with the following properties)</dt>
+               <dd>
+                  <p>success (required) [boolean] must be false</p>
+                  <p>reason (optional) [string] a reason for the authentication
+                     failure. (eg: too many attempts, bad credentials)</p>
+               </dd>
+         </dl>
+         </dd>
+      <dt>logout(token)</dt>
+         <dd>
+            <p>Called when the user who authenticated with this token logs out
+            from the central server or the connection times out.</p>
+            <p>The central server does not use the return value of this
+            funciton. This function is only called if a token
+            is specified in the return value of the login method.</p>
+         </dd>
+   </dl>
+   <p>Return to the <a href="#top">top</a> of this page.</p>
+
+
+   <h3 id="login">Student/Presenter Authentication</h3>
+   <p>When the EClass application is distributed to students and professors, it
+   includes an authentication configuration file containing the following:</p>
+   <ol>
+      <li>The IP address of the central server</li>
+      <li>The port of the central server</li>
+      <li>The public key of the central server</li>
+   </ol>
+   <p>These values are used to connect to the central server.</p>
+   <p>The login process is as follows:</p>
+   <ol>
+      <li>EClass opens an ssl-encrypted socket with the authentication
+         server using the provided ip, port, and public key.</li>
+      <li>EClass sends the <tt>username</tt> and <tt>password</tt> to the
+         central server requesting a new session.</li>
+      <li>The central server passes the <tt>username</tt> and
+         <tt>password</tt> to the authentication plugin which responds
+         with either a failure object or a success object.</li>
+   </ol>
+   failure
+   <ol start=4>
+      <li>The authenticaiton server passes the failure message back to the
+         client</li>
+   </ol>
+   success
+   <ol start=4>
+      <li>The central server creates a new logged in user with the user's
+         <tt>username</tt>, <tt>pluginToken</tt>, the presenter/student
+         <tt>role</tt> of the user, and
+         the <tt>courses</tt> the presenter/student is in.
+         </li>
+      <li>The central server replies to EClass with the user's
+         <tt>role</tt> and <tt>classes</tt>.
+      </li>
+   </ol>
+   <p>After success, EClass differentiates into the presenter or student mode.
+      A presenter may <a href="#host-presentation">host a presentation</a> for
+      any of their classes, and a student may
+      <a href="#join-presentatation">join a hosted presentation</a> for any of
+      their classes.</p>
+   <p>Return to the <a href="#top">top</a> of this page.</p>
+
+
+   <h3 id="host-presentation">Hosting a Presentation</h3>
+   <p>Once a presenter has authenticated and has an open presentation, he may
+      host that presentation to one of his classes. There is no UI discussion
+      for this at the moment, but the way in which to host a presentation will
+      be obvious.</p>
+   <p>To host a presentation, EClass sends the following to the authentication
+      server in its request to host a presentation:</p>
+   <ul>
+      <li>class - the class the professor wishes to host a presentation for</li>
+      <li>port - the port the professor's EClass application listens for
+         incomming student connections on. This port is a randomly chosen open
+         port on the professor's machine.</li>
+      <li>public key - the public ssl-key students use to encrypt thier
+         sockets with when connecting to this server.</li>
+   </ul>
+   <p>Note: The IP students' EClass applications are given to connect to is the
+      same IP that this request is comming from.</p>
+   <p>The central server replies with a success or failure.</p>
+   <dl>
+      <dt>failure</dt>
+         <dd>If the presenter is already hosting a presentation, the presenter
+            is not logged in, or the class given is not a class the presenter
+            is allowed to host a class for.</dd>
+      <dt>success</dt>
+         <dd>Return an array of objects containing the usernames, first names,
+            and last names
+            of the students enrolled in the course. This array
+            is the <tt>students</tt> field of the corresponding
+            <tt>class-object</tt> in the <tt>classes</tt> array
+            of the success object returned from the 
+            <a href="#authentication-plugin">authentication plugin</a> when
+            the presenter authenticates.</dd>
+   </dl>
+   <p>After receiving a success response from the central server about
+      hosting a presentation, the presenter's EClass is
+      ready for incomming students on the port specified in the host request.
+      The protocol for accepting new students is described in the section on 
+      <a href="#join-presentation">joining a presentation</a>.</p>
+   <p>Return to the <a href="#top">top</a> of this page.</p>
+
+
+   <h3 id="join-presentation">Joining a Presentation</h3>
+   <p>Once a student has authenticated, he may join a presentation. See
+   <a href="student-ui-overview.html#list">Selecting a Class</a> for the UI
+   portion of this discussion.</p>
+   <p>Upon authenticaiton, EClass receives an array of <tt>class-objects</tt>
+      with the courses he is enrolled in. These <tt>class-objects</tt> are the
+      same objects
+      returned by the the authentication plugin upon student success with
+      one difference: the central server adds a <tt>hosted</tt> attribute
+      to each class. The <tt>hosted</tt> attribute is always included on every
+      <tt>class-object</tt>, and its value may either be <tt>true</tt> or
+      <tt>false</tt> for
+      whether or not a presentation is currently being hosted for this class.
+      The states values of these objects can be updated at any time by sending
+      an update request to the server (relativley simple, not documented here).
+      </p>
+   <p>To join a class, EClass sends a request to the central server containing
+      the class the student wishes to join. The central server responds with one
+      of two objects:</p>
+   <dl>
+      <dt>success</dt>
+         <dd>
+            <p>success [boolean] true</p>
+            <p>ip [string] ip of presenter's EClass</p>
+            <p>port [int] port to connect to</p>
+            <p>publicKey [string] the ssl public key of the presenter</p>
+            <p>connectionToken [string] a one time use connection token to be
+               sent to the presenter's EClass when logging in</p>
+         </dd>
+      <dt>failure</dt>
+         <dd>
+            <p>success [boolean] false</p>
+            <p>reason [string] why the student failed to get connectionToken.
+               some possbile reasons are: not logged in, and the class requested
+               isn't hosted</p>
+         </dd>
+   </dl>
+   <p>Once the student's EClass has the connection token, it sends a request
+      to the presenter's EClass at the ip and port returned from the success
+      response. It uses the public key returned to establish an ssl-ecrypted
+      connection to that machine.</p>
+   <p>The request to join the presentation simply includes the
+      <tt>connectionToken</tt>.</p>
+   <p>When the presenter's EClass receives the <tt>connectionToken</tt>, it
+      sends off a request to the central server to determine if the
+      <tt>connectionToken</tt> is legitamate. The central server looks up the
+      connection token and responds with one of two objects:</p>
+   <dl>
+      <dt>success</dt>
+         <dd>
+            <p>success [boolean] true</p>
+            <p>username [string] the username of the student associated with
+               this <tt>connectionToken</tt></p>
+         </dd>
+      <dt>failure</dt>
+         <dd>
+            <p>success [boolean] false</p>
+            <p>reason [string] the conneciton token is invalid</p>
+         </dd>
+   </dl>
+   <p>The presenter's EClass responds back to the client with success or
+      failure.</p>
+   <p>If successful the client and server use this currently open socket for
+      the remainder of their communications including adjusting the student's
+      approval rating, asking a quesiton, posting a message to the forum,
+      etc.</p>
+   <p>On failure, the server hangs up the connection.</p>
+   <p>Return to the <a href="#top">top</a> of this page.</p>
+
+   <h3 id="connectivity">Log out, stop hosting a presentation,
+      and connection lost</h3>
+   <p>For the time being, EClass operates on an "always open socket"
+      methodology. If the student or presenter ever looses connection, this is
+      equivalent to logging out and the whole login process must begin again.
+      Some limitations of this methodology are increased network useage and
+      possible
+      dropped presentations/students during the middle of presentations if there
+      are network issues.
+      However, the extra complication of reopening and authenticating
+      a socket with the same credentials it previously had is not currently
+      implemented. If time allows, this feature will be implemented.</p>
+   <p>Logging out and halting a presentation are as simple as killing the
+      sockets. If the presenter wishes to logout all students currently logged
+      in, he simply closes all connections to students. If he wishes to stop
+      hosting his presentation, he stops listening for
+      connections and closes his connection to the central server and the
+      stuents (a stop-hosting request may be added later).</p>
+   <p>If a student wishes to log out of a presentation, he closes his connection
+      with the presentation. If he wishes to log out of the central server, he
+      closes his connection with the central server.</p>
+   <p>Return to the <a href="#top">top</a> of this page.</p>
+</body>
+</html>
