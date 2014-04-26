@@ -1,3 +1,5 @@
+from Slide import Slide
+
 class Presentation:
    
    def __init__(self, path):
@@ -59,7 +61,7 @@ class Presentation:
                    line.find('</body>') != -1
                ):
                   slide += slideEnd
-                  self.slides.append(slide)
+                  self.slides.append(Slide(content = slide))
                   slide = '' + slideBase
 
                else:

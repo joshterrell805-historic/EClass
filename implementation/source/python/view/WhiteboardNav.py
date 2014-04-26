@@ -84,7 +84,7 @@ class WhiteboardNav(wx.Panel):
       self.RefreshSlide()
 
    def RefreshSlide(self):
-      self.whiteboard.SetPage(self.presentation.GetSlide(),
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
          self.presentation.GetPath()
       )
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))

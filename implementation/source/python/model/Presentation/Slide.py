@@ -1,3 +1,5 @@
+from Layer import Layer
+
 class Slide(object):
    
    def __init__(self, content, layers = []):
