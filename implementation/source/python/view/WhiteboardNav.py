@@ -12,7 +12,7 @@ class WhiteboardNav(wx.Panel):
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
-      self.whiteboard.SetPage(self.presentation.GetSlide(),
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
          self.presentation.GetPath()
       )
 

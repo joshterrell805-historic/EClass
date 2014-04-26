@@ -36,7 +36,6 @@ class Presentation:
          self.path = None
 
    def GetPath(self):
-      print('From Presentation.GetPath(): ' + self.path)
       return self.path
 
    def GetSlideNum(self):
@@ -61,7 +60,7 @@ class Presentation:
                    line.find('</body>') != -1
                ):
                   slide += slideEnd
-                  self.slides.append(Slide(content = slide))
+                  self.slides.append(Slide(slide, []))
                   slide = '' + slideBase
 
                else:
