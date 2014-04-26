@@ -108,6 +108,76 @@ class Presentation:
       pass
 
 
+class Slide(object):
+   """
+   A Slide is a collection of presentation content and layers that can be edited by a presenter
+   or student. A Slide contains zero or more layers that have been created specifically for its 
+   presentation content. Although it is primarily a data container, a Slide also provides the 
+   ability to reorder its layers.
+   
+   @author: Joel Wilcox (jnwilcox@calpoly.edu)
+
+   @ivar content: The presentation content (HTML, CSS, etc) associated with the Slide.
+   @ivar layers: Contains all of the Slide's layers.
+   """
+   
+   def __init__(self, content, layers = []):
+      """
+      Initialize a Slide.
+
+      @param content: The presentation content to assign the Slide
+      @param layers: An initial set of layers for the Slide, if any
+      """
+      pass
+
+   def GetContent(self):
+      """
+      Get the Slide's presentation content.
+      
+      @return: The Slide's presentation content.
+      """
+      pass
+
+   def GetLayers(self):
+      """
+      Get the Slide's layers. An empty list is returned when there are no layers.
+      
+      @return: The Slide's layers.
+      """
+      pass
+      
+   def AddLayer(self, layer):
+      """
+      Add a Layer to the Slide's Layers.
+      
+      @param layer: The new Layer to add.
+      
+      @precondition: isinstance(layer, Layer)
+      
+      @postcondition: self.layers[-1] == layer
+      """
+      pass
+
+   def OrderLayer(self, layer, newIndex):
+      """
+      Re-order the layers by moving the given layer to a different location on the layer stack.
+      
+      @param layer: The Layer to move.
+      @param newIndex: The index to move the given Layer to.
+      
+      @precondition: 
+         isinstance(layer, Layer) &&
+         self.layers.count(layer) == 1 && 
+         newIndex >= 0 &&
+         newIndex < len(self.layers)
+                     
+      @postcondition: 
+         self.layers.index(layer) == newIndex ||
+         self.layers.index(layer) == newIndex - 1 (when newIndex is greater than the original index)
+      """
+      pass
+
+   
 class PermissionLevel():
    """
    A PermissionLevel is an Enum of the three presentation permission levels used for students.

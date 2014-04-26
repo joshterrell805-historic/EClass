@@ -110,6 +110,14 @@ EClass.Presentation.Presentation.SetPath	EClass.Presentation.Presentation-class.
 EClass.Presentation.Presentation.Slidify	EClass.Presentation.Presentation-class.html#Slidify
 EClass.Presentation.Presentation.MoveToNextSlide	EClass.Presentation.Presentation-class.html#MoveToNextSlide
 EClass.Presentation.Presentation.GetSlideNum	EClass.Presentation.Presentation-class.html#GetSlideNum
+EClass.Presentation.Slide	EClass.Presentation.Slide-class.html
+EClass.Presentation.Slide.layers	EClass.Presentation.Slide-class.html#layers
+EClass.Presentation.Slide.GetLayers	EClass.Presentation.Slide-class.html#GetLayers
+EClass.Presentation.Slide.OrderLayer	EClass.Presentation.Slide-class.html#OrderLayer
+EClass.Presentation.Slide.content	EClass.Presentation.Slide-class.html#content
+EClass.Presentation.Slide.GetContent	EClass.Presentation.Slide-class.html#GetContent
+EClass.Presentation.Slide.AddLayer	EClass.Presentation.Slide-class.html#AddLayer
+EClass.Presentation.Slide.__init__	EClass.Presentation.Slide-class.html#__init__
 EClass.View.EClassWindow	EClass.View.EClassWindow-class.html
 EClass.View.ForumWindow	EClass.View.ForumWindow-class.html
 EClass.View.ForumWindow.Refresh	EClass.View.ForumWindow-class.html#Refresh
