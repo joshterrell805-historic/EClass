@@ -16,7 +16,7 @@ class Presentation:
 
    @author: Joel Wilcox (jnwilcox@calpoly.edu), Kevin Le (kle17@calpoly.edu)
 
-   @ivar currentSlide: Refers to the current slide being displayed.
+   @ivar currSlideNum: The index of the current slide.
    @ivar slides: Contains each of the slides in a presentation.
    @ivar path: Refers to the current file system path of the backing presentation file.
    """
@@ -33,9 +33,9 @@ class Presentation:
       """
       Set the current slide to the next consecutive slide.
 
-      @precondition: self.slides.index(self.currentSlide) != len(self.slides) - 1
+      @precondition: self.currSlideNum != len(self.slides) - 1
 
-      @postcondition: self.slides.index(self.currentSlide) == self.slides.index(old(self.currentSlide)) + 1
+      @postcondition: self.currSlideNum == old(self.currSlideNum) + 1
       """
       pass
 
@@ -43,9 +43,9 @@ class Presentation:
       """
       Set the current slide to the previous slide.
 
-      @precondition: self.slides.index(self.currentSlide) != 0
+      @precondition: self.currSlideNum != 0
 
-      @postcondition: self.slides.index(self.currentSlide) == self.slides.index(old(self.currentSlide)) - 1
+      @postcondition: self.currSlideNum == old(self.currSlideNum) - 1
       """
       pass
 
@@ -53,19 +53,22 @@ class Presentation:
       """
       Set the current slide to the slide at a given index.
 
-      @param slideNum: The index of the new slide to display.
+      @param slideNum: The index (offset by 1) of the new slide to display.
 
-      @precondition: slideNum >= 0 && slideNum < len(self.slides)
+      @precondition: slideNum >= 1 && slideNum <= len(self.slides)
 
-      @postcondition: self.slides.index(self.currentSlide) == slideNum
+      @postcondition: self.currSlideNum == slideNum - 1
       """
       pass
 
    def SyncWithPresenter(self):
+      # TODO Update postcondition when we have a way to get an instance of the Presenter's EClass/presentation
       """
       Set the current slide to the slide being viewed by the presenter.
 
-      @postcondition: self.slides.index(self.currentSlide) != self.slides.index(old(self.currentSlide))
+      @precondition: EClass.GetInstance().user.GetPermissions().GetPresPermLevel() != PermissionLevel.Lockdown
+      
+      @postcondition: self.currSlideNum == (Presenter's current slide number)
       """
       pass
 
@@ -73,7 +76,7 @@ class Presentation:
       """
       Set the current path of the presentation file.
 
-      @precondition: path != NULL
+      @precondition: path != None
       @postcondition: self.path == path
       """
       pass
@@ -82,8 +85,25 @@ class Presentation:
       """
       Gets the current slide that the presentation is on.
 
-      @precondition: self.slideNum >= 1 && self.slideNum < self.numSlides
-      @return: the current slide number.
+      @return: The current slide number.
+      """
+      pass
+
+   def GetSlide(self):
+      """
+      Get the current slide.
+
+      @return: The current slide.
+      """
+      pass
+      
+   def Slidify(self):
+      """
+      Initialize a set of slides from the file at the presentation's path.
+      
+      @precondition: self.path != None
+      
+      @postcondition: len(self.slides) >= 1
       """
       pass
 

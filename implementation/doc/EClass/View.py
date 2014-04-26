@@ -13,6 +13,7 @@ class WhiteboardNav(wx.Panel):
    @ivar presentation: A reference to the current presentation
    @ivar whiteboard: The HTML window which displays the current slide
    @ivar slideTextBox: A text box which can be given a slide number to navigate to
+   @ivar currSlideText: A static text display for the current slide number
    """
 
    def __init__(self, parent):
@@ -54,6 +55,12 @@ class WhiteboardNav(wx.Panel):
       """
       pass
 
+   def RefreshSlide(self):
+      """
+      Refresh the whiteboard to display the presentation's current slide.
+      Also refresh the slide number displayed below the whiteboard.
+      """
+      pass
 
 class PermissionsWindow(wx.Frame):
    """
@@ -98,7 +105,7 @@ class ImportPresentation(wx.Frame):
    """
    A ImportPresentation is a window that allows the importing of an already made HTMLpresentation document
 
-   @author: Kevin Le (kle17@calpoly.edu)
+   @author: Kevin Le (kle17@calpoly.edu), Joel Wilcox (jnwilcox@calpoly.edu)
 
    @ivar parent: The EClassWindow parent which needs the path of the HTML document
    @ivar presentationList: The directory structure which displays folders and files in the window.

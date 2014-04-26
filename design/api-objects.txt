@@ -100,12 +100,14 @@ EClass.Presentation.PermissionLevel.Normal	EClass.Presentation.PermissionLevel-c
 EClass.Presentation.Presentation	EClass.Presentation.Presentation-class.html
 EClass.Presentation.Presentation.slides	EClass.Presentation.Presentation-class.html#slides
 EClass.Presentation.Presentation.MoveToPreviousSlide	EClass.Presentation.Presentation-class.html#MoveToPreviousSlide
-EClass.Presentation.Presentation.currentSlide	EClass.Presentation.Presentation-class.html#currentSlide
+EClass.Presentation.Presentation.currSlideNum	EClass.Presentation.Presentation-class.html#currSlideNum
 EClass.Presentation.Presentation.MoveToSlide	EClass.Presentation.Presentation-class.html#MoveToSlide
+EClass.Presentation.Presentation.GetSlide	EClass.Presentation.Presentation-class.html#GetSlide
 EClass.Presentation.Presentation.__init__	EClass.Presentation.Presentation-class.html#__init__
 EClass.Presentation.Presentation.SyncWithPresenter	EClass.Presentation.Presentation-class.html#SyncWithPresenter
 EClass.Presentation.Presentation.path	EClass.Presentation.Presentation-class.html#path
 EClass.Presentation.Presentation.SetPath	EClass.Presentation.Presentation-class.html#SetPath
+EClass.Presentation.Presentation.Slidify	EClass.Presentation.Presentation-class.html#Slidify
 EClass.Presentation.Presentation.MoveToNextSlide	EClass.Presentation.Presentation-class.html#MoveToNextSlide
 EClass.Presentation.Presentation.GetSlideNum	EClass.Presentation.Presentation-class.html#GetSlideNum
 EClass.View.EClassWindow	EClass.View.EClassWindow-class.html
@@ -178,7 +180,9 @@ EClass.View.WhiteboardNav	EClass.View.WhiteboardNav-class.html
 EClass.View.WhiteboardNav.presentation	EClass.View.WhiteboardNav-class.html#presentation
 EClass.View.WhiteboardNav.MoveToSlide	EClass.View.WhiteboardNav-class.html#MoveToSlide
 EClass.View.WhiteboardNav.MoveToNextSlide	EClass.View.WhiteboardNav-class.html#MoveToNextSlide
+EClass.View.WhiteboardNav.RefreshSlide	EClass.View.WhiteboardNav-class.html#RefreshSlide
 EClass.View.WhiteboardNav.slideTextBox	EClass.View.WhiteboardNav-class.html#slideTextBox
+EClass.View.WhiteboardNav.currSlideText	EClass.View.WhiteboardNav-class.html#currSlideText
 EClass.View.WhiteboardNav.SyncWithPresenter	EClass.View.WhiteboardNav-class.html#SyncWithPresenter
 EClass.View.WhiteboardNav.__init__	EClass.View.WhiteboardNav-class.html#__init__
 EClass.View.WhiteboardNav.MoveToPreviousSlide	EClass.View.WhiteboardNav-class.html#MoveToPreviousSlide

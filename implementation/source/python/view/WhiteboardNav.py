@@ -6,7 +6,6 @@ from EClass import EClass
 
 class WhiteboardNav(wx.Panel):
 
-   # TODO update documentation (Joel)
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
 
@@ -84,7 +83,6 @@ class WhiteboardNav(wx.Panel):
       self.slideTextbox.Clear()
       self.RefreshSlide()
 
-   # TODO add documentation (Joel)
    def RefreshSlide(self):
       self.whiteboard.SetPage(self.presentation.GetSlide(),
          self.presentation.GetPath()

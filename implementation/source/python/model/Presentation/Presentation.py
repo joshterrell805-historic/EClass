@@ -3,19 +3,19 @@ class Presentation:
    def __init__(self, path):
       self.slides = []
       self.SetPath(path)
-      self.slideNum = 0
+      self.currSlideNum = 0
 
    def MoveToNextSlide(self):
-      if self.slideNum < len(self.slides) - 1:
-         self.slideNum += 1
+      if self.currSlideNum < len(self.slides) - 1:
+         self.currSlideNum += 1
 
    def MoveToPreviousSlide(self):
-      if self.slideNum != 0:
-         self.slideNum -= 1
+      if self.currSlideNum != 0:
+         self.currSlideNum -= 1
 
-   def MoveToSlide(self, slideNum):
-      if slideNum > 0 and slideNum <= len(self.slides):
-         self.slideNum = slideNum - 1
+   def MoveToSlide(self, currSlideNum):
+      if currSlideNum > 0 and currSlideNum <= len(self.slides):
+         self.currSlideNum = currSlideNum - 1
 
    # TODO implement this when we have a way to check the presenter's slide from
    # the student's client
@@ -38,13 +38,11 @@ class Presentation:
       return self.path
 
    def GetSlideNum(self):
-      return self.slideNum + 1
+      return self.currSlideNum + 1
 
-   # TODO add documentation (Joel)
    def GetSlide(self):
-      return self.slides[self.slideNum]
+      return self.slides[self.currSlideNum]
 
-   # TODO add documentation (Joel)
    def Slidify(self):
       inBody = False
       slideBase = ''

@@ -203,6 +203,40 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#GetSlide" class="summary-sig-name">GetSlide</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the current slide.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.GetSlide">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#Slidify" class="summary-sig-name">Slidify</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Initialize a set of slides from the file at the presentation's path.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.Slidify">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
 <!-- ==================== INSTANCE VARIABLES ==================== -->
 <a name="section-InstanceVariables"></a>
@@ -225,8 +259,8 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="currentSlide"></a><span class="summary-name">currentSlide</span><br />
-      Refers to the current slide being displayed.
+        <a name="currSlideNum"></a><span class="summary-name">currSlideNum</span><br />
+      The index of the current slide.
     </td>
   </tr>
 <tr>
@@ -308,11 +342,10 @@
   <dl class="fields">
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
-        self.slides.index(self.currentSlide) != len(self.slides) - 1
+        self.currSlideNum != len(self.slides) - 1
       </p>
       <p><strong>Postcondition:</strong>
-        self.slides.index(self.currentSlide) == 
-        self.slides.index(old(self.currentSlide)) + 1
+        self.currSlideNum == old(self.currSlideNum) + 1
       </p>
 </div></td></tr></table>
 </div>
@@ -334,11 +367,10 @@
   <dl class="fields">
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
-        self.slides.index(self.currentSlide) != 0
+        self.currSlideNum != 0
       </p>
       <p><strong>Postcondition:</strong>
-        self.slides.index(self.currentSlide) == 
-        self.slides.index(old(self.currentSlide)) - 1
+        self.currSlideNum == old(self.currSlideNum) - 1
       </p>
 </div></td></tr></table>
 </div>
@@ -361,14 +393,14 @@
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>slideNum</code></strong> - The index of the new slide to display.</li>
+        <li><strong class="pname"><code>slideNum</code></strong> - The index (offset by 1) of the new slide to display.</li>
     </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
-        slideNum &gt;= 0 &amp;&amp; slideNum &lt; len(self.slides)
+        slideNum &gt;= 1 &amp;&amp; slideNum &lt;= len(self.slides)
       </p>
       <p><strong>Postcondition:</strong>
-        self.slides.index(self.currentSlide) == slideNum
+        self.currSlideNum == slideNum - 1
       </p>
 </div></td></tr></table>
 </div>
@@ -389,9 +421,12 @@
   <p>Set the current slide to the slide being viewed by the presenter.</p>
   <dl class="fields">
   </dl>
-<div class="fields">      <p><strong>Postcondition:</strong>
-        self.slides.index(self.currentSlide) != 
-        self.slides.index(old(self.currentSlide))
+<div class="fields">      <p><strong>Precondition:</strong>
+        EClass.GetInstance().user.GetPermissions().GetPresPermLevel() != 
+        PermissionLevel.Lockdown
+      </p>
+      <p><strong>Postcondition:</strong>
+        self.currSlideNum == (Presenter's current slide number)
       </p>
 </div></td></tr></table>
 </div>
@@ -414,7 +449,7 @@
   <dl class="fields">
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
-        path != NULL
+        path != None
       </p>
       <p><strong>Postcondition:</strong>
         self.path == path
@@ -438,10 +473,54 @@
   <p>Gets the current slide that the presentation is on.</p>
   <dl class="fields">
     <dt>Returns:</dt>
-        <dd>the current slide number.</dd>
+        <dd>The current slide number.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="GetSlide"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetSlide</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.GetSlide">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the current slide.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>The current slide.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="Slidify"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Slidify</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.Slidify">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialize a set of slides from the file at the presentation's 
+  path.</p>
+  <dl class="fields">
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
-        self.slideNum &gt;= 1 &amp;&amp; self.slideNum &lt; self.numSlides
+        self.path != None
+      </p>
+      <p><strong>Postcondition:</strong>
+        len(self.slides) &gt;= 1
       </p>
 </div></td></tr></table>
 </div>
@@ -472,7 +551,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Apr 25 11:10:37 2014
+    Generated by Epydoc 3.0.1 on Sat Apr 26 11:21:35 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
