@@ -8,9 +8,8 @@ class Student(Person):
       self.permissions = permissions
 
    def GetPermissions(self):
-      print('From Student.GetPermissions()')
       return self.permissions
 
-   def SetPermissions(self, value):
-      print('From Student.SetPermissions()')
-      self.permissions = value
+   def SetPermissions(self, permissions):
+      self.permissions = permissions
+      

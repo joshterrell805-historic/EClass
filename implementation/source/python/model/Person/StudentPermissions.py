@@ -13,25 +13,19 @@ class StudentPermissions(object):
       self.canPushLayer = canPushLayer
 
    def GetPresPermLevel(self):
-      print('From StudentPermissions.GetPresPermLevel()')
       return self.presPermLevel
 
    def SetPresPermLevel(self, value):
-      print('From StudentPermissions.SetPresPermLevel()')
       self.presPermLevel = value
 
    def CanRaiseHand(self):
-      print('From StudentPermissions.CanRaiseHand()')
       return self.canRaiseHand
 
    def SetCanRaiseHand(self, value):
-      print('From StudentPermissions.SetCanRaiseHand()')
       self.canRaiseHand = value
 
    def CanPushLayer(self):
-      print('From StudentPermissions.CanPushLayer()')
       return self.canPushLayer
 
    def SetCanPushLayer(self, value):
-      print('From StudentPermissions.SetCanPushLayer()')
       self.canPushLayer = value

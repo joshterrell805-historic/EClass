@@ -52,15 +52,15 @@ class Student(Person):
       """
       pass
 
-   def SetPermissions(self, value):
+   def SetPermissions(self, permissions):
       """
       Set the student's permissions with a new StudentPermissions object.
 
-      @param value: The new set of student permissions.
+      @param permissions: The new set of student permissions.
 
-      @precondition: isinstance(value, StudentPermissions) == True
+      @precondition: isinstance(permissions, StudentPermissions) == True
 
-      @postcondition: self.permissions == value
+      @postcondition: self.permissions == permissions
       """
       pass
 

@@ -13,17 +13,29 @@ class PermissionsWindow(wx.Frame):
       self.SetBackgroundColour('#FFFFFF')
       
       self.student = student
-
+      perms = self.student.GetPermissions()
+      permLevel = perms.GetPresPermLevel()
+      
       self.radioUnrestricted = wx.RadioButton(self, label = 'Unrestricted',
          style = wx.RB_GROUP
       )
       self.radioNormal = wx.RadioButton(self, label = 'Normal')
       self.radioLockdown = wx.RadioButton(self, label = 'Lockdown')
+      
+      if permLevel == PermissionLevel.Unrestricted:
+         self.radioUnrestricted.SetValue(True)
+      elif permLevel == PermissionLevel.Normal:
+         self.radioNormal.SetValue(True)
+      else:
+         self.radioLockdown.SetValue(True)
+      
       self.checkRaiseHand = wx.CheckBox(self, label = 'Raise hand/Ask question')
       self.checkPushLayer = wx.CheckBox(self,
          label = 'Push a layer to the public stack'
       )
-
+      self.checkRaiseHand.SetValue(perms.CanRaiseHand())
+      self.checkPushLayer.SetValue(perms.CanPushLayer())
+      
       sizer = wx.BoxSizer(wx.VERTICAL)
       whiteboardSizer = wx.BoxSizer(wx.VERTICAL) # For whiteboard permissions
       requestsSizer = wx.BoxSizer(wx.VERTICAL)
@@ -72,10 +84,10 @@ class PermissionsWindow(wx.Frame):
       
       if self.radioUnrestricted.GetValue() == True:
          perms.SetPresPermLevel(PermissionLevel.Unrestricted)
-      elif self.radioLockdown.GetValue() == True:
-         perms.SetPresPermLevel(PermissionLevel.Lockdown)
-      else:
+      elif self.radioNormal.GetValue() == True:
          perms.SetPresPermLevel(PermissionLevel.Normal)
+      else:
+         perms.SetPresPermLevel(PermissionLevel.Lockdown)
 
       perms.SetCanRaiseHand(self.checkRaiseHand.GetValue())
       perms.SetCanPushLayer(self.checkPushLayer.GetValue())
@@ -84,8 +96,3 @@ class PermissionsWindow(wx.Frame):
    def OnCancel(self, event):
       self.Destroy()
 
-if __name__ == '__main__':
-  
-    app = wx.App()
-    PermWin = PermissionsWindow(Student('blah', 'blahhh'))
-    app.MainLoop()
