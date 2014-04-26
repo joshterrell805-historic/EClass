@@ -7,13 +7,13 @@ and converse in a forum with other students.
 There are three types of applications that interact in EClass: EClass
 (presenter logged in), EClass (student logged in), and the central server.
 Documentation about how these applications interact behind the scenes is
-described in the U{networking documentation <THIS_WILL_BE_REMOVED_TO_CREATE_A_RELATIVE_LINK../documentation/design/networking.html>}.
-TODO: add link to networking classes.
+described in the U{networking documentation <THIS_WILL_BE_REMOVED_TO_CREATE_A_RELATIVE_LINK../documentation/design/networking.html>}. Also, see EClass.Connection below to see
+the model of the EClass side of the connection.
 
 @author: Josh Terrell jmterrel@calpoly.edu
 """
 
-__all__ = ["Person", "Presentation"]
+__all__ = ["Person", "Presentation", "Connection"]
 
 class EClass():
    """
