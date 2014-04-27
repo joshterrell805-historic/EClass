@@ -9,7 +9,7 @@ class PermissionsWindow(wx.Frame):
    
    def __init__(self, student):
 
-      super(PermissionsWindow, self).__init__(None, -1, 'Permissions: Temp Name')
+      super(PermissionsWindow, self).__init__(None, -1, 'Permissions: ' + student.username)
       self.SetBackgroundColour('#FFFFFF')
       
       self.student = student
