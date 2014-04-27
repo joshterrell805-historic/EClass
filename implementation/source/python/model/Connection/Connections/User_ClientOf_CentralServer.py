@@ -1,4 +1,5 @@
 from __init__ import BaseConnection
+from twisted.internet import reactor
 
 class User_ClientOf_CentralServer(BaseConnection):
    def __init__(self):
@@ -18,6 +19,7 @@ class User_ClientOf_CentralServer(BaseConnection):
             message['code'] + "'"
          )
 
+      self.__timeoutCall.cancel()
       self.__state = None
       self.__stateCallback(message['response'])
 
@@ -31,6 +33,15 @@ class User_ClientOf_CentralServer(BaseConnection):
          'password' : password
       })
       print('awaiting login response')
+      self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
+
+   def responseTimeout(self):
+      state = self.__state
+      self.__state = None
+      self.__stateCallback({
+         'success' : False,
+         'reason'  : state + ' response timed out'
+      })
       
    def prepareSend(self):
       """ make sure that we're still connected and we're not waiting for a
