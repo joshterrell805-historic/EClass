@@ -11,8 +11,8 @@ class User_ClientOf_CentralServer(BaseConnection):
       self.__closeReason = reason
 
    def onMessage(self, message):
-      print('receive')
-      print(message)
+      #print('receive')
+      #print(message)
       if message['code'] != self.__state:
          raise Exception(
             "State is '" + self.__state + "' but response is '" +
@@ -28,11 +28,21 @@ class User_ClientOf_CentralServer(BaseConnection):
       self.__state = 'authorize'
       self.__stateCallback = callback
       self.send({
-         'code'     : 'authorize',
+         'code'     : self.__state,
          'username' : username,
          'password' : password
       })
-      print('awaiting login response')
+      self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
+
+   def tryHost(self, className, port, callback):
+      self.prepareSend()
+      self.__state = 'host'
+      self.__stateCallback = callback
+      self.send({
+         'code'  : self.__state,
+         'class' : className,
+         'port'  : port
+      })
       self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
 
    def responseTimeout(self):

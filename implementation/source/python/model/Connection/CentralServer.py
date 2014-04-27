@@ -9,11 +9,8 @@ from Connections.CentralServer_ServerOf_User import CentralServer_ServerOf_User 
 configFile = open(os.path.dirname(__file__) + '/config.json')
 settings = json.load(configFile)['central server']
 
-def onConnect(connection):
+def onListen(port):
    pass
-def onFail(reason):
-   print('Failed to start the central server')
-   print(reason)
 
-
-Server.listen(settings['port'], CentralServer, onConnect, onFail)
+Server.singleThread()
+Server.listen(settings['port'], CentralServer, onListen, None)

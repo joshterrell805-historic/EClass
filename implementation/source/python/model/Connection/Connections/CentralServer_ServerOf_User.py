@@ -3,7 +3,17 @@ import CentralServer_AuthPlugin_Simple as AuthPlugin
 
 # an instance of this class exists for every client
 class CentralServer_ServerOf_User(BaseConnection):
-   __validCodes = ['authorize']
+   __validCodes = ['authorize', 'host']
+   __hostedClasses = []
+
+   @property
+   def hostedClasses(self):
+      # returns an array shared by all connections of the hosted classes
+      # contains name(class),
+      # first and  lastname(presenter),
+      # port
+      # students(username)
+      return CentralServer_ServerOf_User.__hostedClasses
 
    def __init__(self):
       self.__loginSuccessResponse = None
@@ -29,7 +39,7 @@ class CentralServer_ServerOf_User(BaseConnection):
          self.send({
             'code': message['code'],
             'response': {
-               'success' : False,
+               'success'  : False,
                'reason'   : 'You are already logged in'
             }
          })
@@ -38,6 +48,8 @@ class CentralServer_ServerOf_User(BaseConnection):
       def loginResponse(response):
          if response['success']:
             self.__loginSuccessResponse = response
+            if response['role'] == 'student':
+               self.__updateMyClasses()
             self.send({
                'code'    : message['code'],
                'response': {
@@ -58,6 +70,82 @@ class CentralServer_ServerOf_User(BaseConnection):
       AuthPlugin.login(
          message['username'], message['password'], loginResponse
       )
+
+   def receive_host(self, message):
+      if (not self.__verifyString(message, 'class') or
+          not self.__verifyInt(message, 'port')
+      ):
+         return
+
+      # verify user logged in as presenter
+      if (not self.__loginSuccessResponse or
+          not self.__loginSuccessResponse['role'] == 'presenter'
+      ):
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : ('You must be logged in as a presenter to host a' +
+                  ' presentation')
+            }
+         })
+         return
+
+      # verify presenter may host a presentation for this class
+      def getClassName(aClass):
+         return aClass['name']
+      if (not message['class'] in
+            map(getClassName, self.__loginSuccessResponse['classes'])
+      ):
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : 'You may not host a presentation for this class'
+            }
+         })
+         return
+
+      def isMyClass(aClass):
+         return (
+            self.__loginSuccessResponse['firstname'] == aClass['firstname'] and
+            self.__loginSuccessResponse['lastname'] == aClass['lastname']
+         )
+      myClasses = filter(isMyClass, self.hostedClasses)
+
+      # verify that presenter isn't already hosting a class
+      if len(myClasses) != 0:
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : 'You are already hosting a presentation'
+            }
+         })
+         # we done fucked up
+         if len(myClasses) != 1:
+            raise Exception('presenter is hosting more than one class')
+
+      # passed validation! add the class and send the response
+      myClass = {
+         'name' : message['class'],
+         'port' : message['port'],
+         'firstname' : self.__loginSuccessResponse['firstname'],
+         'lastname'  : self.__loginSuccessResponse['lastname'],
+         'students'  : []
+      }
+      self.hostedClasses.append(myClass)
+      self.send({
+         'code' : message['code'],
+         'response': {
+            'success': True
+         }
+      })
+      print(myClass['firstname'] + ' ' + myClass['lastname'] + ' is hosting ' +
+         myClass['name'])
+
+
+      # TODO notify students that the hosted classes have changed
 
    def __verifyString(self, message, key):
       return self.__verifyType(message, key, basestring, 'string')
@@ -84,3 +172,23 @@ class CentralServer_ServerOf_User(BaseConnection):
          return False
 
       return True
+
+   def __updateMyClasses(self):
+      # update this student's list of classes so with hosted information
+
+      def isHosted(myClass):
+         def classesEquivalent(hostedClass):
+            return (
+               myClass['firstname'] == hostedClass['firstname'] and
+               myClass['lastname'] == hostedClass['lastname'] and
+               myClass['name'] == hostedClass['name']
+            )
+         # if myclass has the same name, firstname, and lastname as a class
+         # in hostedClasses, then my class is hosted
+         return len(filter(classesEquivalent, self.hostedClasses)) != 0
+
+      for myClass in self.__loginSuccessResponse['classes']:
+         if isHosted(myClass):
+            myClass['hosted'] = True
+         else:
+            myClass['hosted'] = False

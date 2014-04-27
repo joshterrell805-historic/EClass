@@ -50,7 +50,8 @@ class BaseProtocol(Protocol):
 
    def connectionMade(self):
       print('connection success')
-      self.__onConnection(self.__baseConnection)
+      if self.__onConnection:
+         self.__onConnection(self.__baseConnection)
 
    def connectionLost(self, reason):
       self.__baseConnection.onClose(reason)
@@ -70,11 +71,10 @@ class BaseProtocol(Protocol):
       self.transport.write(data)
 
 class ServerConnectionFactory(Factory):
-   def __init__(self, ConnectionClass, onConnection, onConnectionFailed):
+   def __init__(self, ConnectionClass, onConnection):
       #called in protocol.connectionMade
       self.__ConnectionClass = ConnectionClass
       self.__onConnection = onConnection
-      self.__onConnectionFailed = onConnectionFailed
 
    def buildProtocol(self, addr):
       connection = self.__ConnectionClass()
@@ -105,15 +105,23 @@ def startReactorIfNotStarted():
       Thread(target=reactor.run, args=(False,)).start()
    
 class Server(object):
+   __singleThread = False
    @staticmethod
-   def listen(port, ConnectionClass, onConnection, onConnectionFailed):
-      reactor.listenTCP(port,
-         ServerConnectionFactory(ConnectionClass, onConnection,
-            onConnectionFailed
-         )
+   def listen(port, ConnectionClass, onListen, onConnection):
+      listeningPort = reactor.listenTCP(port,
+         ServerConnectionFactory(ConnectionClass, onConnection)
       )
-      print('listening on ' + str(port))
-      reactor.run()
+      print('listening on ' + str(listeningPort.getHost().port))
+      onListen(listeningPort)
+      if Server.__singleThread and not reactor.running:
+         reactor.run()
+      else:
+         startReactorIfNotStarted()
+
+   @staticmethod
+   def singleThread():
+      # call this method to make the listen happen on the same thread
+      Server.__singleThread = True
 
 class Client(object):
    @staticmethod

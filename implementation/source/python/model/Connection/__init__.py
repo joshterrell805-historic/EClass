@@ -1,6 +1,7 @@
 import os, json, wx
-from Connections import Client
+from Connections import Client, Server
 from Connections.User_ClientOf_CentralServer import User_ClientOf_CentralServer as CentralClient
+from Connections.Presenter_ServerOf_Student import Presenter_ServerOf_Student as PresenterServer
 from Responses import *
 from twisted.internet import reactor
 
@@ -10,6 +11,7 @@ class Connection(object):
    __instance = None
    def __init__(self):
       self.__centralClient = None
+      self.__presenterServer = None
       self.__connections = []
 
       #see self.__loop
@@ -31,9 +33,76 @@ class Connection(object):
       map(closeConnection, self.__connections)
       self.__continueLoop = False
 
+      if self.__presenterServer:
+         self.__presenterServer.stopListening()
+
       if reactor.running:
          reactor.stop()
       
+   def authenticate(self, username, password, callback):
+      self.__username = username
+      self.__password = password
+      self.__settings = self.__loadSettings()
+
+      def onAuth(response):
+         if response['success']:
+            self.__addCallback(callback, [
+               AuthenticationSuccess(response['role'], response['classes'])
+            ])
+         else:
+            self.__addCallback(callback, [
+               AuthenticationFailure(response['reason'])
+            ])
+
+      def tryAuth():
+         self.__centralClient.tryAuth(username, password, onAuth)
+
+      def failConnect(reason):
+         self.__addCallback(callback, [
+            AuthenticationFailure('Failed to connect to server')
+         ])
+
+      self.__connectCentral(tryAuth, failConnect)
+
+   def hostPresentation(self, className, callback):
+      def onHost(response):
+         if response['success']:
+            self.__addCallback(callback, [
+               HostSuccess()
+            ])
+         else:
+            self.__addCallback(callback, [
+               HostFailure(response['reason'])
+            ])
+
+      def tryHost():
+         self.__centralClient.tryHost(className,
+            self.__presenterServer.getHost().port, onHost
+         )
+
+      def failConnect(reason):
+         self.__addCallback(callback, [
+            AuthenticationFailure('Failed to connect to server')
+         ])
+
+      def doneStarting():
+         self.__connectCentral(tryHost, failConnect)
+
+      self.__startPresentationServer(doneStarting)
+
+   def registerStudentClassesListener(self, listener):
+      pass
+   def unregisterStudentClassesListener(self, listener):
+      pass
+   def sendMessage(self, identifier, recipient, message):
+      pass
+   def registerMessageListener(self, identifier, listener):
+      pass
+   def unregisterMessageListener(self, identifier, listener):
+      pass
+
+   # ----- helper methods ------
+
    # wx can't be called from twisted... fuck
    # two threads now...
    # what this does is start an infinite loop in wx's thread that calls any
@@ -55,44 +124,6 @@ class Connection(object):
       self.__callbacksToCall.append(callback)
       self.__argsToPass.append(args)
 
-   def authenticate(self, username, password, callback):
-      self.__username = username
-      self.__password = password
-      self.__settings = self.__loadSettings()
-
-      def onAuth(response):
-         if response['success']:
-            self.__addCallback(callback, [
-               AuthenticationSuccess(response['role'], response['classes'])
-            ])
-         else:
-            self.__addCallback(callback, [
-               AuthenticationFailure(response['reason'])
-            ])
-
-      def tryAuth():
-         self.__centralClient.tryAuth(username, password, onAuth)
-
-      def failConnect(reason):
-         callback(AuthenticationFailure('Failed to connect to server'))
-
-      self.__connectCentral(tryAuth, failConnect)
-
-   def hostPresentation(self, className, callback):
-      pass
-   def registerStudentClassesListener(self, listener):
-      pass
-   def unregisterStudentClassesListener(self, listener):
-      pass
-   def sendMessage(self, identifier, recipient, message):
-      pass
-   def registerMessageListener(self, identifier, listener):
-      pass
-   def unregisterMessageListener(self, identifier, listener):
-      pass
-
-   # ----- helper methods ------
-
    def __loadSettings(self):
       # load and return the settings dictionary from config.json
       configFile = open(os.path.dirname(__file__) + '/config.json')
@@ -113,6 +144,23 @@ class Connection(object):
             CentralClient,
             setCentral,
             failCallback
+         )
+      else:
+         callback()
+
+   def __startPresentationServer(self, callback):
+      def setPresenter(listeningPort):
+         if not self.__presenterServer:
+            self.__presenterServer = listeningPort
+            print('done starting presenter server')
+         callback()
+
+      if not self.__presenterServer:
+         Server.listen(
+            0,
+            PresenterServer,
+            setPresenter,
+            None # on new connection to client
          )
       else:
          callback()

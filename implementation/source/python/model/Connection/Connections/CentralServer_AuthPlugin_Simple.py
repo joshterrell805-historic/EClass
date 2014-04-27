@@ -19,6 +19,7 @@ _students = [
 
 # the first presenter in this array is displayed as the presenter hosting
 # classes, although any presenter can host
+# First and last name together form a key.. MUST BE UNIQUE
 _presenters = [
    {
       'firstname' : 'Gene',

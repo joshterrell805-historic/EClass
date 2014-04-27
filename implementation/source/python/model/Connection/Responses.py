@@ -1,21 +1,49 @@
-
-class AuthenticationResponse(object):
+#--- Generic
+class GenericResponse(object):
    def __init__(self):
       self.__success = None
 
    @property
    def success(self):
       if self.__success == None:
-         self.__success = isinstance(self, AuthenticationSuccess)
+         self.__success = isinstance(self, GenericSuccess)
       return self.__success
 
-class AuthenticationFailure(AuthenticationResponse):
+class GenericSuccess(GenericResponse):
+   def __init__(self):
+      super(GenericSuccess, self).__init__()
+
+class GenericFailure(GenericResponse):
    def __init__(self, reason):
-      super(AuthenticationFailure, self).__init__()
+      super(GenericFailure, self).__init__()
       self.reason = reason
 
-class AuthenticationSuccess(AuthenticationResponse):
+
+#--- Authentication
+class AuthenticationResponse(GenericResponse):
+   def __init__(self):
+      super(AuthenticationResponse, self).__init__()
+
+class AuthenticationFailure(GenericFailure):
+   def __init__(self, reason):
+      super(AuthenticationFailure, self).__init__(reason)
+
+class AuthenticationSuccess(GenericSuccess):
    def __init__(self, role, classes):
       super(AuthenticationSuccess, self).__init__()
       self.role = role
       self.classes = classes
+
+
+#--- Host
+class HostResponse(GenericResponse):
+   def __init__(self):
+      super(HostResponse, self).__init__()
+
+class HostFailure(GenericFailure):
+   def __init__(self, reason):
+      super(HostFailure, self).__init__(reason)
+
+class HostSuccess(GenericSuccess):
+   def __init__(self):
+      super(HostSuccess, self).__init__()
