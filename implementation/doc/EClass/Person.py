@@ -32,6 +32,8 @@ class Student(Person):
    @ivar permissions: The student's set of permissions.
    @ivar kicked: Boolean indicating if the student has been kicked.
    @ivar present: Boolean indicating if the student is present.
+   @ivar question: The student's current question (if any)
+   @ivar pushedLayer: The student's current pushed layer (if any)
    """
 
    def __init__(self, username, password, permissions):
@@ -61,6 +63,90 @@ class Student(Person):
       @precondition: isinstance(permissions, StudentPermissions) == True
 
       @postcondition: self.permissions == permissions
+      """
+      pass
+      
+   def IsPresent(self):
+      """
+      Indicate if the student is present.
+      
+      @return: self.present
+      """
+      pass
+      
+   def SetPresent(self, value):
+      """
+      Set whether or not the student is present.
+      
+      @param value: A boolean value
+      
+      @postcondition: self.present == value
+      """
+      pass
+      
+   def IsKicked(self):
+      """
+      Indicate if the student has been kicked.
+      
+      @return: self.kicked
+      """
+      pass
+      
+   def SetKicked(self, value):
+      """
+      Set the student's kicked status.
+      
+      @param value: A boolean value
+      
+      @postcondition: self.kicked == value
+      """
+      pass
+      
+   def HasQuestion(self):
+      """
+      Indicate if the student currently has a question.
+      
+      @return: True when there is a question and False otherwise
+      """
+      pass
+      
+   def GetQuestion(self):
+      """
+      Get the student's current question.
+      
+      @return: self.question
+      """
+      pass
+      
+   def SetQuestion(self, question):
+      """
+      Set the student's current question.
+      
+      @param question: The new Question
+      
+      @precondition: isinstance(question, Question)
+      
+      @postcondition: self.question == question
+      """
+      pass
+         
+   def GetPushedLayer(self):
+      """
+      Get the student's pushed layer.
+      
+      @return: self.pushedLayer
+      """
+      pass
+      
+   def SetPushedLayer(self, layer):
+      """
+      Set the student's pushed layer.
+      
+      @param layer: The new Layer to push
+      
+      @precondition: isinstance(layer, Layer)
+      
+      @postcondition: self.pushedLayer == layer
       """
       pass
 
@@ -218,3 +304,40 @@ class RosterItem:
       Allows a student to push private layers.
       """
       pass
+
+ 
+class Question(object):
+   """
+   Question is a container for the text and time created of a Student's question.
+
+   @author: Joel Wilcox (jnwilcox@calpoly.edu)
+
+   @ivar text: The Question's text
+   @ivar timeCreated: When the Question was created
+   """
+ 
+   def __init__(self, questionText, timeCreated):
+      """
+      Initialize a Question object.
+
+      @param questionText: A string to initialize the question with
+      @param timeCreated: The time when the Question was created (Current time if none is given)
+      """
+      pass
+
+   def GetText(self):
+      """
+      Get the Question's text.
+      
+      @return: self.text
+      """
+      pass
+      
+   def GetTime(self):
+      """
+      Get the Question's creation time.
+      
+      @return: self.timeCreated
+      """
+      pass
+      

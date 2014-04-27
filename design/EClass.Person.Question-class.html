@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.Presentation.Slide</title>
+  <title>EClass.Person.Question</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,8 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.Presentation-module.html">Module&nbsp;Presentation</a> ::
-        Class&nbsp;Slide
+        <a href="EClass.Person-module.html">Module&nbsp;Person</a> ::
+        Class&nbsp;Question
       </span>
     </td>
     <td>
@@ -49,26 +49,23 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.Presentation.Slide-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.Person.Question-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class Slide</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class Question</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Person-pysrc.html#Question">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 object --+
          |
-        <strong class="uidshort">Slide</strong>
+        <strong class="uidshort">Question</strong>
 </pre>
 
 <hr />
-<p>A Slide is a collection of presentation content and layers that can be
-  edited by a presenter or student. A Slide contains zero or more layers 
-  that have been created specifically for its presentation content. 
-  Although it is primarily a data container, a Slide also provides the 
-  ability to reorder its layers.</p>
+<p>Question is a container for the text and time created of a Student's 
+  question.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -97,12 +94,12 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Slide-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">content</span>,
-        <span class="summary-sig-arg">layers</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>)</span><br />
-      Initialize a Slide.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.Question-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">questionText</span>,
+        <span class="summary-sig-arg">timeCreated</span>)</span><br />
+      Initialize a Question object.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Question.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -116,10 +113,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Slide-class.html#GetContent" class="summary-sig-name">GetContent</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Get the Slide's presentation content.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.Question-class.html#GetText" class="summary-sig-name">GetText</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the Question's text.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.GetContent">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Question.GetText">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -133,48 +130,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Slide-class.html#GetLayers" class="summary-sig-name">GetLayers</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Get the Slide's layers.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.Question-class.html#GetTime" class="summary-sig-name">GetTime</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the Question's creation time.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.GetLayers">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Slide-class.html#AddLayer" class="summary-sig-name">AddLayer</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">layer</span>)</span><br />
-      Add a Layer to the Slide's Layers.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.AddLayer">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Slide-class.html#OrderLayer" class="summary-sig-name">OrderLayer</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">layer</span>,
-        <span class="summary-sig-arg">newIndex</span>)</span><br />
-      Re-order the layers by moving the given layer to a different location
-      on the layer stack.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.OrderLayer">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Question.GetTime">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -222,16 +181,16 @@ object --+
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="content"></a><span class="summary-name">content</span><br />
-      The presentation content (HTML, CSS, etc) associated with the Slide.
+        <a name="text"></a><span class="summary-name">text</span><br />
+      The Question's text
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="layers"></a><span class="summary-name">layers</span><br />
-      Contains all of the Slide's layers.
+        <a name="timeCreated"></a><span class="summary-name">timeCreated</span><br />
+      When the Question was created
     </td>
   </tr>
 </table>
@@ -286,21 +245,22 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">content</span>,
-        <span class="sig-arg">layers</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>)</span>
+        <span class="sig-arg">questionText</span>,
+        <span class="sig-arg">timeCreated</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Question.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initialize a Slide.</p>
+  <p>Initialize a Question object.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>content</code></strong> - The presentation content to assign the Slide</li>
-        <li><strong class="pname"><code>layers</code></strong> - An initial set of layers for the Slide, if any</li>
+        <li><strong class="pname"><code>questionText</code></strong> - A string to initialize the question with</li>
+        <li><strong class="pname"><code>timeCreated</code></strong> - The time when the Question was created (Current time if none is 
+          given)</li>
     </ul></dd>
     <dt>Overrides:
         object.__init__
@@ -308,114 +268,47 @@ object --+
   </dl>
 </td></tr></table>
 </div>
-<a name="GetContent"></a>
+<a name="GetText"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetContent</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetText</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.GetContent">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Question.GetText">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Get the Slide's presentation content.</p>
+  <p>Get the Question's text.</p>
   <dl class="fields">
     <dt>Returns:</dt>
-        <dd>The Slide's presentation content.</dd>
+        <dd>self.text</dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="GetLayers"></a>
+<a name="GetTime"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetLayers</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetTime</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.GetLayers">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Question.GetTime">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Get the Slide's layers. An empty list is returned when there are no 
-  layers.</p>
+  <p>Get the Question's creation time.</p>
   <dl class="fields">
     <dt>Returns:</dt>
-        <dd>The Slide's layers.</dd>
+        <dd>self.timeCreated</dd>
   </dl>
 </td></tr></table>
-</div>
-<a name="AddLayer"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">AddLayer</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">layer</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.AddLayer">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Add a Layer to the Slide's Layers.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>layer</code></strong> - The new Layer to add.</li>
-    </ul></dd>
-  </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        isinstance(layer, Layer)
-      </p>
-      <p><strong>Postcondition:</strong>
-        self.layers[-1] == layer
-      </p>
-</div></td></tr></table>
-</div>
-<a name="OrderLayer"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">OrderLayer</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">layer</span>,
-        <span class="sig-arg">newIndex</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Slide.OrderLayer">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Re-order the layers by moving the given layer to a different location 
-  on the layer stack.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>layer</code></strong> - The Layer to move.</li>
-        <li><strong class="pname"><code>newIndex</code></strong> - The index to move the given Layer to.</li>
-    </ul></dd>
-  </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        isinstance(layer, Layer) &amp;&amp; self.layers.count(layer) == 1 
-        &amp;&amp; newIndex &gt;= 0 &amp;&amp; newIndex &lt; 
-        len(self.layers)
-      </p>
-      <p><strong>Postcondition:</strong>
-        self.layers.index(layer) == newIndex || self.layers.index(layer) ==
-        newIndex - 1 (when newIndex is greater than the original index)
-      </p>
-</div></td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
