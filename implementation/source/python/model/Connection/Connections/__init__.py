@@ -127,8 +127,11 @@ class Client(object):
    @staticmethod
    def connect(hostname, port, ConnectionClass, onConnection, onConnectFail):
       print('connecting to ' + hostname + ':' + str(port))
+      def failWrap(reason):
+         onConnectFail()
+
       reactor.connectTCP(hostname, port,
-         ClientConnectionFactory(ConnectionClass, onConnection, onConnectFail),
+         ClientConnectionFactory(ConnectionClass, onConnection, failWrap),
          3
       )
       startReactorIfNotStarted()

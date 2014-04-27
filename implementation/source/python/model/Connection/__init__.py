@@ -38,6 +38,17 @@ class Connection(object):
 
       if reactor.running:
          reactor.stop()
+
+      # you got one second to exit, reactor
+      # TODO figure out how to actually kill reactor the right way..
+      # this was added because whenever a connection closes it we can't
+      # close out of reactor.. it just hangs for a minute then finally dies.
+      import time
+      time.sleep(1)
+      if reactor.running:
+         print('reactor still running.. killing process')
+         import os, signal
+         os.kill(os.getpid(), signal.SIGKILL)
       
    def authenticate(self, username, password, callback):
       self.__username = username
@@ -57,7 +68,7 @@ class Connection(object):
       def tryAuth():
          self.__centralClient.tryAuth(username, password, onAuth)
 
-      def failConnect(reason):
+      def failConnect():
          self.__addCallback(callback, [
             AuthenticationFailure('Failed to connect to server')
          ])
@@ -80,7 +91,7 @@ class Connection(object):
             self.__presenterServer.getHost().port, onHost
          )
 
-      def failConnect(reason):
+      def failConnect():
          self.__addCallback(callback, [
             AuthenticationFailure('Failed to connect to server')
          ])
