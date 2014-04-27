@@ -45,8 +45,6 @@ class LayerManager(wx.Frame):
       self.sizer.SetMinSize(size = (100,10))
       self.SetSizer(self.sizer)
 
-      self.Show()
-
    def DeleteLayer(self, event):
       EClass.GetInstance().layerManagerModel.DeleteLayer()
 

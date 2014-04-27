@@ -56,8 +56,6 @@ class DrawingTools(wx.Frame):
 
       self.drawingTools.Realize()
 
-      self.Show()
-
    def PencilToolHandler(self, e):
       self.selectedTool = 'Pencil'
       print("Selected Tool is: {tool}".format(tool = self.selectedTool))

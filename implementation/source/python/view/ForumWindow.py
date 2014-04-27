@@ -42,8 +42,6 @@ class ForumWindow(wx.Frame):
 
       self.Refresh()
 
-      self.Show()
-
    def SendMessage(self, event):
       if self.messageEntry.GetValue() != "":
          user = EClass.GetInstance().user

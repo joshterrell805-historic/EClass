@@ -46,9 +46,6 @@ class ApprovalTrackerGaget(wx.Frame):
 
          self.Bind(wx.EVT_SCROLL, self.OnSlide)
 
-
-      self.Show()
-
    def OnSlide(self, event):
       ApprovalTrackerGaget.SetApprovalRating(event.GetPosition())
 

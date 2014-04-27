@@ -36,15 +36,10 @@ class MenuBar:
       ID_VIEW_FULLSCREEN = wx.NewId()
 
       self.__rosterWindow = RosterWindow()
-      self.__rosterWindow.Hide()
       self.__drawingTools = DrawingTools()
-      self.__drawingTools.Hide()
       self.__layerManager = LayerManager(None)
-      self.__layerManager.Hide()
       self.__approvalTracker = ApprovalTrackerGaget()
-      self.__approvalTracker.Hide()
       self.__forum = ForumWindow()
-      self.__forum.Hide()
 
       menuBar = wx.MenuBar()
 
