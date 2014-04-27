@@ -11,21 +11,21 @@ class Presentation:
       if self.currSlideNum < len(self.slides) - 1:
          self.currSlideNum += 1
          return True
-      else
+      else:
          return False
 
    def MoveToPreviousSlide(self):
       if self.currSlideNum != 0:
          self.currSlideNum -= 1
          return True
-      else
+      else:
          return False
 
    def MoveToSlide(self, currSlideNum):
       if currSlideNum > 0 and currSlideNum <= len(self.slides):
          self.currSlideNum = currSlideNum - 1
          return True
-      else
+      else:
          return False
 
    # TODO implement this when we have a way to check the presenter's slide from

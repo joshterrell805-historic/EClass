@@ -3,6 +3,13 @@ class Presentation:
    Make a series of tests that checks for individual errors in each method
    and for errors caused by sequential method calls (for the ones that operate
    on the same values)
+   Testing order: 
+      __init__() 
+      > SetPath() 
+      > Slidify() 
+      > GetSlideNum(), GetSlide()
+      > MoveToNextSlide(), MoveToPreviousSlide(), MoveToSlide() 
+      > SyncWithPresenter()
    """
 
    def __init__(self, path):
