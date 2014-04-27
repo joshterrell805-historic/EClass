@@ -19,9 +19,9 @@ class Slide(object):
    def OrderLayer(self, layer, newIndex):
    
       if (isinstance(layer, Layer) and 
-         self.layers.count(layer) == 1 and
-         newIndex >= 0 and 
-         newIndex < len(self.layers)
+          self.layers.count(layer) == 1 and
+          newIndex >= 0 and 
+          newIndex < len(self.layers)
       ):
          currIndex = self.layers.index(layer)
          if currIndex < newIndex:

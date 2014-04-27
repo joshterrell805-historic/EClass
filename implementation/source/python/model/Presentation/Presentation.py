@@ -22,7 +22,7 @@ class Presentation:
    # TODO implement this when we have a way to check the presenter's slide from
    # the student's client
    def SyncWithPresenter(self):
-      print('From Presentation.SyncWithPresenter')
+      print('From Presentation.SyncWithPresenter()')
 
    def SetPath(self, path):
       # TODO I don't think we should allow path to be None

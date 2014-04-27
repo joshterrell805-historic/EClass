@@ -11,11 +11,13 @@ from Person.Student import Student
 from PermissionsWindow import PermissionsWindow
 
 class RosterItemPanel(wx.Panel):
-   def __init__(self, parent):
+   # TODO Update doc
+   def __init__(self, parent, student):
       super(RosterItemPanel, self).__init__(parent, -1, size = (300, 70))
 
-      self.rosterItemModel = RosterItem()
+      self.rosterItemModel = RosterItem(student)
 
+      # TODO This needs to be changed because only one entry on the roster will be the current user.
       username = EClass.GetInstance().user.username
       usernameLabel = wx.StaticText(self, -1, label = 'Cal Poly Username: ')
       usernameStaticText = wx.StaticText(self, -1, label = username)
@@ -56,4 +58,4 @@ class RosterItemPanel(wx.Panel):
       self.rosterItemModel.Layers()
 
    def OpenPermissions(self, event):
-      PermissionsWindow(Student("dummy", "ymmud")) # Dummy student for now
+      PermissionsWindow(self.rosterItemModel.student)

@@ -1,5 +1,7 @@
+
 class RosterItem:
-   def __init__(self):
+   def __init__(self, student):
+      self.student = student
       pass
 
    def Hand(self):

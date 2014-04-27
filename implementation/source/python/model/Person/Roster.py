@@ -1,7 +1,7 @@
 class Roster:
    def __init__(self):
-      self.studentsList = ["Carson Carroll", "Tim Anderson", "Ryan Ginsberg", "Mike Sevilla", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
-      self.SortList(self.studentsList)
+      self.students = ["Carson Carroll", "Tim Anderson", "Ryan Ginsberg", "Mike Sevilla", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+      self.SortList(self.students)
       self.remoteList = ["Josh Terrell", "Kevin Le", "Joel Wilcox"]
       self.SortList(self.remoteList)
 

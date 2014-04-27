@@ -6,6 +6,7 @@ from EClass import EClass
 
 from RosterItemPanel import RosterItemPanel
 from Roster import Roster
+from Person.Student import Student
 import wx.lib.agw.foldpanelbar as fpb
 
 class RosterWindow(wx.Frame):
@@ -18,8 +19,8 @@ class RosterWindow(wx.Frame):
 
 
       self.foldPanelBar = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
-      for i in range(0, len(self.rosterModel.studentsList)):
-         self.AddRosterItem(self.foldPanelBar, self.rosterModel.studentsList[i])
+      for i in range(0, len(self.rosterModel.students)):
+         self.AddRosterItem(self.foldPanelBar, self.rosterModel.students[i])
 
       self.foldPanelBarRemote = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
       for i in range(0, len(self.rosterModel.remoteList)):
@@ -75,11 +76,13 @@ class RosterWindow(wx.Frame):
    def AddRosterItem(self, fpb, username):
       if fpb == self.foldPanelBar:
          foldPanel = self.foldPanelBar.AddFoldPanel(username, collapsed = True)
-         panel = RosterItemPanel(foldPanel)
+         # TODO use actual student
+         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
          self.foldPanelBar.AddFoldPanelWindow(foldPanel, panel)
       elif fpb == self.foldPanelBarRemote:
          foldPanel = self.foldPanelBarRemote.AddFoldPanel(username, collapsed = True)
-         panel = RosterItemPanel(foldPanel)
+         # TODO use actual student
+         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
          self.foldPanelBarRemote.AddFoldPanelWindow(foldPanel, panel)
 
    def AddStudent(self, event):
