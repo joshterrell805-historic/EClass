@@ -5,6 +5,9 @@ from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
 from MenuBar import MenuBar
 
+sys.path.insert(0, 'model')
+from EClass import EClass
+
 class EClassWindow(wx.Frame):
 
    def __init__(self):
@@ -17,7 +20,11 @@ class EClassWindow(wx.Frame):
       self.initialPrompt = InitialPrompt(self)
       self.importPresentation = ImportPresentation(self)
 
-      self.Bind(wx.EVT_CLOSE, sys.exit)
+      self.Bind(wx.EVT_CLOSE, self.onClose)
 
       self.Centre()
       self.Show()
+
+   def onClose(self, event):
+      EClass.GetInstance().exit()
+      sys.exit()

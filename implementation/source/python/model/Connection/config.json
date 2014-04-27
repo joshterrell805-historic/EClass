@@ -1,0 +1,7 @@
+{
+   "central server":
+   {
+      "hostname": "localhost",
+      "port": 1234
+   }
+}
