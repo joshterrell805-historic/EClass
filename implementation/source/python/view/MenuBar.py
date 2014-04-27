@@ -35,6 +35,17 @@ class MenuBar:
       ID_VIEW_ZOOMTOFIT = wx.NewId()
       ID_VIEW_FULLSCREEN = wx.NewId()
 
+      self.__rosterWindow = RosterWindow()
+      self.__rosterWindow.Hide()
+      self.__drawingTools = DrawingTools()
+      self.__drawingTools.Hide()
+      self.__layerManager = LayerManager(None)
+      self.__layerManager.Hide()
+      self.__approvalTracker = ApprovalTrackerGaget()
+      self.__approvalTracker.Hide()
+      self.__forum = ForumWindow()
+      self.__forum.Hide()
+
       menuBar = wx.MenuBar()
 
       fileMenu = wx.Menu()
@@ -68,20 +79,23 @@ class MenuBar:
       menuBar.Append(viewMenu, 'View')
       self.showRosterMenuItem = viewMenu.Append(ID_VIEW_SHOWROSTER, 'Show Roster', 'Shows the roster window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleRoster, self.showRosterMenuItem)
-      showDrawingToolsMenuItem = viewMenu.Append(ID_VIEW_SHOWDRAWINGTOOLS, 'Show Drawing Tools', 'Shows the drawing tools window.', wx.ITEM_CHECK)
-      parent.Bind(wx.EVT_MENU, self.ToggleDrawingTools, showDrawingToolsMenuItem)
+
+      self.showDrawingToolsMenuItem = viewMenu.Append(ID_VIEW_SHOWDRAWINGTOOLS, 'Show Drawing Tools', 'Shows the drawing tools window.', wx.ITEM_CHECK)
+      parent.Bind(wx.EVT_MENU, self.ToggleDrawingTools, self.showDrawingToolsMenuItem)
+
       self.showLayerManagerMenuItem = viewMenu.Append(ID_VIEW_SHOWLAYERMANAGER, 'Show Layer Manager', 'Shows the layer manager window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleLayerManager, self.showLayerManagerMenuItem)
-      showApprovalTrackerMenuItem = viewMenu.Append(ID_VIEW_SHOWAPPROVALTRACKER, 'Show Approval Tracker', 'Shows the approval tracker window.', wx.ITEM_CHECK)
-      parent.Bind(wx.EVT_MENU, self.ToggleApprovalTracker, showApprovalTrackerMenuItem)
 
-      showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
-      parent.Bind(wx.EVT_MENU, self.ToggleForum, showForumMenuItem)
+      self.showApprovalTrackerMenuItem = viewMenu.Append(ID_VIEW_SHOWAPPROVALTRACKER, 'Show Approval Tracker', 'Shows the approval tracker window.', wx.ITEM_CHECK)
+      parent.Bind(wx.EVT_MENU, self.ToggleApprovalTracker, self.showApprovalTrackerMenuItem)
+
+      self.showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
+      parent.Bind(wx.EVT_MENU, self.ToggleForum, self.showForumMenuItem)
 
       viewMenu.AppendSeparator()
-      zoomInMenuItem = viewMenu.Append(ID_VIEW_ZOOMIN, 'Zoom In\tCtrl+=', 'Zooms into the screen.')
-      zoomOutMenuItem = viewMenu.Append(ID_VIEW_ZOOMOUT, 'Zoom Out\tCtrl+-', 'Zooms out of the screen.')
-      zoomToFitMenuItem = viewMenu.Append(ID_VIEW_ZOOMTOFIT, 'Zoom to Fit\tCtrl+0', 'Zooms to the original size of the screen.')
+      self.zoomInMenuItem = viewMenu.Append(ID_VIEW_ZOOMIN, 'Zoom In\tCtrl+=', 'Zooms into the screen.')
+      self.zoomOutMenuItem = viewMenu.Append(ID_VIEW_ZOOMOUT, 'Zoom Out\tCtrl+-', 'Zooms out of the screen.')
+      self.zoomToFitMenuItem = viewMenu.Append(ID_VIEW_ZOOMTOFIT, 'Zoom to Fit\tCtrl+0', 'Zooms to the original size of the screen.')
       viewMenu.AppendSeparator()
       self.fullScreenMenuItem = viewMenu.Append(ID_VIEW_FULLSCREEN, 'Full Screen\tCtrl+F', 'Zooms to full screen.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleFullScreen, self.fullScreenMenuItem)
@@ -94,31 +108,34 @@ class MenuBar:
       self.parent.Close()
 
    def ToggleRoster(self, e):
-      self.roster = RosterWindow()
-      #self.roster.Show(not showRosterMenuItem.IsChecked())
+      if not self.showRosterMenuItem.IsChecked():
+         self.__rosterWindow.Hide()
+      else:
+         self.__rosterWindow.Show()
 
    def ToggleDrawingTools(self, e):
-      DrawingTools()
-      #if self.showDrawingToolsMenuItem.IsChecked():
-      #   self.showDrawingToolsMenuItem.Show()
-      #else:
-      #   self.showDrawingToolsMenuItem.Hide()
-      # pass
+      if not self.showDrawingToolsMenuItem.IsChecked():
+         self.__drawingTools.Hide()
+      else:
+         self.__drawingTools.Show()
 
    def ToggleLayerManager(self, e):
-      self.layerManager = LayerManager(self.parent)
-      #self.layerManager.Show(not self.showLayerManagerMenuItem.IsChecked())
+      if not self.showLayerManagerMenuItem.IsChecked():
+         self.__layerManager.Hide()
+      else:
+         self.__layerManager.Show()
 
    def ToggleApprovalTracker(self, e):
-      # if self.showApprovalTrackerMenuItem.IsChecked():
-      #    self.showApprovalTrackerMenuItem.Show()
-      # else:
-      #    self.showApprovalTrackerMenuItem.Hide()
-      ApprovalTrackerGaget()
+      if not self.showApprovalTrackerMenuItem.IsChecked():
+         self.__approvalTracker.Hide()
+      else:
+         self.__approvalTracker.Show()
 
    def ToggleForum(self, e):
-      self.forum = ForumWindow()
-      #forum.Show(not showForumMenuItem.IsChecked())
+      if not self.showForumMenuItem.IsChecked():
+         self.__forum.Hide()
+      else:
+         self.__forum.Show()
 
    def ToggleFullScreen(self, e):
       self.parent.ShowFullScreen(
