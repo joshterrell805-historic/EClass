@@ -36,6 +36,8 @@ class Presentation:
       @precondition: self.currSlideNum != len(self.slides) - 1
 
       @postcondition: self.currSlideNum == old(self.currSlideNum) + 1
+      
+      @return: True if the current slide was changed successfully, False otherwise
       """
       pass
 
@@ -46,6 +48,8 @@ class Presentation:
       @precondition: self.currSlideNum != 0
 
       @postcondition: self.currSlideNum == old(self.currSlideNum) - 1
+      
+      @return: True if the current slide was changed successfully, False otherwise
       """
       pass
 
@@ -58,6 +62,8 @@ class Presentation:
       @precondition: slideNum >= 1 && slideNum <= len(self.slides)
 
       @postcondition: self.currSlideNum == slideNum - 1
+      
+      @return: True if the current slide was changed successfully, False otherwise
       """
       pass
 
@@ -76,7 +82,6 @@ class Presentation:
       """
       Set the current path of the presentation file.
 
-      @precondition: path != None
       @postcondition: self.path == path
       """
       pass

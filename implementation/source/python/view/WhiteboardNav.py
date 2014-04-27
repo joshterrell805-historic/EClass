@@ -1,8 +1,9 @@
-import wx, wx.html, wx.html2
+import wx, wx.html, wx.html2, wx.lib.intctrl
 import sys
 
 sys.path.insert(0, 'model')
 from EClass import EClass
+from Person.Student import Student
 
 class WhiteboardNav(wx.Panel):
 
@@ -27,9 +28,12 @@ class WhiteboardNav(wx.Panel):
       syncButton = wx.Button(self, label = 'SYNC', size = (120, 15))
       syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
       
-      self.slideTextbox = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER)
+      self.slideTextbox = wx.lib.intctrl.IntCtrl(self, 
+         style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
+      )
       self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
       self.slideTextbox.SetHint('Slide Number')
+      self.slideTextbox.Clear()
 
       self.currSlideText = wx.StaticText(self, -1, label = '1')
 
@@ -40,9 +44,8 @@ class WhiteboardNav(wx.Panel):
          border = 20
       )
 
-      # TODO uncomment this later
-      #if isinstance(EClass.GetInstance().user, Student):
-      navVertSizer.Add(syncButton, 3, wx.CENTER)
+      if isinstance(EClass.GetInstance().user, Student):
+         navVertSizer.Add(syncButton, 3, wx.CENTER)
       navVertSizer.AddStretchSpacer(1)
 
       navHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -67,21 +70,21 @@ class WhiteboardNav(wx.Panel):
       self.Show()
 
    def MoveToPreviousSlide(self, event):
-      self.presentation.MoveToPreviousSlide()
-      self.RefreshSlide()
+      if self.presentation.MoveToPreviousSlide():
+         self.RefreshSlide()
 
    def MoveToNextSlide(self, event):
-      self.presentation.MoveToNextSlide()
-      self.RefreshSlide()
+      if self.presentation.MoveToNextSlide():
+         self.RefreshSlide()
 
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter()
       self.RefreshSlide()
 
    def MoveToSlide(self, event):
-      self.presentation.MoveToSlide(int(self.slideTextbox.GetValue()))
+      if self.presentation.MoveToSlide(self.slideTextbox.GetValue()):
+         self.RefreshSlide()
       self.slideTextbox.Clear()
-      self.RefreshSlide()
 
    def RefreshSlide(self):
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
