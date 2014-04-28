@@ -453,35 +453,59 @@ class MenuBar:
    def ToggleRoster(self, event):
       """
       Shows/Hides the roster.
+
+      @param event: Event that calls this method.
+
+      @postcondition: rosterWindow.Toggle() == !rosterWindow.Toggle()
       """
       pass
 
    def ToggleDrawingTools(self, event):
       """
       Shows/Hides the drawing tools.
+
+      @param event: Event that calls this method.
+
+      @postcondition: drawingTools.Toggle() == !drawingTools.Toggle()
       """
       pass
 
    def ToggleLayerManager(self, event):
       """
       Shows/Hides the layer manager.
+      
+      @param event: Event that calls this method.
+
+      @postcondition: layerManager.Toggle() == !layerManager.Toggle()
       """
       pass
 
    def ToggleApprovalTracker(self, event):
       """
       Shows/Hides the approval tracker.
+
+      @param event: Event that calls this method.
+
+      @postcondition: approvalTracker.Toggle() == !approvalTracker.Toggle()
       """
       pass
 
    def ToggleForum(self, event):
       """
       Shows/Hides the forum.
+
+      @param event: Event that calls this method.
+
+      @postcondition: forum.Toggle() == !forum.Toggle()
       """
       pass
 
    def ToggleFullScreen(self, event):
       """
       Sets the EClass window to full screen or original size.
+
+      @param event: Event that calls this method.
+
+      @postcondition: parent.IsFullScreen() = !parent.IsFullScreen()
       """
       pass
