@@ -9,19 +9,39 @@ from Presentation import PermissionLevel
 class Person:
    """
    Person is a class that is instantiated when someone logs into the EClass.
+   Person is extended by Student and Presentor, depending on who the Person 
+   represents.
 
    @author: Kevin Le (kle17@calpoly.edu)
    """
 
-   def __init__(self, asdf):
+   def __init__(self, username, password):
       """
       Build an instance of a person.
 
-      @param self: self is the instance of this object
-      @param asdf: trash for now
+      @param username: The person's username
+      @param password: The person's password
       """
       pass
 
+class Presenter(Person):
+   """
+   Presenter contains information specific to the presenter. The presenter will
+   be in charge of handling the presentation.
+
+   @author: Kevin Le (kle17@calpoly.edu)
+   """
+
+   def __init(self, username, password):
+      """
+      Initializes a Presenter. The presenter will have full permissions to the
+      presentation. In addition, they will also be able to edit Student
+      permissions.
+
+      @param username: The presenter's username
+      @param password: The presenter's password
+      """
+      pass
 
 class Student(Person):
    """
