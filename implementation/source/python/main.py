@@ -8,8 +8,11 @@ from LoginWindow import LoginWindow
 
 
 if __name__ == "__main__":
-   nullLog = wx.LogNull()
-   app = wx.App(False)
-   LoginWindow()
-   app.MainLoop()
-   sys.exit(1)
+   if len(sys.argv) == 2 and sys.argv[1] == 'server':
+      import Connection.CentralServer
+   else:
+      nullLog = wx.LogNull()
+      app = wx.App(False)
+      LoginWindow()
+      app.MainLoop()
+      sys.exit(1)

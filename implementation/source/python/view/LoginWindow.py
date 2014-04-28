@@ -25,6 +25,9 @@ class LoginWindow(wx.Frame):
       passwordHorizontalSizer = wx.BoxSizer(wx.HORIZONTAL)
       buttonsHorizontalSizer = wx.BoxSizer(wx.HORIZONTAL)
 
+      self.reasonText = wx.StaticText(self, -1)
+      self.reasonText.SetForegroundColour((255, 0, 0))
+
       self.title = wx.StaticText(self, -1, label = '    EClass' + '\n' + 
       'By CREAMS'
       )
@@ -71,6 +74,8 @@ class LoginWindow(wx.Frame):
       self.Centre()
       self.Show()
 
+      self.Bind(wx.EVT_CLOSE, self.OnCancel)
+
    def GetUsername(self):
       return self.usernameTextbox.GetValue()
 
@@ -80,14 +85,19 @@ class LoginWindow(wx.Frame):
    def OnAttempt(self, event):
       username = self.GetUsername()
       password = self.GetPassword()
-      EClass.GetInstance().Login(username, password)
 
-      if EClass.GetInstance().user:
+      def onSuccess():
          self.OnSuccess()
+      def onFailure(reason):
+         self.reasonText.SetLabel(reason)
+         print(reason)
+
+      EClass.GetInstance().Login(username, password, onSuccess, onFailure)
 
    def OnSuccess(self):
-      self.Close()
       EClassWindow()
+      self.Hide()
 
    def OnCancel(self, event):
+      EClass.GetInstance().exit()
       sys.exit()

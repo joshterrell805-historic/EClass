@@ -6,6 +6,7 @@ from Person.Presenter import Presenter
 
 from Presentation.Layer import Layer
 from Presentation.LayerManagerModel import LayerManagerModel
+from Connection import Connection
 
 # this model is a singleton which has a reference to other important models
 
@@ -24,28 +25,36 @@ class EClass():
 
    def __init__(self):
 
+      self.connection = Connection.getInstance()
       self.presentation = Presentation(path = None)
 
       # the logged in user, None if logged out
       self.user = None
 
-   def Login(self, username, password):
+   def Login(self, username, password, onSuccess, onFailure):
       print('From EClass.Login(): ' + username + ' ' + password)
 
-      if (self.Authorize(username, password)):
-         if username == 'presenter':
-            self.user = Presenter(username, password)
-         elif username == 'student':
-            self.user = Student(username, password)
-         else:
-            # for now just assume it's a student
-            self.user = Student(username, password)
+      def onResponse(authResponse):
+         if authResponse.success:
+            if authResponse.role == 'presenter':
+               self.user = Presenter(username, password)
+            else:
+               self.user = Student(username, password)
 
-   def Authorize(self, username, password):
-      print('From EClass.Authorize(): Passed')
-      return True
+            # TODO stuff with authResponse.classes... it's a dictionary
+            # warning! contains different data for presenter and student
+            # see networking.html for what it contains
+
+            onSuccess()
+         else:
+            onFailure(authResponse.reason)
+
+      self.connection.authenticate(username, password, onResponse)
 
    def setUpLayerManager(self):
       print('In EClass.setUpLayerManager()')
 
       self.layerManagerModel = LayerManagerModel()
+
+   def exit(self):
+      self.connection.close()

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>EClass.Connection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="EClass-module.html">Package&nbsp;EClass</a> ::
+        Module&nbsp;Connection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="EClass.Connection-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="EClass.Connection-module.html">Module EClass.Connection</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Connection is the module (which also contains the class, Connection) which</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">handles communications between different users of EClass. Connection handles</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">the communicaiton between the student and presenter, presenter and student, and</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">between all users and the central server.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">@author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="Connection"></a><div id="Connection-def"><a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt> <a class="py-toggle" href="#" id="Connection-toggle" onclick="return toggle('Connection');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html">Connection</a><tt class="py-op">:</tt> </tt>
+</div><div id="Connection-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Connection-expanded"><a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">   Connection class is a singleton</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">   which represents the connection between the user and everything external. This</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">   is the class EClass uses to authenticate, join a presentation, ask the presenter</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">   a question, ...</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">   Note: listeners can be registered/unregistered whenever. The connection does</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">   not have to be made before registering a listener. It's advised to set up</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">   listeners before authenticating so that no messages are missed.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="Connection.__init__"></a><div id="Connection.__init__-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="Connection.__init__-toggle" onclick="return toggle('Connection.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.__init__-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">      This class is a singleton, DO NOT USE THE CONSTRUCTOR DIRECTLY.</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">      Instead, use the static method getInstance.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.getInstance"></a><div id="Connection.getInstance-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="Connection.getInstance-toggle" onclick="return toggle('Connection.getInstance');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#getInstance">getInstance</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.getInstance-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.getInstance-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">      @return: the single instance of Connection for this user.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.authenticate"></a><div id="Connection.authenticate-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="Connection.authenticate-toggle" onclick="return toggle('Connection.authenticate');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#authenticate">authenticate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">password</tt><tt class="py-op">,</tt> <tt class="py-param">callback</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.authenticate-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.authenticate-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">      Attempt to login. `callback` is called when the authentication has</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">      succeeded or failed.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">      @param username: the user's username</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">      @type username: string</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">      @param password: the user's password</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">      @type password: string</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">      @param callback: the callback to be called when the authentication request</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">      succeeds or fails. This callback is passed an AuthenticationResponse</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">      (AuthenticationSuccess or AuthenticationFailure) as its only argument.</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">      @type callback: function passed one argument, AuthenticationResponse</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.hostPresentation"></a><div id="Connection.hostPresentation-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="Connection.hostPresentation-toggle" onclick="return toggle('Connection.hostPresentation');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#hostPresentation">hostPresentation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">className</tt><tt class="py-op">,</tt> <tt class="py-param">onStudentJoin</tt><tt class="py-op">,</tt> <tt class="py-param">callback</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.hostPresentation-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.hostPresentation-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">      Attempt to start hosting a presentation for a class. In order for this</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">      method to succeed, the user must be already authenticated as a presenter,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">      he must not be hosting any other presentations, and he must be able</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">      to host a class for the specified class.</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">      @param className: the class the presenter wishes to host a</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">      presentationfor. This class can be any class.name returned in the</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">      AuthenticationSuccess object from the authenticate callback.</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">      @type className: string</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">      @param onStudentJoin: assuming hosting succeeded, this callback will be</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">      called whenever a student joins the presentation. This callback is called</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">      with the username of the student that logged in.</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">      @type onStudentJoin: function</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">      @param callback: the callback to be called when the attempt to host</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">      has succeeded or failed.</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">      @type callback: function passed one argument, HostResponse</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.joinPresentation"></a><div id="Connection.joinPresentation-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="Connection.joinPresentation-toggle" onclick="return toggle('Connection.joinPresentation');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#joinPresentation">joinPresentation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">className</tt><tt class="py-op">,</tt> <tt class="py-param">callback</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.joinPresentation-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.joinPresentation-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">      Attempt to join a presentation. In order for this method to succeed,</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">      the user must be logged in as a student and in the class that he attempts</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">      to join. Additionally, the class must be hosted.</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">      @param className: the name of the class the student wishes to join. eg</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">      'CPE 308' This class name can be any class.name from the classes array</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">      from the AuthenticationSuccess object.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">      @type className: string</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">      @param callback: a function to be called when the attempt to join succeeds</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">      or fails.</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">      @type callback: a function with one argument, a JoinResponse</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.registerStudentClassesListener"></a><div id="Connection.registerStudentClassesListener-def"><a name="L81"></a><tt class="py-lineno"> 81</tt> <a class="py-toggle" href="#" id="Connection.registerStudentClassesListener-toggle" onclick="return toggle('Connection.registerStudentClassesListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#registerStudentClassesListener">registerStudentClassesListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">listener</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.registerStudentClassesListener-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.registerStudentClassesListener-expanded"><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">      Register a listener to be called whenever the list of classes changes.</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">      A student's list of classes changes when a presenter switches a class</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">      from hosted to not hosted or visa versa.</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">      @param listener: the listener to be called whenever the classes change.</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">      @type listener: a function with one argument, an array of StudentClass</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.unregisterStudentClassesListener"></a><div id="Connection.unregisterStudentClassesListener-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="Connection.unregisterStudentClassesListener-toggle" onclick="return toggle('Connection.unregisterStudentClassesListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#unregisterStudentClassesListener">unregisterStudentClassesListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">listener</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.unregisterStudentClassesListener-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.unregisterStudentClassesListener-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">      Unregister a previously registered listener registered with</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">      registerStudentClassesListener, or unregister all listeners. If listener </tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">      is None, this method unregisters all listeners. If listener is a funciton,</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">      this method unregisters the listener passed.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.sendMessage"></a><div id="Connection.sendMessage-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="Connection.sendMessage-toggle" onclick="return toggle('Connection.sendMessage');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#sendMessage">sendMessage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">identifier</tt><tt class="py-op">,</tt> <tt class="py-param">recipient</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.sendMessage-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.sendMessage-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">      Send a message to the person at the other side. This funciton is used for</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">      one-to-one and one-to-many communicaitons. EG the student sends the</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">      presenter a quesiton, or the a the presenter adds a layer object to the</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">      top layer.</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">      @param identifier: the identifier used for the type of this message eg</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">      'ask question', 'adjust permissions'. This message will only be received</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">      by the person at the other side if the person at the other side is</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">      listening for messages of type `identifier`. @see registerMessageListener</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">      @type identifier: string</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">      @param recipient: the recipient to receive this message. If this user is</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">      a student, this argument must be None (all sent messages go to the</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring">      presenter only; from there the presenter may chose to broadcast the</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring">      message to all other students) If the user is a presenter, this argument</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">      may be None or a string. If this parameter is None and the user is a</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">      presenter, the message is sent to all students. If the parameter is a</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">      string, it is assumed to be the username of the student to send this</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">      message to.</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">      @type recipient: string or None</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">      @param message: the message to send. Must be a simple python object.</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">      @type message: object</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.registerMessageListener"></a><div id="Connection.registerMessageListener-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="Connection.registerMessageListener-toggle" onclick="return toggle('Connection.registerMessageListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#registerMessageListener">registerMessageListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">identifier</tt><tt class="py-op">,</tt> <tt class="py-param">listener</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.registerMessageListener-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.registerMessageListener-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">      Register a listener to be called whenever a message identified by</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">      `identifier` is received. @see sendMessage</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">      @param identifier: the identifier indicating the type of message received.</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring">      This identifier must match exaclty the identifier specified in sendMessage</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring">      @type identifier: string</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">      @param listener: the listener to be called whenever a message of type</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">      `identifier` is received. This listener is passed two arguments. In order</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">      they are the sender and the message. The sender is the username of the</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">      user who sent this message. The sender field is None if the sender is</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">      the presenter, otherwise the sender is the username of the student who</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">      sent this message to the presenter. The message is the object sent by</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">      the sender in sendMessage.</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring">      @type listener: function with two arguments, sender and message</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="Connection.unregisterMessageListener"></a><div id="Connection.unregisterMessageListener-def"><a name="L141"></a><tt class="py-lineno">141</tt> <a class="py-toggle" href="#" id="Connection.unregisterMessageListener-toggle" onclick="return toggle('Connection.unregisterMessageListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Connection-class.html#unregisterMessageListener">unregisterMessageListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">identifier</tt><tt class="py-op">,</tt> <tt class="py-param">listener</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Connection.unregisterMessageListener-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Connection.unregisterMessageListener-expanded"><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">      Unregister a/some/all message listener(s) previously registered with</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">      registerMessageListener.</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">      @param identifier: the identifier of the message listener to unregister.</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">      @type identifier: string</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring">      @param listener: the listener to unregister</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">      @type listener: function</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-docstring">      If identifier is None and listener is None, unregister all message</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring">      listeners.</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring">      If identifier is None and listener is a function, unregister all message</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">      listeners of any indentifier associated with the funciton.</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-docstring">      If identifier is a string and listener is None, unregister all message</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-docstring">      listeners associated with the identifier.</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">      If identifier is a string and listener is a funciton, unregister all</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">      message listeners associated with this identifier and function.</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="AuthenticationResponse"></a><div id="AuthenticationResponse-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="AuthenticationResponse-toggle" onclick="return toggle('AuthenticationResponse');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.AuthenticationResponse-class.html">AuthenticationResponse</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AuthenticationResponse-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AuthenticationResponse-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-docstring">   This is the response received in the callback when authenticating. It is</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">   either an instance of AuthenticationSuccess or AuthenticationFailure.</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar success: True for successful, false for fail</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring">   @type success: boolean (read-only)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">   <tt class="py-decorator">@</tt><tt class="py-decorator">property</tt> </tt>
+<a name="AuthenticationResponse.success"></a><div id="AuthenticationResponse.success-def"><a name="L174"></a><tt class="py-lineno">174</tt> <a class="py-toggle" href="#" id="AuthenticationResponse.success-toggle" onclick="return toggle('AuthenticationResponse.success');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.AuthenticationResponse-class.html#success">success</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AuthenticationResponse.success-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="AuthenticationResponse.success-expanded"><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">         <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> <tt class="py-op">=</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-0" class="py-name" targets="Class EClass.Connection.AuthenticationSuccess=EClass.Connection.AuthenticationSuccess-class.html"><a title="EClass.Connection.AuthenticationSuccess" class="py-name" href="#" onclick="return doclink('link-0', 'AuthenticationSuccess', 'link-0');">AuthenticationSuccess</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> </tt>
+</div></div><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="AuthenticationFailure"></a><div id="AuthenticationFailure-def"><a name="L179"></a><tt class="py-lineno">179</tt> <a class="py-toggle" href="#" id="AuthenticationFailure-toggle" onclick="return toggle('AuthenticationFailure');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.AuthenticationFailure-class.html">AuthenticationFailure</a><tt class="py-op">(</tt><tt class="py-base-class">AuthenticationResponse</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AuthenticationFailure-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AuthenticationFailure-expanded"><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar reason: the reason authentication failed (eg 'invalid credentials')</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-docstring">   @type reason: string</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="AuthenticationFailure.__init__"></a><div id="AuthenticationFailure.__init__-def"><a name="L185"></a><tt class="py-lineno">185</tt> <a class="py-toggle" href="#" id="AuthenticationFailure.__init__-toggle" onclick="return toggle('AuthenticationFailure.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.AuthenticationFailure-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">reason</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AuthenticationFailure.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="AuthenticationFailure.__init__-expanded"><a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">reason</tt> <tt class="py-op">=</tt> <tt class="py-name">reason</tt> </tt>
+</div></div><a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"> </tt>
+<a name="AuthenticationSuccess"></a><div id="AuthenticationSuccess-def"><a name="L188"></a><tt class="py-lineno">188</tt> <a class="py-toggle" href="#" id="AuthenticationSuccess-toggle" onclick="return toggle('AuthenticationSuccess');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.AuthenticationSuccess-class.html">AuthenticationSuccess</a><tt class="py-op">(</tt><tt class="py-base-class">AuthenticationResponse</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AuthenticationSuccess-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AuthenticationSuccess-expanded"><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar role: the role (student/presenter) of this logged in user</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-docstring">   @type role: string 'student' or 'presenter'</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar classes: the classes this student is enrolled in, or this presenter may</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt class="py-docstring">   present for.</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt class="py-docstring">   @type classes: an array of StudentClass or PresenterClass</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="AuthenticationSuccess.__init__"></a><div id="AuthenticationSuccess.__init__-def"><a name="L197"></a><tt class="py-lineno">197</tt> <a class="py-toggle" href="#" id="AuthenticationSuccess.__init__-toggle" onclick="return toggle('AuthenticationSuccess.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.AuthenticationSuccess-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">role</tt><tt class="py-op">,</tt> <tt class="py-param">classes</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AuthenticationSuccess.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="AuthenticationSuccess.__init__-expanded"><a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">role</tt> <tt class="py-op">=</tt> <tt class="py-name">role</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">classes</tt> <tt class="py-op">=</tt> <tt class="py-name">classes</tt> </tt>
+</div></div><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="Class"></a><div id="Class-def"><a name="L201"></a><tt class="py-lineno">201</tt> <a class="py-toggle" href="#" id="Class-toggle" onclick="return toggle('Class');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.Class-class.html">Class</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Class-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Class-expanded"><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar name: the name of this class (eg 'CPE 308')</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-docstring">   @type name: string</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="Class.__init__"></a><div id="Class.__init__-def"><a name="L207"></a><tt class="py-lineno">207</tt> <a class="py-toggle" href="#" id="Class.__init__-toggle" onclick="return toggle('Class.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Class-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Class.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Class.__init__-expanded"><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">=</tt> <tt class="py-name">name</tt> </tt>
+</div></div><a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"> </tt>
+<a name="StudentClass"></a><div id="StudentClass-def"><a name="L210"></a><tt class="py-lineno">210</tt> <a class="py-toggle" href="#" id="StudentClass-toggle" onclick="return toggle('StudentClass');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.StudentClass-class.html">StudentClass</a><tt class="py-op">(</tt><tt class="py-base-class">Class</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StudentClass-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="StudentClass-expanded"><a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt class="py-docstring">   The type of class in the classes array if the logged in user is a student.</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar presenterFirstName: the first name of the presenter for this class.</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"><tt class="py-docstring">   @type presenterFirstName: string</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar presenterLastName: the last name of the presenter for this class.</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"><tt class="py-docstring">   @type presenterLastName: string</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar hosted: true if the class is currently being hosted, false if it</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt class="py-docstring">   is unavailable to join. To get updates this list of classes, see</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-docstring">   Connection.registerStudentClassesListener.</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-docstring">   @type hosted: boolean (read-only)</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="StudentClass.__init__"></a><div id="StudentClass.__init__-def"><a name="L223"></a><tt class="py-lineno">223</tt> <a class="py-toggle" href="#" id="StudentClass.__init__-toggle" onclick="return toggle('StudentClass.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.StudentClass-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">presenterFirstName</tt><tt class="py-op">,</tt> <tt class="py-param">presenterLastName</tt><tt class="py-op">,</tt> <tt class="py-param">hosted</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StudentClass.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="StudentClass.__init__-expanded"><a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">      <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-1" class="py-name" targets="Class EClass.Connection.StudentClass=EClass.Connection.StudentClass-class.html"><a title="EClass.Connection.StudentClass" class="py-name" href="#" onclick="return doclink('link-1', 'StudentClass', 'link-1');">StudentClass</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method EClass.ApprovalTracker.ApprovalRating.__init__()=EClass.ApprovalTracker.ApprovalRating-class.html#__init__,Method EClass.Connection.AuthenticationFailure.__init__()=EClass.Connection.AuthenticationFailure-class.html#__init__,Method EClass.Connection.AuthenticationSuccess.__init__()=EClass.Connection.AuthenticationSuccess-class.html#__init__,Method EClass.Connection.Class.__init__()=EClass.Connection.Class-class.html#__init__,Method EClass.Connection.Connection.__init__()=EClass.Connection.Connection-class.html#__init__,Method EClass.Connection.HostFailure.__init__()=EClass.Connection.HostFailure-class.html#__init__,Method EClass.Connection.JoinFailure.__init__()=EClass.Connection.JoinFailure-class.html#__init__,Method EClass.Connection.PresenterClass.__init__()=EClass.Connection.PresenterClass-class.html#__init__,Method EClass.Connection.Student.__init__()=EClass.Connection.Student-class.html#__init__,Method EClass.Connection.StudentClass.__init__()=EClass.Connection.StudentClass-class.html#__init__,Method EClass.EClass.__init__()=EClass.EClass-class.html#__init__,Method EClass.Forum.Forum.__init__()=EClass.Forum.Forum-class.html#__init__,Method EClass.Forum.Message.__init__()=EClass.Forum.Message-class.html#__init__,Method EClass.Person.Person.__init__()=EClass.Person.Person-class.html#__init__,Method EClass.Person.Question.__init__()=EClass.Person.Question-class.html#__init__,Method EClass.Person.Roster.__init__()=EClass.Person.Roster-class.html#__init__,Method EClass.Person.RosterItem.__init__()=EClass.Person.RosterItem-class.html#__init__,Method EClass.Person.Student.__init__()=EClass.Person.Student-class.html#__init__,Method EClass.Person.StudentPermissions.__init__()=EClass.Person.StudentPermissions-class.html#__init__,Method EClass.Presentation.Layer.__init__()=EClass.Presentation.Layer-class.html#__init__,Method EClass.Presentation.LayerManagerModel.__init__()=EClass.Presentation.LayerManagerModel-class.html#__init__,Method EClass.Presentation.Presentation.__init__()=EClass.Presentation.Presentation-class.html#__init__,Method EClass.Presentation.Slide.__init__()=EClass.Presentation.Slide-class.html#__init__,Method EClass.View.ForumWindow.__init__()=EClass.View.ForumWindow-class.html#__init__,Method EClass.View.ImportPresentation.__init__()=EClass.View.ImportPresentation-class.html#__init__,Method EClass.View.InitialPrompt.__init__()=EClass.View.InitialPrompt-class.html#__init__,Method EClass.View.LayerManager.__init__()=EClass.View.LayerManager-class.html#__init__,Method EClass.View.LayerView.__init__()=EClass.View.LayerView-class.html#__init__,Method EClass.View.LoginWindow.__init__()=EClass.View.LoginWindow-class.html#__init__,Method EClass.View.PermissionsWindow.__init__()=EClass.View.PermissionsWindow-class.html#__init__,Method EClass.View.RosterItemPanel.__init__()=EClass.View.RosterItemPanel-class.html#__init__,Method EClass.View.RosterWindow.__init__()=EClass.View.RosterWindow-class.html#__init__,Method EClass.View.WhiteboardNav.__init__()=EClass.View.WhiteboardNav-class.html#__init__"><a title="EClass.ApprovalTracker.ApprovalRating.__init__
+EClass.Connection.AuthenticationFailure.__init__
+EClass.Connection.AuthenticationSuccess.__init__
+EClass.Connection.Class.__init__
+EClass.Connection.Connection.__init__
+EClass.Connection.HostFailure.__init__
+EClass.Connection.JoinFailure.__init__
+EClass.Connection.PresenterClass.__init__
+EClass.Connection.Student.__init__
+EClass.Connection.StudentClass.__init__
+EClass.EClass.__init__
+EClass.Forum.Forum.__init__
+EClass.Forum.Message.__init__
+EClass.Person.Person.__init__
+EClass.Person.Question.__init__
+EClass.Person.Roster.__init__
+EClass.Person.RosterItem.__init__
+EClass.Person.Student.__init__
+EClass.Person.StudentPermissions.__init__
+EClass.Presentation.Layer.__init__
+EClass.Presentation.LayerManagerModel.__init__
+EClass.Presentation.Presentation.__init__
+EClass.Presentation.Slide.__init__
+EClass.View.ForumWindow.__init__
+EClass.View.ImportPresentation.__init__
+EClass.View.InitialPrompt.__init__
+EClass.View.LayerManager.__init__
+EClass.View.LayerView.__init__
+EClass.View.LoginWindow.__init__
+EClass.View.PermissionsWindow.__init__
+EClass.View.RosterItemPanel.__init__
+EClass.View.RosterWindow.__init__
+EClass.View.WhiteboardNav.__init__" class="py-name" href="#" onclick="return doclink('link-2', '__init__', 'link-2');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">presenterFirstName</tt> <tt class="py-op">=</tt> <tt class="py-name">presenterFirstName</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">presenterLastName</tt> <tt class="py-op">=</tt> <tt class="py-name">presenterLastName</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">hosted</tt> <tt class="py-op">=</tt> <tt class="py-name">hosted</tt> </tt>
+</div></div><a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="PresenterClass"></a><div id="PresenterClass-def"><a name="L229"></a><tt class="py-lineno">229</tt> <a class="py-toggle" href="#" id="PresenterClass-toggle" onclick="return toggle('PresenterClass');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.PresenterClass-class.html">PresenterClass</a><tt class="py-op">(</tt><tt class="py-base-class">Class</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PresenterClass-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PresenterClass-expanded"><a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-docstring">   The type of class in the classes array if the logged in user is a presenter.</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar students: an array of students in the class</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"><tt class="py-docstring">   @type students: array of Student</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="PresenterClass.__init__"></a><div id="PresenterClass.__init__-def"><a name="L236"></a><tt class="py-lineno">236</tt> <a class="py-toggle" href="#" id="PresenterClass.__init__-toggle" onclick="return toggle('PresenterClass.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.PresenterClass-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">students</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PresenterClass.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="PresenterClass.__init__-expanded"><a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">      <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-3" class="py-name" targets="Class EClass.Connection.PresenterClass=EClass.Connection.PresenterClass-class.html"><a title="EClass.Connection.PresenterClass" class="py-name" href="#" onclick="return doclink('link-3', 'PresenterClass', 'link-3');">PresenterClass</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="EClass.ApprovalTracker.ApprovalRating.__init__
+EClass.Connection.AuthenticationFailure.__init__
+EClass.Connection.AuthenticationSuccess.__init__
+EClass.Connection.Class.__init__
+EClass.Connection.Connection.__init__
+EClass.Connection.HostFailure.__init__
+EClass.Connection.JoinFailure.__init__
+EClass.Connection.PresenterClass.__init__
+EClass.Connection.Student.__init__
+EClass.Connection.StudentClass.__init__
+EClass.EClass.__init__
+EClass.Forum.Forum.__init__
+EClass.Forum.Message.__init__
+EClass.Person.Person.__init__
+EClass.Person.Question.__init__
+EClass.Person.Roster.__init__
+EClass.Person.RosterItem.__init__
+EClass.Person.Student.__init__
+EClass.Person.StudentPermissions.__init__
+EClass.Presentation.Layer.__init__
+EClass.Presentation.LayerManagerModel.__init__
+EClass.Presentation.Presentation.__init__
+EClass.Presentation.Slide.__init__
+EClass.View.ForumWindow.__init__
+EClass.View.ImportPresentation.__init__
+EClass.View.InitialPrompt.__init__
+EClass.View.LayerManager.__init__
+EClass.View.LayerView.__init__
+EClass.View.LoginWindow.__init__
+EClass.View.PermissionsWindow.__init__
+EClass.View.RosterItemPanel.__init__
+EClass.View.RosterWindow.__init__
+EClass.View.WhiteboardNav.__init__" class="py-name" href="#" onclick="return doclink('link-4', '__init__', 'link-2');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">students</tt> <tt class="py-op">=</tt> <tt class="py-name">students</tt> </tt>
+</div></div><a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"> </tt>
+<a name="Student"></a><div id="Student-def"><a name="L240"></a><tt class="py-lineno">240</tt> <a class="py-toggle" href="#" id="Student-toggle" onclick="return toggle('Student');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.Student-class.html">Student</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Student-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Student-expanded"><a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar username: username of the student</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line"><tt class="py-docstring">   @type username: string</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar firstName: first name of the student</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-docstring">   @type firstName: string</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar lastName: last name of the student</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"><tt class="py-docstring">   @type lastName: string</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="Student.__init__"></a><div id="Student.__init__-def"><a name="L250"></a><tt class="py-lineno">250</tt> <a class="py-toggle" href="#" id="Student.__init__-toggle" onclick="return toggle('Student.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.Student-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">firstName</tt><tt class="py-op">,</tt> <tt class="py-param">lastName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Student.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="Student.__init__-expanded"><a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">username</tt> <tt class="py-op">=</tt> <tt class="py-name">username</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">firstName</tt> <tt class="py-op">=</tt> <tt class="py-name">firstName</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lastName</tt> <tt class="py-op">=</tt> <tt class="py-name">lastName</tt> </tt>
+</div></div><a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"> </tt>
+<a name="HostResponse"></a><div id="HostResponse-def"><a name="L255"></a><tt class="py-lineno">255</tt> <a class="py-toggle" href="#" id="HostResponse-toggle" onclick="return toggle('HostResponse');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.HostResponse-class.html">HostResponse</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HostResponse-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="HostResponse-expanded"><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-docstring">   Response passed to the callback when attempting to host. It is either an</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"><tt class="py-docstring">   instance of HostSuccess or HostFailure</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar success: True for successful, false for fail</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-docstring">   @type success: boolean (read-only)</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">   <tt class="py-decorator">@</tt><tt class="py-decorator">property</tt> </tt>
+<a name="HostResponse.success"></a><div id="HostResponse.success-def"><a name="L264"></a><tt class="py-lineno">264</tt> <a class="py-toggle" href="#" id="HostResponse.success-toggle" onclick="return toggle('HostResponse.success');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.HostResponse-class.html#success">success</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HostResponse.success-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="HostResponse.success-expanded"><a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">         <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> <tt class="py-op">=</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class EClass.Connection.HostSuccess=EClass.Connection.HostSuccess-class.html"><a title="EClass.Connection.HostSuccess" class="py-name" href="#" onclick="return doclink('link-5', 'HostSuccess', 'link-5');">HostSuccess</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> </tt>
+</div></div><a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line"> </tt>
+<a name="HostSuccess"></a><div id="HostSuccess-def"><a name="L269"></a><tt class="py-lineno">269</tt> <a class="py-toggle" href="#" id="HostSuccess-toggle" onclick="return toggle('HostSuccess');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.HostSuccess-class.html">HostSuccess</a><tt class="py-op">(</tt><tt class="py-base-class">HostResponse</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+</div><a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">   <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"> </tt>
+<a name="HostFailure"></a><div id="HostFailure-def"><a name="L275"></a><tt class="py-lineno">275</tt> <a class="py-toggle" href="#" id="HostFailure-toggle" onclick="return toggle('HostFailure');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.HostFailure-class.html">HostFailure</a><tt class="py-op">(</tt><tt class="py-base-class">HostResponse</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HostFailure-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="HostFailure-expanded"><a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar reason: the reason hosting failed (eg 'not a presenter for this class')</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"><tt class="py-docstring">   @type reason: string</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="HostFailure.__init__"></a><div id="HostFailure.__init__-def"><a name="L281"></a><tt class="py-lineno">281</tt> <a class="py-toggle" href="#" id="HostFailure.__init__-toggle" onclick="return toggle('HostFailure.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.HostFailure-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">reason</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HostFailure.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="HostFailure.__init__-expanded"><a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">reason</tt> <tt class="py-op">=</tt> <tt class="py-name">reason</tt> </tt>
+</div></div><a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line"> </tt>
+<a name="JoinResponse"></a><div id="JoinResponse-def"><a name="L284"></a><tt class="py-lineno">284</tt> <a class="py-toggle" href="#" id="JoinResponse-toggle" onclick="return toggle('JoinResponse');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.JoinResponse-class.html">JoinResponse</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JoinResponse-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JoinResponse-expanded"><a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line"><tt class="py-docstring">   Response passed to the callback when attempting to join. It is either an</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line"><tt class="py-docstring">   instance of JoinSuccess or JoinFailure</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar success: True for successful, false for fail</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line"><tt class="py-docstring">   @type success: boolean (read-only)</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">   <tt class="py-decorator">@</tt><tt class="py-decorator">property</tt> </tt>
+<a name="JoinResponse.success"></a><div id="JoinResponse.success-def"><a name="L293"></a><tt class="py-lineno">293</tt> <a class="py-toggle" href="#" id="JoinResponse.success-toggle" onclick="return toggle('JoinResponse.success');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.JoinResponse-class.html#success">success</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JoinResponse.success-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="JoinResponse.success-expanded"><a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">         <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> <tt class="py-op">=</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class EClass.Connection.JoinSuccess=EClass.Connection.JoinSuccess-class.html"><a title="EClass.Connection.JoinSuccess" class="py-name" href="#" onclick="return doclink('link-6', 'JoinSuccess', 'link-6');">JoinSuccess</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__success</tt> </tt>
+</div></div><a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"> </tt>
+<a name="JoinSuccess"></a><div id="JoinSuccess-def"><a name="L298"></a><tt class="py-lineno">298</tt> <a class="py-toggle" href="#" id="JoinSuccess-toggle" onclick="return toggle('JoinSuccess');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.JoinSuccess-class.html">JoinSuccess</a><tt class="py-op">(</tt><tt class="py-base-class">JoinResponse</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+</div><a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">   <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line"> </tt>
+<a name="JoinFailure"></a><div id="JoinFailure-def"><a name="L304"></a><tt class="py-lineno">304</tt> <a class="py-toggle" href="#" id="JoinFailure-toggle" onclick="return toggle('JoinFailure');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.Connection.JoinFailure-class.html">JoinFailure</a><tt class="py-op">(</tt><tt class="py-base-class">JoinResponse</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JoinFailure-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JoinFailure-expanded"><a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar reason: the reason joining failed (eg 'not a student of this class')</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"><tt class="py-docstring">   @type reason: string</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="JoinFailure.__init__"></a><div id="JoinFailure.__init__-def"><a name="L310"></a><tt class="py-lineno">310</tt> <a class="py-toggle" href="#" id="JoinFailure.__init__-toggle" onclick="return toggle('JoinFailure.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.Connection.JoinFailure-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">reason</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JoinFailure.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="JoinFailure.__init__-expanded"><a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">reason</tt> <tt class="py-op">=</tt> <tt class="py-name">reason</tt> </tt>
+</div></div><a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr 27 20:30:31 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

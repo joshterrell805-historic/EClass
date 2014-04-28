@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>EClass.Connection.Connection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="EClass-module.html">Package&nbsp;EClass</a> ::
+        <a href="EClass.Connection-module.html">Module&nbsp;Connection</a> ::
+        Class&nbsp;Connection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="EClass.Connection.Connection-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Connection</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection">source&nbsp;code</a></span></p>
+<p>Connection class is a singleton which represents the connection 
+  between the user and everything external. This is the class EClass uses 
+  to authenticate, join a presentation, ask the presenter a question, 
+  ...</p>
+  <p>Note: listeners can be registered/unregistered whenever. The 
+  connection does not have to be made before registering a listener. It's 
+  advised to set up listeners before authenticating so that no messages are
+  missed.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Josh Terrell jmterrel@calpoly.edu
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      This class is a singleton, DO NOT USE THE CONSTRUCTOR DIRECTLY.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#getInstance" class="summary-sig-name">getInstance</a>()</span><br />
+      Returns:
+      the single instance of Connection for this user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.getInstance">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#authenticate" class="summary-sig-name">authenticate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">password</span>,
+        <span class="summary-sig-arg">callback</span>)</span><br />
+      Attempt to login.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.authenticate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#hostPresentation" class="summary-sig-name">hostPresentation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">className</span>,
+        <span class="summary-sig-arg">onStudentJoin</span>,
+        <span class="summary-sig-arg">callback</span>)</span><br />
+      Attempt to start hosting a presentation for a class.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.hostPresentation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#joinPresentation" class="summary-sig-name">joinPresentation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">className</span>,
+        <span class="summary-sig-arg">callback</span>)</span><br />
+      Attempt to join a presentation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.joinPresentation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#registerStudentClassesListener" class="summary-sig-name">registerStudentClassesListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">listener</span>)</span><br />
+      Register a listener to be called whenever the list of classes 
+      changes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.registerStudentClassesListener">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#unregisterStudentClassesListener" class="summary-sig-name">unregisterStudentClassesListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">listener</span>)</span><br />
+      Unregister a previously registered listener registered with 
+      registerStudentClassesListener, or unregister all listeners.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.unregisterStudentClassesListener">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#sendMessage" class="summary-sig-name">sendMessage</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">identifier</span>,
+        <span class="summary-sig-arg">recipient</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Send a message to the person at the other side.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.sendMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#registerMessageListener" class="summary-sig-name">registerMessageListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">identifier</span>,
+        <span class="summary-sig-arg">listener</span>)</span><br />
+      Register a listener to be called whenever a message identified by 
+      `identifier` is received.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.registerMessageListener">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.Connection-class.html#unregisterMessageListener" class="summary-sig-name">unregisterMessageListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">identifier</span>,
+        <span class="summary-sig-arg">listener</span>)</span><br />
+      Unregister a/some/all message listener(s) previously registered with 
+      registerMessageListener.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.unregisterMessageListener">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This class is a singleton, DO NOT USE THE CONSTRUCTOR DIRECTLY. 
+  Instead, use the static method getInstance.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getInstance"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getInstance</span>()</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.getInstance">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the single instance of Connection for this user.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="authenticate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">authenticate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">password</span>,
+        <span class="sig-arg">callback</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.authenticate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Attempt to login. `callback` is called when the authentication has 
+  succeeded or failed.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> (string) - the user's username</li>
+        <li><strong class="pname"><code>password</code></strong> (string) - the user's password</li>
+        <li><strong class="pname"><code>callback</code></strong> (function passed one argument, AuthenticationResponse) - the callback to be called when the authentication request 
+          succeeds or fails. This callback is passed an 
+          AuthenticationResponse (AuthenticationSuccess or 
+          AuthenticationFailure) as its only argument.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="hostPresentation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">hostPresentation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">className</span>,
+        <span class="sig-arg">onStudentJoin</span>,
+        <span class="sig-arg">callback</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.hostPresentation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Attempt to start hosting a presentation for a class. In order for this
+  method to succeed, the user must be already authenticated as a presenter,
+  he must not be hosting any other presentations, and he must be able to 
+  host a class for the specified class.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>className</code></strong> (string) - the class the presenter wishes to host a presentationfor. This 
+          class can be any class.name returned in the AuthenticationSuccess
+          object from the authenticate callback.</li>
+        <li><strong class="pname"><code>onStudentJoin</code></strong> (function) - assuming hosting succeeded, this callback will be called whenever
+          a student joins the presentation. This callback is called with 
+          the username of the student that logged in.</li>
+        <li><strong class="pname"><code>callback</code></strong> (function passed one argument, HostResponse) - the callback to be called when the attempt to host has succeeded 
+          or failed.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="joinPresentation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">joinPresentation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">className</span>,
+        <span class="sig-arg">callback</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.joinPresentation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Attempt to join a presentation. In order for this method to succeed, 
+  the user must be logged in as a student and in the class that he attempts
+  to join. Additionally, the class must be hosted.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>className</code></strong> (string) - the name of the class the student wishes to join. eg 'CPE 308' 
+          This class name can be any class.name from the classes array from
+          the AuthenticationSuccess object.</li>
+        <li><strong class="pname"><code>callback</code></strong> (a function with one argument, a JoinResponse) - a function to be called when the attempt to join succeeds or 
+          fails.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="registerStudentClassesListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerStudentClassesListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">listener</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.registerStudentClassesListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Register a listener to be called whenever the list of classes changes.
+  A student's list of classes changes when a presenter switches a class 
+  from hosted to not hosted or visa versa.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>listener</code></strong> (a function with one argument, an array of StudentClass) - the listener to be called whenever the classes change.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="unregisterStudentClassesListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">unregisterStudentClassesListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">listener</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.unregisterStudentClassesListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Unregister a previously registered listener registered with 
+  registerStudentClassesListener, or unregister all listeners. If listener 
+  is None, this method unregisters all listeners. If listener is a 
+  funciton, this method unregisters the listener passed.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sendMessage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sendMessage</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">identifier</span>,
+        <span class="sig-arg">recipient</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.sendMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send a message to the person at the other side. This funciton is used 
+  for one-to-one and one-to-many communicaitons. EG the student sends the 
+  presenter a quesiton, or the a the presenter adds a layer object to the 
+  top layer.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>identifier</code></strong> (string) - the identifier used for the type of this message eg 'ask 
+          question', 'adjust permissions'. This message will only be 
+          received by the person at the other side if the person at the 
+          other side is listening for messages of type `identifier`. @see 
+          registerMessageListener</li>
+        <li><strong class="pname"><code>recipient</code></strong> (string or None) - the recipient to receive this message. If this user is a student,
+          this argument must be None (all sent messages go to the presenter
+          only; from there the presenter may chose to broadcast the message
+          to all other students) If the user is a presenter, this argument 
+          may be None or a string. If this parameter is None and the user 
+          is a presenter, the message is sent to all students. If the 
+          parameter is a string, it is assumed to be the username of the 
+          student to send this message to.</li>
+        <li><strong class="pname"><code>message</code></strong> (object) - the message to send. Must be a simple python object.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="registerMessageListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerMessageListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">identifier</span>,
+        <span class="sig-arg">listener</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.registerMessageListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Register a listener to be called whenever a message identified by 
+  `identifier` is received. @see sendMessage</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>identifier</code></strong> (string) - the identifier indicating the type of message received. This 
+          identifier must match exaclty the identifier specified in 
+          sendMessage</li>
+        <li><strong class="pname"><code>listener</code></strong> (function with two arguments, sender and message) - the listener to be called whenever a message of type `identifier`
+          is received. This listener is passed two arguments. In order they
+          are the sender and the message. The sender is the username of the
+          user who sent this message. The sender field is None if the 
+          sender is the presenter, otherwise the sender is the username of 
+          the student who sent this message to the presenter. The message 
+          is the object sent by the sender in sendMessage.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="unregisterMessageListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">unregisterMessageListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">identifier</span>,
+        <span class="sig-arg">listener</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#Connection.unregisterMessageListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Unregister a/some/all message listener(s) previously registered with 
+  registerMessageListener.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>identifier</code></strong> (string) - the identifier of the message listener to unregister.</li>
+        <li><strong class="pname"><code>listener</code></strong> (function
+          <p>If identifier is None and listener is None, unregister all 
+          message listeners.</p>
+          <p>If identifier is None and listener is a function, unregister 
+          all message listeners of any indentifier associated with the 
+          funciton.</p>
+          <p>If identifier is a string and listener is None, unregister all
+          message listeners associated with the identifier.</p>
+          <p>If identifier is a string and listener is a funciton, 
+          unregister all message listeners associated with this identifier 
+          and function.</p>) - the listener to unregister</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="EClass-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr 27 20:30:31 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
