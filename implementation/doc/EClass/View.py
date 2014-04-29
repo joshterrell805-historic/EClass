@@ -392,6 +392,20 @@ class LayerManager:
       """
       pass
       
+   def UpdateLayers(self):
+      """
+      Update the layers prsented
+      """
+      pass
+      
+   def onClose(self, event):
+      """
+      Uncheck the menu item
+
+      @postcondition: self.parent.showLayerManagerMenuItem != old(self.parent.showLayerManagerMenuItem)
+      """
+      pass
+      
 class LayerView:
    """
    A view for a layer in the layer manager.
