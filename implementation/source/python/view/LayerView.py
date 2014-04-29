@@ -1,5 +1,7 @@
 import wx
 
+from ChangePermWindow import ChangePermWindow
+
 class LayerView(wx.Panel):
    def layerListObject(self, parent):
       layerControls = wx.BoxSizer(wx.HORIZONTAL)
@@ -22,9 +24,10 @@ class LayerView(wx.Panel):
 
    def __init__(self, parent, layer):
       self.layer = layer
+      self.parent = parent
 
    def changePermissions(self, event):
-      self.layer.ChangePermissions()
+      self.changeLayerPerm = ChangePermWindow(self.parent, self.layer)
       
    def ToggleVisible(self, event):
       self.layer.ToggleVisible()

@@ -2,6 +2,7 @@ import wx
 import sys
 
 from LayerView import LayerView
+from NewLayerWindow import NewLayerWindow
 
 #model
 sys.path.insert(0, 'model')
@@ -49,7 +50,19 @@ class LayerManager(wx.Frame):
       EClass.GetInstance().layerManagerModel.DeleteLayer()
 
    def NewLayer(self, event):
-      EClass.GetInstance().layerManagerModel.NewLayer()
+      self.newLayerWindow = NewLayerWindow(self)
 
    def ChangeOpacity(self, event):
       EClass.GetInstance().layerManagerModel.ChangeOpacity(0)
+      
+   def UpdateLayers(self):
+      self.sizer.Hide(2)
+      self.sizer.Detach(2)
+      self.layerDisplay = wx.BoxSizer(wx.VERTICAL)
+      for layer in EClass.GetInstance().layerManagerModel.layers:
+         view = LayerView(self, layer)
+         self.layers.append(view)
+         self.layerDisplay.Add(view.layerListObject(self))
+         self.layerDisplay.Add(wx.StaticLine(self, -1, (25, 50), (250,1)))
+      self.sizer.Add(self.layerDisplay)
+      self.sizer.Layout()

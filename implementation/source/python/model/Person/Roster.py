@@ -13,3 +13,6 @@ class Roster:
 
    def SortList(self, list):
       list.sort()
+   
+   def GetRoster(self):
+      return self.students + self.remoteList

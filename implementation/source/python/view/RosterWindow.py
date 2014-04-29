@@ -71,6 +71,8 @@ class RosterWindow(wx.Frame):
 
       self.SetSizer(rosterVertSizer)
       self.SendSizeEvent()
+      
+      EClass.GetInstance().rosterModel = self.rosterModel
 
    def AddRosterItem(self, fpb, username):
       if fpb == self.foldPanelBar:

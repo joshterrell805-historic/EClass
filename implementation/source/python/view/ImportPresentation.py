@@ -3,7 +3,6 @@ import sys
 
 #view
 from WhiteboardNav import WhiteboardNav
-from LayerManager import LayerManager
 from ApprovalTrackerGaget import ApprovalTrackerGaget
 
 #model

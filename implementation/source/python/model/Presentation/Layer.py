@@ -1,9 +1,9 @@
 class Layer:
-   def __init__(self, name, lock):
+   def __init__(self, name, opacity, lock):
       self.objects = None
-      self.opacity = 100.00
+      self.opacity = opacity
       self.visible = True
-      self.permissions = None
+      self.permissions = []
       self.name = name
       self.locked = lock
 
