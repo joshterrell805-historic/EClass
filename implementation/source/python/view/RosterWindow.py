@@ -10,12 +10,13 @@ from Person.Student import Student
 import wx.lib.agw.foldpanelbar as fpb
 
 class RosterWindow(wx.Frame):
-   def __init__(self):
+   def __init__(self, parent):
       super(RosterWindow, self).__init__(None, -1, 'Roster')
 
       self.rosterModel = Roster()
 
       self.SetClientSizeWH(300, 700)
+      self.parent = parent
 
 
       self.foldPanelBar = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
@@ -69,6 +70,7 @@ class RosterWindow(wx.Frame):
       rosterVertSizer.Add(rosterHoriSizer, 1, wx.CENTER)
       rosterVertSizer.AddStretchSpacer(1)
 
+      self.Bind(wx.EVT_CLOSE, self.onClose)
       self.SetSizer(rosterVertSizer)
       self.SendSizeEvent()
       
@@ -91,3 +93,7 @@ class RosterWindow(wx.Frame):
 
    def Remove(self, event):
       self.rosterModel.RemoveStudent()
+
+   def onClose(self, event):
+      self.parent.showRosterMenuItem.Check(False)
+      self.Hide()

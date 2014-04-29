@@ -6,6 +6,11 @@ _students = [
       'username'  : 'jmterrel'
    },
    {
+      'firstname' : 'Joel',
+      'lastname'  : 'Wilcox',
+      'username'  : 'jnwilcox'
+   },
+   {
       'firstname' : 'Mike',
       'lastname'  : 'Sevilla',
       'username'  : 'mjsevill'

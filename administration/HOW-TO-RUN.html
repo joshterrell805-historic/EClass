@@ -18,13 +18,20 @@ HOW TO RUN EClass
    <li>Make sure wxPython version 3.0 is installed. This is the version
       our team used and we know is supported by Python 2.7.X</li>
    <li>Make sure twisted is installed
-      <a href="https://twistedmatrix.com/trac/">https://twistedmatrix.com/trac/</a></li>
-   <li>Make sure webkit is installed</li>
+      <a href="https://twistedmatrix.com/trac/wiki/Downloads">https://twistedmatrix.com/trac/wiki/Downloads</a></li>
+   <li>Once twisted is installed, make sure twisted install path is on your PYTHONPATH. It's in /lib/.... do a find to find it</li>
+   <ol>
+      <li>`sudo find / -name twisted`</li>
+      <li>`export PYTHONPATH=$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python` is what worked on Andrew's mac</li>
+      <li>NOTE: it's not ../lib/python/twisted  ... it's  .../lib/python</li>
+   </ol>
+   <li>Make sure webkit is installed (should be pre-installed on mac)</li>
    <li>The path where the program is to be ran from is: 
       <tt>http://users.csc.calpoly.edu/~kle17/EClass/implementation/source/python/</tt></li>
-   <li>To run the program simply run the command: <tt>python main.py</tt></li>
    <li>In order to log in, the server must be running. To run the server, run
       <tt>python main.py server</tt> from a separate terminal</li>
+   <li>To run the program simply run the command: <tt>python main.py</tt></li>
+   <li>To authenticate, your username is `gfisher` and no password is required.</li>
 </ol>
 <br>
 For convenience, here is a link to our documentation: 

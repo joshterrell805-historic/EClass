@@ -35,11 +35,11 @@ class MenuBar:
       ID_VIEW_ZOOMTOFIT = wx.NewId()
       ID_VIEW_FULLSCREEN = wx.NewId()
 
-      self.__rosterWindow = RosterWindow()
-      self.__drawingTools = DrawingTools()
-      self.__layerManager = LayerManager(None)
-      self.__approvalTracker = ApprovalTrackerGaget()
-      self.__forum = ForumWindow()
+      self.__rosterWindow = RosterWindow(self)
+      self.__drawingTools = DrawingTools(self)
+      self.__layerManager = LayerManager(self)
+      self.__approvalTracker = ApprovalTrackerGaget(self)
+      self.__forum = ForumWindow(self)
 
       menuBar = wx.MenuBar()
 

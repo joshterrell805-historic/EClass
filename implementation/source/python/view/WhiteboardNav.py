@@ -24,9 +24,6 @@ class WhiteboardNav(wx.Panel):
 
       nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
       nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
-
-      syncButton = wx.Button(self, label = 'SYNC', size = (120, 15))
-      syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
       
       self.slideTextbox = wx.lib.intctrl.IntCtrl(self, 
          style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
@@ -44,7 +41,10 @@ class WhiteboardNav(wx.Panel):
          border = 20
       )
 
+      # Only add the Sync button for Students
       if isinstance(EClass.GetInstance().user, Student):
+         syncButton = wx.Button(self, label = 'SYNC', size = (120, 15))
+         syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
          navVertSizer.Add(syncButton, 3, wx.CENTER)
       navVertSizer.AddStretchSpacer(1)
 

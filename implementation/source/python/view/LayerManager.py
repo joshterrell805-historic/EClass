@@ -10,7 +10,7 @@ from EClass import EClass
 
 class LayerManager(wx.Frame):
    def __init__(self, parent):
-      super(LayerManager, self).__init__(parent, size = (300,400))
+      super(LayerManager, self).__init__(None, size = (300,400))
       self.parent = parent
       self.sizer = wx.BoxSizer(wx.VERTICAL)
       self.controls = wx.BoxSizer(wx.HORIZONTAL)
@@ -45,6 +45,7 @@ class LayerManager(wx.Frame):
 
       self.sizer.SetMinSize(size = (100,10))
       self.SetSizer(self.sizer)
+      self.Bind(wx.EVT_CLOSE, self.onClose)
 
    def DeleteLayer(self, event):
       EClass.GetInstance().layerManagerModel.DeleteLayer()
@@ -54,7 +55,7 @@ class LayerManager(wx.Frame):
 
    def ChangeOpacity(self, event):
       EClass.GetInstance().layerManagerModel.ChangeOpacity(0)
-      
+   
    def UpdateLayers(self):
       self.sizer.Hide(2)
       self.sizer.Detach(2)
@@ -66,3 +67,7 @@ class LayerManager(wx.Frame):
          self.layerDisplay.Add(wx.StaticLine(self, -1, (25, 50), (250,1)))
       self.sizer.Add(self.layerDisplay)
       self.sizer.Layout()
+
+   def onClose(self, event):
+      self.parent.showLayerManagerMenuItem.Check(False)
+      self.Hide()

@@ -13,11 +13,13 @@ class ApprovalTrackerGaget(wx.Frame):
    minVal = 0
    maxVal = 10
 
-   def __init__(self):
+   def __init__(self, parent):
       
       super(ApprovalTrackerGaget, self).__init__(
          None, -1, "A.T.G.", size = (60, 150)
       )
+
+      self.parent = parent
 
       slider = wx.Slider(self,
          minValue = ApprovalTrackerGaget.minVal,
@@ -45,6 +47,8 @@ class ApprovalTrackerGaget(wx.Frame):
          ApprovalTrackerGaget.SetApprovalRating(slider.GetValue())
 
          self.Bind(wx.EVT_SCROLL, self.OnSlide)
+      
+      self.Bind(wx.EVT_CLOSE, self.onClose)
 
    def OnSlide(self, event):
       ApprovalTrackerGaget.SetApprovalRating(event.GetPosition())
@@ -70,6 +74,10 @@ class ApprovalTrackerGaget(wx.Frame):
 
       user = EClass.GetInstance().user
       user.approvalRating.SetValue(valAsPercent)
+
+   def onClose(self, event):
+      self.parent.showApprovalTrackerMenuItem.Check(False)
+      self.Hide()
 
 
 # For testing.. this is only run if the file is ran directly.
