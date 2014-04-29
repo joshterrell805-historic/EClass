@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.Connection.HostSuccess</title>
+  <title>EClass.Connection.GenericSuccess</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -39,7 +39,7 @@
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
         <a href="EClass.Connection-module.html">Module&nbsp;Connection</a> ::
-        Class&nbsp;HostSuccess
+        Class&nbsp;GenericSuccess
       </span>
     </td>
     <td>
@@ -49,30 +49,34 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.Connection.HostSuccess-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.Connection.GenericSuccess-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class HostSuccess</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Connection-pysrc.html#HostSuccess">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class GenericSuccess</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Connection-pysrc.html#GenericSuccess">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-     object --+        
-              |        
-<a href="EClass.Connection.GenericResponse-class.html">GenericResponse</a> --+    
-                  |    
-     <a href="EClass.Connection.GenericSuccess-class.html">GenericSuccess</a> --+
-                      |
-                     <strong class="uidshort">HostSuccess</strong>
+     object --+    
+              |    
+<a href="EClass.Connection.GenericResponse-class.html">GenericResponse</a> --+
+                  |
+                 <strong class="uidshort">GenericSuccess</strong>
 </pre>
 
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="EClass.Connection.AuthenticationSuccess-class.html">AuthenticationSuccess</a></li><li>, <a href="EClass.Connection.HostSuccess-class.html">HostSuccess</a></li>  </ul>
+</dd></dl>
+
 <hr />
-<hr />
-<div class="fields">      <p><strong>Author:</strong>
-        Josh Terrell jmterrel@calpoly.edu
-      </p>
-</div><!-- ==================== INSTANCE METHODS ==================== -->
+<p>A generic success is a GenericResponse that succeeded. A generic 
+  success may be subclassed to provide state to the recipient of this 
+  response.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -89,11 +93,26 @@
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Connection.GenericSuccess-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Don't forget to call the super constructor when inheriting from this 
+      class!</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Connection-pysrc.html#GenericSuccess.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="EClass.Connection.GenericSuccess-class.html">GenericSuccess</a></code></b>:
-      <code><a href="EClass.Connection.GenericSuccess-class.html#__init__">__init__</a></code>
-      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
@@ -161,6 +180,49 @@
     </td>
   </tr>
 </table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Connection-pysrc.html#GenericSuccess.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Don't forget to call the super constructor when inheriting from this 
+  class!</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
