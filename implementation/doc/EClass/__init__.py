@@ -46,29 +46,24 @@ class EClass():
       """
       pass
 
-   def Login(self, username, password):
+   def Login(self, username, password, onSuccess, onFailure):
       """
       Attempt to login the user.
 
-      On success, self.user is set to a Presenter or Student depending on the
-      credentials of the user.
+      If the login succeeds, self.user is set to an instance of Presenter or
+      Student depending on the credentials of the user, and the onSuccess
+      callback is called.
 
-      On failure, self.user remains None.
+      If the login fails, self.user remains None and onFailure is called.
 
       @param username: the username of the user 
       @param password: the password of the user
+      @param onSuccess: the callback to be called if the authorizaiton request
+      succeeds (passed 0 arguments)
+      @param onFailure: the callback called if the authorization request fails
+      passed one argument, a string stating the reason that the requst failed.
 
       @precondition: self.user == None
-      """
-      pass
-
-   def Authorize(self, username, password):
-      """
-      Try to authorize the user using the username/password combination.
-
-      @param username: the username of the user 
-      @param password: the password of the user
-      @return: True or false depending if possible to authorize.
       """
       pass
 
@@ -77,5 +72,16 @@ class EClass():
       Initialize the Layer Manager's model.
 
       @postcondition: isinstance(self.layerManagerModel, LayerManagerModel)
+      """
+      pass
+
+   def exit(self):
+      """
+      Close the EClass model cleaning up any resources that need to be cleaned
+      (mainly networking connections). 
+
+      NOTE: this may pre-maturely close the program with a SIGKILL if twisted
+      can't be shut down. This is a issue we're working on, but for now all
+      other cleanup should be called before calling this method.
       """
       pass

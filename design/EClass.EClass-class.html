@@ -106,29 +106,12 @@
         <tr>
           <td><span class="summary-sig"><a href="EClass.EClass-class.html#Login" class="summary-sig-name">Login</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">username</span>,
-        <span class="summary-sig-arg">password</span>)</span><br />
+        <span class="summary-sig-arg">password</span>,
+        <span class="summary-sig-arg">onSuccess</span>,
+        <span class="summary-sig-arg">onFailure</span>)</span><br />
       Attempt to login the user.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass-pysrc.html#EClass.Login">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.EClass-class.html#Authorize" class="summary-sig-name">Authorize</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">username</span>,
-        <span class="summary-sig-arg">password</span>)</span><br />
-      Try to authorize the user using the username/password combination.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass-pysrc.html#EClass.Authorize">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -146,6 +129,24 @@
       Initialize the Layer Manager's model.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass-pysrc.html#EClass.SetUpLayerManager">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#exit" class="summary-sig-name">exit</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Close the EClass model cleaning up any resources that need to be 
+      cleaned (mainly networking connections).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.exit">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -285,7 +286,9 @@
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">Login</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">username</span>,
-        <span class="sig-arg">password</span>)</span>
+        <span class="sig-arg">password</span>,
+        <span class="sig-arg">onSuccess</span>,
+        <span class="sig-arg">onFailure</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="EClass-pysrc.html#EClass.Login">source&nbsp;code</a></span>&nbsp;
@@ -293,48 +296,26 @@
   </tr></table>
   
   <p>Attempt to login the user.</p>
-  <p>On success, self.user is set to a Presenter or Student depending on 
-  the credentials of the user.</p>
-  <p>On failure, self.user remains None.</p>
+  <p>If the login succeeds, self.user is set to an instance of Presenter or
+  Student depending on the credentials of the user, and the onSuccess 
+  callback is called.</p>
+  <p>If the login fails, self.user remains None and onFailure is 
+  called.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>username</code></strong> - the username of the user</li>
         <li><strong class="pname"><code>password</code></strong> - the password of the user</li>
+        <li><strong class="pname"><code>onSuccess</code></strong> - the callback to be called if the authorizaiton request succeeds 
+          (passed 0 arguments)</li>
+        <li><strong class="pname"><code>onFailure</code></strong> - the callback called if the authorization request fails passed one
+          argument, a string stating the reason that the requst failed.</li>
     </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
         self.user == None
       </p>
 </div></td></tr></table>
-</div>
-<a name="Authorize"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">Authorize</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">username</span>,
-        <span class="sig-arg">password</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass-pysrc.html#EClass.Authorize">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Try to authorize the user using the username/password combination.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>username</code></strong> - the username of the user</li>
-        <li><strong class="pname"><code>password</code></strong> - the password of the user</li>
-    </ul></dd>
-    <dt>Returns:</dt>
-        <dd>True or false depending if possible to authorize.</dd>
-  </dl>
-</td></tr></table>
 </div>
 <a name="SetUpLayerManager"></a>
 <div>
@@ -357,6 +338,29 @@
         isinstance(self.layerManagerModel, LayerManagerModel)
       </p>
 </div></td></tr></table>
+</div>
+<a name="exit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">exit</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.exit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Close the EClass model cleaning up any resources that need to be 
+  cleaned (mainly networking connections).</p>
+  <p>NOTE: this may pre-maturely close the program with a SIGKILL if 
+  twisted can't be shut down. This is a issue we're working on, but for now
+  all other cleanup should be called before calling this method.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
@@ -385,7 +389,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 28 16:12:06 2014
+    Generated by Epydoc 3.0.1 on Mon Apr 28 20:52:00 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
