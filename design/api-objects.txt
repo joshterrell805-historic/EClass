@@ -132,9 +132,11 @@ EClass.Person.Question.text	EClass.Person.Question-class.html#text
 EClass.Person.Question.GetText	EClass.Person.Question-class.html#GetText
 EClass.Person.Question.__init__	EClass.Person.Question-class.html#__init__
 EClass.Person.Roster	EClass.Person.Roster-class.html
+EClass.Person.Roster.GetRoster	EClass.Person.Roster-class.html#GetRoster
 EClass.Person.Roster.students	EClass.Person.Roster-class.html#students
-EClass.Person.Roster.AddNewStudent	EClass.Person.Roster-class.html#AddNewStudent
 EClass.Person.Roster.RemoveStudent	EClass.Person.Roster-class.html#RemoveStudent
+EClass.Person.Roster.SortList	EClass.Person.Roster-class.html#SortList
+EClass.Person.Roster.AddNewStudent	EClass.Person.Roster-class.html#AddNewStudent
 EClass.Person.Roster.__init__	EClass.Person.Roster-class.html#__init__
 EClass.Person.RosterItem	EClass.Person.RosterItem-class.html
 EClass.Person.RosterItem.Layers	EClass.Person.RosterItem-class.html#Layers
@@ -215,6 +217,7 @@ EClass.Presentation.Slide.__init__	EClass.Presentation.Slide-class.html#__init__
 EClass.View.EClassWindow	EClass.View.EClassWindow-class.html
 EClass.View.ForumWindow	EClass.View.ForumWindow-class.html
 EClass.View.ForumWindow.Refresh	EClass.View.ForumWindow-class.html#Refresh
+EClass.View.ForumWindow.onClose	EClass.View.ForumWindow-class.html#onClose
 EClass.View.ForumWindow.CloseForum	EClass.View.ForumWindow-class.html#CloseForum
 EClass.View.ForumWindow.__init__	EClass.View.ForumWindow-class.html#__init__
 EClass.View.ForumWindow.SendMessage	EClass.View.ForumWindow-class.html#SendMessage
@@ -275,7 +278,9 @@ EClass.View.RosterItemPanel.__init__	EClass.View.RosterItemPanel-class.html#__in
 EClass.View.RosterItemPanel.LayersButton	EClass.View.RosterItemPanel-class.html#LayersButton
 EClass.View.RosterItemPanel.OpenPermissions	EClass.View.RosterItemPanel-class.html#OpenPermissions
 EClass.View.RosterWindow	EClass.View.RosterWindow-class.html
+EClass.View.RosterWindow.onClose	EClass.View.RosterWindow-class.html#onClose
 EClass.View.RosterWindow.AddStudent	EClass.View.RosterWindow-class.html#AddStudent
+EClass.View.RosterWindow.AddRosterItem	EClass.View.RosterWindow-class.html#AddRosterItem
 EClass.View.RosterWindow.__init__	EClass.View.RosterWindow-class.html#__init__
 EClass.View.RosterWindow.Remove	EClass.View.RosterWindow-class.html#Remove
 EClass.View.WhiteboardNav	EClass.View.WhiteboardNav-class.html
