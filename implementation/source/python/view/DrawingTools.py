@@ -1,6 +1,9 @@
 import wx
+import sys
+sys.path.insert(0, 'model/presentation')
 
 from EClass import EClass
+from DrawingToolsModel import DrawingToolsModel
 
 class DrawingTools(wx.Frame):
    def __init__(self, parent):
@@ -9,6 +12,7 @@ class DrawingTools(wx.Frame):
       self.SetClientSizeWH(305, 65)
       self.SetBackgroundColour('#FFFFFFF')
       self.parent = parent
+      self.drawingToolsModel = DrawingToolsModel()
 
       self.ID_PENCIL_TOOL = wx.NewId()
       self.ID_HAND_TOOL = wx.NewId()
@@ -18,8 +22,6 @@ class DrawingTools(wx.Frame):
       self.ID_BASIC_SHAPES_CIRCLE = wx.NewId()
       self.ID_BASIC_SHAPES_TRIANGLE = wx.NewId()
       self.ID_BASIC_SHAPES_SQUARE = wx.NewId()
-
-      self.selectedTool = None
 
       self.drawingTools = self.CreateToolBar()
       
@@ -66,8 +68,8 @@ class DrawingTools(wx.Frame):
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.selectedTool = 'Pencil'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.PencilToolHandler()
+
 
    def HandToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
@@ -76,8 +78,7 @@ class DrawingTools(wx.Frame):
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.selectedTool = 'Hand'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.HandToolHandler()
 
    def AttachmentToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
@@ -86,8 +87,7 @@ class DrawingTools(wx.Frame):
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.selectedTool = 'Attachment'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.AttachmentToolHandler()
 
    def TextToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
@@ -96,8 +96,7 @@ class DrawingTools(wx.Frame):
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.selectedTool = 'Text'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.TextToolHandler()
 
    def CircleShapeHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
@@ -107,8 +106,7 @@ class DrawingTools(wx.Frame):
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
       self.drawingTools.ToggleTool(self.ID_BASIC_SHAPES_TOOL, True)
-      self.selectedTool = 'Circle Shape'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.CircleShapeHandler()
 
    def SquareShapeHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
@@ -117,8 +115,7 @@ class DrawingTools(wx.Frame):
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.selectedTool = 'Square Shape'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.SquareShapeHandler()
 
    def TriangleShapeHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
@@ -127,8 +124,7 @@ class DrawingTools(wx.Frame):
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
       self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
-      self.selectedTool = 'Triangle Shape'
-      print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+      self.drawingToolsModel.TriangleShapeHandler()
 
    def onClose(self, event):
       self.parent.showDrawingToolsMenuItem.Check(False)
