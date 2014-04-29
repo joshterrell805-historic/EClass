@@ -3,11 +3,12 @@ import wx
 from EClass import EClass
 
 class DrawingTools(wx.Frame):
-   def __init__(self):
+   def __init__(self, parent):
       super(DrawingTools, self).__init__(None, -1, 'Drawing Tools', style=wx.DEFAULT_FRAME_STYLE & ~(wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
 
       self.SetClientSizeWH(305, 65)
       self.SetBackgroundColour('#FFFFFFF')
+      self.parent = parent
 
       self.ID_PENCIL_TOOL = wx.NewId()
       self.ID_HAND_TOOL = wx.NewId()
@@ -55,6 +56,8 @@ class DrawingTools(wx.Frame):
       self.basicShapesTool.SetDropdownMenu(self.basicShapesDropdown)
 
       self.drawingTools.Realize()
+      
+      self.Bind(wx.EVT_CLOSE, self.onClose)
 
    def PencilToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
@@ -126,3 +129,7 @@ class DrawingTools(wx.Frame):
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
       self.selectedTool = 'Triangle Shape'
       print("Selected Tool is: {tool}".format(tool = self.selectedTool))
+
+   def onClose(self, event):
+      self.parent.showDrawingToolsMenuItem.Check(False)
+      self.Hide()

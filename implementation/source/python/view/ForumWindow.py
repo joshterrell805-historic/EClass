@@ -8,10 +8,11 @@ from EClass import EClass
 from Forum import Forum
 
 class ForumWindow(wx.Frame):
-   def __init__(self):
+   def __init__(self, parent):
       super(ForumWindow, self).__init__(None, -1, 'Forum')
 
       self.forum = Forum()
+      self.parent = parent
 
       self.SetClientSizeWH(500, 600)
 
@@ -42,6 +43,8 @@ class ForumWindow(wx.Frame):
 
       self.Refresh()
 
+      self.Bind(wx.EVT_CLOSE, self.onClose)
+
    def SendMessage(self, event):
       if self.messageEntry.GetValue() != "":
          user = EClass.GetInstance().user
@@ -59,3 +62,7 @@ class ForumWindow(wx.Frame):
 
    def Refresh(self):
       self.forum.Refresh()
+
+   def onClose(self, event):
+      self.parent.showForumMenuItem.Check(False)
+      self.Hide()
