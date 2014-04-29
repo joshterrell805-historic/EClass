@@ -255,6 +255,12 @@ class RosterWindow(wx.Frame):
       """
       pass
 
+   def AddRosterItem(self, fpb, username):
+      """
+      Adds a new roster item to the roster.
+      """
+      pass
+
    def AddStudent(self, event):
       """
       Adds a student to the roster.
@@ -264,6 +270,12 @@ class RosterWindow(wx.Frame):
    def Remove(self, event):
       """
       Removes a student from the roster.
+      """
+      pass
+
+   def onClose(self, event):
+      """
+      Hides the roster window and unchecks the "Show Roster" menu item in the "View" menu.
       """
       pass
 
@@ -299,6 +311,12 @@ class ForumWindow(wx.Frame):
    def Refresh(self):
       """
       Refreshes the messages list.
+      """
+      pass
+
+   def onClose(self, event):
+      """
+      Hides the forum window and unchecks the "Show Forum" menu item in the "View" menu.
       """
       pass
 
