@@ -1,8 +1,14 @@
 class Roster:
    def __init__(self):
-      self.students = ["Carson Carroll", "Tim Anderson", "Ryan Ginsberg", "Mike Sevilla", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+      self.students = ["Carson Carroll", "Tim Anderson", "Ryan Ginsberg", "Mike Sevilla"]
+      print("Students (in class) listed before being sorted:")
+      for i in range(0, len(self.students)):
+         print(self.students[i])
       self.SortList(self.students)
       self.remoteList = ["Josh Terrell", "Kevin Le", "Joel Wilcox"]
+      print("Students (remote access) listed before being sorted:")
+      for j in range(0, len(self.remoteList)):
+         print(self.remoteList[j])
       self.SortList(self.remoteList)
 
    def AddNewStudent(self):
