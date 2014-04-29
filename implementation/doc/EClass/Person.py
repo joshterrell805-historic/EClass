@@ -294,6 +294,28 @@ class Roster:
       """
       pass
 
+   def SortList(self, list):
+      """
+      Takes a list of students and sorts them by first name then last name in ascending order.
+
+      @param list: The list of students in the roster.
+
+      @precondition: !self.students.isEmpty()
+
+      @postcondition: self.students.isSorted()
+      """
+      pass
+
+   def GetRoster(self):
+      """
+      Concatenates all the lists of studetns and returns one full list of names.
+
+      @precondition: !self.students.isEmpty()
+
+      @postcondition: return self.students + self.remoteList
+      """
+      pass
+
 class RosterItem:
    """
    A RosterItem contains an individual student's first and last name as long as buttons for 
