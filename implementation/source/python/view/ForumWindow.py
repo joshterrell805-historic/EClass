@@ -16,8 +16,8 @@ class ForumWindow(wx.Frame):
 
       self.SetClientSizeWH(500, 600)
 
-      self.messagesArea = wx.TextCtrl(self, size = (500, 500), style = wx.TE_READONLY | wx.TE_MULTILINE)
-      self.messageEntry = wx.TextCtrl(self, size = (500, 50), style = wx.TE_MULTILINE)
+      self.messagesArea = wx.TextCtrl(self, style = wx.TE_READONLY | wx.TE_MULTILINE)
+      self.messageEntry = wx.TextCtrl(self, style = wx.TE_MULTILINE)
       self.messageEntry.SetValue('Enter message here')
 
       sendButton = wx.Button(self, label = 'Send', size = (100, 100))
@@ -28,16 +28,12 @@ class ForumWindow(wx.Frame):
       forumVertSizer = wx.BoxSizer(wx.VERTICAL)
       buttonHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
 
-      forumVertSizer.AddStretchSpacer(1)
-      forumVertSizer.Add(self.messagesArea, 1, wx.CENTER)
-      forumVertSizer.Add(self.messageEntry, 1, wx.CENTER)
+      forumVertSizer.Add(self.messagesArea, 1, wx.CENTER | wx.EXPAND)
+      forumVertSizer.Add(self.messageEntry, 1, wx.CENTER | wx.EXPAND)
       forumVertSizer.Add(buttonHoriSizer, 1, wx.CENTER)
-      forumVertSizer.AddStretchSpacer(1)
 
-      buttonHoriSizer.AddStretchSpacer(1)
       buttonHoriSizer.Add(sendButton, 1, wx.CENTER)
       buttonHoriSizer.Add(closeButton, 1, wx.CENTER)
-      buttonHoriSizer.AddStretchSpacer(1)
 
       self.SetSizer(forumVertSizer)
 
