@@ -28,7 +28,7 @@ class ForumWindow(wx.Frame):
       forumVertSizer = wx.BoxSizer(wx.VERTICAL)
       buttonHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
 
-      forumVertSizer.Add(self.messagesArea, 1, wx.CENTER | wx.EXPAND)
+      forumVertSizer.Add(self.messagesArea, 3, wx.CENTER | wx.EXPAND)
       forumVertSizer.Add(self.messageEntry, 1, wx.CENTER | wx.EXPAND)
       forumVertSizer.Add(buttonHoriSizer, 1, wx.CENTER)
 
