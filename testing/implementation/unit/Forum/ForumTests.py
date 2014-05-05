@@ -9,15 +9,15 @@ class ForumTest(unittest.TestCase):
 
    def setUp(self):
       self.forum = Forum()
-      self.assertEqual(0, len(self.forum.messagesStack))
+      self.assertEqual(0, len(self.forum.messagesList))
 
    def test_AddMessage(self):
       time = datetime.now()
-      self.forum.AddMessage('carson', time, 'asdfz')
+      self.forum.AddMessage('carson', time, 'asdf')
 
-      self.assertEqual(1, len(self.forum.messagesStack))
+      self.assertEqual(1, len(self.forum.messagesList))
 
-      message = self.forum.messagesStack[0]
+      message = self.forum.messagesList[0]
 
       self.assertEqual('carson', message.name)
       self.assertEqual(time, message.time)
