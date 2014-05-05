@@ -10,7 +10,7 @@ class Forum:
 
    @author: Carson Carroll (ccarro03@calpoly.edu)
 
-   @ivar messagesStack: A list that is represented like a stack that holds all of the forum's messages.
+   @ivar messagesList: A list that holds all of the forum's messages.
    """
 
    def __init__(self):
