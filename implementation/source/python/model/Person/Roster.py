@@ -1,6 +1,6 @@
 class Roster:
    def __init__(self):
-      self.students = ["Carson Carroll", "Tim Anderson", "Ryan Ginsberg", "Mike Sevilla"]
+      self.students = ["Carson Carroll", "Tim Anderson", "Ryan Ginsberg", "Mike Sevilla", "Alexa Fox", "Kelsey Hansen", "Emilio Cavazos", "Jared Osborn", "Kevin Wiebe", "Alek Squires", "John Hanna", "Haylee Springer"]
       print("Students (in class) listed before being sorted:")
       for i in range(0, len(self.students)):
          print(self.students[i])

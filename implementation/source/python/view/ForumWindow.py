@@ -30,10 +30,12 @@ class ForumWindow(wx.Frame):
 
       forumVertSizer.Add(self.messagesArea, 3, wx.CENTER | wx.EXPAND)
       forumVertSizer.Add(self.messageEntry, 1, wx.CENTER | wx.EXPAND)
-      forumVertSizer.Add(buttonHoriSizer, 1, wx.CENTER)
+      forumVertSizer.Add(buttonHoriSizer, 1, wx.EXPAND)
 
-      buttonHoriSizer.Add(sendButton, 1, wx.CENTER)
-      buttonHoriSizer.Add(closeButton, 1, wx.CENTER)
+      buttonHoriSizer.AddStretchSpacer(1)
+      buttonHoriSizer.Add(sendButton, 1, wx.EXPAND)
+      buttonHoriSizer.Add(closeButton, 1, wx.EXPAND)
+      buttonHoriSizer.AddStretchSpacer(1)
 
       self.SetSizer(forumVertSizer)
 
@@ -47,7 +49,7 @@ class ForumWindow(wx.Frame):
          currentDateTime = datetime.now()
          self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M %p'), self.messageEntry.GetValue())
          currentText = self.messagesArea.GetValue()
-         self.messagesArea.SetValue(currentText + self.forum.messagesStack.pop().ToString() + "\n")
+         self.messagesArea.SetValue(currentText + self.forum.messagesList[len(self.forum.messagesList) - 1].ToString() + "\n")
          self.messageEntry.SetValue("")
       else:
          pass

@@ -6,8 +6,10 @@ from EClass import EClass
 
 from RosterItemPanel import RosterItemPanel
 from Roster import Roster
+from RosterScrollPanel import RosterScrollPanel
 from Person.Student import Student
 import wx.lib.agw.foldpanelbar as fpb
+import  wx.lib.scrolledpanel as scrolled
 
 class RosterWindow(wx.Frame):
    def __init__(self, parent):
@@ -18,10 +20,9 @@ class RosterWindow(wx.Frame):
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
-
       self.foldPanelBar = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
-      for i in range(0, len(self.rosterModel.students)):
-         self.AddRosterItem(self.foldPanelBar, self.rosterModel.students[i])
+      #for i in range(0, len(self.rosterModel.students)):
+      #   self.AddRosterItem(self.foldPanelBar, self.rosterModel.students[i])
 
       self.foldPanelBarRemote = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
       for i in range(0, len(self.rosterModel.remoteList)):
@@ -35,6 +36,10 @@ class RosterWindow(wx.Frame):
       inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
       inClassText.SetValue('In Class')
       inClassText.SetBackgroundColour('#5CB3FF')
+
+      #**********
+      rosterScrollPanel = RosterScrollPanel(self)
+      #**********
 
       remoteAccessText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
       remoteAccessText.SetValue('Remote Access')
@@ -51,23 +56,25 @@ class RosterWindow(wx.Frame):
 
       rosterVertSizer = wx.BoxSizer(wx.VERTICAL)
       rosterVertSizer.AddStretchSpacer(1)
-      rosterVertSizer.Add(attendance, 1, wx.CENTER)
-      rosterVertSizer.Add(inClassText, 1, wx.CENTER)
+      rosterVertSizer.Add(attendance, 1, wx.EXPAND)
+      rosterVertSizer.Add(inClassText, 1, wx.EXPAND)
 
-      rosterVertSizer.Add(self.foldPanelBar, 1, wx.CENTER)
+
+      rosterVertSizer.Add(rosterScrollPanel, 7, wx.EXPAND)
+      #rosterVertSizer.Add(self.foldPanelBar, 1, wx.CENTER)
       
-      rosterVertSizer.Add(remoteAccessText, 1, wx.CENTER)
+      rosterVertSizer.Add(remoteAccessText, 1, wx.EXPAND)
 
-      rosterVertSizer.Add(self.foldPanelBarRemote, 1, wx.CENTER)
+      rosterVertSizer.Add(self.foldPanelBarRemote, 1, wx.EXPAND)
 
-      rosterVertSizer.Add(remoteAccessPanel, 1, wx.CENTER)
+      rosterVertSizer.Add(remoteAccessPanel, 1, wx.EXPAND)
 
       rosterHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       rosterHoriSizer.AddStretchSpacer(1)
-      rosterHoriSizer.Add(addButton, 1, wx.CENTER)
-      rosterHoriSizer.Add(removeButton, 1, wx.CENTER)
+      rosterHoriSizer.Add(addButton, 1, wx.EXPAND)
+      rosterHoriSizer.Add(removeButton, 1, wx.EXPAND)
       rosterHoriSizer.AddStretchSpacer(1)
-      rosterVertSizer.Add(rosterHoriSizer, 1, wx.CENTER)
+      rosterVertSizer.Add(rosterHoriSizer, 1, wx.EXPAND)
       rosterVertSizer.AddStretchSpacer(1)
 
       self.Bind(wx.EVT_CLOSE, self.onClose)
