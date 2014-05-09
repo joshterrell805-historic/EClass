@@ -21,9 +21,9 @@ class Presentation:
       else:
          return False
 
-   def MoveToSlide(self, currSlideNum):
-      if currSlideNum > 0 and currSlideNum <= len(self.slides):
-         self.currSlideNum = currSlideNum - 1
+   def MoveToSlide(self, slideNum):
+      if slideNum > 0 and slideNum <= len(self.slides):
+         self.currSlideNum = slideNum - 1
          return True
       else:
          return False
