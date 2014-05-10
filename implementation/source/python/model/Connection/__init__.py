@@ -68,12 +68,7 @@ class Connection(object):
       def tryAuth():
          self.__centralClient.tryAuth(username, password, onAuth)
 
-      def failConnect():
-         self.__addCallback(callback, [
-            AuthenticationFailure('Failed to connect to server')
-         ])
-
-      self.__connectCentral(tryAuth, failConnect)
+      self.__connectCentral(tryAuth, self.__connectCentralFail(callback))
 
    def hostPresentation(self, className, callback):
       def onHost(response):
@@ -91,13 +86,8 @@ class Connection(object):
             self.__presenterServer.getHost().port, onHost
          )
 
-      def failConnect():
-         self.__addCallback(callback, [
-            AuthenticationFailure('Failed to connect to server')
-         ])
-
       def doneStarting():
-         self.__connectCentral(tryHost, failConnect)
+         self.__connectCentral(tryHost, self.__connectCentralFail(callback))
 
       self.__startPresentationServer(doneStarting)
 
@@ -139,6 +129,16 @@ class Connection(object):
       # load and return the settings dictionary from config.json
       configFile = open(os.path.dirname(__file__) + '/config.json')
       return json.load(configFile)
+
+   def __connectCentralFail(self, callback):
+      # return a callback which (when called) lets the user know of failure
+      # in a GenericFailure
+      def addFailCallback():
+         self.__addCallback(callback, [
+            GenericFailure('Failed to connect to server')
+         ])
+
+      return addFailCallback
 
    def __connectCentral(self, callback, failCallback):
       def setCentral(connection):
