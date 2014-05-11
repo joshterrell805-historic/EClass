@@ -7,7 +7,7 @@ from Presentation import Presentation
 class PresentationTest(unittest.TestCase):
    """
    Class PresentationTest is the companion testing class for class Presentation.
-   It implements the following module test plan:
+   It implements the following class test plan:
 
       Phase 1: Unit test the constructor.
       Phase 2: Unit test the path access methods SetPath and GetPath.

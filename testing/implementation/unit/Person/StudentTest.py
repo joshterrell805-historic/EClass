@@ -1,15 +1,22 @@
-class Student(Person):
+import unittest
+import sys
+sys.path.insert(0, '../../../../implementation/source/python/model/Person')
+
+from Student import Student
+
+class StudentTest(unittest.TestCase):
    """
-   Make a series of tests that checks for individual errors in each method
-   and for errors caused by sequential method calls (for the ones that operate
-   on the same values)
-   Testing order: 
-      __init__() 
-      > SetPermissions(), GetPermissions() 
-      > SetPresent(), IsPresent()
-      > SetKicked(), IsKicked() 
-      > HasQuestion(), SetQuestion(), GetQuestion()
-      > SetPushedLayer(), GetPushedLayer()
+   Class StudentTest is the companion testing class for class Student.
+   It implements the following class test plan:
+
+      Phase 1: Unit test the constructor.
+      Phase 2: Unit test the permissions access methods SetPermissions and 
+               GetPermissions.
+      Phase 3: Unit test the status access methods SetPresent, IsPresent,
+               SetKicked, and IsKicked.
+      Phase 4: Unit test the question methods HasQuestion, SetQuestion,
+               and GetQuestion.
+      Phase 5: Unit test the layer methods SetPushedLayer and GetPushedLayer.
    """
 
    def __init__(self, username, password, permissions):
