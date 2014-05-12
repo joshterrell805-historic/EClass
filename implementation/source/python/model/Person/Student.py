@@ -4,9 +4,12 @@ from Question import Question
 
 class Student(Person):
 
-   def __init__(self, username, password, permissions = StudentPermissions()):
+   def __init__(self, username, password, permissions = None):
       super(Student, self).__init__(username, password)
-      self.permissions = permissions
+      if permissions != None:
+         self.permissions = permissions
+      else:
+         self.permissions = StudentPermissions()
       self.present = True
       self.kicked = False
       self.question = None
@@ -23,13 +26,15 @@ class Student(Person):
       return self.present
       
    def SetPresent(self, value):
-      self.present = value
+      if value == True or value == False:
+         self.present = value
       
    def IsKicked(self):
       return self.kicked
       
    def SetKicked(self, value):
-      self.kicked = value
+      if value == True or value == False:
+         self.kicked = value
       
    def HasQuestion(self):
       return self.question == None

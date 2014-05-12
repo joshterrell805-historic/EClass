@@ -3,6 +3,8 @@ import sys
 sys.path.insert(0, '../../../../implementation/source/python/model/Person')
 
 from Student import Student
+from Question import Question
+from StudentPermissions import StudentPermissions
 
 class StudentTest(unittest.TestCase):
    """
@@ -19,92 +21,192 @@ class StudentTest(unittest.TestCase):
       Phase 5: Unit test the layer methods SetPushedLayer and GetPushedLayer.
    """
 
-   def __init__(self, username, password, permissions):
+   def setUp(self):
       """
-      Test that all ivars are initialized correctly.
-      Test when no initial permissions are given.
-      Test when initial permissions are given.
-      """
-      pass
+      Unit test the constructor by building one Student object.
 
-   def GetPermissions(self):
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        No permissions given    New permissions
+                                       created
+      2        Permissions given       Permissions set to
+                                       the ones given
       """
-      Test that a StudentPermissions object is returned.
-      """
-      pass
+      
+      self.student = Student('BurtMacklin', 'blah')
+      self.assertTrue(self.student.present)
+      self.assertFalse(self.student.kicked)
+      self.assertEquals(self.student.question, None)
+      self.assertEquals(self.student.pushedLayer = None)
+      self.assertTrue(isinstance(self.student.permissions, StudentPermissions))
+      
+      self.perms = StudentPermissions()
+      self.student = Student('BurtMacklin', 'blah', perms)
+      self.assertEquals(self.perms, self.student.permissions)
 
-   def SetPermissions(self, permissions):
+   def test_GetPermissions(self):
       """
-      Test when permissions is None/null.
-      Test when permissions is not an instance of StudentPermissions.
-      Test when permissions is a valid StudentPermissions.
+      Unit test GetPermissions.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        permissions =           self.perms           Only case
+               self.perms
+      """
+      
+      self.assertTrue(isinstance(self.student.GetPermissions(), StudentPermissions))
+      self.assertEquals(self.student.GetPermissions(), self.perms)
+
+   def test_SetPermissions(self):
+      """
+      Unit test SetPermissions.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        None                                         permissions are unchanged
+      2        a number                                     permissions are unchanged
+      3        valid permissions                            permissions are set
+      """
+      
+      self.student.SetPermissions(None)
+      self.assertEquals(self.student.GetPermissions(), self.perms)
+      self.student.SetPermissions(3)
+      self.assertEquals(self.student.GetPermissions(), self.perms)
+      newPerms = StudentPermissions()
+      self.student.SetPermissions(newPerms)
+      self.assertEquals(self.student.GetPermissions(), newPerms)
+      
+   def test_IsPresent(self):
+      """
+      Unit test IsPresent.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        present = True          True
+      2        present = False         False
+      """
+      
+      self.assertTrue(self.student.IsPresent())
+      self.student.present = False
+      self.assertFalse(self.student.IsPresent())
+      
+   def test_SetPresent(self):
+      """
+      Unit test SetPresent.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        a number                                     present status not changed
+      2        False                                        present status changed
+      3        True                                         present status changed
+      """
+      
+      present = self.student.IsPresent()
+      self.student.SetPresent(3)
+      self.assertEquals(self.student.IsPresent(), present)
+      self.student.SetPresent(False)
+      self.assertFalse(self.student.IsPresent())
+      self.student.SetPresent(True)
+      self.assertTrue(self.student.IsPresent())
+      
+   def test_IsKicked(self):
+      """
+      Unit test IsKicked.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        kicked = False          False
+      2        kicked = True           True
+      """
+      
+      self.assertFalse(self.student.IsKicked())
+      self.student.kicked = True
+      self.assertTrue(self.student.IsKicked())
+      
+   def test_SetKicked(self):
+      """
+      Unit test SetPresent.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        a number                                     kicked status not changed
+      2        True                                         kicked status changed
+      3        False                                        kicked status changed
+      """
+      
+      kicked = self.student.IsKicked()
+      self.student.SetKicked(3)
+      self.assertEquals(self.student.IsKicked(), kicked)
+      self.student.SetKicked(True)
+      self.assertTrue(self.student.IsKicked())
+      self.student.SetKicked(False)
+      self.assertFalse(self.student.IsKicked())
+      
+   def test_HasQuestion(self):
+      """
+      Unit test HasQuestion.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        student has a question  True
+      2        student doesn't have    False
+               a question
       """
       pass
       
-   def IsPresent(self):
+   def test_GetQuestion(self):
       """
-      Test that True is returned when the student is present.
-      Test that False is returned when the student is not present.
-      """
-      pass
-      
-   def SetPresent(self, value):
-      """
-      Test when value is not True or False.
-      Test when value is True.
-      Test when value is False.
+      Unit test GetQuestion.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        question != None        student.question
+      2        question == None        None
       """
       pass
       
-   def IsKicked(self):
+   def test_SetQuestion(self):
       """
-      Test that True is returned when the student has been kicked.
-      Test that False is returned when the student has not been kicked.
-      """
-      pass
-      
-   def SetKicked(self, value):
-      """
-      Test when value is not True or False.
-      Test when value is True.
-      Test when value is False.
-      """
-      pass
-      
-   def HasQuestion(self):
-      """
-      Test that True is returned when the student has a question.
-      Test that False is returned when the student does not have a question.
-      """
-      pass
-      
-   def GetQuestion(self):
-      """
-      Test when the student has a Question.
-      Test when the student does not have a Question.
-      Test that return value is always a Question or None.
-      """
-      pass
-      
-   def SetQuestion(self, question):
-      """
-      Test when question is an instance of Question.
-      Test when question is not an instance of Question.
+      Unit test SetQuestion.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        Question object                              question is set
+      2        non-Question                                 question is unchanged
       """
       pass
          
-   def GetPushedLayer(self):
+   def test_GetPushedLayer(self):
       """
-      Test when the student has a layer to push.
-      Test when the student does not have a layer to push.
-      Test that return value is always a Layer or None.
+      Unit test GetPushedLayer.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        pushedLayer != None     student.pushedLayer
+      2        pushedLayer == None     None
       """
       pass
       
-   def SetPushedLayer(self, layer):
+   def test_SetPushedLayer(self):
       """
-      Test when layer is an instance of Layer.
-      Test when layer is not an instance of Layer.
+      Unit test SetPushedLayer.
+
+      Test
+      Case     Input                   Output               Remarks
+      =========================================================================
+      1        Layer object                                 pushedLayer is set
+      2        non-Layer                                    pushedLayer is unchanged
       """
       pass
       

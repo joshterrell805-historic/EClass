@@ -99,6 +99,8 @@ class Student(Person):
       Set whether or not the student is present.
       
       @param value: A boolean value
+
+      @precondition: value == True or value == False
       
       @postcondition: self.present == value
       """
@@ -117,6 +119,8 @@ class Student(Person):
       Set the student's kicked status.
       
       @param value: A boolean value
+
+      @precondition: value == True or value == False
       
       @postcondition: self.kicked == value
       """
