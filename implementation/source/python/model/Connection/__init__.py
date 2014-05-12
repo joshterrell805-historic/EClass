@@ -91,6 +91,40 @@ class Connection(object):
 
       self.__startPresentationServer(doneStarting)
 
+   def joinPresentation(self, className, presenterLastName,
+      presenterFirstName, callback
+   ):
+      centralResponse = None
+      def onJoinPresenter(response):
+         pass
+      def tryJoinPresenter():
+         #TODO pass
+         pass
+
+      def failConnectPresenter():
+         self.__addCallback(callback, [
+            GenericFailure('Failed to connect to presenter')
+         ])
+
+      def onJoinCentral(response):
+         print(response)
+         # The central server has let us through, now connect to presenter
+         if response['success']:
+            centralResponse = response # so that we don't have to nest so deep
+            self.__connectPresenter(response['ip'], response['port'],
+               tryJoinPresenter, failConnectPresenter)
+         else:
+            self.__addCallback(callback, [
+               HostFailure(response['reason'])
+            ])
+
+      def tryJoinCentral():
+         self.__centralClient.tryJoin(className, presenterLastName,
+            presenterFirstName, onJoinCentral
+         )
+
+      self.__connectCentral(tryJoinCentral, self.__connectCentralFail(callback))
+
    def registerStudentClassesListener(self, listener):
       pass
    def unregisterStudentClassesListener(self, listener):
@@ -135,7 +169,7 @@ class Connection(object):
       # in a GenericFailure
       def addFailCallback():
          self.__addCallback(callback, [
-            GenericFailure('Failed to connect to server')
+            GenericFailure('Failed to connect to central server')
          ])
 
       return addFailCallback

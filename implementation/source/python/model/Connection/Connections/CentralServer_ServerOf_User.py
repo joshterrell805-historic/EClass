@@ -1,9 +1,10 @@
 from __init__ import BaseConnection, Client
 import CentralServer_AuthPlugin_Simple as AuthPlugin
+import random
 
 # an instance of this class exists for every client
 class CentralServer_ServerOf_User(BaseConnection):
-   __validCodes = ['authorize', 'host']
+   __validCodes = ['authorize', 'host', 'join']
    __hostedClasses = []
 
    @property
@@ -17,6 +18,8 @@ class CentralServer_ServerOf_User(BaseConnection):
 
    def __init__(self):
       self.__loginSuccessResponse = None
+      self.__hostedClass = None
+      self.__joinedClass = None
 
    def onMessage(self, message):
       if not self.__verifyString(message, 'code'):
@@ -101,20 +104,13 @@ class CentralServer_ServerOf_User(BaseConnection):
             'code': message['code'],
             'response': {
                'success' : False,
-               'reason'  : 'You may not host a presentation for this class'
+               'reason'  : 'You are not a presenter for this class'
             }
          })
          return
 
-      def isMyClass(aClass):
-         return (
-            self.__loginSuccessResponse['firstname'] == aClass['firstname'] and
-            self.__loginSuccessResponse['lastname'] == aClass['lastname']
-         )
-      myClasses = filter(isMyClass, self.hostedClasses)
-
       # verify that presenter isn't already hosting a class
-      if len(myClasses) != 0:
+      if self.__hostedClass != None:
          self.send({
             'code': message['code'],
             'response': {
@@ -122,18 +118,18 @@ class CentralServer_ServerOf_User(BaseConnection):
                'reason'  : 'You are already hosting a presentation'
             }
          })
-         # we done fucked up
-         if len(myClasses) != 1:
-            raise Exception('presenter is hosting more than one class')
+         return
 
       # passed validation! add the class and send the response
       myClass = {
          'name' : message['class'],
          'port' : message['port'],
+         'ip'   : 'todo',
          'firstname' : self.__loginSuccessResponse['firstname'],
          'lastname'  : self.__loginSuccessResponse['lastname'],
          'students'  : []
       }
+      self.__hostedClass = myClass
       self.hostedClasses.append(myClass)
       self.send({
          'code' : message['code'],
@@ -143,9 +139,92 @@ class CentralServer_ServerOf_User(BaseConnection):
       })
       print(myClass['firstname'] + ' ' + myClass['lastname'] + ' is hosting ' +
          myClass['name'])
-
-
       # TODO notify students that the hosted classes have changed
+
+   def receive_join(self, message):
+      if (not self.__verifyString(message, 'class') or
+          not self.__verifyString(message, 'lastname') or
+          not self.__verifyString(message, 'firstname')
+      ):
+         return
+
+      # verify user logged in as student
+      if (not self.__loginSuccessResponse or
+          not self.__loginSuccessResponse['role'] == 'student'
+      ):
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : ('You must be logged in as a student to join a' +
+                  ' presentation')
+            }
+         })
+         return
+
+      # verify student may join a presentation for this class
+      def classMatches(aClass):
+         return (
+            aClass['firstname'] == message['firstname'] and
+            aClass['lastname']  == message['lastname'] and
+            aClass['name']      == message['class']
+         )
+      classes = filter(classMatches, self.__loginSuccessResponse['classes'])
+      if len(classes) != 1:
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : 'You are not enrolled in this class'
+            }
+         })
+         # we done fucked up
+         if len(classes) != 0:
+            raise Exception('student is enrolled in multiple classes with the' +
+               ' same unique key (firstname + lastname + className)'
+            )
+         return
+
+      # verify student isn't already in a presentation
+      if self.__joinedClass != None:
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : 'You are already in a presentation'
+            }
+         })
+
+      # verify a presentation is being hosted for the class
+      hostedClasses = filter(classMatches, self.hostedClasses)
+      if len(hostedClasses) != 1:
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : 'There is no presentation hosted for this course'
+            }
+         })
+         # we done fucked up
+         if len(hostedClasses) != 0:
+            raise Exception('there are multiple hosted classes with the' +
+               ' same unique key (firstname + lastname + className)'
+            )
+         return
+
+      self.__joinedClass = hostedClasses[0]
+      self.__joinedClass['students'].append(self)
+      # very low probability of collision.. make this guarenteed unique
+      self.__joinKey = '%064x' % random.randrange(16**64)
+      self.send({
+         'code': message['code'],
+         'response': {
+            'success' : True,
+            'port'    : self.__joinedClass['port'],
+            'ip'      : self.__joinedClass['ip'],
+            'key'     : self.__joinKey
+         }
+      })
 
    def __verifyString(self, message, key):
       return self.__verifyType(message, key, basestring, 'string')

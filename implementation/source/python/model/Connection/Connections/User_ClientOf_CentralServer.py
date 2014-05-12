@@ -51,6 +51,21 @@ class User_ClientOf_CentralServer(BaseConnection):
          'port'  : port
       })
 
+   def tryJoin(self, className, presenterLastName, presenterFirstName,
+      callback
+   ):
+      if not self.prepareSend(callback):
+         return
+
+      self.__state = 'join'
+      self.__stateCallback = callback
+      self.send({
+         'code'      : self.__state,
+         'class'     : className,
+         'lastname'  : presenterLastName,
+         'firstname' : presenterFirstName
+      })
+
    def responseTimeout(self):
       state = self.__state
       self.__state = None
