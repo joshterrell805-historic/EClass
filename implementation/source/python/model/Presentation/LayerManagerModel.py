@@ -1,9 +1,9 @@
 from Layer import Layer
 
 class LayerManagerModel:
-   def __init__(self):
-      background = Layer("Background", 100, True)
-      self.layers = [background]
+   def __init__(self, parent, layers):
+      self.layers = layers
+      self.parent = parent
 
    def DeleteLayer(self):
       print('From LayerManager.DeleteLayer()')
@@ -13,6 +13,7 @@ class LayerManagerModel:
       self.layers.reverse()
       self.layers.append(layer)
       self.layers.reverse()
+      self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
       
    def ChangeOpacity(self, index):
       print('From LayerManager.ChangeOpacity()')

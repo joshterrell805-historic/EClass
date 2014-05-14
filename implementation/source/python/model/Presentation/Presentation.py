@@ -1,4 +1,5 @@
 from Slide import Slide
+from Layer import Layer
 
 class Presentation:
    
@@ -61,7 +62,7 @@ class Presentation:
                    line.find('</body>') != -1
                ):
                   slide += slideEnd
-                  self.slides.append(Slide(slide, []))
+                  self.slides.append(Slide(slide, [Layer("Background", 100, True)]))
                   slide = '' + slideBase
 
                else:

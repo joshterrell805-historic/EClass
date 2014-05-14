@@ -9,7 +9,8 @@ class WhiteboardNav(wx.Panel):
 
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
-
+      
+      self.parent = parent
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
@@ -90,4 +91,6 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
          self.presentation.GetPath()
       )
+      EClass.GetInstance().setUpLayerManager()
+      self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))

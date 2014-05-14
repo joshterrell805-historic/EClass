@@ -53,8 +53,11 @@ class EClass():
 
    def setUpLayerManager(self):
       print('In EClass.setUpLayerManager()')
-
-      self.layerManagerModel = LayerManagerModel()
+      if len(self.presentation.slides) != 0:
+         layers = self.presentation.slides[self.presentation.currSlideNum].layers
+         self.layerManagerModel = LayerManagerModel(self, layers)
+      else:
+         self.layerManagerModel = LayerManagerModel(self, [])
 
    def exit(self):
       self.connection.close()

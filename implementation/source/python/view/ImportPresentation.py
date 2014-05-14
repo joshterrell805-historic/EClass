@@ -4,6 +4,7 @@ import sys
 #view
 from WhiteboardNav import WhiteboardNav
 from ApprovalTrackerGaget import ApprovalTrackerGaget
+from LayerManager import LayerManager
 
 #model
 sys.path.insert(0, 'model')
@@ -51,7 +52,8 @@ class ImportPresentation(wx.Frame):
          .GetPresentationPath()
       )
       EClass.GetInstance().presentation.Slidify()
-
+      EClass.GetInstance().setUpLayerManager()
+      self.parent.menuBar.layerManager.UpdateLayers()
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
 

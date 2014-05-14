@@ -37,7 +37,7 @@ class MenuBar:
 
       self.__rosterWindow = RosterWindow(self)
       self.__drawingTools = DrawingTools(self)
-      self.__layerManager = LayerManager(self)
+      self.layerManager = LayerManager(self)
       self.__approvalTracker = ApprovalTrackerGaget(self)
       self.__forum = ForumWindow(self)
 
@@ -116,9 +116,9 @@ class MenuBar:
 
    def ToggleLayerManager(self, e):
       if not self.showLayerManagerMenuItem.IsChecked():
-         self.__layerManager.Hide()
+         self.layerManager.Hide()
       else:
-         self.__layerManager.Show()
+         self.layerManager.Show()
 
    def ToggleApprovalTracker(self, e):
       if not self.showApprovalTrackerMenuItem.IsChecked():
