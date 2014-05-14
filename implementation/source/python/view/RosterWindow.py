@@ -20,13 +20,13 @@ class RosterWindow(wx.Frame):
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
-      self.foldPanelBar = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
+      #self.foldPanelBar = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
       #for i in range(0, len(self.rosterModel.students)):
       #   self.AddRosterItem(self.foldPanelBar, self.rosterModel.students[i])
 
-      self.foldPanelBarRemote = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
-      for i in range(0, len(self.rosterModel.remoteList)):
-         self.AddRosterItem(self.foldPanelBarRemote, self.rosterModel.remoteList[i])
+      # self.foldPanelBarRemote = fpb.FoldPanelBar(self, size = (300, 200), style = fpb.FPB_VERTICAL, agwStyle = fpb.FPB_SINGLE_FOLD)
+      # for i in range(0, len(self.rosterModel.remoteList)):
+      #    self.AddRosterItem(self.foldPanelBarRemote, self.rosterModel.remoteList[i])
 
       attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
       attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
@@ -38,7 +38,8 @@ class RosterWindow(wx.Frame):
       inClassText.SetBackgroundColour('#5CB3FF')
 
       #**********
-      rosterScrollPanel = RosterScrollPanel(self)
+      rosterScrollPanel = RosterScrollPanel(self, "inClass")
+      remoteScrollPanel = RosterScrollPanel(self, "remote")
       #**********
 
       remoteAccessText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
@@ -60,12 +61,13 @@ class RosterWindow(wx.Frame):
       rosterVertSizer.Add(inClassText, 1, wx.EXPAND)
 
 
-      rosterVertSizer.Add(rosterScrollPanel, 7, wx.EXPAND)
+      rosterVertSizer.Add(rosterScrollPanel, 9, wx.EXPAND)
       #rosterVertSizer.Add(self.foldPanelBar, 1, wx.CENTER)
       
       rosterVertSizer.Add(remoteAccessText, 1, wx.EXPAND)
 
-      rosterVertSizer.Add(self.foldPanelBarRemote, 1, wx.EXPAND)
+      rosterVertSizer.Add(remoteScrollPanel, 4, wx.EXPAND)
+      #rosterVertSizer.Add(self.foldPanelBarRemote, 1, wx.EXPAND)
 
       rosterVertSizer.Add(remoteAccessPanel, 1, wx.EXPAND)
 
@@ -83,17 +85,17 @@ class RosterWindow(wx.Frame):
       
       EClass.GetInstance().rosterModel = self.rosterModel
 
-   def AddRosterItem(self, fpb, username):
-      if fpb == self.foldPanelBar:
-         foldPanel = self.foldPanelBar.AddFoldPanel(username, collapsed = True)
-         # TODO use actual student
-         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
-         self.foldPanelBar.AddFoldPanelWindow(foldPanel, panel)
-      elif fpb == self.foldPanelBarRemote:
-         foldPanel = self.foldPanelBarRemote.AddFoldPanel(username, collapsed = True)
-         # TODO use actual student
-         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
-         self.foldPanelBarRemote.AddFoldPanelWindow(foldPanel, panel)
+   # def AddRosterItem(self, fpb, username):
+   #    if fpb == self.foldPanelBar:
+   #       foldPanel = self.foldPanelBar.AddFoldPanel(username, collapsed = True)
+   #       # TODO use actual student
+   #       panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
+   #       self.foldPanelBar.AddFoldPanelWindow(foldPanel, panel)
+   #    elif fpb == self.foldPanelBarRemote:
+   #       foldPanel = self.foldPanelBarRemote.AddFoldPanel(username, collapsed = True)
+   #       # TODO use actual student
+   #       panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
+   #       self.foldPanelBarRemote.AddFoldPanelWindow(foldPanel, panel)
 
    def AddStudent(self, event):
       self.rosterModel.AddNewStudent()
