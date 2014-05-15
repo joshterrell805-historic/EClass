@@ -1,13 +1,10 @@
 import wx
  
-########################################################################
 class JoinPresentation(wx.Frame):
  
-    #----------------------------------------------------------------------
    def __init__(self, parent):
-      wx.Frame.__init__(self, None, wx.ID_ANY, "List Control Tutorial")
+      wx.Frame.__init__(self, None, wx.ID_ANY)
 
-      # Add a panel so it looks the correct on all platforms
       panel = wx.Panel(self, wx.ID_ANY)
       self.index = 0
       self.parent = parent
