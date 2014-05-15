@@ -5,6 +5,7 @@ sys.path.insert(0, 'model/Person')
 from EClass import EClass
 
 from RosterItemPanel import RosterItemPanel
+from RosterStaticPanel import RosterStaticPanel
 from Roster import Roster
 from Person.Student import Student
 import wx.lib.agw.foldpanelbar as fpb
@@ -34,8 +35,10 @@ class RosterWindow(wx.Frame):
       for i in range(0, len(self.rosterModel.students)):
          self.rosterListBox.Append(self.rosterModel.students[i])
 
-      self.staticPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
-      self.staticPanel.SetBackgroundColour('#FEEECC')
+
+      self.rosterStaticPanel = RosterStaticPanel(self)
+      #self.staticPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
+      #self.staticPanel.SetBackgroundColour('#FEEECC')
 
       addButton = wx.Button(self, label = 'Add Student', size = (150, 30))
       addButton.Bind(wx.EVT_BUTTON, self.AddStudent)
@@ -49,7 +52,9 @@ class RosterWindow(wx.Frame):
       rosterVertSizer.Add(inClassText, 1, wx.EXPAND)
 
       rosterVertSizer.Add(self.rosterListBox, 9, wx.EXPAND)
-      rosterVertSizer.Add(self.staticPanel, 4, wx.EXPAND)
+
+      rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
+      #rosterVertSizer.Add(self.staticPanel, 4, wx.EXPAND)
 
       rosterHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       rosterHoriSizer.AddStretchSpacer(1)
@@ -88,10 +93,8 @@ class RosterWindow(wx.Frame):
       self.Hide()
 
    def ShowStudentPanel(self, event):
-      '''
-      click list item and display the selected string in frame's title
-      '''
       selName = self.rosterListBox.GetStringSelection()
-      for child in self.staticPanel.GetChildren(): 
+      for child in self.rosterStaticPanel.GetChildren(): 
          child.Destroy()
-      RosterItemPanel(self.staticPanel, selName)
+      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, selName), 1, wx.EXPAND)
+      self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)

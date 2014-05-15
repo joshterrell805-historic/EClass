@@ -6,12 +6,13 @@ class Roster:
       "Mike Sevilla", 
       "Alexa Fox", 
       "Kelsey Hansen", 
-      "Emilio Cavazon", 
+      "Emilio Cavazos", 
       "Jared Osborn", 
       "Kevin Wiebe", 
       "Alek Squires", 
       "John Hanna", 
       "Haylee Springer"]
+      self.SortList(self.students)
 
    def AddNewStudent(self):
       print('From Roster.AddNewStudent()')
