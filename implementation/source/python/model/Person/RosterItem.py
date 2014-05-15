@@ -1,3 +1,4 @@
+from Roster import Roster
 
 class RosterItem:
    def __init__(self, student):

@@ -13,7 +13,7 @@ from PermissionsWindow import PermissionsWindow
 class RosterItemPanel(wx.Panel):
    # TODO Update doc
    def __init__(self, parent, student):
-      super(RosterItemPanel, self).__init__(parent, -1, size = (300, 70))
+      super(RosterItemPanel, self).__init__(parent, -1)
 
       self.rosterItemModel = RosterItem(student)
 
