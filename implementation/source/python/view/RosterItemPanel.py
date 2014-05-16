@@ -16,7 +16,7 @@ class RosterItemPanel(wx.Panel):
       super(RosterItemPanel, self).__init__(parent, -1)
 
       self.rosterItemModel = RosterItem(student)
-      self.SetBackgroundColour(wx.RED)
+      self.SetBackgroundColour('#FEEECC')
 
       # TODO This needs to be changed because only one entry on the roster will be the current user.
       username = EClass.GetInstance().user.username
@@ -51,6 +51,7 @@ class RosterItemPanel(wx.Panel):
       rosterItemMainSizer.AddStretchSpacer(1)
 
       self.SetSizer(rosterItemMainSizer)
+      self.SendSizeEvent()
 
    def HandButton(self, event):
       self.rosterItemModel.Hand()
