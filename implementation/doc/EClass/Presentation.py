@@ -12,7 +12,15 @@ sys.path.insert(0, '../../source/python/model/enum')
 
 class Presentation:
    """
-   A Presentation is a collection of slides and their respective layers which is displayed at the center of the EClass.
+   A Presentation is a collection of slides and their respective layers which is displayed at 
+   the center of the EClass. It contains a variety of methods used to navigate between slides
+   and access the current slide.
+   
+   Presentation includes a Slidify() method which opens up the HTML file located at a Presentation's
+   path and converts it to a fresh set of slides to be displayed. Any <br class="slide"> tags
+   in the HTML denote the location where a new Slide should be created and Slidify() will break 
+   them up at those points. However, the method ensures there will always be at least one slide if
+   there are no <br class="slide"> tags.
 
    @author: Joel Wilcox (jnwilcox@calpoly.edu), Kevin Le (kle17@calpoly.edu)
 
