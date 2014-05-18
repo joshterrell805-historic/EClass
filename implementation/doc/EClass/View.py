@@ -78,7 +78,7 @@ class PermissionsWindow(wx.Frame):
    
    def __init__(self, student):
       """
-      Initialize the WhiteboardNav view.
+      Initialize the PermissionsWindow view.
 
       @param student: The student whose permissions are being accessed
       """
@@ -101,6 +101,41 @@ class PermissionsWindow(wx.Frame):
       """
       pass
 
+class KickWindow(wx.Frame):
+   """
+   KickWindow defines the window used to confirm whether or not a student will be kicked.
+   
+   @author: Joel Wilcox (jnwilcox@calpoly.edu)
+
+   @ivar student: A reference to the student who may be kicked
+   """
+   
+   def __init__(self, student):
+      """
+      Initialize the KickWindow view.
+
+      @param student: The student to be kicked
+      """
+      pass
+      
+   def OnAccept(self, event):
+      """
+      Update the student's 'kicked' and 'present' statuses.
+      Notify the roster that the student's display in the list should be changed.
+      Close the window.
+
+      @param event: The event that called this method
+      """
+      pass
+      
+   def OnCancel(self, event):
+      """
+      Close the window without making changes to the student's 'kicked' or 'present' statuses.
+
+      @param event: The event that called this method
+      """
+      pass
+      
 class ImportPresentation(wx.Frame):
    """
    A ImportPresentation is a window that allows the importing of an already made HTMLpresentation document
@@ -351,6 +386,13 @@ class RosterItemPanel(wx.Panel):
    def OpenPermissions(self, event):
       """
       Opens the StudentPermissions window where the student's permissions can be set.
+      """
+      pass
+      
+   def OpenKickWindow(self, event):
+      """
+      Opens the 'Kick Confirmation' window where the presenter confirms or cancels kicking
+      a student.
       """
       pass
 

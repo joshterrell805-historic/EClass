@@ -9,6 +9,7 @@ from RosterItem import RosterItem
 sys.path.insert(0, '../model')
 from Person.Student import Student
 from PermissionsWindow import PermissionsWindow
+from KickWindow import KickWindow
 
 class RosterItemPanel(wx.Panel):
    # TODO Update doc
@@ -29,12 +30,15 @@ class RosterItemPanel(wx.Panel):
       self.layersButton.Bind(wx.EVT_BUTTON, self.LayersButton)
       self.permissionsButton = wx.Button(self, label = 'Permissions', size = (90, 30))
       self.permissionsButton.Bind(wx.EVT_BUTTON, self.OpenPermissions)
+      kickButton = wx.Button(self, label = 'Kick', size = (50, 30))
+      kickButton.Bind(wx.EVT_BUTTON, self.OpenKickWindow)
 
       rosterItemButtonSizer = wx.BoxSizer(wx.HORIZONTAL)
       rosterItemButtonSizer.AddStretchSpacer(1)
       rosterItemButtonSizer.Add(self.handButton, 1, wx.CENTER)
       rosterItemButtonSizer.Add(self.layersButton, 1, wx.CENTER)
       rosterItemButtonSizer.Add(self.permissionsButton, 1, wx.CENTER)
+      rosterItemButtonSizer.Add(kickButton, 1, wx.CENTER)
       rosterItemButtonSizer.AddStretchSpacer(1)
 
       usernameSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -61,3 +65,6 @@ class RosterItemPanel(wx.Panel):
 
    def OpenPermissions(self, event):
       PermissionsWindow(self.rosterItemModel.student)
+      
+   def OpenKickWindow(self, event):
+      KickWindow(self.rosterItemModel.student)
