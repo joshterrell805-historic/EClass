@@ -21,6 +21,9 @@ class BaseConnection(object):
    def setProtocol(self, protocol):
       self.__protocol = protocol
 
+   def getRemote(self):
+      return self.__protocol.transport.getPeer()
+
    def close(self):
       """
       Close this connection.

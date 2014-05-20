@@ -2,6 +2,7 @@ import os, json, wx
 from Connections import Client, Server
 from Connections.User_ClientOf_CentralServer import User_ClientOf_CentralServer as CentralClient
 from Connections.Presenter_ServerOf_Student import Presenter_ServerOf_Student as PresenterServer
+from Connections.Student_ClientOf_Presenter import Student_ClientOf_Presenter as PresenterClient
 from Responses import *
 from twisted.internet import reactor
 
@@ -11,6 +12,7 @@ class Connection(object):
    __instance = None
    def __init__(self):
       self.__centralClient = None
+      self.__presenterClient = None
       self.__presenterServer = None
       self.__connections = []
 
@@ -95,10 +97,14 @@ class Connection(object):
       presenterFirstName, callback
    ):
       centralResponse = None
+
       def onJoinPresenter(response):
          pass
+
       def tryJoinPresenter():
-         #TODO pass
+         # success connecting to the presenter's computer; now try joining
+         # the presentation.
+         self.__presenterClient.tryJoin(centralResponse['key'], onJoinPresenter)
          pass
 
       def failConnectPresenter():
@@ -193,6 +199,25 @@ class Connection(object):
       else:
          callback()
 
+   def __connectPresenter(self, hostname, port, callback, failCallback):
+      def setPresenter(connection):
+         if not self.__presenterClient:
+            # only set the client once.. the user may have sent two responses
+            self.__presenterClient = connection
+            self.__connections.append(connection)
+         callback()
+
+      if not self.__presenterClient:
+         Client.connect(
+            hostname,
+            port,
+            PresenterClient,
+            setPresenter,
+            failCallback
+         )
+      else:
+         callback()
+
    def __startPresentationServer(self, callback):
       def setPresenter(listeningPort):
          if not self.__presenterServer:
@@ -209,4 +234,3 @@ class Connection(object):
          )
       else:
          callback()
-

@@ -124,7 +124,7 @@ class CentralServer_ServerOf_User(BaseConnection):
       myClass = {
          'name' : message['class'],
          'port' : message['port'],
-         'ip'   : 'todo',
+         'ip'   : self.getRemote().host,
          'firstname' : self.__loginSuccessResponse['firstname'],
          'lastname'  : self.__loginSuccessResponse['lastname'],
          'students'  : []
