@@ -22,7 +22,7 @@ class CentralServer_ServerOf_User(BaseConnection):
       self.__joinedClass = None
 
    def onMessage(self, message):
-      if not self.__verifyString(message, 'code'):
+      if not self._verifyString(message, 'code'):
          return
 
       if message['code'] in self.__validCodes:
@@ -33,8 +33,8 @@ class CentralServer_ServerOf_User(BaseConnection):
          self.send({'code': 'invalid code', 'request code': message['code']})
 
    def receive_authorize(self, message):
-      if (not self.__verifyString(message, 'username') or
-          not self.__verifyString(message, 'password')
+      if (not self._verifyString(message, 'username') or
+          not self._verifyString(message, 'password')
       ):
          return
 
@@ -75,8 +75,8 @@ class CentralServer_ServerOf_User(BaseConnection):
       )
 
    def receive_host(self, message):
-      if (not self.__verifyString(message, 'class') or
-          not self.__verifyInt(message, 'port')
+      if (not self._verifyString(message, 'class') or
+          not self._verifyInt(message, 'port')
       ):
          return
 
@@ -142,9 +142,9 @@ class CentralServer_ServerOf_User(BaseConnection):
       # TODO notify students that the hosted classes have changed
 
    def receive_join(self, message):
-      if (not self.__verifyString(message, 'class') or
-          not self.__verifyString(message, 'lastname') or
-          not self.__verifyString(message, 'firstname')
+      if (not self._verifyString(message, 'class') or
+          not self._verifyString(message, 'lastname') or
+          not self._verifyString(message, 'firstname')
       ):
          return
 
@@ -225,32 +225,6 @@ class CentralServer_ServerOf_User(BaseConnection):
             'key'     : self.__joinKey
          }
       })
-
-   def __verifyString(self, message, key):
-      return self.__verifyType(message, key, basestring, 'string')
-   def __verifyInt(self, message, key):
-      return self.__verifyType(message, key, int, 'int')
-   def __verifyDict(self, message, key):
-      return self.__verifyType(message, key, dict, 'dict')
-   def __verifyType(self, message, key, valueType, valueTypeName):
-      try:
-         keys = key.split('.')
-         value = message
-         for k in keys:
-            value = value[k]
-
-         if not isinstance(value, valueType):
-            raise Exception()
-      except:
-         self.send({
-            'code'   : 'malformed message',
-            'reason' : 'missing field or incorrect type',
-            'field'  : key,
-            'type'   : valueTypeName
-         })
-         return False
-
-      return True
 
    def __updateMyClasses(self):
       # update this student's list of classes so with hosted information
