@@ -37,13 +37,13 @@ class StudentTest(unittest.TestCase):
       self.student = Student('BurtMacklin', 'blah')
       self.assertTrue(self.student.present)
       self.assertFalse(self.student.kicked)
-      self.assertEquals(self.student.question, None)
-      self.assertEquals(self.student.pushedLayer = None)
+      self.assertEqual(self.student.question, None)
+      self.assertEqual(self.student.pushedLayer, None)
       self.assertTrue(isinstance(self.student.permissions, StudentPermissions))
       
       self.perms = StudentPermissions()
       self.student = Student('BurtMacklin', 'blah', perms)
-      self.assertEquals(self.perms, self.student.permissions)
+      self.assertEqual(self.perms, self.student.permissions)
 
    def test_GetPermissions(self):
       """
@@ -57,7 +57,7 @@ class StudentTest(unittest.TestCase):
       """
       
       self.assertTrue(isinstance(self.student.GetPermissions(), StudentPermissions))
-      self.assertEquals(self.student.GetPermissions(), self.perms)
+      self.assertEqual(self.student.GetPermissions(), self.perms)
 
    def test_SetPermissions(self):
       """
@@ -72,12 +72,12 @@ class StudentTest(unittest.TestCase):
       """
       
       self.student.SetPermissions(None)
-      self.assertEquals(self.student.GetPermissions(), self.perms)
+      self.assertEqual(self.student.GetPermissions(), self.perms)
       self.student.SetPermissions(3)
-      self.assertEquals(self.student.GetPermissions(), self.perms)
+      self.assertEqual(self.student.GetPermissions(), self.perms)
       newPerms = StudentPermissions()
       self.student.SetPermissions(newPerms)
-      self.assertEquals(self.student.GetPermissions(), newPerms)
+      self.assertEqual(self.student.GetPermissions(), newPerms)
       
    def test_IsPresent(self):
       """
@@ -108,7 +108,7 @@ class StudentTest(unittest.TestCase):
       
       present = self.student.IsPresent()
       self.student.SetPresent(3)
-      self.assertEquals(self.student.IsPresent(), present)
+      self.assertEqual(self.student.IsPresent(), present)
       self.student.SetPresent(False)
       self.assertFalse(self.student.IsPresent())
       self.student.SetPresent(True)
@@ -143,7 +143,7 @@ class StudentTest(unittest.TestCase):
       
       kicked = self.student.IsKicked()
       self.student.SetKicked(3)
-      self.assertEquals(self.student.IsKicked(), kicked)
+      self.assertEqual(self.student.IsKicked(), kicked)
       self.student.SetKicked(True)
       self.assertTrue(self.student.IsKicked())
       self.student.SetKicked(False)
@@ -210,3 +210,5 @@ class StudentTest(unittest.TestCase):
       """
       pass
       
+if __name__ == "__main__":
+   unittest.main()
