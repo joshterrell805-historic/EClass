@@ -72,7 +72,7 @@ class Connection(object):
 
       self.__connectCentral(tryAuth, self.__connectCentralFail(callback))
 
-   def hostPresentation(self, className, callback):
+   def hostPresentation(self, className, callback, joinCallback):
       def onHost(response):
          if response['success']:
             self.__addCallback(callback, [
@@ -91,37 +91,44 @@ class Connection(object):
       def doneStarting():
          self.__connectCentral(tryHost, self.__connectCentralFail(callback))
 
-      self.__startPresentationServer(doneStarting)
+      self.__startPresentationServer(doneStarting, joinCallback)
 
    def joinPresentation(self, className, presenterLastName,
       presenterFirstName, callback
    ):
-      centralResponse = None
 
-      def onJoinPresenter(response):
-         pass
-
-      def tryJoinPresenter():
-         # success connecting to the presenter's computer; now try joining
-         # the presentation.
-         self.__presenterClient.tryJoin(centralResponse['key'], onJoinPresenter)
-         pass
-
-      def failConnectPresenter():
-         self.__addCallback(callback, [
-            GenericFailure('Failed to connect to presenter')
-         ])
-
+      # confusing... :( need to refactor
       def onJoinCentral(response):
-         print(response)
+         def onJoinPresenter(responseJoin):
+            if responseJoin['success']:
+               self.__addCallback(callback, [
+                  JoinFailure(responseJoin['reason'])
+               ])
+            else:
+               self.__addCallback(callback, [
+                  JoinSuccess()
+               ])
+
+         def tryJoinPresenter():
+            # success connecting to the presenter's computer; now try joining
+            # the presentation.
+            self.__presenterClient.tryJoin(response['key'],
+               onJoinPresenter
+            )
+
+         def failConnectPresenter():
+            self.__addCallback(callback, [
+               JoinFailure('Failed to connect to presenter')
+            ])
+
+
          # The central server has let us through, now connect to presenter
          if response['success']:
-            centralResponse = response # so that we don't have to nest so deep
             self.__connectPresenter(response['ip'], response['port'],
                tryJoinPresenter, failConnectPresenter)
          else:
             self.__addCallback(callback, [
-               HostFailure(response['reason'])
+               JoinFailure(response['reason'])
             ])
 
       def tryJoinCentral():
@@ -218,19 +225,25 @@ class Connection(object):
       else:
          callback()
 
-   def __startPresentationServer(self, callback):
+   def __startPresentationServer(self, callback, joinCallback):
       def setPresenter(listeningPort):
          if not self.__presenterServer:
             self.__presenterServer = listeningPort
+            self.__presenterServer.connections = []
             print('done starting presenter server')
          callback()
+
+      def onConnection(connection):
+         self.__presenterServer.connections.append(connection)
+         connection.setCentralClient(self.__centralClient)
+         connection.setJoinCallback(joinCallback)
 
       if not self.__presenterServer:
          Server.listen(
             0,
             PresenterServer,
             setPresenter,
-            None # on new connection to client
+            onConnection
          )
       else:
          callback()

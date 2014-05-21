@@ -66,6 +66,18 @@ class User_ClientOf_CentralServer(BaseConnection):
          'firstname' : presenterFirstName
       })
 
+   def validateStudent(self, studentKey, callback):
+      """verify that the student may join this presentation"""
+      if not self.prepareSend(callback):
+         return
+
+      self.__state = 'validateStudent'
+      self.__stateCallback = callback
+      self.send({
+         'code'      : self.__state,
+         'key'       : studentKey
+      })
+
    def responseTimeout(self):
       state = self.__state
       self.__state = None

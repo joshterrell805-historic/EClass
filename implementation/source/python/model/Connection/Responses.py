@@ -47,3 +47,16 @@ class HostFailure(GenericFailure):
 class HostSuccess(GenericSuccess):
    def __init__(self):
       super(HostSuccess, self).__init__()
+
+#--- Join
+class JoinResponse(GenericResponse):
+   def __init__(self):
+      super(JoinResponse, self).__init__()
+
+class JoinFailure(GenericFailure):
+   def __init__(self, reason):
+      super(JoinFailure, self).__init__(reason)
+
+class JoinSuccess(GenericSuccess):
+   def __init__(self):
+      super(JoinSuccess, self).__init__()

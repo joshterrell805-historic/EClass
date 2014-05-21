@@ -4,7 +4,7 @@ import random
 
 # an instance of this class exists for every client
 class CentralServer_ServerOf_User(BaseConnection):
-   __validCodes = ['authorize', 'host', 'join']
+   __validCodes = ['authorize', 'host', 'join', 'validateStudent']
    __hostedClasses = []
 
    @property
@@ -122,12 +122,12 @@ class CentralServer_ServerOf_User(BaseConnection):
 
       # passed validation! add the class and send the response
       myClass = {
-         'name' : message['class'],
-         'port' : message['port'],
-         'ip'   : self.getRemote().host,
+         'name'      : message['class'],
+         'port'      : message['port'],
+         'ip'        : self.getRemote().host,
          'firstname' : self.__loginSuccessResponse['firstname'],
          'lastname'  : self.__loginSuccessResponse['lastname'],
-         'students'  : []
+         'joining'   : {}
       }
       self.__hostedClass = myClass
       self.hostedClasses.append(myClass)
@@ -213,9 +213,11 @@ class CentralServer_ServerOf_User(BaseConnection):
          return
 
       self.__joinedClass = hostedClasses[0]
-      self.__joinedClass['students'].append(self)
-      # very low probability of collision.. make this guarenteed unique
-      self.__joinKey = '%064x' % random.randrange(16**64)
+      while True:
+         self.__joinKey = '%064x' % random.randrange(16**64)
+         if not self.__joinKey in self.__joinedClass['joining']:
+            self.__joinedClass['joining'][self.__joinKey] = self
+            break
       self.send({
          'code': message['code'],
          'response': {
@@ -223,6 +225,43 @@ class CentralServer_ServerOf_User(BaseConnection):
             'port'    : self.__joinedClass['port'],
             'ip'      : self.__joinedClass['ip'],
             'key'     : self.__joinKey
+         }
+      })
+
+
+   def receive_validateStudent(self, message):
+      if not self._verifyString(message, 'key'):
+         return
+
+      # verify presenter is hosting a class
+      if self.__hostedClass == None:
+         self.send({
+            'code' : message['code'],
+            'response' : {
+               'success' : False,
+               'reason'  : ('You may not validate students ' +
+                  'if you are not hosting a presentation.')
+            }
+         })
+         return
+
+      if not message['key'] in self.__hostedClass['joining']:
+         self.send({
+            'code' : message['code'],
+            'response' : {
+               'success' : False,
+               'reason'  : 'The student\'s join key is invalid'
+            }
+         })
+         return
+
+      student = self.__hostedClass['joining'][message['key']]
+      self.__hostedClass['joining'].pop(message['key'])
+      self.send({
+         'code' : message['code'],
+         'response' : {
+            'success' : True,
+            'username' : student.__loginSuccessResponse['username']
          }
       })
 

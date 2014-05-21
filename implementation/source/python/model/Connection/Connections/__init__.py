@@ -46,11 +46,11 @@ class BaseConnection(object):
       """
       pass
    def _verifyString(self, message, key):
-      return self.__verifyType(message, key, basestring, 'string')
+      return self._verifyType(message, key, basestring, 'string')
    def _verifyInt(self, message, key):
-      return self.__verifyType(message, key, int, 'int')
+      return self._verifyType(message, key, int, 'int')
    def _verifyDict(self, message, key):
-      return self.__verifyType(message, key, dict, 'dict')
+      return self._verifyType(message, key, dict, 'dict')
    def _verifyType(self, message, key, valueType, valueTypeName):
       try:
          keys = key.split('.')

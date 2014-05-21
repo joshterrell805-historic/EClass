@@ -61,6 +61,7 @@ def login(username, password, callback):
       callback({
          'success'   : True,
          'role'      : 'presenter',
+         'username'  : username,
          'firstname' : user['firstname'],
          'lastname'  : user['lastname'],
          'classes'   : _presenterClasses
@@ -70,6 +71,7 @@ def login(username, password, callback):
       callback({
          'success'   : True,
          'role'      : 'student',
+         'username'  : username,
          'firstname' : user['firstname'],
          'lastname'  : user['lastname'],
          'classes'   : _studentClasses
