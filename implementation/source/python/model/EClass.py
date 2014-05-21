@@ -1,3 +1,4 @@
+import sys
 from Presentation.Presentation import Presentation
 
 from Person.Person import Person
@@ -41,9 +42,9 @@ class EClass():
             else:
                self.user = Student(username, password)
 
-            # TODO stuff with authResponse.classes... it's a dictionary
             # warning! contains different data for presenter and student
             # see networking.html for what it contains
+            self.classes = authResponse.classes
 
             onSuccess()
          else:
@@ -58,3 +59,4 @@ class EClass():
 
    def exit(self):
       self.connection.close()
+      sys.exit()

@@ -3,11 +3,11 @@ from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
  
-class JoinPresentation(wx.Frame):
+class HostPresentation(wx.Frame):
  
    def __init__(self, parent):
       wx.Frame.__init__(self, None, wx.ID_ANY)
-      self.SetLabel('Select a Presentation to Join')
+      self.SetLabel('Select a Presentation to Host')
 
       panel = wx.Panel(self, wx.ID_ANY)
       self.index = 0
@@ -17,12 +17,10 @@ class JoinPresentation(wx.Frame):
          style=wx.LC_REPORT
          |wx.BORDER_SUNKEN
       )
-      self.list_ctrl.InsertColumn(0, 'Class')
-      self.list_ctrl.InsertColumn(1, 'Last')
-      self.list_ctrl.InsertColumn(2, 'First')
-      self.list_ctrl.InsertColumn(3, 'Hosted')
 
-      btn = wx.Button(panel, label="Join")
+      self.list_ctrl.InsertColumn(0, 'Class')
+
+      btn = wx.Button(panel, label="Host")
 
       sizer = wx.BoxSizer(wx.VERTICAL)
       sizer.Add(self.list_ctrl, 0, wx.ALL|wx.EXPAND, 5)
@@ -33,7 +31,9 @@ class JoinPresentation(wx.Frame):
       self.setClasses(EClass.GetInstance().classes)
 
    def setClasses(self, classes):
-      print(classes)
+      self.list_ctrl.DeleteAllItems()
+      for c in classes:
+         self.list_ctrl.Append((c['name'],))
 
    def onClose(self, event):
       EClass.GetInstance().exit()
