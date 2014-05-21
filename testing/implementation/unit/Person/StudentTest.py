@@ -1,10 +1,10 @@
 import unittest
 import sys
-sys.path.insert(0, '../../../../implementation/source/python/model/Person')
+sys.path.insert(0, '../../../../implementation/source/python/model')
 
-from Student import Student
-from Question import Question
-from StudentPermissions import StudentPermissions
+from Person.Student import Student
+from Person.Question import Question
+from Person.StudentPermissions import StudentPermissions
 
 class StudentTest(unittest.TestCase):
    """
@@ -42,7 +42,7 @@ class StudentTest(unittest.TestCase):
       self.assertTrue(isinstance(self.student.permissions, StudentPermissions))
       
       self.perms = StudentPermissions()
-      self.student = Student('BurtMacklin', 'blah', perms)
+      self.student = Student('BurtMacklin', 'blah', self.perms)
       self.assertEqual(self.perms, self.student.permissions)
 
    def test_GetPermissions(self):

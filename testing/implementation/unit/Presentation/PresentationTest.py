@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.insert(0, '../../../../implementation/source/python/model/Presentation')
+sys.path.insert(0, '../../../implementation/source/python/model/Presentation')
 
 from Presentation import Presentation
 from Slide import Slide
@@ -27,7 +27,7 @@ class PresentationTest(unittest.TestCase):
       =========================================================================
       1        Sample path             Proper init done     Only case
       """
-      self.samplePath = './PresentationTestSample.html'
+      self.samplePath = 'Presentation/PresentationTestSample.html'
       self.sampleSlideCount = 300
       self.presentation = Presentation(self.samplePath)
       self.assertEqual(len(self.presentation.slides), 0)
