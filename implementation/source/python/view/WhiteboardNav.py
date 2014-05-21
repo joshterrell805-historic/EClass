@@ -68,7 +68,17 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
+      self.Bind(wx.EVT_PAINT, self.Paint)
       self.Show()
+      
+   def Paint(self, event):
+      dc = wx.PaintDC(self)
+      w, h = self.GetClientSize()
+      #dc.Clear()
+      dc.DrawLine(0, 0, w, h)
+      dc.SetPen(wx.Pen(wx.BLACK, 5))
+      dc.DrawCircle(w / 2, h / 2, 100)
+      print("working...")
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
