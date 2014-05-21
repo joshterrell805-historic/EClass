@@ -6,7 +6,6 @@ from ForumWindow import ForumWindow
 from DrawingTools import DrawingTools
 from ApprovalTrackerGaget import ApprovalTrackerGaget
 from LayerManager import LayerManager
-from JoinPresentation import JoinPresentation
 
 class MenuBar:
 
@@ -31,7 +30,6 @@ class MenuBar:
       ID_VIEW_SHOWLAYERMANAGER = wx.NewId()
       ID_VIEW_SHOWAPPROVALTRACKER = wx.NewId()
       ID_VIEW_SHOWFORUM = wx.NewId()
-      ID_VIEW_SHOWJOIN = wx.NewId()
       ID_VIEW_ZOOMIN = wx.NewId()
       ID_VIEW_ZOOMOUT = wx.NewId()
       ID_VIEW_ZOOMTOFIT = wx.NewId()
@@ -42,7 +40,6 @@ class MenuBar:
       self.__layerManager = LayerManager(self)
       self.__approvalTracker = ApprovalTrackerGaget(self)
       self.__forum = ForumWindow(self)
-      self.__join = JoinPresentation(self)
 
       menuBar = wx.MenuBar()
 
@@ -90,9 +87,6 @@ class MenuBar:
       self.showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleForum, self.showForumMenuItem)
 
-      self.showJoinMenuItem = viewMenu.Append(ID_VIEW_SHOWJOIN, 'Show Join-able Presentations', 'Shows the Join Presentation Window.', wx.ITEM_CHECK)
-      parent.Bind(wx.EVT_MENU, self.ToggleJoin, self.showJoinMenuItem)
-
       viewMenu.AppendSeparator()
       self.zoomInMenuItem = viewMenu.Append(ID_VIEW_ZOOMIN, 'Zoom In\tCtrl+=', 'Zooms into the screen.')
       self.zoomOutMenuItem = viewMenu.Append(ID_VIEW_ZOOMOUT, 'Zoom Out\tCtrl+-', 'Zooms out of the screen.')
@@ -137,12 +131,6 @@ class MenuBar:
          self.__forum.Hide()
       else:
          self.__forum.Show()
-
-   def ToggleJoin(self, e):
-      if not self.showJoinMenuItem.IsChecked():
-         self.__join.Hide()
-      else:
-         self.__join.Show()
 
    def ToggleFullScreen(self, e):
       self.parent.ShowFullScreen(
