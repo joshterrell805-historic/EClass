@@ -2,8 +2,6 @@ import wx, sys
 from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
-sys.path.insert(0, 'model/Connection')
-from __init__ import Connection
  
 class HostPresentation(wx.Frame):
  
@@ -44,13 +42,17 @@ class HostPresentation(wx.Frame):
    def host(self, event):
       selected = EClass.GetInstance().classes[self.list_ctrl.GetFocusedItem()]
 
-      Connection.getInstance().hostPresentation(selected['name'], self.callback,
-         self.joinCallback
+      EClass.GetInstance().connection.hostPresentation(
+         selected['name'], self.callback,self.joinCallback
       )
       
-   def callback(self):
-      return true
+   def callback(self, response):
+      if response.success:
+         EClassWindow()
+         self.Hide()
+      else:
+         print 'display error'
 
    def joinCallback(self, username):
-      return true
+      print username +  'joined'
       

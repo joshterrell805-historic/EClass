@@ -46,11 +46,15 @@ class JoinPresentation(wx.Frame):
    def join(self, event):
       selected = EClass.GetInstance().classes[self.list_ctrl.GetFocusedItem()]
 
-      Connection.getInstance().joinPresentation(selected['name'],
+      EClass.GetInstance().connection.joinPresentation(selected['name'],
          selected['lastname'], selected['firstname'],
          self.callback
       )
 
-   def callback(self):
-      return true
+   def callback(self, response):
+      if response.success:
+         EClassWindow()
+         self.Hide()
+      else:
+         print 'display error'
          
