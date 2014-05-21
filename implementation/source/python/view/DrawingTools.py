@@ -1,6 +1,6 @@
 import wx
 import sys
-sys.path.insert(0, 'model/presentation')
+sys.path.insert(0, 'model/Presentation')
 
 from EClass import EClass
 from DrawingToolsModel import DrawingToolsModel
