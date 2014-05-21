@@ -7,7 +7,7 @@ class Layer:
       self.name = name
       self.locked = lock
 
-   def ChangePermissions(self):
+   def ChangePermissions(self, newPermissions):
       print('From Layer.ChangePermissions()')
       
    def ToggleLock(self):
@@ -15,3 +15,9 @@ class Layer:
       
    def ToggleVisible(self):
       print('From Layer.ToggleVisible()')
+      
+   def ChangeName(self, newName):
+      print('From Layer.ChangeName()')
+      
+   def SetOpacity(self, newOpacity):
+      print('From Layer.setOpacity()')

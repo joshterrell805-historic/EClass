@@ -224,11 +224,11 @@ class Layer:
       """
       pass
 
-   def ChangePermissions(self):
+   def ChangePermissions(self, newPermissions):
       """
       Set the selected layer's permissions.
 
-      @postcondition: self.permissions != old(self.permissions)
+      @postcondition: self.permissions == newPermissions
       """
       pass
       
@@ -245,6 +245,26 @@ class Layer:
       Set the visibility of a layer.
 
       @postcondition: self.visible != old(self.visible)
+      """
+      pass
+      
+   def ChangeName(self, newName):
+      """
+      Set the name of a layer.
+
+      @param newName: The new name of the layer.
+
+      @postcondition: self.name == newName
+      """
+      pass
+      
+   def SetOpacity(self, newOpacity):
+      """
+      Set the opacity of a layer.
+
+      @param newOpacity: The new opacity of the layer.
+
+      @postcondition: self.opacity == newOpacity
       """
       pass
 
