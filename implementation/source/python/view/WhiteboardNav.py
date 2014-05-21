@@ -4,6 +4,7 @@ import sys
 sys.path.insert(0, 'model')
 from EClass import EClass
 from Person.Student import Student
+from random import randint
 
 class WhiteboardNav(wx.Panel):
 
@@ -68,16 +69,14 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
-      self.Bind(wx.EVT_PAINT, self.Paint)
+      self.Bind(wx.EVT_LEFT_DCLICK, self.Paint)
       self.Show()
       
    def Paint(self, event):
-      dc = wx.PaintDC(self)
-      w, h = self.GetClientSize()
-      #dc.Clear()
-      dc.DrawLine(0, 0, w, h)
-      dc.SetPen(wx.Pen(wx.BLACK, 5))
-      dc.DrawCircle(w / 2, h / 2, 100)
+      self.whiteboard.SetTransparent(0)
+      dc = wx.WindowDC(self.whiteboard)
+      whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+      dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
       print("working...")
 
    def MoveToPreviousSlide(self, event):
