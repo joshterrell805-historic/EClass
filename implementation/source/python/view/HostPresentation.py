@@ -47,7 +47,7 @@ class HostPresentation(wx.Frame):
       selected = EClass.GetInstance().classes[self.list_ctrl.GetFocusedItem()]
 
       EClass.GetInstance().connection.hostPresentation(
-         selected['name'], self.callback,self.joinCallback
+         selected['name'], self.callback, self.joinCallback, self.leaveCallback
       )
       
    def callback(self, response):
@@ -58,5 +58,8 @@ class HostPresentation(wx.Frame):
          self.reasonText.SetLabel(response.reason)
 
    def joinCallback(self, username):
-      print username +  'joined'
+      print username +  ' joined the presentation!'
+
+   def leaveCallback(self, username):
+      print username +  ' left the presentation.'
       

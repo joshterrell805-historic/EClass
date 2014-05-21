@@ -72,7 +72,7 @@ class Connection(object):
 
       self.__connectCentral(tryAuth, self.__connectCentralFail(callback))
 
-   def hostPresentation(self, className, callback, joinCallback):
+   def hostPresentation(self, className, callback, joinCallback, leaveCallback):
       def onHost(response):
          if response['success']:
             self.__addCallback(callback, [
@@ -91,7 +91,7 @@ class Connection(object):
       def doneStarting():
          self.__connectCentral(tryHost, self.__connectCentralFail(callback))
 
-      self.__startPresentationServer(doneStarting, joinCallback)
+      self.__startPresentationServer(doneStarting, joinCallback, leaveCallback)
 
    def joinPresentation(self, className, presenterLastName,
       presenterFirstName, callback
@@ -225,7 +225,7 @@ class Connection(object):
       else:
          callback()
 
-   def __startPresentationServer(self, callback, joinCallback):
+   def __startPresentationServer(self, callback, joinCallback, leaveCallback):
       def setPresenter(listeningPort):
          if not self.__presenterServer:
             self.__presenterServer = listeningPort
@@ -237,6 +237,7 @@ class Connection(object):
          self.__presenterServer.connections.append(connection)
          connection.setCentralClient(self.__centralClient)
          connection.setJoinCallback(joinCallback)
+         connection.setLeaveCallback(leaveCallback)
 
       if not self.__presenterServer:
          Server.listen(
