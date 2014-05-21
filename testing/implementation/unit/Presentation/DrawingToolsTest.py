@@ -26,7 +26,7 @@ class DrawingToolsTest(unittest.TestCase):
       """
 
       self.samplePath = None
-      self.drawingTools = DrawingTools(self.samplePath)
+      self.drawingTools = DrawingToolsModel()
       self.assertEqual(self.drawingTools.selectedTool, None)
 
    def test_PencilToolHandler(self):
@@ -39,6 +39,7 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.PencilToolHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Pencil')
 
 
@@ -52,6 +53,7 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.HandToolHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Hand')
       
 
@@ -65,6 +67,7 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.AttachmentToolHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Attachment')
       
 
@@ -78,6 +81,7 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.TextToolHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Text')
       
 
@@ -91,6 +95,7 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.CircleShapeHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Circle Shape')
 
    def test_SquareShapeHandler(self):
@@ -103,6 +108,7 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.SquareShapeHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Square Shape')
 
    def test_TriangleShapeHandler(self):
@@ -115,8 +121,8 @@ class DrawingToolsTest(unittest.TestCase):
       1        null                    null                 All other tools are deselected
       """
       
+      self.drawingTools.TriangleShapeHandler()
       self.assertEqual(self.drawingTools.selectedTool, 'Triangle Shape')
 
-
-      
-
+if __name__ == "__main__":
+   unittest.main()
