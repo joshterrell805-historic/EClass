@@ -2,7 +2,7 @@ from Layer import Layer
 
 class LayerManagerModel:
    def __init__(self, parent, layers):
-      if parent = None:
+      if parent == None:
          raise ValueError('Layer Manager needs a parent!')
       else:
          self.layers = layers
