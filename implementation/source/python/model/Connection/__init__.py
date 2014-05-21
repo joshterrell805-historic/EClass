@@ -2,6 +2,7 @@ import os, json, wx
 from Connections import Client, Server
 from Connections.User_ClientOf_CentralServer import User_ClientOf_CentralServer as CentralClient
 from Connections.Presenter_ServerOf_Student import Presenter_ServerOf_Student as PresenterServer
+from Connections.Student_ClientOf_Presenter import Student_ClientOf_Presenter as PresenterClient
 from Responses import *
 from twisted.internet import reactor
 
@@ -11,6 +12,7 @@ class Connection(object):
    __instance = None
    def __init__(self):
       self.__centralClient = None
+      self.__presenterClient = None
       self.__presenterServer = None
       self.__connections = []
 
@@ -68,14 +70,9 @@ class Connection(object):
       def tryAuth():
          self.__centralClient.tryAuth(username, password, onAuth)
 
-      def failConnect():
-         self.__addCallback(callback, [
-            AuthenticationFailure('Failed to connect to server')
-         ])
+      self.__connectCentral(tryAuth, self.__connectCentralFail(callback))
 
-      self.__connectCentral(tryAuth, failConnect)
-
-   def hostPresentation(self, className, callback):
+   def hostPresentation(self, className, callback, joinCallback, leaveCallback):
       def onHost(response):
          if response['success']:
             self.__addCallback(callback, [
@@ -91,15 +88,55 @@ class Connection(object):
             self.__presenterServer.getHost().port, onHost
          )
 
-      def failConnect():
-         self.__addCallback(callback, [
-            AuthenticationFailure('Failed to connect to server')
-         ])
-
       def doneStarting():
-         self.__connectCentral(tryHost, failConnect)
+         self.__connectCentral(tryHost, self.__connectCentralFail(callback))
 
-      self.__startPresentationServer(doneStarting)
+      self.__startPresentationServer(doneStarting, joinCallback, leaveCallback)
+
+   def joinPresentation(self, className, presenterLastName,
+      presenterFirstName, callback
+   ):
+
+      # confusing... :( need to refactor
+      def onJoinCentral(response):
+         def onJoinPresenter(responseJoin):
+            if responseJoin['success']:
+               self.__addCallback(callback, [
+                  JoinSuccess()
+               ])
+            else:
+               self.__addCallback(callback, [
+                  JoinFailure(responseJoin['reason'])
+               ])
+
+         def tryJoinPresenter():
+            # success connecting to the presenter's computer; now try joining
+            # the presentation.
+            self.__presenterClient.tryJoin(response['key'],
+               onJoinPresenter
+            )
+
+         def failConnectPresenter():
+            self.__addCallback(callback, [
+               JoinFailure('Failed to connect to presenter')
+            ])
+
+
+         # The central server has let us through, now connect to presenter
+         if response['success']:
+            self.__connectPresenter(response['ip'], response['port'],
+               tryJoinPresenter, failConnectPresenter)
+         else:
+            self.__addCallback(callback, [
+               JoinFailure(response['reason'])
+            ])
+
+      def tryJoinCentral():
+         self.__centralClient.tryJoin(className, presenterLastName,
+            presenterFirstName, onJoinCentral
+         )
+
+      self.__connectCentral(tryJoinCentral, self.__connectCentralFail(callback))
 
    def registerStudentClassesListener(self, listener):
       pass
@@ -140,6 +177,16 @@ class Connection(object):
       configFile = open(os.path.dirname(__file__) + '/config.json')
       return json.load(configFile)
 
+   def __connectCentralFail(self, callback):
+      # return a callback which (when called) lets the user know of failure
+      # in a GenericFailure
+      def addFailCallback():
+         self.__addCallback(callback, [
+            GenericFailure('Failed to connect to central server')
+         ])
+
+      return addFailCallback
+
    def __connectCentral(self, callback, failCallback):
       def setCentral(connection):
          if not self.__centralClient:
@@ -159,20 +206,45 @@ class Connection(object):
       else:
          callback()
 
-   def __startPresentationServer(self, callback):
+   def __connectPresenter(self, hostname, port, callback, failCallback):
+      def setPresenter(connection):
+         if not self.__presenterClient:
+            # only set the client once.. the user may have sent two responses
+            self.__presenterClient = connection
+            self.__connections.append(connection)
+         callback()
+
+      if not self.__presenterClient:
+         Client.connect(
+            hostname,
+            port,
+            PresenterClient,
+            setPresenter,
+            failCallback
+         )
+      else:
+         callback()
+
+   def __startPresentationServer(self, callback, joinCallback, leaveCallback):
       def setPresenter(listeningPort):
          if not self.__presenterServer:
             self.__presenterServer = listeningPort
+            self.__presenterServer.connections = []
             print('done starting presenter server')
          callback()
+
+      def onConnection(connection):
+         self.__presenterServer.connections.append(connection)
+         connection.setCentralClient(self.__centralClient)
+         connection.setJoinCallback(joinCallback)
+         connection.setLeaveCallback(leaveCallback)
 
       if not self.__presenterServer:
          Server.listen(
             0,
             PresenterServer,
             setPresenter,
-            None # on new connection to client
+            onConnection
          )
       else:
          callback()
-

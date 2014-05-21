@@ -1,10 +1,11 @@
 import wx
 import sys
 
-from EClassWindow import EClassWindow
-
 sys.path.insert(0, 'model')
 from EClass import EClass
+
+from JoinPresentation import JoinPresentation
+from HostPresentation import HostPresentation
 
 class LoginWindow(wx.Frame):
    
@@ -95,9 +96,12 @@ class LoginWindow(wx.Frame):
       EClass.GetInstance().Login(username, password, onSuccess, onFailure)
 
    def OnSuccess(self):
-      EClassWindow()
       self.Hide()
+
+      if EClass.GetInstance().user.isPresenter():
+         HostPresentation(self).Show()
+      else:
+         JoinPresentation(self).Show()
 
    def OnCancel(self, event):
       EClass.GetInstance().exit()
-      sys.exit()

@@ -11,6 +11,11 @@ class User_ClientOf_CentralServer(BaseConnection):
       self.__closeReason = reason
       self.close()
 
+   def send(self, message):
+      # any communication that takes too long is assumed failed.
+      self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
+      return super(User_ClientOf_CentralServer, self).send(message)
+
    def onMessage(self, message):
       #print('receive')
       #print(message)
@@ -34,7 +39,6 @@ class User_ClientOf_CentralServer(BaseConnection):
          'username' : username,
          'password' : password
       })
-      self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
 
    def tryHost(self, className, port, callback):
       if not self.prepareSend(callback):
@@ -46,7 +50,33 @@ class User_ClientOf_CentralServer(BaseConnection):
          'class' : className,
          'port'  : port
       })
-      self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
+
+   def tryJoin(self, className, presenterLastName, presenterFirstName,
+      callback
+   ):
+      if not self.prepareSend(callback):
+         return
+
+      self.__state = 'join'
+      self.__stateCallback = callback
+      self.send({
+         'code'      : self.__state,
+         'class'     : className,
+         'lastname'  : presenterLastName,
+         'firstname' : presenterFirstName
+      })
+
+   def validateStudent(self, studentKey, callback):
+      """verify that the student may join this presentation"""
+      if not self.prepareSend(callback):
+         return
+
+      self.__state = 'validateStudent'
+      self.__stateCallback = callback
+      self.send({
+         'code'      : self.__state,
+         'key'       : studentKey
+      })
 
    def responseTimeout(self):
       state = self.__state
