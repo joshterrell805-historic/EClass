@@ -2,6 +2,8 @@ import wx, sys
 from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
+sys.path.insert(0, 'model/Connection')
+from __init__ import Connection
  
 class JoinPresentation(wx.Frame):
  
@@ -23,6 +25,7 @@ class JoinPresentation(wx.Frame):
       self.list_ctrl.InsertColumn(3, 'Hosted')
 
       btn = wx.Button(panel, label="Join")
+      btn.Bind(wx.EVT_BUTTON, self.join)
 
       sizer = wx.BoxSizer(wx.VERTICAL)
       sizer.Add(self.list_ctrl, 0, wx.ALL|wx.EXPAND, 5)
@@ -33,7 +36,21 @@ class JoinPresentation(wx.Frame):
       self.setClasses(EClass.GetInstance().classes)
 
    def setClasses(self, classes):
-      print(classes)
+      self.list_ctrl.DeleteAllItems()
+      for c in classes:
+         self.list_ctrl.Append((c['name'],))
 
    def onClose(self, event):
       EClass.GetInstance().exit()
+
+   def join(self, event):
+      selected = EClass.GetInstance().classes[self.list_ctrl.GetFocusedItem()]
+
+      Connection.getInstance().joinPresentation(selected['name'],
+         selected['lastname'], selected['firstname'],
+         self.callback
+      )
+
+   def callback(self):
+      return true
+         

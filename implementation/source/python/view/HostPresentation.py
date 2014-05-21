@@ -2,6 +2,8 @@ import wx, sys
 from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
+sys.path.insert(0, 'model/Connection')
+from __init__ import Connection
  
 class HostPresentation(wx.Frame):
  
@@ -21,6 +23,7 @@ class HostPresentation(wx.Frame):
       self.list_ctrl.InsertColumn(0, 'Class')
 
       btn = wx.Button(panel, label="Host")
+      btn.Bind(wx.EVT_BUTTON, self.host)
 
       sizer = wx.BoxSizer(wx.VERTICAL)
       sizer.Add(self.list_ctrl, 0, wx.ALL|wx.EXPAND, 5)
@@ -37,3 +40,17 @@ class HostPresentation(wx.Frame):
 
    def onClose(self, event):
       EClass.GetInstance().exit()
+
+   def host(self, event):
+      selected = EClass.GetInstance().classes[self.list_ctrl.GetFocusedItem()]
+
+      Connection.getInstance().hostPresentation(selected['name'], self.callback,
+         self.joinCallback
+      )
+      
+   def callback(self):
+      return true
+
+   def joinCallback(self, username):
+      return true
+      
