@@ -120,6 +120,23 @@ class CentralServer_ServerOf_User(BaseConnection):
          })
          return
 
+      # verify presenter isn't logged in somewhere else hosting this class
+      def classMatches(c):
+         return (c['name'] == message['class'] and
+                c['firstname'] == self.__loginSuccessResponse['firstname'] and
+                c['lastname']  == self.__loginSuccessResponse['lastname'])
+      hostedClasses = filter(classMatches, self.hostedClasses)
+      if len(hostedClasses) != 0:
+         self.send({
+            'code': message['code'],
+            'response': {
+               'success' : False,
+               'reason'  : ('You are already hosting a presentation for ' +
+                  'this class (on another connection)')
+            }
+         })
+         return
+
       # passed validation! add the class and send the response
       myClass = {
          'name'      : message['class'],
