@@ -220,7 +220,7 @@ class Layer:
       Initialize a Layer.
 
       @param name: The name of the new layer.
-      @param Whether the layer is locked.
+      @param lock: Whether the layer is locked.
       """
       pass
 
@@ -255,10 +255,14 @@ class LayerManagerModel:
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
    @ivar layers: A Collection of Layers that represent all graphics on a Slide
+   @ivar parent: A reference to the parent class
    """
-   def __init__(self):
+   def __init__(self, parent, layers):
       """
       Initialize a LayerManagerModel.
+      
+      @param parent: The caller of the layer manager.
+      @param layers: The layers in the current slide.
       """
       pass
 
@@ -270,10 +274,11 @@ class LayerManagerModel:
       """
       pass
 
-   def NewLayer(self):
+   def NewLayer(self, layer):
       """
       Creates a New Layer for the current Slide
 
+      @param layer: The new layer to add to the slide.
       @postcondition: self.layers.count() == old(self.layers.count()) + 1
       """
       pass
@@ -282,6 +287,7 @@ class LayerManagerModel:
       """
       Changes opacity of selected layer
 
+      @param index: index of layer to change opacity on.
       @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
       """
       pass
