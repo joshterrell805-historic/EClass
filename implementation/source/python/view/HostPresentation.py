@@ -20,10 +20,14 @@ class HostPresentation(wx.Frame):
 
       self.list_ctrl.InsertColumn(0, 'Class')
 
+      self.reasonText = wx.StaticText(panel, -1)
+      self.reasonText.SetForegroundColour((255, 0, 0))
+
       btn = wx.Button(panel, label="Host")
       btn.Bind(wx.EVT_BUTTON, self.host)
 
       sizer = wx.BoxSizer(wx.VERTICAL)
+      sizer.Add(self.reasonText, 0, wx.ALL|wx.EXPAND, 5)
       sizer.Add(self.list_ctrl, 0, wx.ALL|wx.EXPAND, 5)
       sizer.Add(btn, 0, wx.ALL|wx.CENTER, 5)
       panel.SetSizer(sizer)
@@ -51,7 +55,7 @@ class HostPresentation(wx.Frame):
          EClassWindow()
          self.Hide()
       else:
-         print 'display error'
+         self.reasonText.SetLabel(response.reason)
 
    def joinCallback(self, username):
       print username +  'joined'

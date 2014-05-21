@@ -2,8 +2,6 @@ import wx, sys
 from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
-sys.path.insert(0, 'model/Connection')
-from __init__ import Connection
  
 class JoinPresentation(wx.Frame):
  
@@ -24,10 +22,14 @@ class JoinPresentation(wx.Frame):
       self.list_ctrl.InsertColumn(2, 'First')
       self.list_ctrl.InsertColumn(3, 'Hosted')
 
+      self.reasonText = wx.StaticText(panel, -1)
+      self.reasonText.SetForegroundColour((255, 0, 0))
+
       btn = wx.Button(panel, label="Join")
       btn.Bind(wx.EVT_BUTTON, self.join)
 
       sizer = wx.BoxSizer(wx.VERTICAL)
+      sizer.Add(self.reasonText, 0, wx.ALL|wx.EXPAND, 5)
       sizer.Add(self.list_ctrl, 0, wx.ALL|wx.EXPAND, 5)
       sizer.Add(btn, 0, wx.ALL|wx.CENTER, 5)
       panel.SetSizer(sizer)
@@ -38,7 +40,9 @@ class JoinPresentation(wx.Frame):
    def setClasses(self, classes):
       self.list_ctrl.DeleteAllItems()
       for c in classes:
-         self.list_ctrl.Append((c['name'],))
+         self.list_ctrl.Append((c['name'], c['lastname'], c['firstname'],
+            'true' if c['hosted'] else '')
+         )
 
    def onClose(self, event):
       EClass.GetInstance().exit()
@@ -56,5 +60,5 @@ class JoinPresentation(wx.Frame):
          EClassWindow()
          self.Hide()
       else:
-         print 'display error'
+         self.reasonText.SetLabel(response.reason)
          
