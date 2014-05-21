@@ -21,6 +21,11 @@ class CentralServer_ServerOf_User(BaseConnection):
       self.__hostedClass = None
       self.__joinedClass = None
 
+   def onClose(self, reason):
+      if self.__hostedClass != None:
+         self.hostedClasses.remove(self.__hostedClass)
+         self.__hostedClass = None
+
    def onMessage(self, message):
       if not self._verifyString(message, 'code'):
          return
