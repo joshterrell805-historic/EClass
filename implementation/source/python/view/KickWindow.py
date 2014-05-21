@@ -12,6 +12,7 @@ class KickWindow(wx.Frame):
       self.SetBackgroundColour('#FFFFFF')
       
       self.student = student 
+      print self.student.username + '\'s initial kicked status: ' + ('True' if self.student.IsKicked() else 'False')
       mainSizer = wx.BoxSizer(wx.VERTICAL)
       buttonsSizer = wx.BoxSizer(wx.HORIZONTAL)
       
@@ -39,10 +40,12 @@ class KickWindow(wx.Frame):
 
    def OnAccept(self, event):
       self.student.SetKicked(True)
-      # TODO get the current Roster and update the student's display color (or whatever
-      #      we choose to do for kicked and absent sutdents)
+      print self.student.username + '\'s new kicked status: ' + ('True' if self.student.IsKicked() else 'False')
+      # TODO get the current Roster and update the student's display color
+      # once the Roster stuff is done and using a set of Students
       self.Destroy()
       
    def OnCancel(self, event):
+      print self.student.username + '\'s new kicked status: ' + ('True' if self.student.IsKicked() else 'False')
       self.Destroy()
 
