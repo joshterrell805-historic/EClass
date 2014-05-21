@@ -8,15 +8,17 @@ class LayerManagerModel:
          self.layers = layers
          self.parent = parent
 
-   def DeleteLayer(self):
-      print('From LayerManager.DeleteLayer()')
+   def DeleteLayer(self, index):
+      if index >= 0 and len(self.layers) > 0 and index <= len(self.layers):
+         del self.layers[index]
 
    def NewLayer(self, layer):
-      print('From LayerManager.NewLayer()')
-      self.layers.reverse()
-      self.layers.append(layer)
-      self.layers.reverse()
-      self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
-      
-   def ChangeOpacity(self, index, newOpactiy):
-      print('From LayerManager.ChangeOpacity()')
+      if isinstance(layer, Layer):
+         self.layers.reverse()
+         self.layers.append(layer)
+         self.layers.reverse()
+         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
+         
+   def ChangeOpacity(self, index, newOpacity):
+      if index > -1 and index < len(self.layers) and newOpacity > -1 and newOpacity <= 100:
+         self.layers[index].opacity = newOpacity

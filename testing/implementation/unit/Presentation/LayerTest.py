@@ -1,6 +1,5 @@
 import unittest
 import sys
-
 sys.path.insert(0, '../../../../implementation/source/python/model/Presentation')
 
 from Layer import Layer
@@ -18,7 +17,7 @@ class LayerTest(unittest.TestCase):
    
    def setUp(self):
       """
-      Unit test the constructor by building one Layer object.
+      Unit test the constructor by building one Layer objects.
 
       Test
       Case     Input                        Output               Remarks
@@ -26,16 +25,15 @@ class LayerTest(unittest.TestCase):
       1        No name, opacity, or lock    Generic Layer
       2        All name, opacity, and lock  Unique Layer
       """
-      
       self.layer = Layer(None, None, None)
       self.assertEquals(self.layer.name, "Layer")
       self.assertEquals(self.layer.opacity, 100)
-      self.assertFalse(self.layer.lock)
+      self.assertFalse(self.layer.locked)
       
       self.layer = Layer("Joey", 50, True)
       self.assertEquals(self.layer.name, "Joey")
       self.assertEquals(self.layer.opacity, 50)
-      self.assertTrue(self.layer.lock)
+      self.assertTrue(self.layer.locked)
 
    def test_ChangePermissions(self):
       """
@@ -44,12 +42,17 @@ class LayerTest(unittest.TestCase):
       Test
       Case     Input                   Output               Remarks
       =========================================================================
-      1        []                      True
-      2        [Ralpy]                 True
-      3        [Ralpy, Donna]          True
-      4        [Ted](Not is Class)     False
+      1        []                      changed
+      2        [Ralpy]                 changed
+      3        [Ralpy, Donna]          changed
       """
-      print('From Layer.ChangePermissions()')
+      self.layer = Layer("Mep", 0, False)
+      self.layer.ChangePermissions([]);
+      self.assertEquals(self.layer.permissions, [])
+      self.layer.ChangePermissions(["Ralpy"]);
+      self.assertEquals(self.layer.permissions, ["Ralpy"])
+      self.layer.ChangePermissions(["Ralpy", "Donna"]);
+      self.assertEquals(self.layer.permissions, ["Ralpy", "Donna"])
       
    def test_ToggleLock(self):
       """
@@ -58,10 +61,14 @@ class LayerTest(unittest.TestCase):
       Test
       Case     Input                   Output               Remarks
       =========================================================================
-      1        Layer is not locked     True
-      2        Layer is locked         False
+      1        Layer is not locked     lock = True
+      2        Layer is locked         lock = False
       """
-      print('From Layer.ToggleLock()')
+      self.layer = Layer("Mep", 0, False)
+      self.layer.ToggleLock()
+      self.assertTrue(self.layer.locked)
+      self.layer.ToggleLock()
+      self.assertFalse(self.layer.locked)
       
    def test_ToggleVisible(self):
       """
@@ -74,30 +81,54 @@ class LayerTest(unittest.TestCase):
       2        Layer is visible        False
       3        Layer is locked         False
       """
-      print('From Layer.ToggleVisible()')
+      self.layer = Layer("Mep", 0, False)
+      self.layer.ToggleVisible()
+      self.assertTrue(self.layer.visible)
+      self.layer.ToggleVisible()
+      self.assertFalse(self.layer.visible)
+      self.layer = Layer("Mep", 0, True)
+      self.layer.ToggleVisible()
+      self.assertFalse(self.layer.visible)
       
-   def test_ChangeName(self, newName):
+   def test_ChangeName(self):
       """
       Unit test ChangeName.
 
       Test
       Case     Input                     Output               Remarks
       =========================================================================
-      1        ""                        False
-      2        "SuperLayer"              True
-      3        "Yikes" (Layer is locked) False
+      1        ""                        no change
+      2        "SuperLayer"              name changed
+      3        "Yikes" (Layer is locked) no change
       """
-      print('From Layer.ChangeName()')
+      self.layer = Layer("Mep", 50, False)
+      self.layer.ChangeName("")
+      self.assertEquals(self.layer.name, "Mep")
+      self.layer.ChangeName("SuperLayer");
+      self.assertEquals(self.layer.name, "SuperLayer")
+      self.layer = Layer("Pem", 50, True)
+      self.layer.ChangeName("Yikes");
+      self.assertEquals(self.layer.name, "Pem")
       
-   def test_SetOpacity(self, newOpacity):
+   def test_SetOpacity(self):
       """
       Unit test SetOpacity.
 
       Test
       Case     Input                   Output               Remarks
       =========================================================================
-      1        -5                      False
-      2        100                     True
-      3        10 (Layer is locked)    False
+      1        -5                      no change
+      2        100                     opacity changed
+      3        10 (Layer is locked)    no change
       """
-      print('From Layer.setOpacity()')
+      self.layer = Layer("Mep", 50, False)
+      self.layer.SetOpacity(-5)
+      self.assertEquals(self.layer.opacity, 50)
+      self.layer.SetOpacity(100);
+      self.assertEquals(self.layer.opacity, 100)
+      self.layer = Layer("Pem", 50, True)
+      self.layer.SetOpacity(10);
+      self.assertEquals(self.layer.opacity, 50)
+      
+if __name__ == "__main__":
+   unittest.main()

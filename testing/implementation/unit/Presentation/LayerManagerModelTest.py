@@ -3,7 +3,8 @@ import sys
 
 sys.path.insert(0, '../../../../implementation/source/python/model/Presentation')
 
-from LayerManager import LayerManager
+from Slide import Slide
+from LayerManagerModel import LayerManagerModel
 from Layer import Layer
 
 class LayerManagerModelTest(unittest.TestCase):
@@ -24,23 +25,21 @@ class LayerManagerModelTest(unittest.TestCase):
       Test
       Case     Input                   Output               Remarks
       =========================================================================
-      1        No layers and no parent  ValueError
-      2        No parent                ValueError
+      1        No parent                ValueError
       2        No layers                Empty Layer Manager Created
-      2        Both Layer and parent    Layer Manager with layers created
+      3        Both Layer and parent    Layer Manager with layers created
       """
       
-      self.layerManager = LayerManager(None, [])
+      #self.layerManager = LayerManagerModel(None, [])
       
-      self.layerManager = LayerManager(none, [Layer("test", 50, false)])
-      
-      self.layerManager = LayerManager(self, [])
+      self.layerManager = LayerManagerModel(self, [])
       self.assertEquals(self.layerManager.parent, self)
       self.assertEquals(self.layerManager.layers, [])
       
-      self.layerManager = LayerManager(self, [Layer("test", 50, false)])
+      layer = Layer("test", 50, False)
+      self.layerManager = LayerManagerModel(self, [layer])
       self.assertEquals(self.layerManager.parent, self)
-      self.assertEquals(self.layerManager.layers, [Layer("test", 50, false)])
+      self.assertEquals(self.layerManager.layers, [layer])
 
    def test_DeleteLayer(self):
       """
@@ -49,14 +48,16 @@ class LayerManagerModelTest(unittest.TestCase):
       Test
       Case     Input                        Output               Remarks
       =========================================================================
-      1        none (layers in manager)     true           
-      2        none (no layers in manager)  false           
+      1        none (layers in manager)     layer deleted           
+      2        none (no layers in manager)  nothing happens           
       """
-      self.layerManager = LayerManager(self, [Layer("test", 50, false)])
-      self.assertTrue(self.layerManager.DeleteLayer())
-      self.assertFalse(self.layerManager.DeleteLayer())
+      self.layerManager = LayerManagerModel(self, [Layer("test", 50, False)])
+      self.layerManager.DeleteLayer(0)
+      self.assertEquals(len(self.layerManager.layers), 0)
+      self.layerManager.DeleteLayer(0)
+      self.assertEquals(len(self.layerManager.layers), 0)
 
-   def test_NewLayer(self, layer):
+   def test_NewLayer(self):
       """
       Unit test NewLayer.
 
@@ -66,10 +67,19 @@ class LayerManagerModelTest(unittest.TestCase):
       1        no new layer given           false
       2        none (no layers in manager)  true           
       """
-      self.assertFalse(self.layerManager.NewLayer())
-      self.assertTrue(self.layerManager.NewLayer(Layer("test", 50, false)))
+      class Object:
+         pass
+      self.presentation = Object()
+      self.presentation.slides = [Slide("",[])]
+      self.presentation.currSlideNum = 0
+      self.layerManager = LayerManagerModel(self, [])
+      self.layerManager.NewLayer("bad")
+      self.assertEquals(self.layerManager.layers, [])
+      newLayer = Layer("test", 50, False)
+      self.layerManager.NewLayer(newLayer)
+      self.assertEquals(self.layerManager.layers, [newLayer])
       
-   def test_ChangeOpacity(self, index, newOpacity):
+   def test_ChangeOpacity(self):
       """
       Unit test ChangeOpacity.
 
@@ -80,6 +90,16 @@ class LayerManagerModelTest(unittest.TestCase):
       2        bad opacity                  false           
       3        good index and opacity       true           
       """
-      self.assertFalse(self.layerManager.ChangeOpacity(-1, 50))
-      self.assertFalse(self.layerManager.ChangeOpacity(1, -50))   
-      self.assertTrue(self.layerManager.ChangeOpacity(1, 50))   
+      layer = Layer("test", 50, False)
+      self.layerManager = LayerManagerModel(self, [layer])
+      origMan = self.layerManager
+      self.layerManager = LayerManagerModel(self, [layer])
+      self.layerManager.ChangeOpacity(-1, 50)
+      self.assertEquals(self.layerManager.layers[0].opacity, 50)
+      self.layerManager.ChangeOpacity(0, -50)
+      self.assertEquals(self.layerManager.layers[0].opacity, 50)   
+      self.layerManager.ChangeOpacity(0, 100)
+      self.assertEquals(self.layerManager.layers[0].opacity, 100)   
+      
+if __name__ == "__main__":
+   unittest.main()
