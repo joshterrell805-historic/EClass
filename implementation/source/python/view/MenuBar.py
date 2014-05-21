@@ -6,12 +6,13 @@ from ForumWindow import ForumWindow
 from DrawingTools import DrawingTools
 from ApprovalTrackerGaget import ApprovalTrackerGaget
 from LayerManager import LayerManager
+from ImportPresentation import ImportPresentation
 
 class MenuBar:
 
    def __init__(self, parent):
 
-      ID_FILE_NEWLECTURE = wx.NewId()
+      ID_FILE_NEWPRESENTATION = wx.NewId()
       ID_FILE_OPEN = wx.NewId()
       ID_FILE_OPENRECENT = wx.NewId()
       ID_FILE_SAVE = wx.NewId()
@@ -40,18 +41,21 @@ class MenuBar:
       self.layerManager = LayerManager(self)
       self.__approvalTracker = ApprovalTrackerGaget(self)
       self.__forum = ForumWindow(self)
+      self.__importPresentation = ImportPresentation(self)
 
       menuBar = wx.MenuBar()
 
       fileMenu = wx.Menu()
       menuBar.Append(fileMenu, 'File')
-      newLectureMenuItem = fileMenu.Append(ID_FILE_NEWLECTURE, 'New Lecture\tCtrl+N', 'Opens a new lecture.')
-      openMenuItem = fileMenu.Append(ID_FILE_OPEN, 'Open\tCtrl+O', 'Opens an existing lecture.')
+      newPresentationMenuItem = fileMenu.Append(ID_FILE_NEWPRESENTATION, 'New Presentation\tCtrl+N', 'Opens a new presentation.')
+      openMenuItem = fileMenu.Append(ID_FILE_OPEN, 'Open\tCtrl+O', 'Opens an existing presentation.')
+      parent.Bind(wx.EVT_MENU, self.OpenPresentation, openMenuItem)
+
       openRecentMenuItem = wx.Menu()
-      fileMenu.AppendMenu(ID_FILE_OPENRECENT, 'Open Recent', openRecentMenuItem, 'Opens a recently open lecture.')
+      fileMenu.AppendMenu(ID_FILE_OPENRECENT, 'Open Recent', openRecentMenuItem, 'Opens a recently open presentation.')
       fileMenu.AppendSeparator()
-      saveMenuItem = fileMenu.Append(ID_FILE_SAVE, 'Save\tCtrl+S', 'Saves the existing lecture.')
-      saveAsMenuItem = fileMenu.Append(ID_FILE_SAVEAS, 'Save as...\tCtrl+Shift+S', 'Saves the existing lecture as something.')
+      saveMenuItem = fileMenu.Append(ID_FILE_SAVE, 'Save\tCtrl+S', 'Saves the existing presentation.')
+      saveAsMenuItem = fileMenu.Append(ID_FILE_SAVEAS, 'Save as...\tCtrl+Shift+S', 'Saves the existing presentation as something.')
       fileMenu.AppendSeparator()
       printMenuItem = fileMenu.Append(ID_FILE_PRINT, 'Print...\tCtrl+P', 'Prints the current view.')
       fileMenu.AppendSeparator()
@@ -99,8 +103,9 @@ class MenuBar:
 
       self.parent = parent
 
-   def Quit(self, e):
-      self.parent.Close()
+
+   def OpenPresentation(self ,e):
+      self.__importPresentation.Show()
 
    def ToggleRoster(self, e):
       if not self.showRosterMenuItem.IsChecked():
@@ -136,3 +141,6 @@ class MenuBar:
       self.parent.ShowFullScreen(
          not self.parent.IsFullScreen(), wx.FULLSCREEN_NOCAPTION
       )
+
+   def Quit(self, e):
+      self.parent.Close()
