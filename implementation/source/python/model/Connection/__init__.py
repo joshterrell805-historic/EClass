@@ -139,7 +139,13 @@ class Connection(object):
       self.__connectCentral(tryJoinCentral, self.__connectCentralFail(callback))
 
    def registerStudentClassesListener(self, listener):
-      pass
+      def wrappedListener(classes):
+         self.__addCallback(listener, [classes])
+
+      assert self.__centralClient != None
+
+      self.__centralClient.registerStudentClassesListener(wrappedListener)
+
    def unregisterStudentClassesListener(self, listener):
       pass
    def sendMessage(self, identifier, recipient, message):

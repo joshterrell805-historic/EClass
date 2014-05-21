@@ -5,6 +5,7 @@ class User_ClientOf_CentralServer(BaseConnection):
    def __init__(self):
       self.__connected = True
       self.__state = None
+      self.__studentClassesListener = None
 
    def onClose(self, reason):
       self.__connected = False
@@ -19,7 +20,11 @@ class User_ClientOf_CentralServer(BaseConnection):
    def onMessage(self, message):
       #print('receive')
       #print(message)
-      if message['code'] != self.__state:
+      if message['code'] == 'classes':
+         if self.__studentClassesListener != None:
+            self.__studentClassesListener(message['classes'])
+         return
+      elif message['code'] != self.__state:
          raise Exception(
             "State is '" + self.__state + "' but response is '" +
             message['code'] + "'"
@@ -39,6 +44,9 @@ class User_ClientOf_CentralServer(BaseConnection):
          'username' : username,
          'password' : password
       })
+   def registerStudentClassesListener(self, listener):
+      # TODO support multiple listeners
+      self.__studentClassesListener = listener
 
    def tryHost(self, className, port, callback):
       if not self.prepareSend(callback):

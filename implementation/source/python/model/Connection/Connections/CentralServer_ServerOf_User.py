@@ -6,6 +6,7 @@ import random
 class CentralServer_ServerOf_User(BaseConnection):
    __validCodes = ['authorize', 'host', 'join', 'validateStudent']
    __hostedClasses = []
+   __students = []
 
    @property
    def hostedClasses(self):
@@ -16,6 +17,11 @@ class CentralServer_ServerOf_User(BaseConnection):
       # students(username)
       return CentralServer_ServerOf_User.__hostedClasses
 
+   @property
+   def students(self):
+      # returns an array shared by all connections of the students
+      return CentralServer_ServerOf_User.__students
+
    def __init__(self):
       self.__loginSuccessResponse = None
       self.__hostedClass = None
@@ -25,6 +31,13 @@ class CentralServer_ServerOf_User(BaseConnection):
       if self.__hostedClass != None:
          self.hostedClasses.remove(self.__hostedClass)
          self.__hostedClass = None
+         self.updateStudentsClasses()
+      elif (
+         self.__loginSuccessResponse != None and
+         self.__loginSuccessResponse['role'] == 'student'
+      ):
+         self.__loginSuccessResponse = None
+         self.students.remove(self)
 
    def onMessage(self, message):
       if not self._verifyString(message, 'code'):
@@ -57,6 +70,7 @@ class CentralServer_ServerOf_User(BaseConnection):
          if response['success']:
             self.__loginSuccessResponse = response
             if response['role'] == 'student':
+               self.students.append(self)
                self.__updateMyClasses()
             self.send({
                'code'    : message['code'],
@@ -156,12 +170,13 @@ class CentralServer_ServerOf_User(BaseConnection):
       self.send({
          'code' : message['code'],
          'response': {
+            # TODO the students should be returned here
             'success': True
          }
       })
       print(myClass['firstname'] + ' ' + myClass['lastname'] + ' is hosting ' +
          myClass['name'])
-      # TODO notify students that the hosted classes have changed
+      self.updateStudentsClasses()
 
    def receive_join(self, message):
       if (not self._verifyString(message, 'class') or
@@ -286,6 +301,14 @@ class CentralServer_ServerOf_User(BaseConnection):
             'username' : student.__loginSuccessResponse['username']
          }
       })
+
+   def updateStudentsClasses(self):
+      for student in self.students:
+         student.__updateMyClasses()
+         student.send({
+            'code'    : 'classes',
+            'classes' : student.__loginSuccessResponse['classes']
+         })
 
    def __updateMyClasses(self):
       # update this student's list of classes so with hosted information

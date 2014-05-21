@@ -36,6 +36,7 @@ class JoinPresentation(wx.Frame):
       self.Bind(wx.EVT_CLOSE, self.onClose)
 
       self.setClasses(EClass.GetInstance().classes)
+      EClass.GetInstance().connection.registerStudentClassesListener(self.setClasses)
 
    def setClasses(self, classes):
       self.list_ctrl.DeleteAllItems()
