@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.View.ForumWindow</title>
+  <title>EClass.View.KickWindow</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -39,7 +39,7 @@
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
         <a href="EClass.View-module.html">Module&nbsp;View</a> ::
-        Class&nbsp;ForumWindow
+        Class&nbsp;KickWindow
       </span>
     </td>
     <td>
@@ -49,14 +49,14 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.View.ForumWindow-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View.KickWindow-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class ForumWindow</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class KickWindow</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow">source&nbsp;code</a></span></p>
 <pre class="base-tree">
      object --+                    
               |                    
@@ -70,18 +70,16 @@ wx._core.EvtHandler --+
                               |    
               wx._windows.Frame --+
                                   |
-                                 <strong class="uidshort">ForumWindow</strong>
+                                 <strong class="uidshort">KickWindow</strong>
 </pre>
 
 <hr />
-<p>Forum is the window that is shown when the user presses the 'Show 
-  Forum' menu item from the 'View' menu. The forum contains messages that 
-  users have sent to each other as well as a field for user to enter text 
-  for a new message.</p>
+<p>KickWindow defines the window used to confirm whether or not a student
+  will be kicked.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Carson Carroll (ccarro03@calpoly.edu)
+        Joel Wilcox (jnwilcox@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -106,10 +104,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.ForumWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Initializes all buttons on the window and the appropriate sizers.</td>
+          <td><span class="summary-sig"><a href="EClass.View.KickWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Initialize the KickWindow view.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -123,12 +122,11 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="SendMessage"></a><span class="summary-sig-name">SendMessage</span>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.KickWindow-class.html#OnAccept" class="summary-sig-name">OnAccept</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Appends the newly created message to the end of the messages list 
-      which is then displayed in the READONLY TextCtrl.</td>
+      Update the student's 'kicked' and 'present' statuses.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.SendMessage">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnAccept">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -142,47 +140,12 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="CloseForum"></a><span class="summary-sig-name">CloseForum</span>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.KickWindow-class.html#OnCancel" class="summary-sig-name">OnCancel</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Closes the forum window.</td>
+      Close the window without making changes to the student's 'kicked' or 
+      'present' statuses.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.CloseForum">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.View.ForumWindow-class.html#Refresh" class="summary-sig-name">Refresh</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Refreshes the messages list.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.Refresh">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="onClose"></a><span class="summary-sig-name">onClose</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Hides the forum window and unchecks the &quot;Show Forum&quot; menu 
-      item in the &quot;View&quot; menu.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.onClose">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnCancel">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -420,6 +383,7 @@ wx._core.EvtHandler --+
       <code>ProcessWindowEvent</code>,
       <code>PushEventHandler</code>,
       <code>Raise</code>,
+      <code>Refresh</code>,
       <code>RefreshRect</code>,
       <code>RegisterHotKey</code>,
       <code>ReleaseMouse</code>,
@@ -587,6 +551,32 @@ wx._core.EvtHandler --+
     </td>
   </tr>
 </table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="student"></a><span class="summary-name">student</span><br />
+      A reference to the student who may be kicked
+    </td>
+  </tr>
+</table>
 <!-- ==================== PROPERTIES ==================== -->
 <a name="section-Properties"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -722,18 +712,21 @@ wx._core.EvtHandler --+
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">student</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initializes all buttons on the window and the appropriate sizers. Two 
-  TextCtrl's are initialized with one being READONLY and one supporting 
-  MULTILINE input.</p>
+  <p>Initialize the KickWindow view.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>student</code></strong> - The student to be kicked</li>
+    </ul></dd>
     <dt>Returns: EvtHandler</dt>
     <dt>Overrides:
         object.__init__
@@ -741,25 +734,54 @@ wx._core.EvtHandler --+
   </dl>
 </td></tr></table>
 </div>
-<a name="Refresh"></a>
+<a name="OnAccept"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">Refresh</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnAccept</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#ForumWindow.Refresh">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnAccept">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Refreshes the messages list.</p>
+  <p>Update the student's 'kicked' and 'present' statuses. Notify the 
+  roster that the student's display in the list should be changed. Close 
+  the window.</p>
   <dl class="fields">
-    <dt>Overrides:
-        wx._core.Window.Refresh
-    </dt>
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="OnCancel"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnCancel</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnCancel">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Close the window without making changes to the student's 'kicked' or 
+  'present' statuses.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>

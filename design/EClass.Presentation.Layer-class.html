@@ -106,7 +106,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ChangePermissions" class="summary-sig-name">ChangePermissions</a>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ChangePermissions" class="summary-sig-name">ChangePermissions</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">newPermissions</span>)</span><br />
       Set the selected layer's permissions.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangePermissions">source&nbsp;code</a></span>
@@ -144,6 +145,42 @@
       Set the visibility of a layer.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ToggleVisible">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#ChangeName" class="summary-sig-name">ChangeName</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">newName</span>)</span><br />
+      Set the name of a layer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangeName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Layer-class.html#SetOpacity" class="summary-sig-name">SetOpacity</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">newOpacity</span>)</span><br />
+      Set the opacity of a layer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.SetOpacity">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -257,7 +294,8 @@
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>name</code></strong> - The name of the new layer. @param Whether the layer is locked.</li>
+        <li><strong class="pname"><code>name</code></strong> - The name of the new layer.</li>
+        <li><strong class="pname"><code>lock</code></strong> - Whether the layer is locked.</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -269,7 +307,8 @@
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangePermissions</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangePermissions</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">newPermissions</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangePermissions">source&nbsp;code</a></span>&nbsp;
@@ -280,7 +319,7 @@
   <dl class="fields">
   </dl>
 <div class="fields">      <p><strong>Postcondition:</strong>
-        self.permissions != old(self.permissions)
+        self.permissions == newPermissions
       </p>
 </div></td></tr></table>
 </div>
@@ -328,6 +367,60 @@
       </p>
 </div></td></tr></table>
 </div>
+<a name="ChangeName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangeName</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">newName</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.ChangeName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the name of a layer.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>newName</code></strong> - The new name of the layer.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Postcondition:</strong>
+        self.name == newName
+      </p>
+</div></td></tr></table>
+</div>
+<a name="SetOpacity"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SetOpacity</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">newOpacity</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Layer.SetOpacity">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the opacity of a layer.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>newOpacity</code></strong> - The new opacity of the layer.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Postcondition:</strong>
+        self.opacity == newOpacity
+      </p>
+</div></td></tr></table>
+</div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -355,7 +448,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 28 23:45:19 2014
+    Generated by Epydoc 3.0.1 on Wed May 21 22:01:56 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -57,7 +57,7 @@
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class LayerView</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#LayerView">source&nbsp;code</a></span></p>
-<p>A view for a layer in the layer manager.</p>
+<p>Renders a Layer inside the LayerManager.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -86,9 +86,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="layerListObject"></a><span class="summary-sig-name">layerListObject</span>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.LayerView-class.html#layerListObject" class="summary-sig-name">layerListObject</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">parent</span>)</span><br />
-      Sizer formatting for layer.</td>
+      Gets the layer represented as a sizer.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#LayerView.layerListObject">source&nbsp;code</a></span>
             
@@ -107,7 +107,7 @@
           <td><span class="summary-sig"><a href="EClass.View.LayerView-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">parent</span>,
         <span class="summary-sig-arg">layer</span>)</span><br />
-      Initialize a Layer View.</td>
+      Initialize a NewLayerWindow view.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#LayerView.__init__">source&nbsp;code</a></span>
             
@@ -123,11 +123,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.LayerView-class.html#changePermissions" class="summary-sig-name">changePermissions</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.LayerView-class.html#ChangePermissions" class="summary-sig-name">ChangePermissions</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the selected layer's permissions.</td>
+      Bring the ChangePermWindow up.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#LayerView.changePermissions">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#LayerView.ChangePermissions">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -143,7 +143,7 @@
         <tr>
           <td><span class="summary-sig"><a href="EClass.View.LayerView-class.html#ToggleVisible" class="summary-sig-name">ToggleVisible</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the visibility of a layer.</td>
+      Sets the visibility of the layer</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#LayerView.ToggleVisible">source&nbsp;code</a></span>
             
@@ -161,7 +161,7 @@
         <tr>
           <td><span class="summary-sig"><a href="EClass.View.LayerView-class.html#ToggleLock" class="summary-sig-name">ToggleLock</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Set the lock state of a layer.</td>
+      Locks and unlocks the layer</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#LayerView.ToggleLock">source&nbsp;code</a></span>
             
@@ -169,6 +169,32 @@
         </tr>
       </table>
       
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="parent"></a><span class="summary-name">parent</span><br />
+      A reference to the parent class
     </td>
   </tr>
 </table>
@@ -190,6 +216,30 @@
   </td>
 </tr>
 </table>
+<a name="layerListObject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">layerListObject</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parent</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#LayerView.layerListObject">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Gets the layer represented as a sizer.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parent</code></strong> - A reference to the EClass window.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="__init__"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -207,33 +257,37 @@
     </td>
   </tr></table>
   
-  <p>Initialize a Layer View.</p>
+  <p>Initialize a NewLayerWindow view.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>parent</code></strong> - The class that initialized this view.</li>
-        <li><strong class="pname"><code>layer</code></strong> - The layer to be shown.</li>
+        <li><strong class="pname"><code>parent</code></strong> - A reference to the LayerManager window.</li>
+        <li><strong class="pname"><code>layer</code></strong> - the layer we are displaying.</li>
     </ul></dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="changePermissions"></a>
+<a name="ChangePermissions"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">changePermissions</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangePermissions</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#LayerView.changePermissions">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#LayerView.ChangePermissions">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Set the selected layer's permissions.</p>
+  <p>Bring the ChangePermWindow up.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - the user action that promted this callback.</li>
+    </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Postcondition:</strong>
         self.permissions != old(self.permissions)
@@ -255,8 +309,12 @@
     </td>
   </tr></table>
   
-  <p>Set the visibility of a layer.</p>
+  <p>Sets the visibility of the layer</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - the user action that promted this callback.</li>
+    </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Postcondition:</strong>
         self.visible != old(self.visible)
@@ -278,8 +336,12 @@
     </td>
   </tr></table>
   
-  <p>Set the lock state of a layer.</p>
+  <p>Locks and unlocks the layer</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - the user action that promted this callback.</li>
+    </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Postcondition:</strong>
         self.locked != old(self.locked)
@@ -313,7 +375,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Apr 28 23:45:19 2014
+    Generated by Epydoc 3.0.1 on Wed May 21 22:01:56 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
