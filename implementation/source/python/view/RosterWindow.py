@@ -112,7 +112,7 @@ class RosterWindow(wx.Frame):
       print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
       for child in self.rosterStaticPanel.GetChildren(): 
-         child.Destroy()
+         child.Detach()
       #self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, Student("testStudent", "")), 1, wx.EXPAND)
       print("Index: " + str(self.rosterListBox.GetSelection()))
       print("Test: " + str(self.studentPanels[self.rosterListBox.GetSelection()]))
