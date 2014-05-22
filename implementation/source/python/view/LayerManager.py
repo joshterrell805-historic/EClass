@@ -14,6 +14,7 @@ class LayerManager(wx.Frame):
       self.parent = parent
       self.sizer = wx.BoxSizer(wx.VERTICAL)
       self.controls = wx.BoxSizer(wx.HORIZONTAL)
+      self.selectedLayer = 0
 
       self.slider = wx.Slider(self, -1, 0, 0, 100, size = (100, 40))
       self.slider.Bind(wx.EVT_SLIDER, self.ChangeOpacity)
@@ -48,22 +49,32 @@ class LayerManager(wx.Frame):
       self.Bind(wx.EVT_CLOSE, self.onClose)
 
    def DeleteLayer(self, event):
-      EClass.GetInstance().layerManagerModel.DeleteLayer()
+      EClass.GetInstance().layerManagerModel.DeleteLayer(self.selectedLayer)
+      self.UpdateLayers()
 
    def NewLayer(self, event):
       self.newLayerWindow = NewLayerWindow(self)
 
    def ChangeOpacity(self, event):
-      EClass.GetInstance().layerManagerModel.ChangeOpacity(0)
+      print(self.slider.GetValue())
+      EClass.GetInstance().layerManagerModel.ChangeOpacity(self.selectedLayer, self.slider.GetValue())
+      self.UpdateLayers()
    
    def UpdateLayers(self):
+      i = 0
       self.sizer.Hide(2)
       self.sizer.Detach(2)
       self.layerDisplay = wx.BoxSizer(wx.VERTICAL)
       for layer in EClass.GetInstance().layerManagerModel.layers:
          view = LayerView(self, layer)
          self.layers.append(view)
-         self.layerDisplay.Add(view.layerListObject(self))
+         if(i == self.selectedLayer):
+            self.slider.SetValue(layer.opacity)
+            checked = True
+         else:
+            checked = False
+         self.layerDisplay.Add(view.layerListObject(self, i, checked))
+         i += 1
          self.layerDisplay.Add(wx.StaticLine(self, -1, (25, 50), (250,1)))
       self.sizer.Add(self.layerDisplay)
       self.sizer.Layout()

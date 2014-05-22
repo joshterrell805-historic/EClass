@@ -3,9 +3,14 @@ import wx
 from ChangePermWindow import ChangePermWindow
 
 class LayerView(wx.Panel):
-   def layerListObject(self, parent):
+   def layerListObject(self, parent, index, checked):
+      self.index = index
       layerControls = wx.BoxSizer(wx.HORIZONTAL)
+      self.select = wx.CheckBox(parent, -1, '', (15, 20))
+      self.select.Bind(wx.EVT_CHECKBOX, self.SelectLayer)
+      self.select.SetValue(checked)
       label = wx.StaticText(parent, -1, self.layer.name, size = (100, 40), style = wx.ALIGN_LEFT)
+      layerControls.Add(self.select, 1)
       layerControls.Add(label, 1)
 
       self.visible = wx.CheckBox(parent, -1 ,'Visible', (15, 40))
@@ -34,3 +39,8 @@ class LayerView(wx.Panel):
       
    def ToggleLock(self, event):
       self.layer.ToggleLock()
+      
+   def SelectLayer(self, event):
+      self.parent.selectedLayer = self.index
+      self.parent.slider.SetValue(self.layer.opacity)
+      self.parent.UpdateLayers()

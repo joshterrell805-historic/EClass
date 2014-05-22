@@ -9,8 +9,9 @@ class LayerManagerModel:
          self.parent = parent
 
    def DeleteLayer(self, index):
-      if index >= 0 and len(self.layers) > 0 and index <= len(self.layers):
+      if index >= 0 and len(self.layers) > 0 and index <= len(self.layers) and self.layers[index].locked == False:
          del self.layers[index]
+         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
 
    def NewLayer(self, layer):
       if isinstance(layer, Layer):
@@ -21,4 +22,4 @@ class LayerManagerModel:
          
    def ChangeOpacity(self, index, newOpacity):
       if index > -1 and index < len(self.layers) and newOpacity > -1 and newOpacity <= 100:
-         self.layers[index].opacity = newOpacity
+         self.layers[index].SetOpacity(newOpacity)
