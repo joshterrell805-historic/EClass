@@ -51,7 +51,13 @@ class LayerManagerModelTest(unittest.TestCase):
       1        none (layers in manager)     layer deleted           
       2        none (no layers in manager)  nothing happens           
       """
-      self.layerManager = LayerManagerModel(self, [Layer("test", 50, False)])
+      class Object:
+         pass
+      layer = Layer("test", 50, False)
+      self.layerManager = LayerManagerModel(self, [layer])
+      self.presentation = Object()
+      self.presentation.slides = [Slide("",[layer])]
+      self.presentation.currSlideNum = 0
       self.layerManager.DeleteLayer(0)
       self.assertEquals(len(self.layerManager.layers), 0)
       self.layerManager.DeleteLayer(0)

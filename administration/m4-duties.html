@@ -33,6 +33,7 @@ Design Reviews</strong>
       <td valign=top>Joel Wilcox
       <td valign=top>Test plans
       <td valign=top>N/A
+<<<<<<< HEAD
       <td valign=top>The tests and test plans can be found under the testing/implementation/unit/* directories. My class test plans are for Student, Question, StudentPermissions, Presentation, and Slide. My method test plans are written for all the methods in Presentation and Student
    <tr>
       <td valign=top>Kevin Le
@@ -49,6 +50,34 @@ Design Reviews</strong>
       <td valign=top>Basic drawing utility (only works on Windows currently)
       <td valign=top>Open up a presentation (.html file) from the main EClass window. Click anywhere on the Presentation area to render a circle.
       <td valign=top>Currently this only works for Windows, but it has been a struggle just for that. The HTML window does not support mouse click events so we had to do a javascript hack (Josh). We are working on this and will begin implementing it with the drawing tools.
+=======
+      <td valign=top>The tests and test plans can be found under the testing/implementation/unit/* directories. My class test plans are for Student, Question, StudentPermissions, Presentation, and Slide. My method test plans are written for all the methods in Presentation and Student.      
+   <tr>
+      <td valign=top>Andrew Lisowski
+      <td valign=top>Delete a Layer
+      <td valign=top>With the Layer Manager Open, select an unlocked layer with the left hand checkboxes then click the 'X' button. The layer is then deleted from the slide.
+      <td valign=top>The user will see the layer deleted from the layer manager.
+   <tr>
+      <td valign=top>Andrew Lisowski
+      <td valign=top>Change Opactiy of a Layer
+      <td valign=top>With the Layer Manager Open, select an unlocked layer with the left hand checkboxes then slide the slider at the top. The layer's opacity is then changed.
+      <td valign=top>The user will see the layer's opacity change. This can also be checked by selecting a layer and seeing where the slider set's itself to. This position is the current value of the opacity on the slide.
+   <tr>
+      <td valign=top>Andrew Lisowski
+      <td valign=top>Lock a layer
+      <td valign=top>With the Layer Manager Open, check the lock checkbox next to a layer. 
+      <td valign=top>Now when the user tries to edit this layer in anyway, the changes arent't made becasue it is now locked.
+   <tr>
+      <td valign=top>Andrew Lisowski
+      <td valign=top>Unique layers on slide
+      <td valign=top>With the Layer Manager Open, create a new layer on any slide. Then switch between slides and create more layers. These layers are saved and reloaded as you navigate.
+      <td valign=top>Now when the user switches between slides the layer manager shows just the layers associated with that slide.
+   <tr>
+      <td valign=top>Andrew Lisowski
+      <td valign=top>Test plans
+      <td valign=top>N/A
+      <td valign=top>The tests and test plans can be found under the testing/implementation/unit/* directories. My class test plans are for Layer and LayerManager. My method test plans are written for all the methods in Layer and LayerManager.      
+>>>>>>> e4f479c233034258a7fb253885f099713aee3cc7
 </table>
 </ol>
 </body>
