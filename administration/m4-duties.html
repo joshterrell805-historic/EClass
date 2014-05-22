@@ -81,6 +81,29 @@ Design Reviews</strong>
       <td valign=top>The tests and test plans can be found under the testing/implementationi/unit/* directories.
       My class test plans are for DrawingTools. My method test plans are writte nfor all the methods in DrawingTools.
    <tr>
+      <td valign=top>Josh Terrell
+      <td valign=top>Host a presentation (kevin helped with GUI)
+      <td valign=top>Once logged in as a presenter (only presenter at the moment is 'gfisher') select a presentation to host for, then click the host button.
+      <td valign=top>Hosting can be verifyied ina number of ways. Students may only Join classes that are hosted, so one way to test that a class is actually hosted is to try to join the same
+      presentation on a separate EClass process. Another is to look at the output of the server, it should show that 'Gene Fisher is hosting for...'
+   <tr>
+      <td valign=top>Josh Terrell
+      <td valign=top>Join a presentation (kevin helped with GUI)
+      <td valign=top>Once a presentation is being hosted, launch up another instance of EClass and login as 'student'. Join the presentation you have hosted on the presenter's computer by selecting the appropriate class and pressing 'Join'.
+      <td valign=top>Again, there are several ways to validate. Only classes that are currently hosted may be joined. If you try to join a class that isn't hosted, an error message will display.
+      Also, in the presenter's terminal, a message will display stating that 'student' has joined the presentation.
+   <tr>
+      <td valign=top>Josh Terrell
+      <td valign=top>Leave presentation
+      <td valign=top>Follow steps above to join a presentation, then exit out of the eclass application.
+      <td valign=top>The roster will eventually update (if it isn't by the time this milestone is out). If not, a message is displayed to the presenter's terminal stating that 'student' has left the presentation.
+   <tr>
+      <td valign=top>Josh Terrell
+      <td valign=top>Dynamically update hosted classes in student view.
+      <td valign=top>Load up a new student application, and close the presenter application. you should see that all classes are not hosted. Load up an eclass process with presenter logged in and
+      host a presentation. On the student application you will see that the class the presenter hosted for now displays as hosted on the student's screen. Close the presenter's application. You will now see that the student's application coreclty shows that the presenter is no longer hosting the a presentation for the class.
+      <td valign=top>&nbsp;
+   <tr>
 </table>
 </ol>
 </body>
