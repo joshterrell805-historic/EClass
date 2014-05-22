@@ -16,11 +16,6 @@ _students = [
       'username'  : 'mjsevill'
    },
    {
-      'firstname' : 'Student',
-      'lastname'  : 'LastName',
-      'username'  : 'student'
-   },
-   {
       'firstname' : 'Carson',
       'lastname'  : 'Carroll',
       'username'  : 'ccarro03'

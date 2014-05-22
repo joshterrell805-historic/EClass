@@ -1,22 +1,10 @@
 class Roster:
-   def setView(self, view):
-      self.__view = view;
    def __init__(self):
       self.__view = None
       self.students = []
-      """
-      self.sObjs = [Student("Alek Squires", "")],
-      Student("Alexa Fox", ""),
-      Student("Carson Carroll", ""),
-      Student("Emilio Cavazos", ""),
-      Student("Haylee Springer", ""),
-      Student("Jared Osborn", ""),
-      Student("John Hanna", ""),
-      Student("Kelsey Hansen", ""),
-      Student("Kevin Wiebe", ""),
-      Student("Mike Sevilla", ""),
-      Student("Ryan Ginsberg", ""),
-      Student("Tim Anderson", "")]"""
+
+   def setView(self, view):
+      self.__view = view;
 
    def AddNewStudent(self):
       print('From Roster.AddNewStudent()')
@@ -24,8 +12,10 @@ class Roster:
    def RemoveStudent(self):
       print('From Roster.RemoveStudent()')
 
-   def SortList(self, list):
-      list.sort()
+   def SortList(self):
+      def GetKey(item):
+         return item.firstname
+      self.students.sort(key=GetKey)
    
    def GetRoster(self):
       def studentToString(student):
@@ -70,5 +60,6 @@ class Roster:
          return newStudent
       # contains Student objects
       self.students = map(toStudent, students)
+      self.SortList()
       self.__view and self.__view.redraw()
    
