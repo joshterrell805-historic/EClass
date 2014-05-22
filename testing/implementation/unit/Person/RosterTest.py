@@ -1,8 +1,8 @@
 import unittest
 import sys
-sys.path.insert(0, '../../../../implementation/source/python/model/Person')
+sys.path.insert(0, '../../../implementation/source/python/model')
 
-from Roster import Roster
+from Person.Roster import Roster
 #from RosterItemPanel import RosterItemPanel
 
 class RosterTest(unittest.TestCase):
