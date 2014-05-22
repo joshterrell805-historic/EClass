@@ -1,7 +1,7 @@
 import unittest
 import sys
 
-sys.path.insert(0, '../../../../implementation/source/python/model/Presentation')
+sys.path.insert(0, '../../../implementation/source/python/model/Presentation')
 
 from Slide import Slide
 from LayerManagerModel import LayerManagerModel
