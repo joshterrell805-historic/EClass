@@ -115,6 +115,7 @@ class RosterWindow(wx.Frame):
          child.Destroy()
       #self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, Student("testStudent", "")), 1, wx.EXPAND)
       print("Index: " + str(self.rosterListBox.GetSelection()))
+      print("Test: " + str(self.studentPanels[self.rosterListBox.GetSelection()]))
       self.rosterStaticPanel.sizer.Add(self.studentPanels[self.rosterListBox.GetSelection()], 1, wx.EXPAND)
       self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
       self.SendSizeEvent()
