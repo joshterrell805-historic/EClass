@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.insert(0, '../../../../implementation/source/python/model/Presentation')
+sys.path.insert(0, '../../../implementation/source/python/model/Presentation')
 
 from DrawingToolsModel import DrawingToolsModel
 
