@@ -1,13 +1,18 @@
 import unittest
-import sys
+import sys, time, subprocess
 
-sys.path.insert(0, '../../../../implementation/source/python/model')
+sys.path.insert(0, '../../../implementation/source/python/model')
 from Connection import Connection
 
 import wx # needed for Conneciton.__loop, see bottom
 
-class ConnectionTest(unittest.TestCase):
-
+class GetInstanceTest(unittest.TestCase):
+   @staticmethod
+   def customSetup(onReady):
+      onReady()
+   @staticmethod
+   def customTeardown():
+      pass
    def test_getInstance(self):
       """
       Verify that the instance returned is indeed a singleton and that it is
@@ -18,9 +23,59 @@ class ConnectionTest(unittest.TestCase):
       self.assertIs(instance, otherInstance);
       self.assertIsInstance(instance, Connection);
 
+class AuthFailTest(unittest.TestCase):
    @staticmethod
-   def tearDownClass():
-      app.Exit()
+   def customSetup(onReady):
+      c = AuthFailTest
+      c.centralProcess = subprocess.Popen(['python', 'Connection/launchCC.py'])
+
+      time.sleep(0.5)
+      def onResponse(response):
+         c.response = response;
+         onReady()
+
+      c.con = Connection.getInstance()
+      c.con.authenticate('invalid username', 'asdf', onResponse)
+      
+   @staticmethod
+   def customTeardown():
+      c = AuthFailTest
+      Connection.__instance = None
+      c.centralProcess.kill()
+      time.sleep(1)
+   def test_authFail(self):
+      """
+      Verify that the cc throws error on bad username/password
+      """
+      c = AuthFailTest
+      self.assertFalse(c.response.success)
+
+class AuthSuccessTest(unittest.TestCase):
+   @staticmethod
+   def customSetup(onReady):
+      c = AuthSuccessTest
+      c.centralProcess = subprocess.Popen(['python', 'Connection/launchCC.py'])
+
+      time.sleep(0.5)
+      def onResponse(response):
+         c.response = response;
+         onReady()
+
+      c.con = Connection.getInstance()
+      c.con.authenticate('student', 'asdf', onResponse)
+      
+   @staticmethod
+   def customTeardown():
+      c = AuthSuccessTest
+      Connection.__instance = None
+      c.centralProcess.kill()
+      time.sleep(1)
+   def test_authSuccess(self):
+      """
+      Verify that the cc allows valid username/password
+      """
+      c = AuthSuccessTest
+      self.assertTrue(c.response.success)
 
 if __name__ == '__main__':
    # Due to not figuring out a better solution, we actually need wx python here
@@ -34,5 +89,25 @@ if __name__ == '__main__':
    # this project we just want something that works, and this works.
    app = wx.App(False)
    f = wx.Frame(None)
-   wx.FutureCall(1, unittest.main)
+
+   classes = []
+   classes.append(GetInstanceTest)
+   classes.append(AuthFailTest)
+   classes.append(AuthSuccessTest)
+
+   def nextTest():
+      if len(classes) == 0:
+         #oh the hacks.. oh the horror
+         Connection.getInstance().close()
+         app.Exit()
+      else:
+         c = classes.pop()
+         test = unittest.TestLoader().loadTestsFromTestCase(c)
+         def onReady():
+            unittest.TextTestRunner(verbosity=2).run(test)
+            c.customTeardown()
+            wx.FutureCall(0.01, nextTest)
+         c.customSetup(onReady)
+      
+   wx.FutureCall(0.01, nextTest)
    app.MainLoop()
