@@ -17,6 +17,19 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
          self.presentation.GetPath()
       )
+      self.whiteboard.RunScript("""
+         window.onmousedown = function() {
+          window.location.href =
+             "__EVENT__/mousedown?x=" + event.screenX + "&y=" + event.screenY;
+         };
+
+         window.onmouseup = function() {
+          window.location.href =
+             "__EVENT__/mouseup?x=" + event.screenX + "&y=" + event.screenY;
+         };
+
+         document.body.style.backgroundColor='#FF0000';
+      """)
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -68,14 +81,23 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
-      self.Bind(wx.EVT_LEFT_DCLICK, self.Paint)
+      self.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
       self.Show()
-      
-   def Paint(self, event):
-      dc = wx.WindowDC(self.whiteboard)
-      whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-      dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
-      print("working...")
+
+   def OnPageNavigation(self, evt):
+      uri = evt.GetURL()
+      print 'on navigation'
+      if "__EVENT__/mousedown" in uri:
+         evt.Veto()
+         print 'mousedown'
+         return
+      elif "__EVENT__/mouseup" in uri:
+         evt.Veto()
+         dc = wx.WindowDC(self.whiteboard)
+         whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+         dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
+         print 'mouseup'
+         return
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
