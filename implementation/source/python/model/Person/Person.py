@@ -2,9 +2,10 @@ from ApprovalTracker.ApprovalRating import ApprovalRating
 
 class Person(object):
 
-   def __init__(self, username, password):
+   def __init__(self, username, firstName = 'first', lastName = 'last'):
       self.username = username
-      self.password = password
+      self.firstName = firstName
+      self.lastName = lastName
       self.approvalRating = ApprovalRating()
 
    def isPresenter(self):

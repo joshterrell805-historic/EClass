@@ -2,9 +2,9 @@ import sys
 from Presentation.Presentation import Presentation
 
 from Person.Person import Person
-from Person.Student import Student
 from Person.Presenter import Presenter
 from Person.Roster import Roster
+from Person.Student import Student
 
 from Presentation.Layer import Layer
 from Presentation.LayerManagerModel import LayerManagerModel

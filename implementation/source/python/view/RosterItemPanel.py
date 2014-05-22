@@ -1,12 +1,10 @@
 import wx
 import sys
 
-sys.path.insert(0, 'model/Person')
-from EClass import EClass
-
-from RosterItem import RosterItem
-
 sys.path.insert(0, '../model')
+from EClass import EClass
+from Person.RosterItem import RosterItem
+
 from Person.Student import Student
 from PermissionsWindow import PermissionsWindow
 from KickWindow import KickWindow

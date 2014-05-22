@@ -4,8 +4,8 @@ from Question import Question
 
 class Student(Person):
 
-   def __init__(self, username, password, permissions = None):
-      super(Student, self).__init__(username, password)
+   def __init__(self, username, firstName = 'first', lastName = 'last', permissions = None):
+      super(Student, self).__init__(username, firstName, lastName)
       if permissions != None:
          self.permissions = permissions
       else:

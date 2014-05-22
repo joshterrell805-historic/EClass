@@ -1,10 +1,10 @@
 import wx
 import sys
 
-sys.path.insert(0, 'model/Person')
+sys.path.insert(0, 'model')
 from EClass import EClass
 
-from RosterItem import RosterItem
+from Person.RosterItem import RosterItem
 
 class RosterStaticPanel(wx.Panel):
    # TODO Update doc
