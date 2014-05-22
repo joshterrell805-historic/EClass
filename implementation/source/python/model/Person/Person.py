@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '..')
 from ApprovalTracker.ApprovalRating import ApprovalRating
 
 class Person(object):
