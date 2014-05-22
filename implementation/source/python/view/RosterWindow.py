@@ -1,15 +1,15 @@
 import wx
 import sys
 
-sys.path.insert(0, 'model/Person')
+sys.path.insert(0, 'model')
 from EClass import EClass
 
 from RosterItemPanel import RosterItemPanel
 from RosterStaticPanel import RosterStaticPanel
-from Roster import Roster
+from Person.Roster import Roster
 from Person.Student import Student
 import wx.lib.agw.foldpanelbar as fpb
-import  wx.lib.scrolledpanel as scrolled
+import wx.lib.scrolledpanel as scrolled
 
 class RosterWindow(wx.Frame):
    def __init__(self, parent):
