@@ -18,6 +18,8 @@ class RosterWindow(wx.Frame):
       self.rosterModel = EClass.GetInstance().roster
       self.rosterModel.setView(self)
 
+      self.studentPanels = []
+
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
@@ -39,6 +41,7 @@ class RosterWindow(wx.Frame):
       self.rosterStaticPanel = RosterStaticPanel(self)
       #self.staticPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
       #self.staticPanel.SetBackgroundColour('#FEEECC')
+      
 
       addButton = wx.Button(self, label = 'Add Student', size = (150, 30))
       addButton.Bind(wx.EVT_BUTTON, self.AddStudent)
@@ -73,9 +76,10 @@ class RosterWindow(wx.Frame):
    def redraw(self):
       self.rosterListBox.Clear()
       for student in self.rosterModel.students:
-         self.rosterListBox.Append(student.firstname + ' ' + student.lastname)
+         self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
 
    def AddRosterItem(self, fpb, username):
+      #Change this so that it works with ListBox
       if fpb == self.foldPanelBar:
          foldPanel = self.foldPanelBar.AddFoldPanel(username, collapsed = True)
          # TODO use actual student
@@ -97,10 +101,20 @@ class RosterWindow(wx.Frame):
       self.parent.showRosterMenuItem.Check(False)
       self.Hide()
 
+   def SyncPanels(self):
+      for i in range(0, len(self.rosterModel.students)):
+         self.studentPanels.append(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[i]))
+
+      print("Students: " + str(len(self.rosterModel.students)))
+
    def ShowStudentPanel(self, event):
+      self.SyncPanels()
+      print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
       for child in self.rosterStaticPanel.GetChildren(): 
          child.Destroy()
-      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, Student("testStudent", "")), 1, wx.EXPAND)
+      #self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, Student("testStudent", "")), 1, wx.EXPAND)
+      print("Index: " + str(self.rosterListBox.GetSelection()))
+      self.rosterStaticPanel.sizer.Add(self.studentPanels[self.rosterListBox.GetSelection()], 1, wx.EXPAND)
       self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
       self.SendSizeEvent()
