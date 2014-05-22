@@ -398,29 +398,36 @@ class RosterItemPanel(wx.Panel):
 
 class LayerManager:
    """
-   A Presentation is a collection of slides and their respective layers which is displayed at the center of the EClass.
+   Renders the view of the LayerManagerModel
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
+
+   @ivar parent: A reference to the parent class
    """
    def __init__(self, parent):
       """
-      Initialize a Layer Manager View.
-
-      @param parent: The class that initialized this view..
+      Initialize a LayerManager view.
+      
+      @param parent: A reference to the EClass window.
       """
       pass
 
    def DeleteLayer(self, event):
       """
-      Delete the selected slide
+      Sends a delete action to the LayerManagerModel
 
-      @postcondition: self.layers.count() == old(self.layers.count()) - 1
+      @param event: the user action that promted this callback.
+      
+      @postcondition: len(EClass.GetInstance().layerManagerModel.layers) 
+                      == old(len(EClass.GetInstance().layerManagerModel.layers)) - 1
       """
       pass
 
    def NewLayer(self, event):
       """
-      Creates a New Layer for the current Slide
+      Show the NewLayerView
+
+      @param event: the user action that promted this callback.
 
       @postcondition: self.layers.count() == old(self.layers.count()) + 1
       """
@@ -428,7 +435,9 @@ class LayerManager:
 
    def ChangeOpacity(self, event):
       """
-      Changes opacity of selected layer
+      Sends a changeOpactiy call to a layer in the layer manager
+
+      @param event: the user action that promted this callback.
 
       @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
       """
@@ -436,13 +445,14 @@ class LayerManager:
       
    def UpdateLayers(self):
       """
-      Update the layers prsented
+      Update the layers present in the LayerManager. 
+      Gets layers of current slide and displays them.
       """
       pass
       
    def onClose(self, event):
       """
-      Uncheck the menu item
+      Uncheck the menu item, and close the LayerManagerPanel
 
       @postcondition: self.parent.showLayerManagerMenuItem != old(self.parent.showLayerManagerMenuItem)
       """
@@ -450,28 +460,34 @@ class LayerManager:
       
 class LayerView:
    """
-   A view for a layer in the layer manager.
+   Renders a Layer inside the LayerManager.
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
+
+   @ivar parent: A reference to the parent class
    """
    def layerListObject(self, parent):
       """
-      Sizer formatting for layer.
+      Gets the layer represented as a sizer.
+
+      @param parent: A reference to the EClass window.
       """
       pass
 
    def __init__(self, parent, layer):
       """
-      Initialize a Layer View.
+      Initialize a NewLayerWindow view.
 
-      @param parent: The class that initialized this view.
-      @param layer: The layer to be shown.
+      @param parent: A reference to the LayerManager window.
+      @param layer: the layer we are displaying.
       """
       pass
       
-   def changePermissions(self, event):
+   def ChangePermissions(self, event):
       """
-      Set the selected layer's permissions.
+      Bring the ChangePermWindow up.
+
+      @param event: the user action that promted this callback.
 
       @postcondition: self.permissions != old(self.permissions)
       """
@@ -479,7 +495,9 @@ class LayerView:
       
    def ToggleVisible(self, event):
       """
-      Set the visibility of a layer.
+      Sets the visibility of the layer
+
+      @param event: the user action that promted this callback.
 
       @postcondition: self.visible != old(self.visible)
       """
@@ -487,11 +505,73 @@ class LayerView:
 
    def ToggleLock(self, event):
       """
-      Set the lock state of a layer.
+      Locks and unlocks the layer
+
+      @param event: the user action that promted this callback.
 
       @postcondition: self.locked != old(self.locked)
       """
       pass
+      
+class NewLayerWindow:
+   """
+   Renders the dialog for a New Layer.
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+
+   @ivar parent: A reference to the parent class
+   """
+   
+   def __init__(self, parent):
+      """
+      Initialize a NewLayerWindow view.
+      
+      @param parent: A reference to the EClass window.
+      """
+      pass
+      
+   def MakeNewLayer(self, event):
+      """
+      Attached to the Ok button. Gets data from form, sends it to the LayerManagerModel
+
+      @param event: the user action that promted this callback.
+      
+      @postcondition: len(EClass.GetInstance().layerManagerModel.layers) 
+                      == old(len(EClass.GetInstance().layerManagerModel.layers)) + 1
+      """
+      pass
+      
+   def ChangePermissions(self, event):
+      """
+      Bring the ChangePermWindow up.
+
+      @param event: the user action that promted this callback.
+      """
+      pass
+      
+class ChangePermWindow(wx.Frame):
+   """
+   Shows the Dialog to change the permissions on a layer.
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+
+   @ivar parent: A reference to the parent class
+   @ivar layer: A reference to the layer we are changing
+   """
+   def __init__(self, parent, layer):
+      """
+      Initialize a ChangePermWindow view.
+      
+      @param parent: A reference to the parent class
+      @param layer: A reference to the layer we are changing
+      """
+
+   def ChangeLayerPerm(self, event):
+      """
+      Sets the permissions on a layer, then closes the Change Permissions dialog.
+      
+      @param event: the user action that promted this callback.
+      """
 
 class EClassWindow:
    """

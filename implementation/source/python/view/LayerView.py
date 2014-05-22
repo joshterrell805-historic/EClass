@@ -15,7 +15,7 @@ class LayerView(wx.Panel):
          self.lock.SetValue(True)
       self.lock.Bind(wx.EVT_CHECKBOX, self.ToggleLock)
       self.permissions = wx.Button(parent, -1, 'Perm', size = (20, 40))
-      self.permissions.Bind(wx.EVT_BUTTON, self.changePermissions)
+      self.permissions.Bind(wx.EVT_BUTTON, self.ChangePermissions)
       layerControls.Add(self.visible, 1)
       layerControls.Add(self.lock, 1)
       layerControls.Add(self.permissions, 1)
@@ -26,7 +26,7 @@ class LayerView(wx.Panel):
       self.layer = layer
       self.parent = parent
 
-   def changePermissions(self, event):
+   def ChangePermissions(self, event):
       self.changeLayerPerm = ChangePermWindow(self.parent, self.layer)
       
    def ToggleVisible(self, event):
