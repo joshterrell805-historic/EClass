@@ -4,6 +4,7 @@ from Presentation.Presentation import Presentation
 from Person.Person import Person
 from Person.Student import Student
 from Person.Presenter import Presenter
+from Person.Roster import Roster
 
 from Presentation.Layer import Layer
 from Presentation.LayerManagerModel import LayerManagerModel
@@ -28,6 +29,7 @@ class EClass():
 
       self.connection = Connection.getInstance()
       self.presentation = Presentation(path = None)
+      self.roster = Roster()
 
       # the logged in user, None if logged out
       self.user = None

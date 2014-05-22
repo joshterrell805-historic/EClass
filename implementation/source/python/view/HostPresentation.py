@@ -2,6 +2,7 @@ import wx, sys
 from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
+from Person.Roster import Roster
  
 class HostPresentation(wx.Frame):
  
@@ -44,22 +45,17 @@ class HostPresentation(wx.Frame):
       EClass.GetInstance().exit()
 
    def host(self, event):
+      roster = EClass.GetInstance().roster
+      def callback(response):
+         if response.success:
+            EClassWindow()
+            roster.setStudents(selected['students'])
+            self.Hide()
+         else:
+            self.reasonText.SetLabel(response.reason)
+
       selected = EClass.GetInstance().classes[self.list_ctrl.GetFocusedItem()]
 
       EClass.GetInstance().connection.hostPresentation(
-         selected['name'], self.callback, self.joinCallback, self.leaveCallback
+         selected['name'], callback, roster.onJoin, roster.onLeave
       )
-      
-   def callback(self, response):
-      if response.success:
-         EClassWindow()
-         self.Hide()
-      else:
-         self.reasonText.SetLabel(response.reason)
-
-   def joinCallback(self, username):
-      print username +  ' joined the presentation!'
-
-   def leaveCallback(self, username):
-      print username +  ' left the presentation.'
-      
