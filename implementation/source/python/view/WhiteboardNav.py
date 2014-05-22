@@ -17,11 +17,8 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
          self.presentation.GetPath()
       )
-      self.whiteboard.RunScript("""
-         document.body.onmousedown = function() {
-            window.location.href = "__EVENT__/mousedown";
-         };
-      """)
+      self.RunScript()
+
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -78,11 +75,10 @@ class WhiteboardNav(wx.Panel):
 
    def OnPageNavigation(self, evt):
       uri = evt.GetURL()
-      print uri
-      print 'on navigation'
 
       if "__EVENT__/mousedown" in uri:
          dc = wx.WindowDC(self.whiteboard)
+         dc.SetBrush(wx.Brush(wx.BLACK, wx.TRANSPARENT))
          whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
          dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
          print 'mousedown'
@@ -113,3 +109,11 @@ class WhiteboardNav(wx.Panel):
       EClass.GetInstance().setUpLayerManager()
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
+      self.RunScript()
+
+   def RunScript(self):
+      self.whiteboard.RunScript("""
+         document.body.onmousedown = function() {
+            window.location.href = "__EVENT__/mousedown";
+         };
+      """)
