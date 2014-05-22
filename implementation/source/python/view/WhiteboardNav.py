@@ -81,6 +81,7 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
+<<<<<<< HEAD
       self.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
       self.Show()
 
@@ -98,6 +99,9 @@ class WhiteboardNav(wx.Panel):
          dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
          print 'mouseup'
          return
+=======
+      self.Show()
+>>>>>>> 0431a5906f097add619ee0953cd4a917b5502e1f
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
