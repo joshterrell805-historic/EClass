@@ -4,7 +4,6 @@ import sys
 sys.path.insert(0, 'model')
 from EClass import EClass
 from Person.Student import Student
-from random import randint
 
 class WhiteboardNav(wx.Panel):
 
@@ -73,7 +72,6 @@ class WhiteboardNav(wx.Panel):
       self.Show()
       
    def Paint(self, event):
-      self.whiteboard.SetTransparent(0)
       dc = wx.WindowDC(self.whiteboard)
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
       dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
