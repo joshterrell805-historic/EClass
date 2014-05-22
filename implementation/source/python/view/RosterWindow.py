@@ -15,7 +15,8 @@ class RosterWindow(wx.Frame):
    def __init__(self, parent):
       super(RosterWindow, self).__init__(None, -1, 'Roster')
 
-      self.rosterModel = Roster()
+      self.rosterModel = EClass.GetInstance().roster
+      self.rosterModel.setView(self)
 
       self.SetClientSizeWH(300, 700)
       self.parent = parent
@@ -32,8 +33,7 @@ class RosterWindow(wx.Frame):
       self.rosterListBox = wx.ListBox(choices=[], name='listBox1', parent=self, pos=wx.Point(8, 48), style=0)
       self.rosterListBox.Bind(wx.EVT_LISTBOX, self.ShowStudentPanel)
 
-      for i in range(0, len(self.rosterModel.students)):
-         self.rosterListBox.Append(self.rosterModel.students[i])
+      self.redraw()
 
 
       self.rosterStaticPanel = RosterStaticPanel(self)
@@ -69,6 +69,11 @@ class RosterWindow(wx.Frame):
       self.SendSizeEvent()
       
       EClass.GetInstance().rosterModel = self.rosterModel
+
+   def redraw(self):
+      self.rosterListBox.Clear()
+      for student in self.rosterModel.students:
+         self.rosterListBox.Append(student.firstname + ' ' + student.lastname)
 
    def AddRosterItem(self, fpb, username):
       if fpb == self.foldPanelBar:
