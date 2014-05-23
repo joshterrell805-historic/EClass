@@ -95,21 +95,6 @@ if __name__ == '__main__':
    classes.append(AuthFailTest)
    classes.append(AuthSuccessTest)
 
-   frame = wx.Frame(None)
-   frame.SetLabel('Temporary but needed window for connection tests.')
-   # tests don't work on mac without.. for wx.FutureCall to work, a window
-   # must be active (mac only)
-   frame.visible = True
-   frame.firstTime = True
-
-   def hideWindow(evt):
-      if frame.visible:
-         frame.visible = False
-         frame.Hide()
-   def startTests(evt):
-      if frame.firstTime:
-         nextTest()
-         frame.firstTime = False
    def nextTest():
       if len(classes) == 0:
          #oh the hacks.. oh the horror
@@ -121,10 +106,8 @@ if __name__ == '__main__':
          def onReady():
             unittest.TextTestRunner(verbosity=2).run(test)
             c.customTeardown()
-            wx.FutureCall(0.01, nextTest)
+            wx.FutureCall(1, nextTest)
          c.customSetup(onReady)
-   app.Bind(wx.EVT_ACTIVATE_APP, startTests);
-   app.Bind(wx.EVT_SHOW, hideWindow);
 
-   frame.Show()
+   wx.FutureCall(1, nextTest)
    app.MainLoop()
