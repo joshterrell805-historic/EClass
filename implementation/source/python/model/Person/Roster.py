@@ -24,7 +24,7 @@ class Roster:
    
    def GetRoster(self):
       def studentToString(student):
-         return student.lastname + ', ' + student.firstname
+         return student.lastName + ', ' + student.firstName
       return map(studentToString, self.students)
 
    def onJoin(self, username):
