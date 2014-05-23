@@ -78,6 +78,8 @@ class RosterWindow(wx.Frame):
       for student in self.rosterModel.students:
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
 
+      #self.rosterListBox.SetItemBackgroundColour(0, wx.RED)
+
    def AddRosterItem(self, fpb, username):
       #Change this so that it works with ListBox
       if fpb == self.foldPanelBar:
@@ -108,6 +110,7 @@ class RosterWindow(wx.Frame):
       print("Students: " + str(len(self.rosterModel.students)))
 
    def ShowStudentPanel(self, event):
+      #fix this call to SyncPanels, panels keep getting added to the list and never stops
       self.SyncPanels()
       print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
