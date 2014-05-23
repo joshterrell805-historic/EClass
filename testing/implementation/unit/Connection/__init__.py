@@ -29,7 +29,7 @@ class AuthFailTest(unittest.TestCase):
       c = AuthFailTest
       c.centralProcess = subprocess.Popen(['python', 'Connection/launchCC.py'])
 
-      time.sleep(0.5)
+      time.sleep(1)
       def onResponse(response):
          c.response = response;
          onReady()
@@ -56,7 +56,7 @@ class AuthSuccessTest(unittest.TestCase):
       c = AuthSuccessTest
       c.centralProcess = subprocess.Popen(['python', 'Connection/launchCC.py'])
 
-      time.sleep(0.5)
+      time.sleep(1)
       def onResponse(response):
          c.response = response;
          onReady()
@@ -95,6 +95,21 @@ if __name__ == '__main__':
    classes.append(AuthFailTest)
    classes.append(AuthSuccessTest)
 
+   frame = wx.Frame(None)
+   frame.SetLabel('Temporary but needed window for connection tests.')
+   # tests don't work on mac without.. for wx.FutureCall to work, a window
+   # must be active (mac only)
+   frame.visible = True
+   frame.firstTime = True
+
+   def hideWindow(evt):
+      if frame.visible:
+         frame.visible = False
+         frame.Hide()
+   def startTests(evt):
+      if frame.firstTime:
+         nextTest()
+         frame.firstTime = False
    def nextTest():
       if len(classes) == 0:
          #oh the hacks.. oh the horror
@@ -108,6 +123,8 @@ if __name__ == '__main__':
             c.customTeardown()
             wx.FutureCall(0.01, nextTest)
          c.customSetup(onReady)
-      
-   wx.FutureCall(0.01, nextTest)
+   app.Bind(wx.EVT_ACTIVATE_APP, startTests);
+   app.Bind(wx.EVT_SHOW, hideWindow);
+
+   frame.Show()
    app.MainLoop()
