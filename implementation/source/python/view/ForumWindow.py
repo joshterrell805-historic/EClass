@@ -1,17 +1,15 @@
 import wx
 import sys
-from datetime import datetime
 
 sys.path.insert(0, 'model/Forum')
 from EClass import EClass
-
-from Forum import Forum
 
 class ForumWindow(wx.Frame):
    def __init__(self, parent):
       super(ForumWindow, self).__init__(None, -1, 'Forum')
 
-      self.forum = Forum()
+      self.forum = EClass.GetInstance().forum
+      self.forum.view = self
       self.parent = parent
 
       self.SetClientSizeWH(500, 600)
@@ -45,11 +43,7 @@ class ForumWindow(wx.Frame):
 
    def SendMessage(self, event):
       if self.messageEntry.GetValue() != "":
-         user = EClass.GetInstance().user
-         currentDateTime = datetime.now()
-         self.forum.AddMessage(user.username, currentDateTime.strftime('%m/%d/%Y %I:%M %p'), self.messageEntry.GetValue())
-         currentText = self.messagesArea.GetValue()
-         self.messagesArea.SetValue(currentText + self.forum.messagesList[len(self.forum.messagesList) - 1].ToString() + "\n")
+         self.forum.AddMessage(self.messageEntry.GetValue())
          self.messageEntry.SetValue("")
       else:
          pass
@@ -59,7 +53,13 @@ class ForumWindow(wx.Frame):
       self.Close()
 
    def Refresh(self):
-      self.forum.Refresh()
+      def toString(string, message):
+         return string + message.ToString() + "\n"
+
+      self.messagesArea.SetValue(
+         reduce(toString, self.forum.messagesList, "")
+      )
+      self.messagesArea.MarkDirty()
 
    def onClose(self, event):
       self.parent.showForumMenuItem.Check(False)

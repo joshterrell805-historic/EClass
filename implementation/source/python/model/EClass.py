@@ -10,6 +10,8 @@ from Presentation.Layer import Layer
 from Presentation.LayerManagerModel import LayerManagerModel
 from Connection import Connection
 
+from Forum.Forum import Forum
+
 # this model is a singleton which has a reference to other important models
 
 class EClass():
@@ -30,6 +32,7 @@ class EClass():
       self.connection = Connection.getInstance()
       self.presentation = Presentation(path = None)
       self.roster = Roster()
+      self.forum = Forum()
 
       # the logged in user, None if logged out
       self.user = None
@@ -65,3 +68,4 @@ class EClass():
    def exit(self):
       self.connection.close()
       sys.exit()
+
