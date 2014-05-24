@@ -73,6 +73,29 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
       self.Show()
 
+      self.layer = wx.Panel(self)
+      def positionStuff():
+         w, h = self.whiteboard.GetSizeTuple()
+         self.layer.SetSize((w-2,h-2))
+         w, h = self.whiteboard.GetPositionTuple()
+         self.layer.SetPosition((w+1,h+1))
+
+         b = wx.Brush(wx.Colour(255, 0, 0, 100), wx.TRANSPARENT)
+         dc = wx.WindowDC(self.layer)
+         dc.SetBackgroundMode(wx.TRANSPARENT)
+         dc.SetBackground(b)
+         dc.Clear()
+         print self.layer.SetTransparent(0)
+         #self.layer.SetBackgroundColour(wx.Colour(255, 0, 0, 100))
+         #dc.SetBrush())
+         #dc.SetPen(wx.TRANSPARENT_PEN) 
+         #w, h = self.GetSizeTuple()
+         #dc.Clear()
+         #dc.DrawRectangle(0, 0, w, h)
+
+         wx.CallLater(1, positionStuff)
+      wx.CallLater(1, positionStuff)
+
    def OnPageNavigation(self, evt):
       uri = evt.GetURL()
 
