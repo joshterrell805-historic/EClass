@@ -5,6 +5,7 @@ from Connections.Presenter_ServerOf_Student import Presenter_ServerOf_Student as
 from Connections.Student_ClientOf_Presenter import Student_ClientOf_Presenter as PresenterClient
 from Responses import *
 from twisted.internet import reactor
+import EClass
 
 # This class is defined as a package-level class since this is the only class
 # most of our model will need to interface with for networking.
@@ -15,6 +16,7 @@ class Connection(object):
       self.__presenterClient = None
       self.__presenterServer = None
       self.__connections = []
+      self.__messageListeners = {}
 
       #see self.__loop
       self.__callbacksToCall = []
@@ -148,12 +150,30 @@ class Connection(object):
 
    def unregisterStudentClassesListener(self, listener):
       pass
-   def sendMessage(self, identifier, recipient, message):
-      pass
+   def send(self, identifier, message, recipient = None):
+      # TODO recipient
+      msg = {
+         'code' : 'message',
+         'identifier' : identifier,
+         'message' : message
+      }
+      if EClass.EClass.GetInstance().user.isPresenter():
+         for student in self.__presenterServer.connections:
+            student.send(msg)
+      else:
+         self.__presenterClient.send(msg)
    def registerMessageListener(self, identifier, listener):
-      pass
+      self.__messageListeners[identifier] = listener
    def unregisterMessageListener(self, identifier, listener):
-      pass
+      del self.__messageListeners[identifier]
+   def onMessage(self, message):
+      if ('identifier' in message and
+          message['identifier'] in self.__messageListeners
+      ):
+         self.__messageListeners[message['identifier']](
+            message['message'],
+            message['student']
+         )
 
    # ----- helper methods ------
 
@@ -218,6 +238,7 @@ class Connection(object):
             # only set the client once.. the user may have sent two responses
             self.__presenterClient = connection
             self.__connections.append(connection)
+            connection.setMessageListener(self.onMessage)
          callback()
 
       if not self.__presenterClient:
@@ -243,6 +264,7 @@ class Connection(object):
          self.__presenterServer.connections.append(connection)
          connection.setCentralClient(self.__centralClient)
          connection.setJoinCallback(joinCallback)
+         connection.setMessageListener(self.onMessage)
          connection.setLeaveCallback(leaveCallback)
 
       if not self.__presenterServer:
