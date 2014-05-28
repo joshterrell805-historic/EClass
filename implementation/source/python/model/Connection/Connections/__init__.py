@@ -15,8 +15,37 @@ class BaseConnection(object):
    returned from Sever and Client in the callbacks when a new connection
    has been made.
    """
+   # twisted can't be called from wx.. fuck
+   # two threads now...
+   # what this does is start an infinite loop in twisted's thread that calls any
+   # callbacks that wx's thread adds to the callback list.
+   def __loop(self):
+      if self.__continueLoop:
+         reactor.callLater(0, self.__loop)
+      callbacks = self.__callbacksToCall
+      args = self.__argsToPass
+      self.__callbacksToCall = []
+      self.__argsToPass = []
+      for callback, args in zip(callbacks, args):
+         callback(*args)
+
+   # add a callback to be called in __loop (wx thread)
+   # args is a list of arguments
+   # NOTE.. user-passed callbacks should ONLY be called in wx
+   def __addCallback(self, callback, args):
+      try:
+         self.__inited == True
+      except AttributeError:
+         self.__inited = True
+         self.__callbacksToCall = []
+         self.__argsToPass = []
+         self.__continueLoop = True
+         self.__loop()
+      self.__callbacksToCall.append(callback)
+      self.__argsToPass.append(args)
+
    def send(self, message):
-      self.__protocol.transmit(message)
+      self.__addCallback(self.__protocol.transmit, [message])
 
    def setProtocol(self, protocol):
       self.__protocol = protocol
@@ -28,7 +57,7 @@ class BaseConnection(object):
       """
       Close this connection.
       """
-      self.__protocol.loseConnection()
+      self.__addCallback(self.__protocol.loseConnection, [])
 
    def onMessage(self, message):
       """

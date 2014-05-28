@@ -20,8 +20,6 @@ class EClass():
 
    @staticmethod
    def GetInstance():
-      print('In EClass.GetInstance(): ')
-
       if EClass.__instance == None:
          EClass.__instance = EClass()
 
