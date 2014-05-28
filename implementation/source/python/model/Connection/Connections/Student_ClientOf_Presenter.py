@@ -5,11 +5,16 @@ from twisted.internet import reactor
 class Student_ClientOf_Presenter(BaseConnection):
    def __init__(self):
       self.__state = None
+      self.__messageListener = None
 
    def onClose(self, reason):
       pass
 
    def onMessage(self, message):
+      if message['code'] == 'message':
+         message['student'] = False
+         self.__messageListener and self.__messageListener(message)
+
       if self.__state != None:
          if message['code'] != self.__state:
             raise Exception(
@@ -37,3 +42,6 @@ class Student_ClientOf_Presenter(BaseConnection):
          'success' : False,
          'reason'  : state + ' response timed out'
       })
+
+   def setMessageListener(self, callback):
+      self.__messageListener = callback

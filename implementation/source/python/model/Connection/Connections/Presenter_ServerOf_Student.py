@@ -7,6 +7,7 @@ class Presenter_ServerOf_Student(BaseConnection):
       self.__joinCallback = None
       self.__leaveCallback = None
       self.__joinSuccessResponse = None
+      self.__messageListener = None
 
    def onClose(self, reason):
       if self.__joinSuccessResponse != None and self.__leaveCallback != None:
@@ -24,6 +25,10 @@ class Presenter_ServerOf_Student(BaseConnection):
       self.__leaveCallback = leaveCallback
 
    def onMessage(self, message):
+      if message['code'] == 'message':
+         message['student'] = self.__joinSuccessResponse['username']
+         self.__messageListener and self.__messageListener(message)
+
       if message['code'] == 'join':
          self.onJoin(message)
 
@@ -44,3 +49,6 @@ class Presenter_ServerOf_Student(BaseConnection):
          return
 
       self.__centralClient.validateStudent(message['key'], onStudentValidation)
+
+   def setMessageListener(self, callback):
+      self.__messageListener = callback
