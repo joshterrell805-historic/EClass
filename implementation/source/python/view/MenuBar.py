@@ -9,9 +9,7 @@ from LayerManager import LayerManager
 from ImportPresentation import ImportPresentation
 
 class MenuBar:
-
    def __init__(self, parent):
-
       ID_FILE_NEWPRESENTATION = wx.NewId()
       ID_FILE_OPEN = wx.NewId()
       ID_FILE_OPENRECENT = wx.NewId()
@@ -100,7 +98,6 @@ class MenuBar:
       parent.Bind(wx.EVT_MENU, self.ToggleFullScreen, self.fullScreenMenuItem)
 
       parent.SetMenuBar(menuBar)
-
       self.parent = parent
 
 
