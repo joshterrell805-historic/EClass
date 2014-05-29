@@ -77,10 +77,20 @@ class WhiteboardNav(wx.Panel):
       uri = evt.GetURL()
 
       if "__EVENT__/mousedown" in uri:
-         dc = wx.WindowDC(self.whiteboard)
-         dc.SetBrush(wx.Brush(wx.BLACK, wx.TRANSPARENT))
-         whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-         dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
+         # Create graphics context from it
+         try:
+            dc = wx.WindowDC(self.whiteboard)
+            gc = wx.GraphicsContext.Create(dc)
+         except:
+            print('Furq!')
+
+         if gc:
+            whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+            gc.SetPen(wx.RED_PEN)
+            gc.DrawRectangle(whiteboardMousePos.x, whiteboardMousePos.y, 200, 200)
+            print 'painting'
+         else:
+            print('poop')
          print 'mousedown'
          evt.Veto()
          return
