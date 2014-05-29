@@ -20,6 +20,7 @@ class Presenter_ServerOf_Student(BaseConnection):
    def setJoinCallback(self, joinCallback):
       # called when a new student joins the presentation. username is only param
       self.__joinCallback = joinCallback
+      
    def setLeaveCallback(self, leaveCallback):
       # called when a student leave the presentation. username is only param
       self.__leaveCallback = leaveCallback
