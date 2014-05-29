@@ -10,6 +10,7 @@ class WhiteboardNav(wx.Panel):
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
       
+      self.shapes = []
       self.parent = parent
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
@@ -71,29 +72,35 @@ class WhiteboardNav(wx.Panel):
       
       self.SetSizer(mainSizer)
       self.whiteboard.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
+      self.Bind(wx.EVT_PAINT, self.OnPaint)
       self.Show()
 
    def OnPageNavigation(self, evt):
       uri = evt.GetURL()
 
       if "__EVENT__/mousedown" in uri:
-         # Create graphics context from it
-         try:
-            dc = wx.WindowDC(self.whiteboard)
-            gc = wx.GraphicsContext.Create(dc)
-         except:
-            print('Furq!')
-
-         if gc:
-            whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-            gc.SetPen(wx.RED_PEN)
-            gc.DrawRectangle(whiteboardMousePos.x, whiteboardMousePos.y, 200, 200)
-            print 'painting'
-         else:
-            print('poop')
-         print 'mousedown'
+         whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+         self.shapes.append((whiteboardMousePos.x, whiteboardMousePos.y, 200, 200))
+         print self.shapes
+         self.OnPaint(None)
          evt.Veto()
          return
+
+   def OnPaint(self, evt):
+      print 'getting here'
+      try:
+         dc = wx.WindowDC(self.whiteboard)
+         gc = wx.GraphicsContext.Create(dc)
+      except:
+         print('Furq!')
+
+      gc.SetPen(wx.RED_PEN)
+      for shape in self.shapes:
+         if gc:
+            print 'drawing'
+            gc.DrawRectangle(shape[0], shape[1], shape[2], shape[3])
+      return
+         
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
