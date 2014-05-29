@@ -72,22 +72,28 @@ class WhiteboardNav(wx.Panel):
       
       self.SetSizer(mainSizer)
       self.whiteboard.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
-      self.Bind(wx.EVT_PAINT, self.OnPaint)
+      self.parent.Bind(wx.EVT_ICONIZE, self.OnPaint)
       self.Show()
 
    def OnPageNavigation(self, evt):
       uri = evt.GetURL()
 
+      try:
+         dc = wx.WindowDC(self.whiteboard)
+         gc = wx.GraphicsContext.Create(dc)
+         gc.SetPen(wx.RED_PEN)
+      except:
+         print('Furq!')
+
       if "__EVENT__/mousedown" in uri:
          whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
          self.shapes.append((whiteboardMousePos.x, whiteboardMousePos.y, 200, 200))
-         print self.shapes
-         self.OnPaint(None)
+         gc.DrawRectangle(whiteboardMousePos.x, whiteboardMousePos.y, 200, 200)
+         print 'paint1'
          evt.Veto()
          return
 
    def OnPaint(self, evt):
-      print 'getting here'
       try:
          dc = wx.WindowDC(self.whiteboard)
          gc = wx.GraphicsContext.Create(dc)
