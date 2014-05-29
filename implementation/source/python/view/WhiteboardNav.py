@@ -13,13 +13,9 @@ class WhiteboardNav(wx.Panel):
       self.shapes = []
       self.parent = parent
       self.presentation = EClass.GetInstance().presentation
-      self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
+      self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
-      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
-         self.presentation.GetPath()
-      )
-      self.RunScript()
-
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -71,40 +67,24 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
-      self.whiteboard.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
-      self.parent.Bind(wx.EVT_ICONIZE, self.OnPaint)
+      self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnPaint)
       self.Show()
 
-   def OnPageNavigation(self, evt):
-      uri = evt.GetURL()
-
-      try:
-         dc = wx.WindowDC(self.whiteboard)
-         gc = wx.GraphicsContext.Create(dc)
-         gc.SetPen(wx.RED_PEN)
-      except:
-         print('Furq!')
-
-      if "__EVENT__/mousedown" in uri:
-         whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-         self.shapes.append((whiteboardMousePos.x, whiteboardMousePos.y, 200, 200))
-         gc.DrawRectangle(whiteboardMousePos.x, whiteboardMousePos.y, 200, 200)
-         print 'paint1'
-         evt.Veto()
-         return
-
    def OnPaint(self, evt):
+      print "we did it!"
       try:
-         dc = wx.WindowDC(self.whiteboard)
+         dc = wx.ClientDC(self)
          gc = wx.GraphicsContext.Create(dc)
       except:
          print('Furq!')
 
       gc.SetPen(wx.RED_PEN)
-      for shape in self.shapes:
-         if gc:
-            print 'drawing'
-            gc.DrawRectangle(shape[0], shape[1], shape[2], shape[3])
+      #for shape in self.shapes:
+      #   if gc:
+      #      print 'drawing'
+      whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+      print str(whiteboardMousePos.x) + ' ' + str(whiteboardMousePos.y)
+      dc.DrawRectangle(whiteboardMousePos.x, whiteboardMousePos.y, 50, 50)
       return
          
 
@@ -126,17 +106,7 @@ class WhiteboardNav(wx.Panel):
       self.slideTextbox.Clear()
 
    def RefreshSlide(self):
-      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
-         self.presentation.GetPath()
-      )
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       EClass.GetInstance().setUpLayerManager()
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
-      self.RunScript()
-
-   def RunScript(self):
-      self.whiteboard.RunScript("""
-         document.body.onmousedown = function() {
-            window.location.href = "__EVENT__/mousedown";
-         };
-      """)
