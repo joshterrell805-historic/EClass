@@ -1,6 +1,9 @@
 import wx
+import sys
 
 from ChangePermWindow import ChangePermWindow
+sys.path.insert(0, 'model')
+from EClass import EClass
 
 class LayerView(wx.Panel):
    def layerListObject(self, parent, index, checked):
@@ -42,5 +45,6 @@ class LayerView(wx.Panel):
       
    def SelectLayer(self, event):
       self.parent.selectedLayer = self.index
+      EClass.getInstance().layerManagerModel.SetCurrentLayer(self.index)
       self.parent.slider.SetValue(self.layer.opacity)
       self.parent.UpdateLayers()

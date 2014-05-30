@@ -1,9 +1,10 @@
 import wx, wx.html, wx.html2, wx.lib.intctrl
-import sys
+import sys, time
 
 sys.path.insert(0, 'model')
 from EClass import EClass
 from Person.Student import Student
+from Presentation.LayerManagerModel import LayerManagerModel
 
 class WhiteboardNav(wx.Panel):
 
@@ -67,35 +68,39 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
       
       self.SetSizer(mainSizer)
-      self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnPaint)
+      self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
+      self.Bind(wx.EVT_PAINT, self.DisplayLayers)
       self.Show()
 
-   def OnPaint(self, evt):
-      print "we did it!"
-      try:
-         dc = wx.ClientDC(self)
-         gc = wx.GraphicsContext.Create(dc)
-      except:
-         print('Furq!')
-
-      gc.SetPen(wx.RED_PEN)
-      #for shape in self.shapes:
-      #   if gc:
-      #      print 'drawing'
+   def OnClickChange(self, evt):
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-      print str(whiteboardMousePos.x) + ' ' + str(whiteboardMousePos.y)
-      dc.DrawRectangle(whiteboardMousePos.x, whiteboardMousePos.y, 50, 50)
+      
+      EClass.GetInstance().layerManagerModel.AddObject("Square", whiteboardMousePos)
+      self.DisplayLayers(None)
       return
          
+   def DisplayLayers(self, evt):
+      try:
+         dc = wx.ClientDC(self.whiteboard)
+      except:
+         print('Furq!')
+      layers = EClass.GetInstance().layerManagerModel.layers
+      
+      for layer in layers:
+         for obj in layer.objects:
+            print str(obj.x) + ' ' + str(obj.y)
+            dc.DrawRectangle(obj.x, obj.y, 50, 50)
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
          self.RefreshSlide()
+         self.DisplayLayers(None)
 
    def MoveToNextSlide(self, event):
       if self.presentation.MoveToNextSlide():
          self.RefreshSlide()
-
+         self.DisplayLayers(None)
+         
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter()
       self.RefreshSlide()
