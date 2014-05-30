@@ -99,20 +99,22 @@ class WhiteboardNav(wx.Panel):
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
          self.RefreshSlide()
-         self.DisplayLayers(None)
+         wx.CallLater(30, self.DisplayLayers, None)
 
    def MoveToNextSlide(self, event):
       if self.presentation.MoveToNextSlide():
          self.RefreshSlide()
-         self.DisplayLayers(None)
+         wx.CallLater(30, self.DisplayLayers, None)
          
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter()
       self.RefreshSlide()
+      wx.CallLater(30, self.DisplayLayers, None)
 
    def MoveToSlide(self, event):
       if self.presentation.MoveToSlide(self.slideTextbox.GetValue()):
          self.RefreshSlide()
+         wx.CallLater(30, self.DisplayLayers, None)
       self.slideTextbox.Clear()
 
    def RefreshSlide(self):
