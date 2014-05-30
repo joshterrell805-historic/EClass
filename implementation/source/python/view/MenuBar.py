@@ -27,12 +27,9 @@ class MenuBar:
          Local variables include object IDs for each button and instances of related classes that will
          be opened through the Class MenuBar.
       """
-      ID_FILE_NEWPRESENTATION = wx.NewId()
       ID_FILE_OPEN = wx.NewId()
-      ID_FILE_OPENRECENT = wx.NewId()
       ID_FILE_SAVE = wx.NewId()
       ID_FILE_SAVEAS = wx.NewId()
-      ID_FILE_PRINT = wx.NewId()
       ID_FILE_QUIT = wx.NewId()
       ID_EDIT_UNDO = wx.NewId()
       ID_EDIT_REDO = wx.NewId()
@@ -46,9 +43,6 @@ class MenuBar:
       ID_VIEW_SHOWLAYERMANAGER = wx.NewId()
       ID_VIEW_SHOWAPPROVALTRACKER = wx.NewId()
       ID_VIEW_SHOWFORUM = wx.NewId()
-      ID_VIEW_ZOOMIN = wx.NewId()
-      ID_VIEW_ZOOMOUT = wx.NewId()
-      ID_VIEW_ZOOMTOFIT = wx.NewId()
       ID_VIEW_FULLSCREEN = wx.NewId()
 
       self.__rosterWindow = RosterWindow(self)
@@ -65,17 +59,12 @@ class MenuBar:
       """
       fileMenu = wx.Menu()
       menuBar.Append(fileMenu, 'File')
-      newPresentationMenuItem = fileMenu.Append(ID_FILE_NEWPRESENTATION, 'New Presentation\tCtrl+N', 'Opens a new presentation.')
       openMenuItem = fileMenu.Append(ID_FILE_OPEN, 'Open\tCtrl+O', 'Opens an existing presentation.')
       parent.Bind(wx.EVT_MENU, self.OpenPresentation, openMenuItem)
 
-      openRecentMenuItem = wx.Menu()
-      fileMenu.AppendMenu(ID_FILE_OPENRECENT, 'Open Recent', openRecentMenuItem, 'Opens a recently open presentation.')
       fileMenu.AppendSeparator()
       saveMenuItem = fileMenu.Append(ID_FILE_SAVE, 'Save\tCtrl+S', 'Saves the existing presentation.')
       saveAsMenuItem = fileMenu.Append(ID_FILE_SAVEAS, 'Save as...\tCtrl+Shift+S', 'Saves the existing presentation as something.')
-      fileMenu.AppendSeparator()
-      printMenuItem = fileMenu.Append(ID_FILE_PRINT, 'Print...\tCtrl+P', 'Prints the current view.')
       fileMenu.AppendSeparator()
       quitMenuItem = fileMenu.Append(ID_FILE_QUIT, 'Quit\tCtrl+Q', 'Quits EClass program.')
       parent.Bind(wx.EVT_MENU, self.Quit, quitMenuItem)
@@ -115,10 +104,6 @@ class MenuBar:
       self.showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleForum, self.showForumMenuItem)
 
-      viewMenu.AppendSeparator()
-      self.zoomInMenuItem = viewMenu.Append(ID_VIEW_ZOOMIN, 'Zoom In\tCtrl+=', 'Zooms into the screen.')
-      self.zoomOutMenuItem = viewMenu.Append(ID_VIEW_ZOOMOUT, 'Zoom Out\tCtrl+-', 'Zooms out of the screen.')
-      self.zoomToFitMenuItem = viewMenu.Append(ID_VIEW_ZOOMTOFIT, 'Zoom to Fit\tCtrl+0', 'Zooms to the original size of the screen.')
       viewMenu.AppendSeparator()
       self.fullScreenMenuItem = viewMenu.Append(ID_VIEW_FULLSCREEN, 'Full Screen\tCtrl+F', 'Zooms to full screen.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleFullScreen, self.fullScreenMenuItem)
