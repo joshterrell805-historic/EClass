@@ -25,6 +25,8 @@ class LayerManagerModel:
       if index >= 0 and len(self.layers) > 0 and index <= len(self.layers) and self.layers[index].locked == False:
          del self.layers[index]
          self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
+         if self.currLayer == index:
+            self.currLayer = len(self.layers) - 1
 
    def NewLayer(self, layer):
       if isinstance(layer, Layer):

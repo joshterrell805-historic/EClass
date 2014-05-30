@@ -49,6 +49,6 @@ class LayerView(wx.Panel):
       
    def SelectLayer(self, event):
       self.parent.selectedLayer = self.index
-      EClass.getInstance().layerManagerModel.SetCurrentLayer(self.index)
+      EClass.GetInstance().layerManagerModel.SetCurrentLayer(self.index)
       self.parent.slider.SetValue(self.layer.opacity)
       self.parent.UpdateLayers()
