@@ -79,7 +79,7 @@ class WhiteboardNav(wx.Panel):
       self.DisplayLayers(None)
       return
          
-   def DisplayLayers(self, evt):
+   def DisplayLayers(self, evt = None):
       try:
          dc = wx.ClientDC(self.whiteboard)
       except:
@@ -87,9 +87,14 @@ class WhiteboardNav(wx.Panel):
       layers = EClass.GetInstance().layerManagerModel.layers
       
       for layer in layers:
-         for obj in layer.objects:
-            print str(obj.x) + ' ' + str(obj.y)
-            dc.DrawRectangle(obj.x, obj.y, 50, 50)
+         print layer.visible
+         if layer.visible:
+            for obj in layer.objects:
+               dc.DrawRectangle(obj.x, obj.y, 50, 50)
+               
+   def UpdateLayers(self):
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
+      self.DisplayLayers()
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():

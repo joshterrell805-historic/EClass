@@ -17,6 +17,7 @@ class LayerView(wx.Panel):
       layerControls.Add(label, 1)
 
       self.visible = wx.CheckBox(parent, -1 ,'Visible', (15, 40))
+      self.visible.SetValue(True)
       self.visible.Bind(wx.EVT_CHECKBOX, self.ToggleVisible)
       self.lock = wx.CheckBox(parent, -1 ,'Lock', (15, 40))
       if self.layer.locked == True:
@@ -39,7 +40,10 @@ class LayerView(wx.Panel):
       
    def ToggleVisible(self, event):
       self.layer.ToggleVisible()
-      
+      print "trying to toggle"
+      self.parent.parent.parent.whiteboard.UpdateLayers()
+      print "done"
+
    def ToggleLock(self, event):
       self.layer.ToggleLock()
       
