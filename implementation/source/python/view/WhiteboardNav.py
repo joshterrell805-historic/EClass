@@ -76,12 +76,14 @@ class WhiteboardNav(wx.Panel):
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
       
       EClass.GetInstance().layerManagerModel.AddObject("Square", whiteboardMousePos)
-      self.DisplayLayers(None)
+      self.Redraw()
       return
          
    def DisplayLayers(self, evt = None):
       try:
          dc = wx.ClientDC(self.whiteboard)
+         dc = wx.GraphicsContext.Create(dc)
+         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 0, 100), wx.SOLID))
       except:
          print('Furq!')
       layers = EClass.GetInstance().layerManagerModel.layers
