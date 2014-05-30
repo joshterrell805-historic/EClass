@@ -12,7 +12,6 @@ class NewLayerWindow(wx.Frame):
    def __init__(self, parent):
       super(NewLayerWindow, self).__init__(parent, size = (350,300))
       self.parent = parent
-      self.layer = Layer("", 0, False)
       self.layers = self.parent.layers
       self.sizer = wx.BoxSizer(wx.VERTICAL)
       self.nameline = wx.BoxSizer(wx.HORIZONTAL) 
@@ -27,6 +26,7 @@ class NewLayerWindow(wx.Frame):
       
       self.opacitylabel = wx.StaticText(self, -1, 'Opacity:', size = (150, 40), style=wx.ALIGN_CENTER)
       self.slider = wx.Slider(self, -1, 0, 0, 100, size = (140, -1))
+      self.slider.SetValue(100)
       self.opacityline.Add(self.opacitylabel, 1)
       self.opacityline.Add(self.slider, 1)
       
@@ -50,8 +50,7 @@ class NewLayerWindow(wx.Frame):
       self.Show()
 
    def MakeNewLayer(self, event):
-      self.layer.name = self.newname.GetValue()
-      self.layer.opacity = self.slider.GetValue()
+      self.layer = Layer(self.newname.GetValue(), self.slider.GetValue(), False)
       EClass.GetInstance().layerManagerModel.NewLayer(self.layer)
       self.parent.UpdateLayers()
       self.Destroy()
