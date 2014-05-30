@@ -16,7 +16,7 @@ class LayerManagerModel:
    def AddObject(self, name, position):
       print self.currLayer
       self.layers.reverse()
-      if self.layers[self.currLayer].locked == False:
+      if self.layers[self.currLayer].locked == False and self.layers[self.currLayer].visible == True:
          print self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers[self.currLayer].objects
          self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers[self.currLayer].objects.append(position)
       self.layers.reverse()

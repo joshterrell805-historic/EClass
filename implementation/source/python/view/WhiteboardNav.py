@@ -87,7 +87,7 @@ class WhiteboardNav(wx.Panel):
       except:
          print('Furq!')
       layers = EClass.GetInstance().layerManagerModel.layers
-      
+      layers.reverse()
       for layer in layers:
          print layer.visible
          if layer.visible:

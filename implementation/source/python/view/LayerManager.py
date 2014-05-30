@@ -51,12 +51,12 @@ class LayerManager(wx.Frame):
    def DeleteLayer(self, event):
       EClass.GetInstance().layerManagerModel.DeleteLayer(self.selectedLayer)
       self.UpdateLayers()
+      self.parent.parent.whiteboard.UpdateLayers()
 
    def NewLayer(self, event):
       self.newLayerWindow = NewLayerWindow(self)
 
    def ChangeOpacity(self, event):
-      print(self.slider.GetValue())
       EClass.GetInstance().layerManagerModel.ChangeOpacity(self.selectedLayer, self.slider.GetValue())
       self.UpdateLayers()
    
