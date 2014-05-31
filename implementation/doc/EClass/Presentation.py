@@ -7,9 +7,6 @@ There are objects for both the presentation slides and the underlying markup (Pr
 import sys
 sys.path.insert(0, '../../source/python/model/enum')
 
-# TODO: figure out why it's not recognizing enum then add it as base class for PermissionLevel
-#from enum import Enum
-
 class Presentation:
    """
    A Presentation is a collection of slides and their respective layers which is displayed at 
@@ -27,6 +24,7 @@ class Presentation:
    @ivar currSlideNum: The index of the current slide.
    @ivar slides: Contains each of the slides in a presentation.
    @ivar path: Refers to the current file system path of the backing presentation file.
+   @ivar __doneSyncing: A callback method to update the WhiteboardNav view after syncing.
    """
 
    def __init__(self, path):
@@ -75,14 +73,34 @@ class Presentation:
       """
       pass
 
-   def SyncWithPresenter(self):
-      # TODO Update postcondition when we have a way to get an instance of the Presenter's EClass/presentation
+   def SyncWithPresenter(self, doneSyncing):
       """
       Set the current slide to the slide being viewed by the presenter.
+      
+      @param doneSyncing: A callback method to update the view after syncing.
 
       @precondition: EClass.GetInstance().user.GetPermissions().GetPresPermLevel() != PermissionLevel.Lockdown
       
-      @postcondition: self.currSlideNum == (Presenter's current slide number)
+      @postcondition: self.currSlideNum == Presenter's current slide number
+      """
+      pass
+      
+   def OnSync(self, message, student):
+      """
+      Callback used together with SyncWithPresenter to listen for sync messages
+      between a Student and the Presenter. When the Presenter is receiving the 
+      message, OnSync sends a message back to the Student client with the 
+      Presenter's current slide number. When the Student is receiving the message,
+      OnSync completes the slide change.
+      
+      @param message: A dictionary containing the Presenter's current slide number.
+      @param student: The student sending the message (when being called on the
+         Presenter's client)
+         
+      @precondition: student != None when being called on the Presenter's client &&
+         message['slideNum'] != None when being called on the Student's client
+         
+      @postcondition: self.currSlideNum == Presenter's current slide number
       """
       pass
 

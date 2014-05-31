@@ -2,6 +2,7 @@ import wx
 from Slide import Slide
 from Layer import Layer
 import EClass
+import PermissionLevel
 
 class Presentation:
    
@@ -40,14 +41,15 @@ class Presentation:
       else:
          return False
 
-   # TODO update docs
    def SyncWithPresenter(self, doneSyncing):
-      # The message only contains a slide number if it's coming from the Presenter
-      self.__doneSyncing = doneSyncing
-      message = {'slideNum': None}
-      EClass.EClass.GetInstance().connection.send('sync current slide', message)
+      if (EClass.EClass.GetInstance().user.GetPermissions().GetPresPermLevel() 
+       != PermissionLevel.PermissionLevel.Lockdown):
+         self.__doneSyncing = doneSyncing
+         
+         # The message only contains a slide number if it's coming from the Presenter
+         message = {'slideNum': None}
+         EClass.EClass.GetInstance().connection.send('sync current slide', message)
    
-   # TODO update docs
    def OnSync(self, message, student):
       if EClass.EClass.GetInstance().user.isPresenter():
          # Send the Presenter's current slide number back to a student
