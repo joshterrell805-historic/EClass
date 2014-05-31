@@ -58,5 +58,6 @@ class JoinFailure(GenericFailure):
       super(JoinFailure, self).__init__(reason)
 
 class JoinSuccess(GenericSuccess):
-   def __init__(self):
+   def __init__(self, initialData):
       super(JoinSuccess, self).__init__()
+      self.data = initialData

@@ -31,6 +31,12 @@ class EClass():
       self.presentation = Presentation(path = None)
       self.roster = Roster()
       self.forum = Forum()
+      # this is an object sent to every client when they connect.
+      # you may modify it (eclass.initialData['my value'] = crap),
+      # but do not overwrite it (eclass.initialData = crap)
+      # this value appears in the client at view/JoinPresentation.callback
+      # as the "data" field of response
+      self.initialData = {}
 
       # the logged in user, None if logged out
       self.user = None
@@ -67,3 +73,7 @@ class EClass():
       self.connection.close()
       sys.exit()
 
+   def setPresentation(self, path):
+      EClass.GetInstance().presentation.SetPath(path)
+      EClass.GetInstance().presentation.Slidify()
+      EClass.GetInstance().setUpLayerManager()

@@ -1,11 +1,12 @@
 import wx
 import sys
 
-sys.path.insert(0, 'model')
-from EClass import EClass
-
+from EClassWindow import EClassWindow
 from JoinPresentation import JoinPresentation
 from HostPresentation import HostPresentation
+
+sys.path.insert(0, 'model')
+from EClass import EClass
 
 class LoginWindow(wx.Frame):
    
@@ -99,7 +100,7 @@ class LoginWindow(wx.Frame):
       self.Hide()
 
       if EClass.GetInstance().user.isPresenter():
-         HostPresentation(self).Show()
+         EClassWindow()
       else:
          JoinPresentation(self).Show()
 

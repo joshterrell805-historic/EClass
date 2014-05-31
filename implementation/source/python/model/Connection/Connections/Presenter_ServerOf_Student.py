@@ -42,6 +42,9 @@ class Presenter_ServerOf_Student(BaseConnection):
 
    def onJoin(self, message):
       def onStudentValidation(response):
+         if response['success']:
+            import EClass
+            response['data'] = EClass.EClass.GetInstance().initialData
          self.send({
             'code' : 'join',
             'response' : response

@@ -1,5 +1,4 @@
 import wx, sys
-from EClassWindow import EClassWindow
 sys.path.insert(0, 'model')
 from EClass import EClass
 from Person.Roster import Roster
@@ -48,9 +47,9 @@ class HostPresentation(wx.Frame):
       roster = EClass.GetInstance().roster
       def callback(response):
          if response.success:
-            EClassWindow()
             roster.setStudents(selected['students'])
             self.Hide()
+            self.parent.Show()
          else:
             self.reasonText.SetLabel(response.reason)
 

@@ -104,7 +104,7 @@ class Connection(object):
          def onJoinPresenter(responseJoin):
             if responseJoin['success']:
                self.__addCallback(callback, [
-                  JoinSuccess()
+                  JoinSuccess(responseJoin['data'])
                ])
             else:
                self.__addCallback(callback, [

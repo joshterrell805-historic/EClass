@@ -79,10 +79,11 @@ class Presentation:
       slideEnd = '</body>\n</html>' # HTML to end a slide
       slide = ''                    # All HTML content when being added to |slides|
       
+      self.rawHTML = ''
       with open(self.path) as html:
          for line in html:
+            self.rawHTML += line
             if inBody:
-
                # Check if there is a slide break or the end of the body
                if (line.find('<br class="slide">') != -1 or
                    line.find('<br class=slide>') != -1 or

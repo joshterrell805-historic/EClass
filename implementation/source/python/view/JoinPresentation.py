@@ -58,7 +58,8 @@ class JoinPresentation(wx.Frame):
 
    def callback(self, response):
       if response.success:
-         EClassWindow()
+         window = EClassWindow()
+         window.setPresentation(response.data['presentationHTML'])
          self.Hide()
       else:
          self.reasonText.SetLabel(response.reason)
