@@ -60,3 +60,17 @@ class Roster:
       self.SortList()
       self.__view and self.__view.redraw()
    
+   # return the student if he exists, otherwise None
+   def findStudentByUsername(self, username):
+
+      def hasUsername(student):
+         return student.username == username
+
+      studentsWithUsername = filter(hasUsername, self.students)
+
+      if len(studentsWithUsername) != 1:
+         if len(studentWithUsername) >= 2:
+            raise Exception("multiple students exist with the same username")
+         else: # len == 0
+            return False
+      return studentsWithUsername[0]
