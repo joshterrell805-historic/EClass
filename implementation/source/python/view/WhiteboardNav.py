@@ -94,9 +94,7 @@ class WhiteboardNav(wx.Panel):
          self.RefreshSlide()
 
    def SyncWithPresenter(self, event):
-      self.presentation.SyncWithPresenter()
-      # Allow time for the syncing to happen before refreshing
-      wx.CallLater(1, self.RefreshSlide)
+      self.presentation.SyncWithPresenter(self.RefreshSlide)
 
    def MoveToSlide(self, event):
       if self.presentation.MoveToSlide(self.slideTextbox.GetValue()):

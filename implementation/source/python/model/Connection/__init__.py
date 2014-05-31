@@ -170,9 +170,8 @@ class Connection(object):
       if ('identifier' in message and
           message['identifier'] in self.__messageListeners
       ):
-         self.__messageListeners[message['identifier']](
-            message['message'],
-            message['student']
+         self.__addCallback(self.__messageListeners[message['identifier']],
+            [message['message'], message['student']]
          )
 
    # ----- helper methods ------

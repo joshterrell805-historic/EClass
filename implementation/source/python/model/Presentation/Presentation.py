@@ -41,8 +41,9 @@ class Presentation:
          return False
 
    # TODO update docs
-   def SyncWithPresenter(self):
+   def SyncWithPresenter(self, doneSyncing):
       # The message only contains a slide number if it's coming from the Presenter
+      self.__doneSyncing = doneSyncing
       message = {'slideNum': None}
       EClass.EClass.GetInstance().connection.send('sync current slide', message)
    
@@ -56,6 +57,7 @@ class Presentation:
          )
       else:
          self.currSlideNum = message['slideNum']
+         self.__doneSyncing()
       
    def SetPath(self, path):
       self.path = path
