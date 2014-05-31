@@ -122,11 +122,13 @@ class WhiteboardNav(wx.Panel):
    def DisplayLayers(self, evt = None):
       try:
          dc = wx.ClientDC(self.whiteboard)
-         # dc = wx.GraphicsContext.Create(dc)
-         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 255), wx.SOLID))
-         # dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, 
-         #     wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
-         # )
+         import sys
+         if not sys.platform.startswith('darwin'):
+            dc = wx.GraphicsContext.Create(dc)
+         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 100), wx.SOLID))
+         dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL,
+             wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
+         )
          layers = EClass.GetInstance().layerManagerModel.layers
          layers.reverse()
          
