@@ -25,8 +25,8 @@ class NewLayerWindow(wx.Frame):
       self.nameline.Add(self.newname, 1)
       
       self.opacitylabel = wx.StaticText(self, -1, 'Opacity:', size = (150, 40), style=wx.ALIGN_CENTER)
-      self.slider = wx.Slider(self, -1, 0, 0, 100, size = (140, -1))
-      self.slider.SetValue(100)
+      self.slider = wx.Slider(self, -1, 0, 0, 255, size = (140, -1))
+      self.slider.SetValue(255)
       self.opacityline.Add(self.opacitylabel, 1)
       self.opacityline.Add(self.slider, 1)
       

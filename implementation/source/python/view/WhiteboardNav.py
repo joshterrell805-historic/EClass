@@ -133,10 +133,10 @@ class WhiteboardNav(wx.Panel):
          import sys
          if not sys.platform.startswith('darwin'):
             dc = wx.GraphicsContext.Create(dc)
+            dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL,
+                wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
+            )
          dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 100), wx.SOLID))
-         dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL,
-             wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
-         )
          layers = EClass.GetInstance().layerManagerModel.layers
          layers.reverse()
          
@@ -150,11 +150,6 @@ class WhiteboardNav(wx.Panel):
                      dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
       except:
          print('Furq!')
-   
-   # TODO documentation   
-   def UpdateLayers(self):
-      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
-      self.Redraw()
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
@@ -179,7 +174,9 @@ class WhiteboardNav(wx.Panel):
       wx.CallLater(30, self.DisplayLayers, None)
 
    def RefreshSlide(self):
+      oldCurrLayer = EClass.GetInstance().layerManagerModel.currLayer
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       EClass.GetInstance().setUpLayerManager()
+      EClass.GetInstance().layerManagerModel.SetCurrentLayer(oldCurrLayer)
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))

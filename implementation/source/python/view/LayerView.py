@@ -41,7 +41,7 @@ class LayerView(wx.Panel):
       
    def ToggleVisible(self, event):
       self.layer.ToggleVisible()
-      self.parent.parent.parent.whiteboard.UpdateLayers()
+      self.parent.parent.parent.whiteboard.Redraw()
 
    def ToggleLock(self, event):
       self.layer.ToggleLock()

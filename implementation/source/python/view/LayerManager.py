@@ -17,7 +17,6 @@ class LayerManager(wx.Frame):
       self.selectedLayer = 0
 
       self.slider = wx.Slider(self, -1, 0, 0, 255, size = (100, 40))
-      self.slider.SetMax(255)
       self.slider.Bind(wx.EVT_SLIDER, self.ChangeOpacity)
       self.trash = wx.Button(self, -1, 'X', size = (20, 40))
       self.trash.Bind(wx.EVT_BUTTON, self.DeleteLayer)
@@ -52,14 +51,14 @@ class LayerManager(wx.Frame):
    def DeleteLayer(self, event):
       EClass.GetInstance().layerManagerModel.DeleteLayer(self.selectedLayer)
       self.UpdateLayers()
-      self.parent.parent.whiteboard.UpdateLayers()
+      self.parent.parent.whiteboard.Redraw()
 
    def NewLayer(self, event):
       self.newLayerWindow = NewLayerWindow(self)
 
    def ChangeOpacity(self, event):
       EClass.GetInstance().layerManagerModel.ChangeOpacity(self.selectedLayer, self.slider.GetValue())
-      self.UpdateLayers()
+      self.parent.parent.whiteboard.Redraw()
    
    def UpdateLayers(self):
       i = 0
