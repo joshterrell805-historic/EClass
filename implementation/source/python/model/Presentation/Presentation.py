@@ -1,5 +1,7 @@
+import wx
 from Slide import Slide
 from Layer import Layer
+import EClass
 
 class Presentation:
    
@@ -7,6 +9,15 @@ class Presentation:
       self.slides = []
       self.SetPath(path)
       self.currSlideNum = 0
+      # infinite recurion without this CallLater
+      # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
+      # just wait a sec, then get the instance. Does anyone have a better
+      # solution?
+      def listen():
+         EClass.EClass.GetInstance().connection.registerMessageListener(
+            'sync current slide', self.OnSync
+         )
+      wx.CallLater(1, listen)
 
    def MoveToNextSlide(self):
       if self.currSlideNum < len(self.slides) - 1:
@@ -29,11 +40,23 @@ class Presentation:
       else:
          return False
 
-   # TODO implement this when we have a way to check the presenter's slide from
-   # the student's client
+   # TODO update docs
    def SyncWithPresenter(self):
-      print('From Presentation.SyncWithPresenter()')
-
+      # The message only contains a slide number if it's coming from the Presenter
+      message = {'slideNum': None}
+      EClass.EClass.GetInstance().connection.send('sync current slide', message)
+   
+   # TODO update docs
+   def OnSync(self, message, student):
+      if EClass.EClass.GetInstance().user.isPresenter():
+         # Send the Presenter's current slide number back to a student
+         message['slideNum'] = self.currSlideNum
+         EClass.EClass.GetInstance().connection.send(
+            'sync current slide', message
+         )
+      else:
+         self.currSlideNum = message['slideNum']
+      
    def SetPath(self, path):
       self.path = path
 
@@ -48,9 +71,9 @@ class Presentation:
 
    def Slidify(self):
       inBody = False
-      slideBase = ''
-      slideEnd = '</body>\n</html>'
-      slide = ''
+      slideBase = ''                # HTML that comes before the body (same for all slides)
+      slideEnd = '</body>\n</html>' # HTML to end a slide
+      slide = ''                    # All HTML content when being added to |slides|
       
       with open(self.path) as html:
          for line in html:
@@ -63,6 +86,7 @@ class Presentation:
                ):
                   slide += slideEnd
                   self.slides.append(Slide(slide, [Layer("Background", 100, True)]))
+                  # Prepare for the next slide by getting rid of the body HTML
                   slide = '' + slideBase
 
                else:
