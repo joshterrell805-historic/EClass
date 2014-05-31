@@ -18,7 +18,10 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
+      
+      # TODO add to list of ivars in docs
       self.notesTextbox = None
+      self.notesPos = None
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -76,6 +79,7 @@ class WhiteboardNav(wx.Panel):
 
    # TODO documentation
    def OnClickChange(self, evt):
+      NOTES_OFFSET = 100
       curTool = EClass.GetInstance().drawingTools.selectedTool
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
       
@@ -86,16 +90,20 @@ class WhiteboardNav(wx.Panel):
       elif curTool == 'Attachment':
          pass
       elif curTool == 'Text':
-         # TODO add to list of ivars in docs
          # Ensure the user does not create tons of new text boxes
          if self.notesTextbox:
             self.notesTextbox.Destroy()
             self.notesTextbox = None
-            
-         self.notesTextbox = wx.TextCtrl(self, pos = whiteboardMousePos,
+         
+         # new Point because wx doesn't like Points being shared...
+         self.notesPos = wx.Point(whiteboardMousePos.x, whiteboardMousePos.y)
+         self.notesTextbox = wx.TextCtrl(self, pos = wx.Point(
+            self.notesPos.x + NOTES_OFFSET, self.notesPos.y),
             style = wx.TE_PROCESS_ENTER
          )
          self.notesTextbox.Bind(wx.EVT_TEXT_ENTER, self.NotesTextEntered)
+         self.notesTextbox.SetHint('Enter some text and hit <enter>')
+         self.notesTextbox.SetBackgroundStyle(wx.BG_STYLE_PAINT)
          self.notesTextbox.SetFocus()
       elif curTool == 'Circle Shape':
          pass
@@ -111,7 +119,7 @@ class WhiteboardNav(wx.Panel):
    # TODO documentation
    def NotesTextEntered(self, event):
       EClass.GetInstance().layerManagerModel.AddObject({'type': 'Text',
-         'position': self.notesTextbox.GetPosition(), 
+         'position': self.notesPos,
          'text': self.notesTextbox.GetValue()
       })
       self.notesTextbox.Destroy()
