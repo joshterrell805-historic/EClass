@@ -105,7 +105,7 @@ class WhiteboardNav(wx.Panel):
          })
       elif curTool == 'Triangle Shape':
          pass
-      self.DisplayLayers()
+      self.Redraw()
       return
    
    # TODO documentation
@@ -116,7 +116,7 @@ class WhiteboardNav(wx.Panel):
       })
       self.notesTextbox.Destroy()
       self.notesTextbox = None
-      self.DisplayLayers()
+      self.Redraw()
    
    # TODO documentation
    def DisplayLayers(self, evt = None):
@@ -127,18 +127,19 @@ class WhiteboardNav(wx.Panel):
          # dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, 
          #     wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
          # )
+         layers = EClass.GetInstance().layerManagerModel.layers
+         layers.reverse()
+         
+         for layer in layers:
+            dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, layer.opacity), wx.SOLID))
+            if layer.visible:
+               for obj in layer.objects:
+                  if obj['type'] == 'Text':
+                     dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
+                  elif obj['type'] == 'Square':
+                     dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
       except:
          print('Furq!')
-      layers = EClass.GetInstance().layerManagerModel.layers
-      layers.reverse()
-      
-      for layer in layers:
-         if layer.visible:
-            for obj in layer.objects:
-               if obj['type'] == 'Text':
-                  dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
-               elif obj['type'] == 'Square':
-                  dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
    
    # TODO documentation   
    def UpdateLayers(self):
