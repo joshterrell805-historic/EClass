@@ -55,7 +55,7 @@ class Presentation:
          # Send the Presenter's current slide number back to a student
          message['slideNum'] = self.currSlideNum
          EClass.EClass.GetInstance().connection.send(
-            'sync current slide', message
+            'sync current slide', message, student
          )
       else:
          self.currSlideNum = message['slideNum']

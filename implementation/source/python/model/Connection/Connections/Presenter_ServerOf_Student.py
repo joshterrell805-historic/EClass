@@ -13,6 +13,13 @@ class Presenter_ServerOf_Student(BaseConnection):
       if self.__joinSuccessResponse != None and self.__leaveCallback != None:
          self.__leaveCallback(self.__joinSuccessResponse['username'])
 
+   def getUsername(self):
+      return (
+         self.__joinSuccessResponse['username'] if
+         self.__joinSuccessResponse is not None else
+         None
+      )
+
    def setCentralClient(self, centralClient):
       # the connection to the central client
       self.__centralClient = centralClient

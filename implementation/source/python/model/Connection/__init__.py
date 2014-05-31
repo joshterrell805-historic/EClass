@@ -151,15 +151,27 @@ class Connection(object):
    def unregisterStudentClassesListener(self, listener):
       pass
    def send(self, identifier, message, recipient = None):
-      # TODO recipient
+      # recipient can be the name of any one student or None to send to all students / the presenter
       msg = {
          'code' : 'message',
          'identifier' : identifier,
          'message' : message
       }
+
       if EClass.EClass.GetInstance().user.isPresenter():
-         for student in self.__presenterServer.connections:
-            student.send(msg)
+         if recipient is not None:
+            def matchesUsername(connection):
+               return connection.getUsername() == recipient
+            connections = filter(matchesUsername,
+               self.__presenterServer.connections
+            )
+            assert len(connections) is 1, \
+            recipient + "'s connections: " + str(len(connections))
+
+            connections[0].send(msg)
+         else:
+            for student in self.__presenterServer.connections:
+               student.send(msg)
       else:
          self.__presenterClient.send(msg)
    def registerMessageListener(self, identifier, listener):
