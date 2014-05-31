@@ -79,7 +79,7 @@ class WhiteboardNav(wx.Panel):
       curTool = EClass.GetInstance().drawingTools.selectedTool
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
       
-      if curTool == 'Pencil':
+      if curTool == 'Pencila':
          pass
       elif curTool == 'Hand':
          pass
@@ -99,13 +99,13 @@ class WhiteboardNav(wx.Panel):
          self.notesTextbox.SetFocus()
       elif curTool == 'Circle Shape':
          pass
-      elif curTool == 'Square Shape':
+      elif curTool == 'Pencil':
          EClass.GetInstance().layerManagerModel.AddObject({'type': 'Square',
             'position': whiteboardMousePos
          })
       elif curTool == 'Triangle Shape':
          pass
-      self.Redraw()
+      self.DisplayLayers()
       return
    
    # TODO documentation
@@ -116,24 +116,23 @@ class WhiteboardNav(wx.Panel):
       })
       self.notesTextbox.Destroy()
       self.notesTextbox = None
-      self.Redraw()
+      self.DisplayLayers()
    
    # TODO documentation
    def DisplayLayers(self, evt = None):
       try:
          dc = wx.ClientDC(self.whiteboard)
-         dc = wx.GraphicsContext.Create(dc)
-         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 0, 100), wx.SOLID))
-         dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, 
-            wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
-         )
+         # dc = wx.GraphicsContext.Create(dc)
+         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 255), wx.SOLID))
+         # dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, 
+         #     wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
+         # )
       except:
          print('Furq!')
       layers = EClass.GetInstance().layerManagerModel.layers
       layers.reverse()
       
       for layer in layers:
-         print layer.visible
          if layer.visible:
             for obj in layer.objects:
                if obj['type'] == 'Text':
