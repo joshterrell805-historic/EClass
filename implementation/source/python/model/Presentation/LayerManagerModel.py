@@ -12,15 +12,12 @@ class LayerManagerModel:
    def SetCurrentLayer(self, index):
       if index >= 0 and len(self.layers) > 0 and index <= len(self.layers):
          self.currLayer = index
-         
-   def AddObject(self, name, position):
+      
+   # TODO update documentation - newObj is a dictionary with all needed info for an object
+   def AddObject(self, newObj):
       self.layers.reverse()
       if ( self.layers[self.currLayer].locked == False 
        and self.layers[self.currLayer].visible == True):
-       
-         # base new object, add a switch statement to add new properties
-         # as needed for each drawing tool
-         newObj = {'type': name, 'position': position}
          self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers[self.currLayer].objects.append(newObj)
       self.layers.reverse()
       

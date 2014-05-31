@@ -18,6 +18,7 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
+      self.notesTextbox = None
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -86,23 +87,36 @@ class WhiteboardNav(wx.Panel):
          pass
       elif curTool == 'Text':
          # TODO add to list of ivars in docs
-         #self.newTextBox = wx.lib.intctrl.IntCtrl(self, 
-         #   style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
-         #)
-         #self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
-         pass
+         # Ensure the user does not create tons of new text boxes
+         if self.notesTextbox:
+            self.notesTextbox.Destroy()
+            self.notesTextbox = None
+            
+         self.notesTextbox = wx.TextCtrl(self, pos = whiteboardMousePos,
+            style = wx.TE_PROCESS_ENTER
+         )
+         self.notesTextbox.Bind(wx.EVT_TEXT_ENTER, self.NotesTextEntered)
+         self.notesTextbox.SetFocus()
       elif curTool == 'Circle Shape':
          pass
       elif curTool == 'Square Shape':
-         EClass.GetInstance().layerManagerModel.AddObject("Square", whiteboardMousePos)
+         EClass.GetInstance().layerManagerModel.AddObject({'type': 'Square',
+            'position': whiteboardMousePos
+         })
       elif curTool == 'Triangle Shape':
          pass
       self.Redraw()
       return
    
    # TODO documentation
-   def DrawingTextEntered(self, evt):
-      pass
+   def NotesTextEntered(self, event):
+      EClass.GetInstance().layerManagerModel.AddObject({'type': 'Text',
+         'position': self.notesTextbox.GetPosition(), 
+         'text': self.notesTextbox.GetValue()
+      })
+      self.notesTextbox.Destroy()
+      self.notesTextbox = None
+      self.Redraw()
    
    # TODO documentation
    def DisplayLayers(self, evt = None):
@@ -110,6 +124,9 @@ class WhiteboardNav(wx.Panel):
          dc = wx.ClientDC(self.whiteboard)
          dc = wx.GraphicsContext.Create(dc)
          dc.SetBrush(wx.Brush(wx.Colour(100, 100, 0, 100), wx.SOLID))
+         dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, 
+            wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
+         )
       except:
          print('Furq!')
       layers = EClass.GetInstance().layerManagerModel.layers
@@ -120,7 +137,7 @@ class WhiteboardNav(wx.Panel):
          if layer.visible:
             for obj in layer.objects:
                if obj['type'] == 'Text':
-                  pass
+                  dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
                elif obj['type'] == 'Square':
                   dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
    
