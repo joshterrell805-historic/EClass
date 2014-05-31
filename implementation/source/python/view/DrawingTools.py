@@ -28,6 +28,7 @@ class DrawingTools(wx.Frame):
       self.SetBackgroundColour('#FFFFFFF')
       self.parent = parent
       self.drawingToolsModel = DrawingToolsModel()
+      EClass.GetInstance().drawingTools = self.drawingToolsModel
 
       self.ID_PENCIL_TOOL = wx.NewId()
       self.ID_HAND_TOOL = wx.NewId()

@@ -14,11 +14,14 @@ class LayerManagerModel:
          self.currLayer = index
          
    def AddObject(self, name, position):
-      print self.currLayer
       self.layers.reverse()
-      if self.layers[self.currLayer].locked == False and self.layers[self.currLayer].visible == True:
-         print self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers[self.currLayer].objects
-         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers[self.currLayer].objects.append(position)
+      if ( self.layers[self.currLayer].locked == False 
+       and self.layers[self.currLayer].visible == True):
+       
+         # base new object, add a switch statement to add new properties
+         # as needed for each drawing tool
+         newObj = {'type': name, 'position': position}
+         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers[self.currLayer].objects.append(newObj)
       self.layers.reverse()
       
    def DeleteLayer(self, index):

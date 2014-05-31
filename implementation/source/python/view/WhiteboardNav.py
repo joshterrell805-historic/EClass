@@ -8,6 +8,7 @@ from Presentation.LayerManagerModel import LayerManagerModel
 
 class WhiteboardNav(wx.Panel):
 
+   # TODO possibly break this up
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
       
@@ -72,13 +73,38 @@ class WhiteboardNav(wx.Panel):
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
       self.Show()
 
+   # TODO documentation
    def OnClickChange(self, evt):
+      curTool = EClass.GetInstance().drawingTools.selectedTool
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
       
-      EClass.GetInstance().layerManagerModel.AddObject("Square", whiteboardMousePos)
+      if curTool == 'Pencil':
+         pass
+      elif curTool == 'Hand':
+         pass
+      elif curTool == 'Attachment':
+         pass
+      elif curTool == 'Text':
+         # TODO add to list of ivars in docs
+         #self.newTextBox = wx.lib.intctrl.IntCtrl(self, 
+         #   style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
+         #)
+         #self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
+         pass
+      elif curTool == 'Circle Shape':
+         pass
+      elif curTool == 'Square Shape':
+         EClass.GetInstance().layerManagerModel.AddObject("Square", whiteboardMousePos)
+      elif curTool == 'Triangle Shape':
+         pass
       self.Redraw()
       return
-         
+   
+   # TODO documentation
+   def DrawingTextEntered(self, evt):
+      pass
+   
+   # TODO documentation
    def DisplayLayers(self, evt = None):
       try:
          dc = wx.ClientDC(self.whiteboard)
@@ -88,12 +114,17 @@ class WhiteboardNav(wx.Panel):
          print('Furq!')
       layers = EClass.GetInstance().layerManagerModel.layers
       layers.reverse()
+      
       for layer in layers:
          print layer.visible
          if layer.visible:
             for obj in layer.objects:
-               dc.DrawRectangle(obj.x, obj.y, 50, 50)
-               
+               if obj['type'] == 'Text':
+                  pass
+               elif obj['type'] == 'Square':
+                  dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
+   
+   # TODO documentation   
    def UpdateLayers(self):
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       self.Redraw()
@@ -115,6 +146,7 @@ class WhiteboardNav(wx.Panel):
          self.Redraw()
       self.slideTextbox.Clear()
 
+   # TODO documentation
    def Redraw(self):
       self.RefreshSlide()
       wx.CallLater(30, self.DisplayLayers, None)
