@@ -1,4 +1,5 @@
 import sys
+import operator
 sys.path.insert(0, '../../view')
 
 from Student import Student
@@ -18,10 +19,14 @@ class Roster:
       print('From Roster.RemoveStudent()')
 
    def SortList(self):
-      def GetKey(item):
+      def GetKeyName(item):
          return item.firstName
-      self.students.sort(key=GetKey)
-   
+      self.students.sort(key=GetKeyName)
+      def GetKeyPresent(item):
+         return item.present
+      self.students.sort(key=GetKeyPresent, reverse=True)
+
+
    def GetRoster(self):
       def studentToString(student):
          return student.lastName + ', ' + student.firstName

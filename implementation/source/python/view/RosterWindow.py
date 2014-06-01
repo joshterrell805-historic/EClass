@@ -75,23 +75,16 @@ class RosterWindow(wx.Frame):
 
    def redraw(self):
       self.rosterListBox.Clear()
+      counter = 0
       for student in self.rosterModel.students:
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
-
-      #self.rosterListBox.SetItemBackgroundColour(0, wx.RED)
-
-   def AddRosterItem(self, fpb, username):
-      #Change this so that it works with ListBox
-      if fpb == self.foldPanelBar:
-         foldPanel = self.foldPanelBar.AddFoldPanel(username, collapsed = True)
-         # TODO use actual student
-         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
-         self.foldPanelBar.AddFoldPanelWindow(foldPanel, panel)
-      elif fpb == self.foldPanelBarRemote:
-         foldPanel = self.foldPanelBarRemote.AddFoldPanel(username, collapsed = True)
-         # TODO use actual student
-         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
-         self.foldPanelBarRemote.AddFoldPanelWindow(foldPanel, panel)
+         if student.present == False:
+            self.rosterListBox.SetItemForegroundColour(counter, wx.RED)
+            counter = counter + 1
+      for i in range(0, len(self.studentPanels)):
+         self.studentPanels[i].destroy()
+      del self.studentPanels[0:len(self.studentPanels)]
+      self.SyncPanels()
 
    def AddStudent(self, event):
       self.rosterModel.AddNewStudent()
@@ -101,6 +94,7 @@ class RosterWindow(wx.Frame):
 
    def onClose(self, event):
       self.parent.showRosterMenuItem.Check(False)
+      self.rosterStaticPanel.sizer.Clear()
       self.Hide()
 
    def SyncPanels(self):
@@ -111,7 +105,6 @@ class RosterWindow(wx.Frame):
 
    def ShowStudentPanel(self, event):
       #fix this call to SyncPanels, panels keep getting added to the list and never stops
-      self.SyncPanels()
       print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
       self.rosterStaticPanel.sizer.Clear()

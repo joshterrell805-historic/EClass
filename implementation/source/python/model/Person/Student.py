@@ -10,7 +10,7 @@ class Student(Person):
          self.permissions = permissions
       else:
          self.permissions = StudentPermissions()
-      self.present = True
+      self.present = False
       self.kicked = False
       self.question = None
       self.pushedLayer = None
