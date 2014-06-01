@@ -82,7 +82,7 @@ class RosterWindow(wx.Frame):
             self.rosterListBox.SetItemForegroundColour(counter, wx.RED)
             counter = counter + 1
       for i in range(0, len(self.studentPanels)):
-         self.studentPanels[i].destroy()
+         self.studentPanels[i].Destroy()
       del self.studentPanels[0:len(self.studentPanels)]
       self.SyncPanels()
 
