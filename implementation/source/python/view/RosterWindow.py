@@ -39,6 +39,8 @@ class RosterWindow(wx.Frame):
 
 
       self.rosterStaticPanel = RosterStaticPanel(self)
+      self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
+      self.rosterStaticPanel.sizer.Clear()
       #self.staticPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
       #self.staticPanel.SetBackgroundColour('#FEEECC')
       
@@ -84,7 +86,7 @@ class RosterWindow(wx.Frame):
       for i in range(0, len(self.studentPanels)):
          self.studentPanels[i].Destroy()
       del self.studentPanels[0:len(self.studentPanels)]
-      self.SyncPanels()
+      #self.SyncPanels()
 
    def AddStudent(self, event):
       self.rosterModel.AddNewStudent()
@@ -108,6 +110,8 @@ class RosterWindow(wx.Frame):
       print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
       self.rosterStaticPanel.sizer.Clear()
-      self.rosterStaticPanel.sizer.Add(self.studentPanels[self.rosterListBox.GetSelection()], 1, wx.EXPAND)
-      self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
+      #self.rosterStaticPanel.sizer.Add(self.studentPanels[self.rosterListBox.GetSelection()], 1, wx.EXPAND)
+      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[self.rosterListBox.GetSelection()]))
+      #print("TestUserName: " + self.studentPanels[self.rosterListBox.GetSelection()].student.username)
+      self.rosterStaticPanel.Refresh()
       self.SendSizeEvent()

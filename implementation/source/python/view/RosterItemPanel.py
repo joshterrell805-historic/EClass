@@ -13,6 +13,7 @@ class RosterItemPanel(wx.Panel):
    # TODO Update doc
    def __init__(self, parent, student):
       super(RosterItemPanel, self).__init__(parent, -1)
+      self.student = student
 
       self.rosterItemModel = RosterItem(student)
       self.SetBackgroundColour('#FEEECC')
