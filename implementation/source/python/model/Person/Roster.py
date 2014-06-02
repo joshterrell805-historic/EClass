@@ -1,4 +1,5 @@
 import sys
+import operator
 sys.path.insert(0, '../../view')
 
 from Student import Student
@@ -18,10 +19,14 @@ class Roster:
       print('From Roster.RemoveStudent()')
 
    def SortList(self):
-      def GetKey(item):
+      def GetKeyName(item):
          return item.firstName
-      self.students.sort(key=GetKey)
-   
+      self.students.sort(key=GetKeyName)
+      def GetKeyPresent(item):
+         return item.present
+      self.students.sort(key=GetKeyPresent, reverse=True)
+
+
    def GetRoster(self):
       def studentToString(student):
          return student.lastName + ', ' + student.firstName
@@ -34,7 +39,7 @@ class Roster:
       students = filter(matchesUsername, self.students)
 
       if len(students) == 1:
-         students[0].present = True
+         students[0].present = False
       else:
          raise Exception(username + ' should (but doesn\'t) exist in roster')
       self.__view and self.__view.redraw()
@@ -60,3 +65,17 @@ class Roster:
       self.SortList()
       self.__view and self.__view.redraw()
    
+   # return the student if he exists, otherwise None
+   def findStudentByUsername(self, username):
+
+      def hasUsername(student):
+         return student.username == username
+
+      studentsWithUsername = filter(hasUsername, self.students)
+
+      if len(studentsWithUsername) != 1:
+         if len(studentWithUsername) >= 2:
+            raise Exception("multiple students exist with the same username")
+         else: # len == 0
+            return False
+      return studentsWithUsername[0]

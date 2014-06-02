@@ -13,14 +13,15 @@ class RosterItemPanel(wx.Panel):
    # TODO Update doc
    def __init__(self, parent, student):
       super(RosterItemPanel, self).__init__(parent, -1)
+      self.student = student
 
       self.rosterItemModel = RosterItem(student)
       self.SetBackgroundColour('#FEEECC')
 
       # TODO This needs to be changed because only one entry on the roster will be the current user.
-      username = EClass.GetInstance().user.username
+      #username = EClass.GetInstance().user.username
       usernameLabel = wx.StaticText(self, -1, label = 'Cal Poly Username: ')
-      usernameStaticText = wx.StaticText(self, -1, label = username)
+      usernameStaticText = wx.StaticText(self, -1, label = student.username)
 
       self.handButton = wx.Button(self, label = 'Hand', size = (50, 30))
       self.handButton.Bind(wx.EVT_BUTTON, self.HandButton)

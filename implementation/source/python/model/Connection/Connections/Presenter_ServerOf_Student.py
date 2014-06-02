@@ -13,6 +13,13 @@ class Presenter_ServerOf_Student(BaseConnection):
       if self.__joinSuccessResponse != None and self.__leaveCallback != None:
          self.__leaveCallback(self.__joinSuccessResponse['username'])
 
+   def getUsername(self):
+      return (
+         self.__joinSuccessResponse['username'] if
+         self.__joinSuccessResponse is not None else
+         None
+      )
+
    def setCentralClient(self, centralClient):
       # the connection to the central client
       self.__centralClient = centralClient
@@ -20,6 +27,7 @@ class Presenter_ServerOf_Student(BaseConnection):
    def setJoinCallback(self, joinCallback):
       # called when a new student joins the presentation. username is only param
       self.__joinCallback = joinCallback
+      
    def setLeaveCallback(self, leaveCallback):
       # called when a student leave the presentation. username is only param
       self.__leaveCallback = leaveCallback
@@ -34,6 +42,9 @@ class Presenter_ServerOf_Student(BaseConnection):
 
    def onJoin(self, message):
       def onStudentValidation(response):
+         if response['success']:
+            import EClass
+            response['data'] = EClass.EClass.GetInstance().initialData
          self.send({
             'code' : 'join',
             'response' : response

@@ -32,14 +32,6 @@ class DrawingToolsModel:
       print("From DrawingTools.HandToolHandler() - Selected Tool is: {tool}".format(tool = self.selectedTool))
 
    """
-      The AttachmentToolHandler function is called when the pencil tool is selected. It changes the selected
-      tool to the attachment.
-   """
-   def AttachmentToolHandler(self):
-      self.selectedTool = 'Attachment'
-      print("From DrawingTools.AttachmentToolHandler() - Selected Tool is: {tool}".format(tool = self.selectedTool))
-
-   """
       The TextToolHandler function is called when the pencil tool is selected. It changes the selected
       tool to the text.
    """

@@ -5,6 +5,8 @@ import sys
 from WhiteboardNav import WhiteboardNav
 from ApprovalTrackerGaget import ApprovalTrackerGaget
 from LayerManager import LayerManager
+from HostPresentation import HostPresentation
+
 
 #model
 sys.path.insert(0, 'model')
@@ -48,14 +50,17 @@ class ImportPresentation(wx.Frame):
       self.parent.importPresentation.Hide()
       self.parent.initialPrompt.Destroy()
       
-      EClass.GetInstance().presentation.SetPath(self.parent.importPresentation
-         .GetPresentationPath()
+      EClass.GetInstance().setPresentation(
+         self.parent.importPresentation.GetPresentationPath()
       )
-      EClass.GetInstance().presentation.Slidify()
-      EClass.GetInstance().setUpLayerManager()
       self.parent.menuBar.layerManager.UpdateLayers()
       self.parent.whiteboard = WhiteboardNav(self.parent)
       self.parent.SendSizeEvent()
+      self.parent.Hide()
+      HostPresentation(self.parent).Show()
+      EClass.GetInstance().initialData['presentationHTML'] = (
+         EClass.GetInstance().presentation.rawHTML
+      )
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()

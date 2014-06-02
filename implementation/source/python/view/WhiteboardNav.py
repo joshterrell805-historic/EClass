@@ -30,8 +30,8 @@ class WhiteboardNav(wx.Panel):
 
       nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
       nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
-      
-      self.slideTextbox = wx.lib.intctrl.IntCtrl(self, 
+
+      self.slideTextbox = wx.lib.intctrl.IntCtrl(self,
          style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
       )
       self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
@@ -71,7 +71,7 @@ class WhiteboardNav(wx.Panel):
       mainSizer = wx.BoxSizer(wx.VERTICAL)
       mainSizer.Add(boardHoriSizer, 10, wx.EXPAND)
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
-      
+
       self.SetSizer(mainSizer)
       self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
@@ -162,7 +162,7 @@ class WhiteboardNav(wx.Panel):
          self.Redraw()
          
    def SyncWithPresenter(self, event):
-      self.presentation.SyncWithPresenter()
+      self.presentation.SyncWithPresenter(self.RefreshSlide)
       self.Redraw()
 
    def MoveToSlide(self, event):

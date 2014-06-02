@@ -1,0 +1,57 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+Code Review for __init__.py
+</title>
+</head>
+<body bgcolor="white">
+<p align="center">
+<font size="+2">
+<strong>Code Review for __init__.py
+<br>
+Joel Wilcox (jnwilcox@calpoly.edu)</strong>
+</font>
+</p>
+<br>
+<br>
+<p><strong>Class Connection:</strong> 
+   <ul>
+      <li>Should put @author email in parentheses</li>
+      <li>Missing comments for class data fields (__centralClient, __presenterClient, etc)</li>
+   </ul>
+</p>
+<p><strong>Method Connection.__init__:</strong> Meets all standards</p>
+<p><strong>Method Connection.getInstance:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.close:</strong>
+   <ul>
+      <li>First letter of method name should be capitalized</li>
+      <li>Missing documentation comment</li>
+   </ul>
+</p>
+<p><strong>Method Connection.authenticate:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.hostPresentation:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.joinPresentation:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.registerStudentClassesListener:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.unregisterStudentClassesListener:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.send:</strong> 
+   <ul>
+      <li>First letter of method name should be capitalized</li>
+      <li>Documentation name (sendMessage) differs from implementation name and should be updated</li>
+   </ul>
+</p>
+<p><strong>Method Connection.registerMessageListener:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.unregisterMessageListener:</strong> First letter of method name should be capitalized</p>
+<p><strong>Method Connection.onMessage:</strong>
+   <ul>
+      <li>First letter of method name should be capitalized</li>
+      <li>Missing documentation comment + pre and post conditions</li>
+   </ul>
+</p>
+<p><strong>Method Connection.__loop:</strong> Missing documentation comment</p>
+<p><strong>Method Connection.__addCallback:</strong> Documentation comment should be in doc file</p>
+<p><strong>Method Connection.__loadSettings:</strong> Missing documentation comment</p>
+<p><strong>Method Connection.__connectCentralFail:</strong> Missing documentation comment</p>
+<p><strong>Method Connection.__connectCentral:</strong> Missing documentation comment + pre and post conditions</p>
+<p><strong>Method Connection.__connectPresenter:</strong> Missing documentation comment + pre and post conditions</p>
+<p><strong>Method Connection.__startPresentationServer:</strong> Missing documentation comment + pre and post conditions</p>
+
+</body></html>

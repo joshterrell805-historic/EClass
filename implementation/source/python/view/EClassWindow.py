@@ -4,6 +4,7 @@ import sys
 from InitialPrompt import InitialPrompt
 from ImportPresentation import ImportPresentation
 from MenuBar import MenuBar
+from WhiteboardNav import WhiteboardNav
 
 sys.path.insert(0, 'model')
 from EClass import EClass
@@ -17,8 +18,9 @@ class EClassWindow(wx.Frame):
       self.menuBar = MenuBar(self)
       self.CreateStatusBar()
 
-      self.initialPrompt = InitialPrompt(self)
-      self.importPresentation = ImportPresentation(self)
+      if EClass.GetInstance().user.isPresenter():
+         self.initialPrompt = InitialPrompt(self)
+         self.importPresentation = ImportPresentation(self)
 
       self.Bind(wx.EVT_CLOSE, self.onClose)
 
@@ -28,3 +30,11 @@ class EClassWindow(wx.Frame):
    def onClose(self, event):
       EClass.GetInstance().exit()
       sys.exit()
+   def setPresentation(self, presentationHTML):
+      f = open('presentation.html', 'w')
+      f.write(presentationHTML)
+      f.close()
+      EClass.GetInstance().setPresentation('presentation.html')
+      self.menuBar.layerManager.UpdateLayers()
+      self.whiteboard = WhiteboardNav(self)
+      self.SendSizeEvent()

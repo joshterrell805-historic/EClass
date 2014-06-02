@@ -18,8 +18,6 @@ class RosterWindow(wx.Frame):
       self.rosterModel = EClass.GetInstance().roster
       self.rosterModel.setView(self)
 
-      self.studentPanels = []
-
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
@@ -39,8 +37,8 @@ class RosterWindow(wx.Frame):
 
 
       self.rosterStaticPanel = RosterStaticPanel(self)
-      #self.staticPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
-      #self.staticPanel.SetBackgroundColour('#FEEECC')
+      self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
+      self.rosterStaticPanel.sizer.Clear()
       
 
       addButton = wx.Button(self, label = 'Add Student', size = (150, 30))
@@ -57,7 +55,6 @@ class RosterWindow(wx.Frame):
       rosterVertSizer.Add(self.rosterListBox, 9, wx.EXPAND)
 
       rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
-      #rosterVertSizer.Add(self.staticPanel, 4, wx.EXPAND)
 
       rosterHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       rosterHoriSizer.AddStretchSpacer(1)
@@ -75,23 +72,18 @@ class RosterWindow(wx.Frame):
 
    def redraw(self):
       self.rosterListBox.Clear()
+      counter = 0
+      curFont = self.rosterListBox.GetFont()
+      font = wx.Font(curFont.GetPointSize(), curFont.GetFamily(),
+         curFont.GetStyle(), wx.FONTWEIGHT_BOLD
+      )
+
       for student in self.rosterModel.students:
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
-
-      #self.rosterListBox.SetItemBackgroundColour(0, wx.RED)
-
-   def AddRosterItem(self, fpb, username):
-      #Change this so that it works with ListBox
-      if fpb == self.foldPanelBar:
-         foldPanel = self.foldPanelBar.AddFoldPanel(username, collapsed = True)
-         # TODO use actual student
-         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
-         self.foldPanelBar.AddFoldPanelWindow(foldPanel, panel)
-      elif fpb == self.foldPanelBarRemote:
-         foldPanel = self.foldPanelBarRemote.AddFoldPanel(username, collapsed = True)
-         # TODO use actual student
-         panel = RosterItemPanel(foldPanel, Student('Dummy', 'Ymmud'))
-         self.foldPanelBarRemote.AddFoldPanelWindow(foldPanel, panel)
+         if student.present == False:
+            print(student.username)
+            self.rosterListBox.SetItemFont(counter, font)
+         counter += 1
 
    def AddStudent(self, event):
       self.rosterModel.AddNewStudent()
@@ -101,20 +93,13 @@ class RosterWindow(wx.Frame):
 
    def onClose(self, event):
       self.parent.showRosterMenuItem.Check(False)
+      # check this
+      self.rosterStaticPanel.sizer.Clear()
       self.Hide()
 
-   def SyncPanels(self):
-      for i in range(0, len(self.rosterModel.students)):
-         self.studentPanels.append(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[i]))
-
-      print("Students: " + str(len(self.rosterModel.students)))
-
    def ShowStudentPanel(self, event):
-      #fix this call to SyncPanels, panels keep getting added to the list and never stops
-      self.SyncPanels()
-      print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
       self.rosterStaticPanel.sizer.Clear()
-      self.rosterStaticPanel.sizer.Add(self.studentPanels[self.rosterListBox.GetSelection()], 1, wx.EXPAND)
-      self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
+      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[self.rosterListBox.GetSelection()]), 1, wx.EXPAND)
+      self.rosterStaticPanel.Refresh()
       self.SendSizeEvent()
