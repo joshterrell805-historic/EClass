@@ -56,7 +56,6 @@ class EClass():
       self.connection.authenticate(username, password, onResponse)
 
    def setUpLayerManager(self):
-      print('In EClass.setUpLayerManager()')
       if len(self.presentation.slides) != 0:
          layers = self.presentation.slides[self.presentation.currSlideNum].layers
          self.layerManagerModel = LayerManagerModel(self, layers)
@@ -66,4 +65,3 @@ class EClass():
    def exit(self):
       self.connection.close()
       sys.exit()
-

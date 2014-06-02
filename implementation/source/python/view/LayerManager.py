@@ -50,7 +50,6 @@ class LayerManager(wx.Frame):
 
    def DeleteLayer(self, event):
       EClass.GetInstance().layerManagerModel.DeleteLayer(self.selectedLayer)
-      self.UpdateLayers()
       self.parent.parent.whiteboard.Redraw()
 
    def NewLayer(self, event):

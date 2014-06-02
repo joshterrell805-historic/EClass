@@ -148,6 +148,8 @@ class WhiteboardNav(wx.Panel):
                      dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
                   elif obj['type'] == 'Square':
                      dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
+                     
+         layers.reverse()
       except:
          print('Furq!')
 
