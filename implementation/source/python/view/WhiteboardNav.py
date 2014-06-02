@@ -80,8 +80,7 @@ class WhiteboardNav(wx.Panel):
          dc = wx.WindowDC(self.whiteboard)
          dc.SetBrush(wx.Brush(wx.BLACK, wx.TRANSPARENT))
          whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-         # dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
-         dc.DrawPointList()
+         dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
          print 'mousedown'
          evt.Veto()
          return
