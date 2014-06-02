@@ -24,22 +24,20 @@ class DrawingTools(wx.Frame):
       """
       super(DrawingTools, self).__init__(None, -1, 'Drawing Tools', style=wx.DEFAULT_FRAME_STYLE & ~(wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
 
-      self.SetClientSizeWH(305, 65)
+      self.SetClientSizeWH(235, 45)
       self.SetBackgroundColour('#FFFFFFF')
       self.parent = parent
       self.drawingToolsModel = DrawingToolsModel()
 
       self.ID_PENCIL_TOOL = wx.NewId()
       self.ID_HAND_TOOL = wx.NewId()
-      self.ID_ATTACHMENT_TOOL = wx.NewId()
       self.ID_TEXT_TOOL = wx.NewId()
-      self.ID_BASIC_SHAPES_TOOL = wx.NewId()
-      self.ID_BASIC_SHAPES_CIRCLE = wx.NewId()
-      self.ID_BASIC_SHAPES_TRIANGLE = wx.NewId()
-      self.ID_BASIC_SHAPES_SQUARE = wx.NewId()
+      self.ID_CIRCLE_SHAPE = wx.NewId()
+      self.ID_TRIANGLE_SHAPE = wx.NewId()
+      self.ID_SQUARE_SHAPE = wx.NewId()
 
       self.drawingTools = self.CreateToolBar()
-      
+
       """
          Initialization of each tool and action handlers for when they are pressed.
       """
@@ -51,32 +49,24 @@ class DrawingTools(wx.Frame):
       self.handTool = self.drawingTools.AddLabelTool(self.ID_HAND_TOOL, 'Hand', wx.Image('view//HandIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
                                                      shortHelp='Hand Tool', kind=wx.ITEM_CHECK)
       self.Bind(wx.EVT_MENU, self.HandToolHandler, self.handTool)
-      
-      self.attachmentTool = self.drawingTools.AddLabelTool(self.ID_ATTACHMENT_TOOL, 'Attachment', wx.Image('view//PaperClipIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
-                                                           shortHelp='Attachment Tool', kind=wx.ITEM_CHECK)
-      self.Bind(wx.EVT_MENU, self.AttachmentToolHandler, self.attachmentTool)
 
       self.textTool = self.drawingTools.AddLabelTool(self.ID_TEXT_TOOL, 'Text', wx.Image('view//TextIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
                                                      shortHelp='Text Tool', kind=wx.ITEM_CHECK)
       self.Bind(wx.EVT_MENU, self.TextToolHandler, self.textTool)
-      
-      self.basicShapesTool = self.drawingTools.AddLabelTool(self.ID_BASIC_SHAPES_TOOL, 'Basic Shapes', wx.Image('view//BasicShapesIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
-                                                            shortHelp='Basic Shapes Tool', kind=wx.ITEM_DROPDOWN)
 
-      self.basicShapesDropdown = wx.Menu()
-      self.circleShape = self.basicShapesDropdown.Append(self.ID_BASIC_SHAPES_CIRCLE, 'Circle', 'Circle Shape', wx.ITEM_CHECK)
-      self.Bind(wx.EVT_MENU, self.CircleShapeHandler, self.circleShape)
+      self.circleTool = self.drawingTools.AddLabelTool(self.ID_CIRCLE_SHAPE, 'Circle Shape', wx.Image('view//CircleIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
+                                                       shortHelp='Circle Shape', kind=wx.ITEM_CHECK)
+      self.Bind(wx.EVT_MENU, self.CircleShapeHandler, self.circleTool)
 
-      self.squareShape = self.basicShapesDropdown.Append(self.ID_BASIC_SHAPES_SQUARE, 'Square', 'Square Shape', wx.ITEM_CHECK)
-      self.Bind(wx.EVT_MENU, self.SquareShapeHandler, self.squareShape)
+      self.squareTool = self.drawingTools.AddLabelTool(self.ID_SQUARE_SHAPE, 'Square Shape', wx.Image('view//SquareIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
+                                                       shortHelp='Square Shape', kind=wx.ITEM_CHECK)
+      self.Bind(wx.EVT_MENU, self.SquareShapeHandler, self.squareTool)
 
-      self.triangleShape = self.basicShapesDropdown.Append(self.ID_BASIC_SHAPES_TRIANGLE, 'Triangle', 'Triangle Shape', wx.ITEM_CHECK)
-      self.Bind(wx.EVT_MENU, self.TriangleShapeHandler, self.triangleShape)
-
-      self.basicShapesTool.SetDropdownMenu(self.basicShapesDropdown)
+      self.triangleTool = self.drawingTools.AddLabelTool(self.ID_TRIANGLE_SHAPE, 'Triangle Shape', wx.Image('view//TriangleIcon.png', wx.BITMAP_TYPE_PNG).ConvertToBitmap(),
+                                                       shortHelp='Triangle Shape', kind=wx.ITEM_CHECK)
+      self.Bind(wx.EVT_MENU, self.TriangleShapeHandler, self.triangleTool)
 
       self.drawingTools.Realize()
-      
       self.Bind(wx.EVT_CLOSE, self.onClose)
 
    """
@@ -84,11 +74,10 @@ class DrawingTools(wx.Frame):
    """
    def PencilToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_ATTACHMENT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_TEXT_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
+      self.drawingTools.ToggleTool(self.ID_SQUARE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_CIRCLE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_TRIANGLE_SHAPE, False)
       self.drawingToolsModel.PencilToolHandler()
 
 
@@ -97,35 +86,21 @@ class DrawingTools(wx.Frame):
    """
    def HandToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_ATTACHMENT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_TEXT_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
+      self.drawingTools.ToggleTool(self.ID_SQUARE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_CIRCLE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_TRIANGLE_SHAPE, False)
       self.drawingToolsModel.HandToolHandler()
-
-   """
-      The AttachmentToolHandler function is called when the attachment tool is selected. It deselects all other tools.
-   """
-   def AttachmentToolHandler(self, e):
-      self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_TEXT_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.drawingToolsModel.AttachmentToolHandler()
 
    """
       The TextToolHandler function is called when the text tool is selected. It deselects all other tools.
    """
    def TextToolHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_ATTACHMENT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
+      self.drawingTools.ToggleTool(self.ID_SQUARE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_CIRCLE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_TRIANGLE_SHAPE, False)
       self.drawingToolsModel.TextToolHandler()
 
    """
@@ -133,12 +108,10 @@ class DrawingTools(wx.Frame):
    """
    def CircleShapeHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_ATTACHMENT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_TEXT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
-      self.drawingTools.ToggleTool(self.ID_BASIC_SHAPES_TOOL, True)
+      self.drawingTools.ToggleTool(self.ID_SQUARE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_TRIANGLE_SHAPE, False)
       self.drawingToolsModel.CircleShapeHandler()
 
    """
@@ -146,11 +119,10 @@ class DrawingTools(wx.Frame):
    """
    def SquareShapeHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_ATTACHMENT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_TEXT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_TRIANGLE, False)
+      self.drawingTools.ToggleTool(self.ID_CIRCLE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_TRIANGLE_SHAPE, False)
       self.drawingToolsModel.SquareShapeHandler()
 
    """
@@ -158,10 +130,9 @@ class DrawingTools(wx.Frame):
    """
    def TriangleShapeHandler(self, e):
       self.drawingTools.ToggleTool(self.ID_HAND_TOOL, False)
-      self.drawingTools.ToggleTool(self.ID_ATTACHMENT_TOOL, False)
       self.drawingTools.ToggleTool(self.ID_TEXT_TOOL, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_CIRCLE, False)
-      self.basicShapesDropdown.Check(self.ID_BASIC_SHAPES_SQUARE, False)
+      self.drawingTools.ToggleTool(self.ID_SQUARE_SHAPE, False)
+      self.drawingTools.ToggleTool(self.ID_CIRCLE_SHAPE, False)
       self.drawingTools.ToggleTool(self.ID_PENCIL_TOOL, False)
       self.drawingToolsModel.TriangleShapeHandler()
 

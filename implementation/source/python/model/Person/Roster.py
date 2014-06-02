@@ -39,7 +39,7 @@ class Roster:
       students = filter(matchesUsername, self.students)
 
       if len(students) == 1:
-         students[0].present = True
+         students[0].present = False
       else:
          raise Exception(username + ' should (but doesn\'t) exist in roster')
       self.__view and self.__view.redraw()
