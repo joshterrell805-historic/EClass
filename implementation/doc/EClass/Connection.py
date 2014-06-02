@@ -341,31 +341,36 @@ class HostFailure(GenericFailure):
    """
    pass
 
-# class JoinResponse(object):
-#    """
-#    Response passed to the callback when attempting to join. It is either an
-#    instance of JoinSuccess or JoinFailure
-#    @ivar success: True for successful, false for fail
-#    @type success: boolean (read-only)
-#    @author: Josh Terrell jmterrel@calpoly.edu
-#    """
-#    @property
-#    def success(self):
-#       if self.__success == None:
-#          self.__success = isinstance(self, JoinSuccess)
-#       return self.__success
-# 
-# class JoinSuccess(JoinResponse): 
-#    """
-#    @author: Josh Terrell jmterrel@calpoly.edu
-#    """
-#    pass
-# 
-# class JoinFailure(JoinResponse):
-#    """
-#    @ivar reason: the reason joining failed (eg 'not a student of this class')
-#    @type reason: string
-#    @author: Josh Terrell jmterrel@calpoly.edu
-#    """
-#    def __init__(self, reason):
-#       self.reason = reason
+class JoinResponse(object):
+   """
+   Response passed to the callback when attempting to join. It is either an
+   instance of JoinSuccess or JoinFailure
+   @ivar success: True for successful, false for fail
+   @type success: boolean (read-only)
+   @author: Josh Terrell jmterrel@calpoly.edu
+   """
+   @property
+   def success(self):
+      if self.__success == None:
+         self.__success = isinstance(self, JoinSuccess)
+      return self.__success
+
+class JoinSuccess(JoinResponse): 
+   """
+   @author: Josh Terrell jmterrel@calpoly.edu
+   @ivar data: the initial data sent by the presenter to the student upon
+   successful join. This dictionary holds thing such as the presentation HTML,
+   initial slide number, initial forum messages, etc. 
+   @type data: dictionary 
+   """
+   def __init__(self, initialData):
+      pass
+
+class JoinFailure(JoinResponse):
+   """
+   @ivar reason: the reason joining failed (eg 'not a student of this class')
+   @type reason: string
+   @author: Josh Terrell jmterrel@calpoly.edu
+   """
+   def __init__(self, reason):
+      self.reason = reason

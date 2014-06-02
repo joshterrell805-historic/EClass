@@ -73,10 +73,16 @@ class RosterWindow(wx.Frame):
    def redraw(self):
       self.rosterListBox.Clear()
       counter = 0
+      curFont = self.rosterListBox.GetFont()
+      font = wx.Font(curFont.GetPointSize(), curFont.GetFamily(),
+         curFont.GetStyle(), wx.FONTWEIGHT_BOLD
+      )
+
       for student in self.rosterModel.students:
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
          if student.present == False:
-            self.rosterListBox.SetItemForegroundColour(counter, wx.RED)
+            print(student.username)
+            self.rosterListBox.SetItemFont(counter, font)
          counter += 1
 
    def AddStudent(self, event):
