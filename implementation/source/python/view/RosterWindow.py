@@ -18,8 +18,6 @@ class RosterWindow(wx.Frame):
       self.rosterModel = EClass.GetInstance().roster
       self.rosterModel.setView(self)
 
-      self.studentPanels = []
-
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
@@ -41,8 +39,6 @@ class RosterWindow(wx.Frame):
       self.rosterStaticPanel = RosterStaticPanel(self)
       self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
       self.rosterStaticPanel.sizer.Clear()
-      #self.staticPanel = wx.Panel(self, size = (300, 50), style = wx.TE_CENTRE)
-      #self.staticPanel.SetBackgroundColour('#FEEECC')
       
 
       addButton = wx.Button(self, label = 'Add Student', size = (150, 30))
@@ -59,7 +55,6 @@ class RosterWindow(wx.Frame):
       rosterVertSizer.Add(self.rosterListBox, 9, wx.EXPAND)
 
       rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
-      #rosterVertSizer.Add(self.staticPanel, 4, wx.EXPAND)
 
       rosterHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       rosterHoriSizer.AddStretchSpacer(1)
@@ -82,11 +77,7 @@ class RosterWindow(wx.Frame):
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
          if student.present == False:
             self.rosterListBox.SetItemForegroundColour(counter, wx.RED)
-            counter = counter + 1
-      for i in range(0, len(self.studentPanels)):
-         self.studentPanels[i].Destroy()
-      del self.studentPanels[0:len(self.studentPanels)]
-      #self.SyncPanels()
+         counter += 1
 
    def AddStudent(self, event):
       self.rosterModel.AddNewStudent()
@@ -96,22 +87,13 @@ class RosterWindow(wx.Frame):
 
    def onClose(self, event):
       self.parent.showRosterMenuItem.Check(False)
+      # check this
       self.rosterStaticPanel.sizer.Clear()
       self.Hide()
 
-   def SyncPanels(self):
-      for i in range(0, len(self.rosterModel.students)):
-         self.studentPanels.append(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[i]))
-
-      print("Students: " + str(len(self.rosterModel.students)))
-
    def ShowStudentPanel(self, event):
-      #fix this call to SyncPanels, panels keep getting added to the list and never stops
-      print("Panels: " + str(len(self.studentPanels)))
       selName = self.rosterListBox.GetStringSelection()
       self.rosterStaticPanel.sizer.Clear()
-      #self.rosterStaticPanel.sizer.Add(self.studentPanels[self.rosterListBox.GetSelection()], 1, wx.EXPAND)
-      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[self.rosterListBox.GetSelection()]))
-      #print("TestUserName: " + self.studentPanels[self.rosterListBox.GetSelection()].student.username)
+      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[self.rosterListBox.GetSelection()]), 1, wx.EXPAND)
       self.rosterStaticPanel.Refresh()
       self.SendSizeEvent()
