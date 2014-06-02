@@ -9,7 +9,7 @@ class WhiteboardNav(wx.Panel):
 
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
-      
+
       self.parent = parent
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
@@ -27,8 +27,8 @@ class WhiteboardNav(wx.Panel):
 
       nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
       nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
-      
-      self.slideTextbox = wx.lib.intctrl.IntCtrl(self, 
+
+      self.slideTextbox = wx.lib.intctrl.IntCtrl(self,
          style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
       )
       self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
@@ -68,7 +68,7 @@ class WhiteboardNav(wx.Panel):
       mainSizer = wx.BoxSizer(wx.VERTICAL)
       mainSizer.Add(boardHoriSizer, 10, wx.EXPAND)
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
-      
+
       self.SetSizer(mainSizer)
       self.whiteboard.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
       self.Show()
@@ -80,7 +80,8 @@ class WhiteboardNav(wx.Panel):
          dc = wx.WindowDC(self.whiteboard)
          dc.SetBrush(wx.Brush(wx.BLACK, wx.TRANSPARENT))
          whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-         dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
+         # dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
+         dc.DrawPointList()
          print 'mousedown'
          evt.Veto()
          return
