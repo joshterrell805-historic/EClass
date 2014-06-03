@@ -82,6 +82,6 @@ class RosterWindow(wx.Frame):
    def ShowStudentPanel(self, event):
       selName = self.rosterListBox.GetStringSelection()
       self.rosterStaticPanel.sizer.Clear()
-      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.students[self.rosterListBox.GetSelection()]), 1, wx.EXPAND)
+      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.studentsPresent[self.rosterListBox.GetSelection()]), 1, wx.EXPAND)
       self.rosterStaticPanel.Refresh()
       self.SendSizeEvent()
