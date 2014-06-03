@@ -30,16 +30,24 @@ class LayerManagerModel:
                 self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
              i += 1
              
-   def ChangeObjPos(self, objToChange, newPos):
+   def ChangeObjPos(self, objToChange, oldPos, newPos):
       if ( self.layers[self.currLayer].locked == False 
        and self.layers[self.currLayer].visible == True):
+          xdiff = newPos.x - oldPos.x
+          ydiff = newPos.y - oldPos.y
           i = 0
           for obj in self.layers[self.currLayer].objects:
              if obj == objToChange:
-                self.layers[self.currLayer].objects[i]['position'] = newPos
+                if obj['type'] == 'Pencil':
+                   for point in objToChange['points']:
+                      point.x += xdiff
+                      point.y += ydiff
+                   self.layers[self.currLayer].objects[i] = objToChange
+                else:
+                   self.layers[self.currLayer].objects[i]['position'] = newPos
                 self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
              i += 1
-      
+            
    def DeleteLayer(self, index):
       if index >= 0 and len(self.layers) > 0 and index <= len(self.layers) and self.layers[index].locked == False:
          del self.layers[index]

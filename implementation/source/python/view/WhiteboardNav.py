@@ -95,7 +95,7 @@ class WhiteboardNav(wx.Panel):
       NOTES_OFFSET = 100
       curTool = EClass.GetInstance().drawingTools.selectedTool
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-      
+      self.leftdown = whiteboardMousePos
       self.__activeTool = curTool
 
       if curTool == 'Pencil':
@@ -166,8 +166,8 @@ class WhiteboardNav(wx.Panel):
          self.Redraw()
       elif self.__activeTool == 'Hand' and not self.selectedObj == None:
          assert EClass.GetInstance().drawingTools.selectedTool == 'Hand'
-         newWhiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-         EClass.GetInstance().layerManagerModel.ChangeObjPos(self.selectedObj, newWhiteboardMousePos)
+         newWhiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())  
+         EClass.GetInstance().layerManagerModel.ChangeObjPos(self.selectedObj, self.leftdown, newWhiteboardMousePos)
          self.Redraw()
 
       self.__activeTool = None
