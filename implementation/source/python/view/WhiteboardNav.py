@@ -173,19 +173,17 @@ class WhiteboardNav(wx.Panel):
       except:
          print('Furq!')
 
-      # TODO this needs to be set on a per-shape basis
-      dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 100), wx.SOLID))
-      dc.SetPen(wx.Pen(
-         wx.Colour(0, 0, 0, 255),
-         1,
-         wx.PENSTYLE_SOLID
-      ))
-
       layers = EClass.GetInstance().layerManagerModel.layers
       layers.reverse()
       
       for layer in layers:
+         # TODO colors per object?
          dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, layer.opacity), wx.SOLID))
+         dc.SetPen(wx.Pen(
+            wx.Colour(0, 0, 0, layer.opacity),
+            1,
+            wx.PENSTYLE_SOLID
+         ))
          if layer.visible:
             for obj in layer.objects:
                if obj['type'] == 'Text':
