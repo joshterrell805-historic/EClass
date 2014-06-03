@@ -15,6 +15,7 @@ class WhiteboardNav(wx.Panel):
       self.__activeTool = None
       self.shapes = []
       self.parent = parent
+      self.selectedObj = None
       self.presentation = EClass.GetInstance().presentation
       self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
@@ -78,7 +79,16 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.Bind(wx.EVT_LEFT_UP, self.OnLeftUp)
       self.whiteboard.Bind(wx.EVT_MOTION, self.OnMotion)
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
+      self.Bind(wx.EVT_CHAR_HOOK, self.onKey)
       self.Show()
+      
+   def onKey(self, evt):
+      if evt.GetKeyCode() == wx.WXK_DELETE or evt.GetKeyCode() == wx.WXK_BACK:
+         if not self.selectedObj == None:
+            EClass.GetInstance().layerManagerModel.RemoveObject(self.selectedObj)
+            self.Redraw()
+      else:
+         evt.Skip()
 
    # TODO documentation
    def OnClickChange(self, evt):
@@ -96,6 +106,7 @@ class WhiteboardNav(wx.Panel):
          self.__currentLine.append(whiteboardMousePos)
          #self.CaptureMouse()
       elif curTool == 'Hand':
+         self.selectedObj = self.findSelectedObject(whiteboardMousePos)
          pass
       elif curTool == 'Attachment':
          pass
@@ -119,7 +130,9 @@ class WhiteboardNav(wx.Panel):
          pass
       elif curTool == 'Square Shape':
          EClass.GetInstance().layerManagerModel.AddObject({'type': 'Square',
-            'position': whiteboardMousePos
+            'position': whiteboardMousePos,
+            'x_size': 100,
+            'y_size': 100
          })
       elif curTool == 'Triangle Shape':
          pass
@@ -130,6 +143,19 @@ class WhiteboardNav(wx.Panel):
 
       self.Redraw()
       return
+      
+   def findSelectedObject(self, mousePos):
+      lmm = EClass.GetInstance().layerManagerModel
+      layer = lmm.layers[lmm.currLayer]
+      for obj in layer.objects:
+         if obj['type'] == 'Text' and obj['position'].x <= mousePos.x  and (obj['position'].x + (len(obj['text']) * 6)) >= mousePos.x and obj['position'].y <= mousePos.y and (obj['position'].y + 15) >= mousePos.y:
+             return obj
+         elif obj['type'] == 'Square' and obj['position'].x <= mousePos.x and (obj['position'].x + obj['x_size']) >= mousePos.x and obj['position'].y <= mousePos.y and (obj['position'].y + obj['y_size']) >= mousePos.y:
+            return obj
+         elif obj['type'] == 'Pencil':
+            for pos in obj['points']:
+               if pos.x + 2 >= mousePos.x and pos.x - 2 <= mousePos.x and pos.y + 2 >= mousePos.y and pos.y - 2 <= mousePos.y:
+                  return obj
 
    def OnLeftUp(self, event):
       # drawing with pencil
@@ -137,6 +163,11 @@ class WhiteboardNav(wx.Panel):
          assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
          # TODO were gonna remove redraw and use double buffering.. for now
          # this just draws after the complete motion is done.
+         self.Redraw()
+      elif self.__activeTool == 'Hand' and not self.selectedObj == None:
+         assert EClass.GetInstance().drawingTools.selectedTool == 'Hand'
+         newWhiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+         EClass.GetInstance().layerManagerModel.ChangeObjPos(self.selectedObj, newWhiteboardMousePos)
          self.Redraw()
 
       self.__activeTool = None
@@ -189,7 +220,7 @@ class WhiteboardNav(wx.Panel):
                if obj['type'] == 'Text':
                   dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
                elif obj['type'] == 'Square':
-                  dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
+                  dc.DrawRectangle(obj['position'].x, obj['position'].y, obj['x_size'], obj['x_size'])
                elif obj['type'] == 'Pencil':
                   #dc = wx.BufferedDC(wx.ClientDC(self), self.buffer)
                   #dc.BeginDrawing()
