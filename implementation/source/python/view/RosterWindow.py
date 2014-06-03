@@ -19,10 +19,10 @@ class RosterWindow(wx.Frame):
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
-      self.attendanceLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
-      self.attendanceLabel.SetValue("Attendance")
-      self.attendanceLabel.SetForegroundColour(wx.WHITE)
-      self.attendanceLabel.SetBackgroundColour('#0041C2')
+      # self.attendanceLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
+      # self.attendanceLabel.SetValue("Attendance")
+      # self.attendanceLabel.SetForegroundColour(wx.WHITE)
+      # self.attendanceLabel.SetBackgroundColour('#0041C2')
 
       self.presentLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
       self.presentLabel.SetValue("Present: ")
@@ -35,7 +35,7 @@ class RosterWindow(wx.Frame):
       self.absentLabel.SetBackgroundColour('#0041C2')
       
       inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
-      inClassText.SetValue('In Class')
+      inClassText.SetValue(EClass.GetInstance().user.hostedClass['name'])
       inClassText.SetBackgroundColour('#5CB3FF')
 
       self.rosterListBox = wx.ListBox(choices=[], name='listBox1', parent=self, pos=wx.Point(8, 48), style=0)
