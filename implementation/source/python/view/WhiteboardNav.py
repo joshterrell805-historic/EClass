@@ -12,6 +12,7 @@ class WhiteboardNav(wx.Panel):
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
       
+      self.__activeTool = None
       self.shapes = []
       self.parent = parent
       self.presentation = EClass.GetInstance().presentation
@@ -74,6 +75,8 @@ class WhiteboardNav(wx.Panel):
 
       self.SetSizer(mainSizer)
       self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
+      self.whiteboard.Bind(wx.EVT_LEFT_UP, self.OnLeftUp)
+      self.whiteboard.Bind(wx.EVT_MOTION, self.OnMotion)
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
       self.Show()
 
@@ -83,8 +86,15 @@ class WhiteboardNav(wx.Panel):
       curTool = EClass.GetInstance().drawingTools.selectedTool
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
       
-      if curTool == 'Pencila':
-         pass
+      self.__activeTool = curTool
+
+      if curTool == 'Pencil':
+         self.__currentLine = []
+         EClass.GetInstance().layerManagerModel.AddObject({'type': 'Pencil',
+            'points' : self.__currentLine
+         })
+         self.__currentLine.append(whiteboardMousePos)
+         #self.CaptureMouse()
       elif curTool == 'Hand':
          pass
       elif curTool == 'Attachment':
@@ -107,14 +117,36 @@ class WhiteboardNav(wx.Panel):
          self.notesTextbox.SetFocus()
       elif curTool == 'Circle Shape':
          pass
-      elif curTool == 'Pencil':
+      elif curTool == 'Square Shape':
          EClass.GetInstance().layerManagerModel.AddObject({'type': 'Square',
             'position': whiteboardMousePos
          })
       elif curTool == 'Triangle Shape':
          pass
+      elif curTool == None:
+         pass
+      else:
+         assert False, 'Unknown drawing tool: ' + curTool
+
       self.Redraw()
       return
+
+   def OnLeftUp(self, event):
+      # drawing with pencil
+      if self.__activeTool == 'Pencil':
+         assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
+         # TODO were gonna remove redraw and use double buffering.. for now
+         # this just draws after the complete motion is done.
+         self.Redraw()
+
+      self.__activeTool = None
+
+   def OnMotion(self, event):
+      if self.__activeTool == 'Pencil':
+         assert event.Dragging() and event.LeftIsDown()
+         assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
+         pos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+         self.__currentLine.append(pos)
    
    # TODO documentation
    def NotesTextEntered(self, event):
@@ -131,27 +163,60 @@ class WhiteboardNav(wx.Panel):
       try:
          dc = wx.ClientDC(self.whiteboard)
          import sys
+         isTrueDC = True
          if not sys.platform.startswith('darwin'):
+            isTrueDC = False
             dc = wx.GraphicsContext.Create(dc)
             dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL,
                 wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
             )
-         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 100), wx.SOLID))
-         layers = EClass.GetInstance().layerManagerModel.layers
-         layers.reverse()
-         
-         for layer in layers:
-            dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, layer.opacity), wx.SOLID))
-            if layer.visible:
-               for obj in layer.objects:
-                  if obj['type'] == 'Text':
-                     dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
-                  elif obj['type'] == 'Square':
-                     dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
-                     
-         layers.reverse()
       except:
          print('Furq!')
+
+      # TODO this needs to be set on a per-shape basis
+      dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, 100), wx.SOLID))
+      dc.SetPen(wx.Pen(
+         wx.Colour(0, 0, 0, 255),
+         1,
+         wx.PENSTYLE_SOLID
+      ))
+
+      layers = EClass.GetInstance().layerManagerModel.layers
+      layers.reverse()
+      
+      for layer in layers:
+         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, layer.opacity), wx.SOLID))
+         if layer.visible:
+            for obj in layer.objects:
+               if obj['type'] == 'Text':
+                  dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
+               elif obj['type'] == 'Square':
+                  dc.DrawRectangle(obj['position'].x, obj['position'].y, 50, 50)
+               elif obj['type'] == 'Pencil':
+                  #dc = wx.BufferedDC(wx.ClientDC(self), self.buffer)
+                  #dc.BeginDrawing()
+                  #dc.SetPen(self.pen)
+
+                  # TODO this is unecessary cpu work to do this every draw.
+                  prev = { 'point' : None }
+                  def toLines(lines, point):
+                     if not prev['point'] == None:
+                        lines.append((
+                           prev['point'].x, prev['point'].y,
+                           point.x, point.y
+                        ))
+                     prev['point'] = point
+                     return lines
+                  lines = reduce(toLines, obj['points'], [])
+
+                  if isTrueDC:
+                     dc.DrawLineList(lines)
+                  else:
+                     for line in lines:
+                        dc.StrokeLine(line[0], line[1], line[2], line[3])
+                  #dc.EndDrawing()
+
+      layers.reverse()
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
