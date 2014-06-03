@@ -154,7 +154,7 @@ class WhiteboardNav(wx.Panel):
             return obj
          elif obj['type'] == 'Pencil':
             for pos in obj['points']:
-               if pos.x + 2 >= mousePos.x and pos.x - 2 <= mousePos.x and pos.y + 2 >= mousePos.y and pos.y - 2 <= mousePos.y:
+               if pos.x + 10 >= mousePos.x and pos.x - 10 <= mousePos.x and pos.y + 10 >= mousePos.y and pos.y - 10 <= mousePos.y:
                   return obj
 
    def OnLeftUp(self, event):
