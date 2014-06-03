@@ -48,12 +48,17 @@ class RosterWindow(wx.Frame):
       self.rosterStaticPanel.sizer.Clear()
 
       rosterVertSizer = wx.BoxSizer(wx.VERTICAL)
-      rosterVertSizer.Add(self.attendanceLabel, 1, wx.EXPAND)
-      rosterVertSizer.Add(self.presentLabel, 1, wx.EXPAND)
-      rosterVertSizer.Add(self.absentLabel, 1, wx.EXPAND)
+      #rosterVertSizer.Add(self.attendanceLabel, 1, wx.EXPAND)
+      #rosterVertSizer.Add(self.presentLabel, 1, wx.EXPAND)
+      #rosterVertSizer.Add(self.absentLabel, 1, wx.EXPAND)
       rosterVertSizer.Add(inClassText, 1, wx.EXPAND)
 
+      rosterVertSizer.Add(self.presentLabel, 1, wx.EXPAND)
+
       rosterVertSizer.Add(self.rosterListBox, 7, wx.EXPAND)
+
+      rosterVertSizer.Add(self.absentLabel, 1, wx.EXPAND)
+
       rosterVertSizer.Add(self.rosterListBoxAbsent, 2, wx.EXPAND)
 
       rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
