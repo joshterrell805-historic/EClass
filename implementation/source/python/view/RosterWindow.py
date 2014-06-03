@@ -19,11 +19,6 @@ class RosterWindow(wx.Frame):
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
-      # self.attendanceLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
-      # self.attendanceLabel.SetValue("Attendance")
-      # self.attendanceLabel.SetForegroundColour(wx.WHITE)
-      # self.attendanceLabel.SetBackgroundColour('#0041C2')
-
       self.presentLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
       self.presentLabel.SetValue("Present: ")
       self.presentLabel.SetForegroundColour(wx.WHITE)
@@ -34,9 +29,9 @@ class RosterWindow(wx.Frame):
       self.absentLabel.SetForegroundColour(wx.WHITE)
       self.absentLabel.SetBackgroundColour('#0041C2')
       
-      inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
-      inClassText.SetValue(EClass.GetInstance().user.hostedClass['name'])
-      inClassText.SetBackgroundColour('#5CB3FF')
+      self.classText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
+      self.classText.SetValue("")
+      self.classText.SetBackgroundColour('#5CB3FF')
 
       self.rosterListBox = wx.ListBox(choices=[], name='listBox1', parent=self, pos=wx.Point(8, 48), style=0)
       self.rosterListBox.Bind(wx.EVT_LISTBOX, self.ShowStudentPanel)
@@ -48,19 +43,11 @@ class RosterWindow(wx.Frame):
       self.rosterStaticPanel.sizer.Clear()
 
       rosterVertSizer = wx.BoxSizer(wx.VERTICAL)
-      #rosterVertSizer.Add(self.attendanceLabel, 1, wx.EXPAND)
-      #rosterVertSizer.Add(self.presentLabel, 1, wx.EXPAND)
-      #rosterVertSizer.Add(self.absentLabel, 1, wx.EXPAND)
-      rosterVertSizer.Add(inClassText, 1, wx.EXPAND)
-
+      rosterVertSizer.Add(self.classText, 1, wx.EXPAND)
       rosterVertSizer.Add(self.presentLabel, 1, wx.EXPAND)
-
       rosterVertSizer.Add(self.rosterListBox, 7, wx.EXPAND)
-
       rosterVertSizer.Add(self.absentLabel, 1, wx.EXPAND)
-
       rosterVertSizer.Add(self.rosterListBoxAbsent, 2, wx.EXPAND)
-
       rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
 
       self.Bind(wx.EVT_CLOSE, self.onClose)

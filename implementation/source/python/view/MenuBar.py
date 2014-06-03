@@ -1,6 +1,8 @@
 import wx
 import sys
 
+from EClass import EClass
+
 from RosterWindow import RosterWindow
 from ForumWindow import ForumWindow
 from DrawingTools import DrawingTools
@@ -124,9 +126,11 @@ class MenuBar:
       is already shown or hidden.
    """
    def ToggleRoster(self, e):
+      rosterCourseName = EClass.GetInstance().user.hostedClass['name']
       if not self.showRosterMenuItem.IsChecked():
          self.__rosterWindow.Hide()
       else:
+         self.__rosterWindow.classText.SetValue(rosterCourseName)
          self.__rosterWindow.Show()
 
    """
