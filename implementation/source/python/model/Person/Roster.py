@@ -1,5 +1,4 @@
 import sys
-import operator
 sys.path.insert(0, '../../view')
 
 from Student import Student
@@ -8,24 +7,18 @@ class Roster:
    def __init__(self):
       self.__view = None
       self.students = []
+      self.studentsPresent = []
+      self.studentsAbsent = []
 
    def setView(self, view):
       self.__view = view;
-
-   def AddNewStudent(self):
-      print('From Roster.AddNewStudent()')
-
-   def RemoveStudent(self):
-      print('From Roster.RemoveStudent()')
 
    def SortList(self):
       def GetKeyName(item):
          return item.firstName
       self.students.sort(key=GetKeyName)
-      def GetKeyPresent(item):
-         return item.present
-      self.students.sort(key=GetKeyPresent, reverse=True)
-
+      self.studentsPresent.sort(key=GetKeyName)
+      self.studentsAbsent.sort(key=GetKeyName)
 
    def GetRoster(self):
       def studentToString(student):
@@ -38,8 +31,16 @@ class Roster:
          return student.username == username
       students = filter(matchesUsername, self.students)
 
+      removeIndex = None
       if len(students) == 1:
-         students[0].present = False
+         students[0].present = True
+         self.studentsPresent.append(students[0])
+         for i in range(0, len(self.studentsAbsent)):
+            if self.studentsAbsent[i].username == students[0].username:
+               removeIndex = i
+         del self.studentsAbsent[removeIndex]
+         self.SortList()
+
       else:
          raise Exception(username + ' should (but doesn\'t) exist in roster')
       self.__view and self.__view.redraw()
@@ -50,8 +51,15 @@ class Roster:
          return student.username == username
       students = filter(matchesUsername, self.students)
 
+      removeIndex = None
       if len(students) == 1:
          students[0].present = False
+         self.studentsAbsent.append(students[0])
+         for i in range(0, len(self.studentsPresent)):
+            if self.studentsPresent[i].username == students[0].username:
+               removeIndex = i
+         del self.studentsPresent[removeIndex]
+         self.SortList()
       else:
          raise Exception(username + ' should (but doesn\'t) exist in roster')
       self.__view and self.__view.redraw()
@@ -62,6 +70,7 @@ class Roster:
          return newStudent
       # contains Student objects
       self.students = map(toStudent, students)
+      self.studentsAbsent = map(toStudent, students)
       self.SortList()
       self.__view and self.__view.redraw()
    

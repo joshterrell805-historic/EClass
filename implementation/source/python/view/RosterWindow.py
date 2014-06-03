@@ -8,8 +8,6 @@ from RosterItemPanel import RosterItemPanel
 from RosterStaticPanel import RosterStaticPanel
 from Person.Roster import Roster
 from Person.Student import Student
-import wx.lib.agw.foldpanelbar as fpb
-import wx.lib.scrolledpanel as scrolled
 
 class RosterWindow(wx.Frame):
    def __init__(self, parent):
@@ -21,10 +19,20 @@ class RosterWindow(wx.Frame):
       self.SetClientSizeWH(300, 700)
       self.parent = parent
 
-      attendance = wx.TextCtrl(self, size = (300, 80), style = wx.TE_CENTRE | wx.TE_READONLY)
-      attendance.SetValue('Attendance \n\n Present: 3\n Absent: 11')
-      attendance.SetForegroundColour(wx.WHITE)
-      attendance.SetBackgroundColour('#0041C2')
+      self.attendanceLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
+      self.attendanceLabel.SetValue("Attendance")
+      self.attendanceLabel.SetForegroundColour(wx.WHITE)
+      self.attendanceLabel.SetBackgroundColour('#0041C2')
+
+      self.presentLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
+      self.presentLabel.SetValue("Present: ")
+      self.presentLabel.SetForegroundColour(wx.WHITE)
+      self.presentLabel.SetBackgroundColour('#0041C2')
+
+      self.absentLabel = wx.TextCtrl(self, size = (300, 20), style = wx.TE_CENTRE | wx.TE_READONLY)
+      self.absentLabel.SetValue("Absent: ")
+      self.absentLabel.SetForegroundColour(wx.WHITE)
+      self.absentLabel.SetBackgroundColour('#0041C2')
       
       inClassText = wx.TextCtrl(self, size = (300, 30), style = wx.TE_CENTRE | wx.TE_READONLY)
       inClassText.SetValue('In Class')
@@ -33,36 +41,22 @@ class RosterWindow(wx.Frame):
       self.rosterListBox = wx.ListBox(choices=[], name='listBox1', parent=self, pos=wx.Point(8, 48), style=0)
       self.rosterListBox.Bind(wx.EVT_LISTBOX, self.ShowStudentPanel)
 
-      self.redraw()
-
+      self.rosterListBoxAbsent = wx.ListBox(choices=[], name='listBox2', parent=self, pos=wx.Point(8, 48), style=0)
 
       self.rosterStaticPanel = RosterStaticPanel(self)
       self.rosterStaticPanel.SetSizer(self.rosterStaticPanel.sizer)
       self.rosterStaticPanel.sizer.Clear()
-      
-
-      addButton = wx.Button(self, label = 'Add Student', size = (150, 30))
-      addButton.Bind(wx.EVT_BUTTON, self.AddStudent)
-
-      removeButton = wx.Button(self, label = 'Remove Student', size = (150, 30))
-      removeButton.Bind(wx.EVT_BUTTON, self.Remove)
 
       rosterVertSizer = wx.BoxSizer(wx.VERTICAL)
-      rosterVertSizer.AddStretchSpacer(1)
-      rosterVertSizer.Add(attendance, 1, wx.EXPAND)
+      rosterVertSizer.Add(self.attendanceLabel, 1, wx.EXPAND)
+      rosterVertSizer.Add(self.presentLabel, 1, wx.EXPAND)
+      rosterVertSizer.Add(self.absentLabel, 1, wx.EXPAND)
       rosterVertSizer.Add(inClassText, 1, wx.EXPAND)
 
-      rosterVertSizer.Add(self.rosterListBox, 9, wx.EXPAND)
+      rosterVertSizer.Add(self.rosterListBox, 7, wx.EXPAND)
+      rosterVertSizer.Add(self.rosterListBoxAbsent, 2, wx.EXPAND)
 
       rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
-
-      rosterHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
-      rosterHoriSizer.AddStretchSpacer(1)
-      rosterHoriSizer.Add(addButton, 1, wx.EXPAND)
-      rosterHoriSizer.Add(removeButton, 1, wx.EXPAND)
-      rosterHoriSizer.AddStretchSpacer(1)
-      rosterVertSizer.Add(rosterHoriSizer, 1, wx.EXPAND)
-      rosterVertSizer.AddStretchSpacer(1)
 
       self.Bind(wx.EVT_CLOSE, self.onClose)
       self.SetSizer(rosterVertSizer)
@@ -72,28 +66,16 @@ class RosterWindow(wx.Frame):
 
    def redraw(self):
       self.rosterListBox.Clear()
-      counter = 0
-      curFont = self.rosterListBox.GetFont()
-      font = wx.Font(curFont.GetPointSize(), curFont.GetFamily(),
-         curFont.GetStyle(), wx.FONTWEIGHT_BOLD
-      )
-
-      for student in self.rosterModel.students:
+      for student in self.rosterModel.studentsPresent:
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
-         if student.present == False:
-            print(student.username)
-            self.rosterListBox.SetItemFont(counter, font)
-         counter += 1
-
-   def AddStudent(self, event):
-      self.rosterModel.AddNewStudent()
-
-   def Remove(self, event):
-      self.rosterModel.RemoveStudent()
+      self.rosterListBoxAbsent.Clear()
+      for student in self.rosterModel.studentsAbsent:
+         self.rosterListBoxAbsent.Append(student.firstName + ' ' + student.lastName)
+      self.presentLabel.SetValue("Present: " + str(len(self.rosterModel.studentsPresent)))
+      self.absentLabel.SetValue("Absent: " + str(len(self.rosterModel.studentsAbsent)))
 
    def onClose(self, event):
       self.parent.showRosterMenuItem.Check(False)
-      # check this
       self.rosterStaticPanel.sizer.Clear()
       self.Hide()
 
