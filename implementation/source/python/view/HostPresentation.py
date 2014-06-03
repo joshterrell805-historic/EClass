@@ -48,6 +48,7 @@ class HostPresentation(wx.Frame):
       def callback(response):
          if response.success:
             roster.setStudents(selected['students'])
+            EClass.GetInstance().user.hostedClass = selected
             self.Hide()
             self.parent.Show()
          else:
