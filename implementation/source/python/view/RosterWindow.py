@@ -50,13 +50,13 @@ class RosterWindow(wx.Frame):
       rosterVertSizer.Add(self.rosterListBoxAbsent, 2, wx.EXPAND)
       rosterVertSizer.Add(self.rosterStaticPanel, 4, wx.EXPAND)
 
-      self.Bind(wx.EVT_CLOSE, self.onClose)
+      self.Bind(wx.EVT_CLOSE, self.OnClose)
       self.SetSizer(rosterVertSizer)
       self.SendSizeEvent()
       
       EClass.GetInstance().rosterModel = self.rosterModel
 
-   def redraw(self):
+   def Redraw(self):
       self.rosterListBox.Clear()
       for student in self.rosterModel.studentsPresent:
          self.rosterListBox.Append(student.firstName + ' ' + student.lastName)
@@ -66,7 +66,7 @@ class RosterWindow(wx.Frame):
       self.presentLabel.SetValue("Present: " + str(len(self.rosterModel.studentsPresent)))
       self.absentLabel.SetValue("Absent: " + str(len(self.rosterModel.studentsAbsent)))
 
-   def onClose(self, event):
+   def OnClose(self, event):
       self.parent.showRosterMenuItem.Check(False)
       self.rosterStaticPanel.sizer.Clear()
       self.Hide()

@@ -43,7 +43,7 @@ class Roster:
 
       else:
          raise Exception(username + ' should (but doesn\'t) exist in roster')
-      self.__view and self.__view.redraw()
+      self.__view and self.__view.Redraw()
 
    def onLeave(self, username):
       print(username + ' left the presentation!')
@@ -62,7 +62,7 @@ class Roster:
          self.SortList()
       else:
          raise Exception(username + ' should (but doesn\'t) exist in roster')
-      self.__view and self.__view.redraw()
+      self.__view and self.__view.Redraw()
    
    def setStudents(self, students):
       def toStudent(student):
@@ -72,7 +72,7 @@ class Roster:
       self.students = map(toStudent, students)
       self.studentsAbsent = map(toStudent, students)
       self.SortList()
-      self.__view and self.__view.redraw()
+      self.__view and self.__view.Redraw()
    
    # return the student if he exists, otherwise None
    def findStudentByUsername(self, username):
