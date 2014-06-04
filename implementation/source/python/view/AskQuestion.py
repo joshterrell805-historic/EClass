@@ -33,13 +33,13 @@ class AskQuestion(wx.Frame):
       midButtonHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       mainHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
 
-      leftVertSizer.Add(self.questionEntry, 5, wx.ALL|wx.EXPAND)
+      leftVertSizer.Add(self.questionEntry, 10, wx.ALL|wx.EXPAND)
       leftVertSizer.Add(self.submitButton, 1, wx.EXPAND)
 
-      midButtonHoriSizer.Add(self.deleteButton, 1, wx.EXPAND)
-      midButtonHoriSizer.Add(self.deleteAllButton, 1, wx.EXPAND)
+      midButtonHoriSizer.Add(self.deleteButton, 1, wx.ALL|wx.EXPAND)
+      midButtonHoriSizer.Add(self.deleteAllButton, 1, wx.ALL|wx.EXPAND)
 
-      midVertSizer.Add(self.listView, 5, wx.ALL|wx.EXPAND)
+      midVertSizer.Add(self.listView, 10, wx.ALL|wx.EXPAND)
       midVertSizer.Add(midButtonHoriSizer, 1, wx.ALL|wx.EXPAND)
    
       mainHoriSizer.Add(leftVertSizer, 3, wx.ALL|wx.EXPAND)
