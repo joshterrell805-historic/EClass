@@ -9,6 +9,7 @@ from DrawingTools import DrawingTools
 from ApprovalTrackerGaget import ApprovalTrackerGaget
 from LayerManager import LayerManager
 from ImportPresentation import ImportPresentation
+from AskQuestion import AskQuestion
 
 """
    Class MenuBar provides the functionality for all MenuBar-related actions. Class MenuBar provides
@@ -45,6 +46,7 @@ class MenuBar:
       ID_VIEW_SHOWLAYERMANAGER = wx.NewId()
       ID_VIEW_SHOWAPPROVALTRACKER = wx.NewId()
       ID_VIEW_SHOWFORUM = wx.NewId()
+      ID_VIEW_SHOWASKQUESTION = wx.NewId()
       ID_VIEW_FULLSCREEN = wx.NewId()
 
       self.__rosterWindow = RosterWindow(self)
@@ -53,6 +55,7 @@ class MenuBar:
       self.__approvalTracker = ApprovalTrackerGaget(self)
       self.__forum = ForumWindow(self)
       self.__importPresentation = ImportPresentation(self)
+      self.__askQuestion = AskQuestion(self)
 
       menuBar = wx.MenuBar()
 
@@ -105,6 +108,9 @@ class MenuBar:
 
       self.showForumMenuItem = viewMenu.Append(ID_VIEW_SHOWFORUM, 'Show Forum', 'Shows the forum window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleForum, self.showForumMenuItem)
+
+      self.showAskQuestionMenuItem = viewMenu.Append(ID_VIEW_SHOWASKQUESTION, 'Show Questions', 'Shows the questions window.', wx.ITEM_CHECK)
+      parent.Bind(wx.EVT_MENU, self.ToggleAskQuestion, self.showAskQuestionMenuItem)
 
       viewMenu.AppendSeparator()
       self.fullScreenMenuItem = viewMenu.Append(ID_VIEW_FULLSCREEN, 'Full Screen\tCtrl+F', 'Zooms to full screen.', wx.ITEM_CHECK)
@@ -172,6 +178,12 @@ class MenuBar:
          self.__forum.Hide()
       else:
          self.__forum.Show()
+
+   def ToggleAskQuestion(self, e):
+      if not self.showAskQuestionMenuItem.IsChecked():
+         self.__askQuestion.Hide()
+      else:
+         self.__askQuestion.Show()
 
    """
       The ToggleFullScreen functions for Class MenuBar either makes the winder full screen or normal size whether

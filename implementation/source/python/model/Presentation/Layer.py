@@ -1,13 +1,13 @@
 class Layer:
    def __init__(self, name, opacity, lock):
-      self.objects = None
+      self.objects = []
       if opacity == 0:
          self.visible = False
       else:
          self.visible = True
          
       if opacity == None:
-         self.opacity = 100
+         self.opacity = 255
       else:
          self.opacity = opacity
          
@@ -36,7 +36,7 @@ class Layer:
          self.name = newName
       
    def SetOpacity(self, newOpacity):
-      if self.locked == False and newOpacity >= 0 and newOpacity <= 100:
+      if self.locked == False and newOpacity >= 0 and newOpacity <= 255:
          if newOpacity == 0:
             self.visible = False
          else:

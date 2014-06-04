@@ -1,24 +1,29 @@
 import wx, wx.html, wx.html2, wx.lib.intctrl
-import sys
+import sys, time
 
 sys.path.insert(0, 'model')
 from EClass import EClass
 from Person.Student import Student
+from Presentation.LayerManagerModel import LayerManagerModel
 
 class WhiteboardNav(wx.Panel):
 
+   # TODO possibly break this up
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
-
+      
+      self.__activeTool = None
+      self.shapes = []
       self.parent = parent
+      self.selectedObj = None
       self.presentation = EClass.GetInstance().presentation
-      self.whiteboard = wx.html2.WebView.New(self, -1, style = wx.DOUBLE_BORDER)
+      self.whiteboard = wx.html.HtmlWindow(self, -1, style = wx.DOUBLE_BORDER)
       self.whiteboard.Layout()
-      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
-         self.presentation.GetPath()
-      )
-      self.RunScript()
-
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
+      
+      # TODO add to list of ivars in docs
+      self.notesTextbox = None
+      self.notesPos = None
 
       previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
@@ -70,49 +75,204 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
 
       self.SetSizer(mainSizer)
-      self.whiteboard.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.OnPageNavigation)
+      self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
+      self.whiteboard.Bind(wx.EVT_LEFT_UP, self.OnLeftUp)
+      self.whiteboard.Bind(wx.EVT_MOTION, self.OnMotion)
+      self.Bind(wx.EVT_PAINT, self.DisplayLayers)
+      self.Bind(wx.EVT_CHAR_HOOK, self.onKey)
       self.Show()
+      
+   def onKey(self, evt):
+      if evt.GetKeyCode() == wx.WXK_DELETE or evt.GetKeyCode() == wx.WXK_BACK:
+         if not self.selectedObj == None:
+            EClass.GetInstance().layerManagerModel.RemoveObject(self.selectedObj)
+            self.Redraw()
+      else:
+         evt.Skip()
 
-   def OnPageNavigation(self, evt):
-      uri = evt.GetURL()
+   # TODO documentation
+   def OnClickChange(self, evt):
+      NOTES_OFFSET = 100
+      curTool = EClass.GetInstance().drawingTools.selectedTool
+      whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+      self.leftdown = whiteboardMousePos
+      self.__activeTool = curTool
 
-      if "__EVENT__/mousedown" in uri:
-         dc = wx.WindowDC(self.whiteboard)
-         dc.SetBrush(wx.Brush(wx.BLACK, wx.TRANSPARENT))
-         whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-         dc.DrawCircle(whiteboardMousePos.x, whiteboardMousePos.y, 100)
-         print 'mousedown'
-         evt.Veto()
-         return
+      if curTool == 'Pencil':
+         self.__currentLine = []
+         EClass.GetInstance().layerManagerModel.AddObject({'type': 'Pencil',
+            'points' : self.__currentLine
+         })
+         self.__currentLine.append(whiteboardMousePos)
+         #self.CaptureMouse()
+      elif curTool == 'Hand':
+         self.selectedObj = self.findSelectedObject(whiteboardMousePos)
+         pass
+      elif curTool == 'Attachment':
+         pass
+      elif curTool == 'Text':
+         # Ensure the user does not create tons of new text boxes
+         if self.notesTextbox:
+            self.notesTextbox.Destroy()
+            self.notesTextbox = None
+         
+         # new Point because wx doesn't like Points being shared...
+         self.notesPos = wx.Point(whiteboardMousePos.x, whiteboardMousePos.y)
+         self.notesTextbox = wx.TextCtrl(self, pos = wx.Point(
+            self.notesPos.x + NOTES_OFFSET, self.notesPos.y),
+            style = wx.TE_PROCESS_ENTER
+         )
+         self.notesTextbox.Bind(wx.EVT_TEXT_ENTER, self.NotesTextEntered)
+         self.notesTextbox.SetHint('Enter some text and hit <enter>')
+         self.notesTextbox.SetBackgroundStyle(wx.BG_STYLE_PAINT)
+         self.notesTextbox.SetFocus()
+      elif curTool == 'Circle Shape':
+         pass
+      elif curTool == 'Square Shape':
+         EClass.GetInstance().layerManagerModel.AddObject({'type': 'Square',
+            'position': whiteboardMousePos,
+            'x_size': 100,
+            'y_size': 100
+         })
+      elif curTool == 'Triangle Shape':
+         pass
+      elif curTool == None:
+         pass
+      else:
+         assert False, 'Unknown drawing tool: ' + curTool
+
+      self.Redraw()
+      return
+      
+   def findSelectedObject(self, mousePos):
+      lmm = EClass.GetInstance().layerManagerModel
+      layer = lmm.layers[lmm.currLayer]
+      for obj in layer.objects:
+         if obj['type'] == 'Text' and obj['position'].x <= mousePos.x  and (obj['position'].x + (len(obj['text']) * 6)) >= mousePos.x and obj['position'].y <= mousePos.y and (obj['position'].y + 15) >= mousePos.y:
+             return obj
+         elif obj['type'] == 'Square' and obj['position'].x <= mousePos.x and (obj['position'].x + obj['x_size']) >= mousePos.x and obj['position'].y <= mousePos.y and (obj['position'].y + obj['y_size']) >= mousePos.y:
+            return obj
+         elif obj['type'] == 'Pencil':
+            for pos in obj['points']:
+               if pos.x + 10 >= mousePos.x and pos.x - 10 <= mousePos.x and pos.y + 10 >= mousePos.y and pos.y - 10 <= mousePos.y:
+                  return obj
+
+   def OnLeftUp(self, event):
+      # drawing with pencil
+      if self.__activeTool == 'Pencil':
+         assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
+         # TODO were gonna remove redraw and use double buffering.. for now
+         # this just draws after the complete motion is done.
+         self.Redraw()
+      elif self.__activeTool == 'Hand' and not self.selectedObj == None:
+         assert EClass.GetInstance().drawingTools.selectedTool == 'Hand'
+         newWhiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())  
+         EClass.GetInstance().layerManagerModel.ChangeObjPos(self.selectedObj, self.leftdown, newWhiteboardMousePos)
+         self.Redraw()
+
+      self.__activeTool = None
+
+   def OnMotion(self, event):
+      if self.__activeTool == 'Pencil':
+         assert event.Dragging() and event.LeftIsDown()
+         assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
+         pos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
+         self.__currentLine.append(pos)
+   
+   # TODO documentation
+   def NotesTextEntered(self, event):
+      EClass.GetInstance().layerManagerModel.AddObject({'type': 'Text',
+         'position': self.notesPos,
+         'text': self.notesTextbox.GetValue()
+      })
+      self.notesTextbox.Destroy()
+      self.notesTextbox = None
+      self.Redraw()
+   
+   # TODO documentation
+   def DisplayLayers(self, evt = None):
+      try:
+         dc = wx.ClientDC(self.whiteboard)
+         import sys
+         isTrueDC = True
+         if not sys.platform.startswith('darwin'):
+            isTrueDC = False
+            dc = wx.GraphicsContext.Create(dc)
+            dc.SetFont(wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL,
+                wx.FONTWEIGHT_NORMAL), wx.Colour(0, 0, 0, 255)
+            )
+      except:
+         print('Furq!')
+
+      layers = EClass.GetInstance().layerManagerModel.layers
+      layers.reverse()
+      
+      for layer in layers:
+         # TODO colors per object?
+         dc.SetBrush(wx.Brush(wx.Colour(100, 100, 100, layer.opacity), wx.SOLID))
+         dc.SetPen(wx.Pen(
+            wx.Colour(0, 0, 0, layer.opacity),
+            1,
+            wx.PENSTYLE_SOLID
+         ))
+         if layer.visible:
+            for obj in layer.objects:
+               if obj['type'] == 'Text':
+                  dc.DrawText(obj['text'], obj['position'].x, obj['position'].y)
+               elif obj['type'] == 'Square':
+                  dc.DrawRectangle(obj['position'].x, obj['position'].y, obj['x_size'], obj['x_size'])
+               elif obj['type'] == 'Pencil':
+                  #dc = wx.BufferedDC(wx.ClientDC(self), self.buffer)
+                  #dc.BeginDrawing()
+                  #dc.SetPen(self.pen)
+
+                  # TODO this is unecessary cpu work to do this every draw.
+                  prev = { 'point' : None }
+                  def toLines(lines, point):
+                     if not prev['point'] == None:
+                        lines.append((
+                           prev['point'].x, prev['point'].y,
+                           point.x, point.y
+                        ))
+                     prev['point'] = point
+                     return lines
+                  lines = reduce(toLines, obj['points'], [])
+
+                  if isTrueDC:
+                     dc.DrawLineList(lines)
+                  else:
+                     for line in lines:
+                        dc.StrokeLine(line[0], line[1], line[2], line[3])
+                  #dc.EndDrawing()
+
+      layers.reverse()
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
-         self.RefreshSlide()
+         self.Redraw()
 
    def MoveToNextSlide(self, event):
       if self.presentation.MoveToNextSlide():
-         self.RefreshSlide()
-
+         self.Redraw()
+         
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter(self.RefreshSlide)
+      self.Redraw()
 
    def MoveToSlide(self, event):
       if self.presentation.MoveToSlide(self.slideTextbox.GetValue()):
-         self.RefreshSlide()
+         self.Redraw()
       self.slideTextbox.Clear()
 
+   # TODO documentation
+   def Redraw(self):
+      self.RefreshSlide()
+      wx.CallLater(30, self.DisplayLayers, None)
+
    def RefreshSlide(self):
-      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent(),
-         self.presentation.GetPath()
-      )
+      oldCurrLayer = EClass.GetInstance().layerManagerModel.currLayer
+      self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       EClass.GetInstance().setUpLayerManager()
+      EClass.GetInstance().layerManagerModel.SetCurrentLayer(oldCurrLayer)
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
-      self.RunScript()
-
-   def RunScript(self):
-      self.whiteboard.RunScript("""
-         document.body.onmousedown = function() {
-            window.location.href = "__EVENT__/mousedown";
-         };
-      """)

@@ -1,6 +1,9 @@
 import wx
+import sys
 
 from ChangePermWindow import ChangePermWindow
+sys.path.insert(0, 'model')
+from EClass import EClass
 
 class LayerView(wx.Panel):
    def layerListObject(self, parent, index, checked):
@@ -14,6 +17,8 @@ class LayerView(wx.Panel):
       layerControls.Add(label, 1)
 
       self.visible = wx.CheckBox(parent, -1 ,'Visible', (15, 40))
+      if self.layer.visible == True:
+         self.visible.SetValue(True)
       self.visible.Bind(wx.EVT_CHECKBOX, self.ToggleVisible)
       self.lock = wx.CheckBox(parent, -1 ,'Lock', (15, 40))
       if self.layer.locked == True:
@@ -36,11 +41,13 @@ class LayerView(wx.Panel):
       
    def ToggleVisible(self, event):
       self.layer.ToggleVisible()
-      
+      self.parent.parent.parent.whiteboard.Redraw()
+
    def ToggleLock(self, event):
       self.layer.ToggleLock()
       
    def SelectLayer(self, event):
       self.parent.selectedLayer = self.index
+      EClass.GetInstance().layerManagerModel.SetCurrentLayer(self.index)
       self.parent.slider.SetValue(self.layer.opacity)
       self.parent.UpdateLayers()

@@ -89,7 +89,7 @@ class Presentation:
                    line.find('</body>') != -1
                ):
                   slide += slideEnd
-                  self.slides.append(Slide(slide, [Layer("Background", 100, True)]))
+                  self.slides.append(Slide(slide, [Layer("Background", 255, False)]))
                   # Prepare for the next slide by getting rid of the body HTML
                   slide = '' + slideBase
 
