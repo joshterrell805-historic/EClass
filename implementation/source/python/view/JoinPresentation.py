@@ -60,6 +60,13 @@ class JoinPresentation(wx.Frame):
       if response.success:
          window = EClassWindow()
          window.setPresentation(response.data['presentationHTML'])
+
+         # copy layers from presenter upon join
+         mySlides = EClass.GetInstance().presentation.slides
+         assert len(mySlides) == len(response.data['slides'])
+         for i in range(len(EClass.GetInstance().presentation.slides)):
+            mySlides[i].layers = response.data['slides'][i].layers
+
          self.Hide()
       else:
          self.reasonText.SetLabel(response.reason)

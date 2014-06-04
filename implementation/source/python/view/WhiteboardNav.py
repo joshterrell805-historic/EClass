@@ -88,6 +88,10 @@ class WhiteboardNav(wx.Panel):
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
       self.Bind(wx.EVT_CHAR_HOOK, self.onKey)
       self.Show()
+      def redrawInABit():
+         self.RefreshSlide()
+         self.Redraw()
+      wx.CallLater(500, redrawInABit)
       
    def onKey(self, evt):
       if evt.GetKeyCode() == wx.WXK_DELETE or evt.GetKeyCode() == wx.WXK_BACK:
