@@ -11,6 +11,8 @@ class WhiteboardNav(wx.Panel):
    # TODO possibly break this up
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
+      self.__lastRedraw = None
+      self.__redrawScheduled = False
       
       self.__activeTool = None
       self.shapes = []
@@ -78,6 +80,11 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
       self.whiteboard.Bind(wx.EVT_LEFT_UP, self.OnLeftUp)
       self.whiteboard.Bind(wx.EVT_MOTION, self.OnMotion)
+
+      def onScroll(evt):
+         self.Redraw()
+      self.whiteboard.Bind(wx.EVT_SCROLLWIN, onScroll)
+
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
       self.Bind(wx.EVT_CHAR_HOOK, self.onKey)
       self.Show()
@@ -178,6 +185,7 @@ class WhiteboardNav(wx.Panel):
          assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
          pos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
          self.__currentLine.append(pos)
+         self.Redraw()
    
    # TODO documentation
    def NotesTextEntered(self, event):
@@ -249,25 +257,49 @@ class WhiteboardNav(wx.Panel):
 
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
+         self.RefreshSlide()
          self.Redraw()
 
    def MoveToNextSlide(self, event):
       if self.presentation.MoveToNextSlide():
+         self.RefreshSlide()
          self.Redraw()
          
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter(self.RefreshSlide)
+      self.RefreshSlide()
       self.Redraw()
 
    def MoveToSlide(self, event):
       if self.presentation.MoveToSlide(self.slideTextbox.GetValue()):
+         self.RefreshSlide()
          self.Redraw()
       self.slideTextbox.Clear()
 
+   
    # TODO documentation
+   # only redraw at max every 30 ms.. reduce flickering and lag
    def Redraw(self):
-      self.RefreshSlide()
-      wx.CallLater(30, self.DisplayLayers, None)
+      def millis():
+        return int(round(time.time() * 1000))
+      def redraw():
+         self.__lastRedraw = millis()
+         self.whiteboard.Refresh()
+         self.Update()
+         self.DisplayLayers()
+      def scheduledRedraw():
+         self.__redrawScheduled = False
+         redraw()
+
+      if not self.__redrawScheduled:
+         # if we haven't drawn yet or it's been at least 30 ms, just draw now
+         if self.__lastRedraw is None or millis() - self.__lastRedraw > 30:
+            redraw()
+         # else weve drawn before and it hasn't been 30 ms since our last redraw
+         # schedule one to take place in less than 30 ms
+         else:
+            self.__redrawScheduled = True
+            wx.CallLater(30 - (millis() - self.__lastRedraw), scheduledRedraw)
 
    def RefreshSlide(self):
       oldCurrLayer = EClass.GetInstance().layerManagerModel.currLayer
