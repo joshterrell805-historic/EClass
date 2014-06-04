@@ -44,7 +44,8 @@ class LayerManagerModel:
                       point.y += ydiff
                    self.layers[self.currLayer].objects[i] = objToChange
                 else:
-                   self.layers[self.currLayer].objects[i]['position'] = newPos
+                   self.layers[self.currLayer].objects[i]['position'].x += xdiff
+                   self.layers[self.currLayer].objects[i]['position'].y += ydiff
                 self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
              i += 1
             

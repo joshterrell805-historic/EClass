@@ -106,7 +106,6 @@ class WhiteboardNav(wx.Panel):
       NOTES_OFFSET = 100
       curTool = EClass.GetInstance().drawingTools.selectedTool
       whiteboardMousePos = self.whiteboard.ScreenToClient(wx.GetMousePosition())
-      self.leftdown = whiteboardMousePos
       self.__activeTool = curTool
 
       if curTool == 'Pencil':
@@ -118,6 +117,7 @@ class WhiteboardNav(wx.Panel):
          #self.CaptureMouse()
       elif curTool == 'Hand':
          self.selectedObj = self.findSelectedObject(whiteboardMousePos)
+         self.leftdown = whiteboardMousePos
          pass
       elif curTool == 'Attachment':
          pass
