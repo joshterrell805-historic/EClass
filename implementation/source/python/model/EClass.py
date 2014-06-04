@@ -8,6 +8,7 @@ from Person.Student import Student
 
 from Presentation.Layer import Layer
 from Presentation.LayerManagerModel import LayerManagerModel
+from Presentation.QuestionList import QuestionList
 from Connection import Connection
 
 from Forum.Forum import Forum
@@ -31,6 +32,7 @@ class EClass():
       self.presentation = Presentation(path = None)
       self.roster = Roster()
       self.forum = Forum()
+      self.questionList = QuestionList()
       # this is an object sent to every client when they connect.
       # you may modify it (eclass.initialData['my value'] = crap),
       # but do not overwrite it (eclass.initialData = crap)

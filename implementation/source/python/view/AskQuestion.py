@@ -1,7 +1,7 @@
 import wx, sys
 sys.path.insert(0, 'model')
 from Person.Question import Question
-from Presentation.QuestionList import QuestionList
+from EClass import EClass
 
 class AskQuestion(wx.Frame):
 
@@ -10,7 +10,7 @@ class AskQuestion(wx.Frame):
       self.SetLabel('Ask a Question')
       self.panel = wx.Panel(self)
       self.parent = parent
-      self.questionList = QuestionList()
+      self.questionList = EClass.GetInstance().questionList
 
       self.listView = wx.ListView(self.panel, style = 
          wx.LC_REPORT|wx.BORDER_SUNKEN, name = 'Questions'
@@ -54,6 +54,7 @@ class AskQuestion(wx.Frame):
       self.deleteAllButton.Bind(wx.EVT_BUTTON, self.DeleteAll)
       self.listView.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OpenQuestion)
       self.listView.Bind(wx.EVT_LIST_DELETE_ALL_ITEMS, self.ClearOpenQuestion)
+      self.listView.Bind(wx.EVT_LIST_DELETE_ITEM, self.ClearOpenQuestion)
       self.Refresh()
 
    def Ask(self, event):
@@ -66,12 +67,13 @@ class AskQuestion(wx.Frame):
          self.listView.Append((q.GetText(),))
 
    def Delete(self, event):
-      self.questionList.Remove(self.listView.GetFocusedItem())
-      self.listView.DeleteItem(self.listView.GetFocusedItem())
+      if self.listView.GetFocusedItem() is not -1:
+         self.questionList.Remove(self.listView.GetFocusedItem())
+         self.listView.DeleteItem(self.listView.GetFocusedItem())
 
    def DeleteAll(self, event):
       self.questionList.RemoveAll()
-      self.listView.ClearAll()
+      self.listView.DeleteAllItems()
 
    def OpenQuestion(self, event):
       self.fullQuestion.SetValue(self.questionList[self.listView.GetFocusedItem()])

@@ -6,7 +6,6 @@ class QuestionList():
    
    def Append(self, question):
       self.questions.append(question)
-      print question.GetText()
 
    def Remove(self, index):
       self.questions.pop(index).GetText()
