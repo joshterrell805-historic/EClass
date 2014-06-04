@@ -10,10 +10,9 @@ class Presentation:
       self.slides = []
       self.SetPath(path)
       self.currSlideNum = 0
-      # infinite recurion without this CallLater
+      # Infinite recurion without using CallLater
       # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
-      # just wait a sec, then get the instance. Does anyone have a better
-      # solution?
+      # Wait a second, then get the instance to avoid infinite recursion
       def listen():
          EClass.EClass.GetInstance().connection.registerMessageListener(
             'sync current slide', self.OnSync

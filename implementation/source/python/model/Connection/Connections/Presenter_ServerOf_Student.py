@@ -42,9 +42,16 @@ class Presenter_ServerOf_Student(BaseConnection):
 
    def onJoin(self, message):
       def onStudentValidation(response):
+         import EClass
          if response['success']:
-            import EClass
-            response['data'] = EClass.EClass.GetInstance().initialData
+            student = EClass.EClass.GetInstance().roster.findStudentByUsername(response['username'])
+            assert student
+            if student.IsKicked():
+               response['success'] = False
+               response['reason'] = 'You may not rejoin a presentation you\'ve been kicked from'
+            else:
+               import EClass
+               response['data'] = EClass.EClass.GetInstance().initialData
          self.send({
             'code' : 'join',
             'response' : response

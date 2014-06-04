@@ -2,6 +2,7 @@ import wx
 import sys
 sys.path.insert(0, '../model')
 
+import EClass
 from Person.Student import Student
 
 class KickWindow(wx.Frame):
@@ -40,12 +41,22 @@ class KickWindow(wx.Frame):
 
    def OnAccept(self, event):
       self.student.SetKicked(True)
-      print self.student.username + '\'s new kicked status: ' + ('True' if self.student.IsKicked() else 'False')
+      # Send a kick notification to the student (no message value needed)
+      EClass.EClass.GetInstance().connection.send(
+         'kick notification', {'pickle': 'needs this'}, self.student.username
+      )
+      EClass.EClass.GetInstance().connection.CloseConnection(self.student.username)
       # TODO get the current Roster and update the student's display color
       # once the Roster stuff is done and using a set of Students
       self.Destroy()
       
+   # TODO documentation
+   def NotifyStudent(self, message, student):
+      if EClass.EClass.GetInstance().user.isStudent():
+         wx.MessageBox('You have been kicked from the presentation, but you ' +
+          'may continue to edit your layers and view the presentation file.', 
+          'Kick Notification', wx.OK | wx.ICON_INFORMATION)
+      
    def OnCancel(self, event):
-      print self.student.username + '\'s new kicked status: ' + ('True' if self.student.IsKicked() else 'False')
       self.Destroy()
 

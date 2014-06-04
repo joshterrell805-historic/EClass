@@ -18,6 +18,15 @@ class EClassWindow(wx.Frame):
       self.menuBar = MenuBar(self)
       self.CreateStatusBar()
 
+      # Infinite recurion without using CallLater
+      # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
+      # Wait a second, then get the instance to avoid infinite recursion
+      def listen():
+         EClass.GetInstance().connection.registerMessageListener(
+            'kick notification', self.NotifyKickedStudent
+         )
+      wx.CallLater(1, listen)
+      
       if EClass.GetInstance().user.isPresenter():
          self.initialPrompt = InitialPrompt(self)
          self.importPresentation = ImportPresentation(self)
@@ -38,3 +47,10 @@ class EClassWindow(wx.Frame):
       self.menuBar.layerManager.UpdateLayers()
       self.whiteboard = WhiteboardNav(self)
       self.SendSizeEvent()
+
+   # TODO documentation
+   def NotifyKickedStudent(self, message, student):
+      if not EClass.GetInstance().user.isPresenter():
+         wx.MessageBox('You have been kicked from the presentation, but you ' +
+          'may continue to edit your layers and view the presentation file.', 
+          'Kick Notification', wx.OK | wx.ICON_INFORMATION)

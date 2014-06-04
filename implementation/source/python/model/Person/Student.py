@@ -35,6 +35,8 @@ class Student(Person):
    def SetKicked(self, value):
       if value == True or value == False:
          self.kicked = value
+      if value == True:
+         self.present = False
       
    def HasQuestion(self):
       return self.question == None

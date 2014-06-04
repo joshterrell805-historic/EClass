@@ -185,6 +185,18 @@ class Connection(object):
          self.__addCallback(self.__messageListeners[message['identifier']],
             [message['message'], message['student']]
          )
+   
+   def CloseConnection(self, studentName):
+      def matchesUsername(connection):
+         return connection.getUsername() == studentName
+      connections = filter(matchesUsername,
+         self.__presenterServer.connections
+      )
+      assert len(connections) is 1, \
+      recipient + "'s connections: " + str(len(connections))
+      
+      connections[0].close()
+      
 
    # ----- helper methods ------
 
