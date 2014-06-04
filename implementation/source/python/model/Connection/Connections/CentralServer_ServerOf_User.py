@@ -4,7 +4,7 @@ import random
 
 # an instance of this class exists for every client
 class CentralServer_ServerOf_User(BaseConnection):
-   __validCodes = ['authorize', 'host', 'join', 'validateStudent']
+   __validCodes = ['authorize', 'host', 'join', 'validateStudent', 'cancelJoin']
    __hostedClasses = []
    __students = []
 
@@ -178,6 +178,18 @@ class CentralServer_ServerOf_User(BaseConnection):
          myClass['name'])
       self.updateStudentsClasses()
 
+   def receive_cancelJoin(self, message):
+      if not self._verifyString(message, 'key'):
+         return
+
+      def matchesKey(student):
+         return student.__joinKey == message['key']
+      students = filter(matchesKey, self.students)
+
+      if len(students) > 0:
+         students[0].__joinedClass = None
+         students[0].__joinKey = None
+
    def receive_join(self, message):
       if (not self._verifyString(message, 'class') or
           not self._verifyString(message, 'lastname') or
@@ -231,6 +243,7 @@ class CentralServer_ServerOf_User(BaseConnection):
                'reason'  : 'You are already in a presentation'
             }
          })
+         return
 
       # verify a presentation is being hosted for the class
       hostedClasses = filter(classMatches, self.hostedClasses)

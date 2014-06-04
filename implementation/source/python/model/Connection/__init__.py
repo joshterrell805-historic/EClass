@@ -110,6 +110,8 @@ class Connection(object):
                self.__addCallback(callback, [
                   JoinFailure(responseJoin['reason'])
                ])
+               self.__presenterClient.close()
+               self.__presenterClient = None
 
          def tryJoinPresenter():
             # success connecting to the presenter's computer; now try joining

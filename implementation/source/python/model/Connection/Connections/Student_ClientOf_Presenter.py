@@ -18,7 +18,8 @@ class Student_ClientOf_Presenter(BaseConnection):
       if self.__state != None:
          if message['code'] != self.__state:
             raise Exception(
-               "State is '" + self.__state + "' but response is '" +
+               "State is '" + (self.__state if self.__state else '')
+               + "' but response is '" +
                message['code'] + "'"
             )
          else:
@@ -40,7 +41,7 @@ class Student_ClientOf_Presenter(BaseConnection):
       self.__state = None
       self.__stateCallback({
          'success' : False,
-         'reason'  : state + ' response timed out'
+         'reason'  : (self.__state if self.__state else '') + ' response timed out'
       })
 
    def setMessageListener(self, callback):

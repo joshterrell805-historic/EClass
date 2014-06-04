@@ -60,6 +60,7 @@ class Presenter_ServerOf_Student(BaseConnection):
             self.__joinSuccessResponse = response
             self.__joinCallback(response['username'])
          else:
+            self.__centralClient.unjoinStudent(message['key'])
             self.close()
 
       # A student wishes to join the presentation

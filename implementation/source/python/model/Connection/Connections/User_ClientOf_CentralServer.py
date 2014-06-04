@@ -12,9 +12,11 @@ class User_ClientOf_CentralServer(BaseConnection):
       self.__closeReason = reason
       self.close()
 
-   def send(self, message):
+   def send(self, message, timeout=True):
       # any communication that takes too long is assumed failed.
-      self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
+      if timeout:
+         self.__timeoutCall = reactor.callLater(3, self.responseTimeout)
+
       return super(User_ClientOf_CentralServer, self).send(message)
 
    def onMessage(self, message):
@@ -26,8 +28,9 @@ class User_ClientOf_CentralServer(BaseConnection):
          return
       elif message['code'] != self.__state:
          raise Exception(
-            "State is '" + self.__state + "' but response is '" +
-            message['code'] + "'"
+            "State is '" + (self.__state if self.__state else '')
+            + "' but response is '" +
+            (message['code'] if message['code'] else '') + "'"
          )
 
       self.__timeoutCall.cancel()
@@ -74,6 +77,13 @@ class User_ClientOf_CentralServer(BaseConnection):
          'firstname' : presenterFirstName
       })
 
+   def unjoinStudent(self, studentKey):
+      """Inform the central server that the student failed to join the presentaiton"""
+      self.send({
+         'code'     : 'cancelJoin',
+         'key'      : studentKey
+      }, timeout=False)
+
    def validateStudent(self, studentKey, callback):
       """verify that the student may join this presentation"""
       if not self.prepareSend(callback):
@@ -91,7 +101,7 @@ class User_ClientOf_CentralServer(BaseConnection):
       self.__state = None
       self.__stateCallback({
          'success' : False,
-         'reason'  : state + ' response timed out'
+         'reason'  : (self.__state if self.__state else '') + ' response timed out'
       })
       
    def prepareSend(self, callback):
