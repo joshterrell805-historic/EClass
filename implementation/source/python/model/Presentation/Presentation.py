@@ -14,7 +14,6 @@ class Presentation:
       # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
       # Wait a second, then get the instance to avoid infinite recursion
       def listen():
-         EClass.EClass.GetInstance().initialData['slides'] = self.slides
          EClass.EClass.GetInstance().connection.registerMessageListener(
             'sync current slide', self.OnSync
          )
