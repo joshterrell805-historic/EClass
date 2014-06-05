@@ -13,7 +13,6 @@ class KickWindow(wx.Frame):
       self.SetBackgroundColour('#FFFFFF')
       
       self.student = student 
-      print self.student.username + '\'s initial kicked status: ' + ('True' if self.student.IsKicked() else 'False')
       mainSizer = wx.BoxSizer(wx.VERTICAL)
       buttonsSizer = wx.BoxSizer(wx.HORIZONTAL)
       
@@ -41,21 +40,13 @@ class KickWindow(wx.Frame):
 
    def OnAccept(self, event):
       self.student.SetKicked(True)
-      # Send a kick notification to the student (no message value needed)
+      # Send a kick notification to the student (no message value used)
       EClass.EClass.GetInstance().connection.send(
          'kick notification', {'pickle': 'needs this'}, self.student.username
       )
       EClass.EClass.GetInstance().connection.CloseConnection(self.student.username)
       # TODO get the current Roster and update the student's display color
-      # once the Roster stuff is done and using a set of Students
       self.Destroy()
-      
-   # TODO documentation
-   def NotifyStudent(self, message, student):
-      if EClass.EClass.GetInstance().user.isStudent():
-         wx.MessageBox('You have been kicked from the presentation, but you ' +
-          'may continue to edit your layers and view the presentation file.', 
-          'Kick Notification', wx.OK | wx.ICON_INFORMATION)
       
    def OnCancel(self, event):
       self.Destroy()

@@ -15,6 +15,8 @@ class RosterWindow(wx.Frame):
 
       self.rosterModel = EClass.GetInstance().roster
       self.rosterModel.setView(self)
+      # TODO Update docs
+      self.currStudentPanel = None
 
       self.SetClientSizeWH(300, 700)
       self.parent = parent
@@ -74,6 +76,12 @@ class RosterWindow(wx.Frame):
    def ShowStudentPanel(self, event):
       selName = self.rosterListBox.GetStringSelection()
       self.rosterStaticPanel.sizer.Clear()
-      self.rosterStaticPanel.sizer.Add(RosterItemPanel(self.rosterStaticPanel, self.rosterModel.studentsPresent[self.rosterListBox.GetSelection()]), 1, wx.EXPAND)
+      
+      # Ensure that there is never more than one RosterItemPanel existing
+      # because wxPython sucks and will have the old ones handle click events
+      # even if they are not visible or the top panel
+      self.currStudentPanel and self.currStudentPanel.Destroy()
+      self.currStudentPanel = RosterItemPanel(self.rosterStaticPanel, self.rosterModel.studentsPresent[self.rosterListBox.GetSelection()])
+      self.rosterStaticPanel.sizer.Add(self.currStudentPanel, 1, wx.EXPAND)
       self.rosterStaticPanel.Refresh()
       self.SendSizeEvent()
