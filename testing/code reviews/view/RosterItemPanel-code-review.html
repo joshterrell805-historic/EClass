@@ -1,0 +1,45 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Code Review for RosterItemPanel.py</title>
+   <style>
+      tt {
+         font-weight: normal;
+      }
+      .title {
+         font-weight: bold;
+      }
+   </style>
+</head>
+<body bgcolor="white">
+   <p align="center"><font size="+2">
+         <strong>Code Review for RosterItemPanel.py
+            <br>Josh Terrell (jmterrel@calpoly.edu)</strong>
+   </font></p>
+
+   <br>
+   <br>
+
+   <p class='title'>Class <tt>RosterItemPanel</tt>:</p><ul>
+      <li>Informative class doc</li>
+      <li>Incorrect classname "RosterItem" -&gt; "RosterItemPanel"</li>
+   </ul>
+
+   <p class='title'>Instance Members <tt>student</tt>, <tt>rosterItemModel</tt>:</p><ul>
+      <li>Undocumented yet used in several places.</li>
+   </ul>
+
+   <p class='title'>Method <tt>__init__</tt>:</p><ul>
+      <li>Bueno. Clean usage of linebreaks to separate tasks</li>
+   </ul>
+
+   <p class='title'>Methods <tt>HandButton</tt>, <tt>LayersButton</tt>,
+         <tt>OpenPermissions</tt>, <tt>OpenKickWindow</tt>:</p><ul>
+      <li>No docs</li>
+      <li>Should be private (then no need for api docs) EG __HandButton</li>
+      <li>Find consistent naming scheme. We've been using On___ (eg OnHandButton)
+         throughout much of the code.</li>
+   </ul>
+
+</body>
+</html>

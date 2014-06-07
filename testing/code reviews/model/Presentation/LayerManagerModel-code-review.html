@@ -1,0 +1,53 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Code Review for LayerManagerModel.py</title>
+   <style>
+      tt {
+         font-weight: normal;
+      }
+      .title {
+         font-weight: bold;
+      }
+   </style>
+</head>
+<body bgcolor="white">
+   <p align="center"><font size="+2">
+         <strong>Code Review for LayerManagerModel.py
+            <br>Josh Terrell (jmterrel@calpoly.edu)</strong>
+   </font></p>
+
+   <br>
+   <br>
+
+   <p class='title'>Class <tt>LayerManagerModel</tt>:</p><ul>
+      <li>Not a fan of the name. I think we agreed earlier that we wanted all models to be without the suffix (eg LayerManager, Presentation, Layer, ...) and all views to have a suffix (if necessary) eg PresenationWindow LayerManagerWindow, EClassWindow...</li>
+   </ul></p>
+   <p class='title'>Undocumented Methods <tt>SetCurrentLayer</tt>, <tt>AddObject</tt>, <tt>RemoveObject</tt>, <tt>ChangeObjPos</tt>:</p><ul>
+   </ul></p>
+
+   <p class='title'>Instance variables <tt>layers</tt>, <tt>parent</tt>:</p><ul>
+      <li>clear, consise docs</li>
+   </ul></p>
+
+   <p class='title'>Method <tt>AddObject</tt>, <tt>RemoveObject</tt>:</p><ul>
+      <li>comment "only add/remove object if layer is not locked and is visible" would be nice</li>
+   </ul></p>
+
+   <p class='title'>Method <tt>ChangeObjPos</tt>:</p><ul>
+      <li>comment "only move object if layer is not locked and is visible" would be nice</li>
+      <li>You have a reference to the object, no need to search for the same object in <tt>self.layers</tt>. You can much more easily do a switch for the object type and modify the object passed directly instead of adding the extra `for loop` layer.</li>
+   </ul></p>
+
+   <p class='title'>Method <tt>DeleteLayer</tt>:</p><ul>
+      <li>comment "only delete valid, unlocked layers" would be nice</li>
+      <li>no need to reset the presentation's layer variable. <tt>self.layers</tt> and <tt>presentation.slides[curslide].layers</tt> should refer to the same array.</li>
+   </ul></p>
+
+   <p class='title'>Method <tt>NewLayer</tt>:</p><ul>
+      <li>rather than reversing the layers, appending the layer, than re-reversing the layers (effectively adding the layer to the beggining) you can do <tt>self.layers.insert(0, layer)</tt><a href="https://docs.python.org/2/library/array.html#array.array.insert">array.insert (python docs)</a></li>
+      <li>no need to reset the presentation's layer variable. <tt>self.layers</tt> and <tt>presentation.slides[curslide].layers</tt> should refer to the same array.</li>
+   </ul></p>
+
+</body>
+</html>
