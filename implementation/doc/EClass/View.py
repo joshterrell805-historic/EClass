@@ -290,27 +290,22 @@ class RosterWindow(wx.Frame):
       """
       pass
 
-   def AddRosterItem(self, fpb, username):
+   def Redraw(self, event):
       """
-      Adds a new roster item to the roster.
-      """
-      pass
-
-   def AddStudent(self, event):
-      """
-      Adds a student to the roster.
+      Updates the two lists of students to show which students are present and which ones are absent
+      as students login and logout.
       """
       pass
 
-   def Remove(self, event):
-      """
-      Removes a student from the roster.
-      """
-      pass
-
-   def onClose(self, event):
+   def OnClose(self, event):
       """
       Hides the roster window and unchecks the "Show Roster" menu item in the "View" menu.
+      """
+      pass
+
+   def ShowStudentPanel(self, event):
+      """
+      Shows the student panel that is associated with the selected student that is present.
       """
       pass
 
@@ -393,6 +388,20 @@ class RosterItemPanel(wx.Panel):
       """
       Opens the 'Kick Confirmation' window where the presenter confirms or cancels kicking
       a student.
+      """
+      pass
+
+class RosterStaticPanel(wx.Panel):
+   """
+   The static panel is the panel that is the parent panel to each RosterItemPanel that displays when a student is
+   selected.
+
+   @author: Carson Carroll (ccarro03@calpoly.edu)
+   """
+
+   def __init__(self, parent):
+      """
+      Initializes the panel's sizer as well as its initial background color.
       """
       pass
 

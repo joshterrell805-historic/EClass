@@ -50,6 +50,7 @@ class ForumWindow(wx.Frame):
 
 
    def CloseForum(self, event):
+      self.parent.showForumMenuItem.Check(False)
       self.Close()
 
    def Refresh(self):

@@ -274,39 +274,24 @@ class Roster:
       """
       pass
 
-   def AddNewStudent(self, student):
+   def setView(self, student):
       """
-      Takes a student and adds them to the roster.
-
-      @param student: The student who is to be added to the roster.
-
-      @precondition: student != None and !self.students.contains(student)
-
-      @postcondition: students.contains(student) == true
+      Initializes an instance variable the references the view object of the Roster.
       """
       pass
 
-   def RemoveStudent(self, student):
+   def SortList(self):
       """
-      Takes a student and removes them from the roster.
-
-      @param student: The student who is to be removed from the roster.
-
-      @precondition: student != None and self.student.contains(student)
-
-      @postcondition: !self.students.contains(student) and self.students.contains(student) == false
-      """
-      pass
-
-   def SortList(self, list):
-      """
-      Takes a list of students and sorts them by first name then last name in ascending order.
-
-      @param list: The list of students in the roster.
+      Sorts the list of students in the Roster as well as the sublists of present students and absent
+      students by first name.
 
       @precondition: !self.students.isEmpty()
+      @precondition: !self.presentStudents.isEmpty()
+      @precondition: !self.absentStudents.isEmpty()
 
       @postcondition: self.students.isSorted()
+      @postcondition: self.presentStudents.isSorted()
+      @postcondition: self.absentStudentstudents.isSorted()
       """
       pass
 
@@ -319,6 +304,53 @@ class Roster:
       @postcondition: return self.students + self.remoteList
       """
       pass
+
+   def AddNewStudent(self, student):
+      """
+      Takes a student and adds them to the roster.
+
+      @param student: The student who is to be added to the roster.
+
+      @precondition: student != None and !self.students.contains(student)
+
+      @postcondition: students.contains(student) == true
+      """
+      pass
+
+   def onJoin(self, username):
+      """
+      Updates the student lists to show who is present and who is absent and then redraws the view
+      to portray the information in the model.
+
+      @param username: the username of the student that just joined the presentation.
+      """
+      pass
+
+   def onLeave(self, username):
+      """
+      Updates the student lists to show who is present and who is absent and then redraws the view
+      to portray the information in the model.
+
+      @param username: the username of the student that just left the presentation.
+      """
+      pass
+
+   def setStudents(self, students):
+      """
+      Turns the list of student dictionaries into a list of Student objects.
+
+      @param students: a list of the student dictionaries.
+      """
+      pass
+
+   def findStudentByUsername(self, username):
+      """
+      Returns the student object that is associated with the given username.
+
+      @param username: the username of the student that is to be found.
+      """
+      pass
+
 
 class RosterItem:
    """

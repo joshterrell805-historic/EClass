@@ -35,9 +35,16 @@ class Forum:
       """
       pass
 
-   def Refresh(self):
+   def onMessage(self):
       """
       Refreshes the list of messages to the most up to date version.
+      """
+      """
+      Validates that the received message is from a student and then broadcasts the message to the rest of the class.
+
+      @param self: self is the instance of this object.
+      @param message: the message that is received
+      @param student: the student that sent the message
       """
       pass
 
