@@ -115,8 +115,6 @@ class WhiteboardNav(wx.Panel):
          self.selectedObj = self.findSelectedObject(whiteboardMousePos)
          self.leftdown = whiteboardMousePos
          pass
-      elif curTool == 'Attachment':
-         pass
       elif curTool == 'Text':
          # Ensure the user does not create tons of new text boxes
          if self.notesTextbox:
