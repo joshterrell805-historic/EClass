@@ -1,7 +1,8 @@
 """
 Package LayerObject defines objects and operations within a presentation.
 
-There are objects for both the presentation slides and the underlying markup (PresentationHTML). This can be seen in the Layer and LayerPermission objects.
+There are objects for both the presentation slides and the underlying markup (PresentationHTML).
+This can be seen in the Layer and LayerPermission objects.
 """
 
 import sys
@@ -17,6 +18,81 @@ class LayerObject:
    @author: Mike Sevilla (mjsevill@calpoly.edu)
    """
 
+class DrawingToolsModel:
+   """
+   A DrawingToolsModel holds the functionality of selecting any of the drawing tools from the DrawingTools
+   tool bar.
+
+   @author: Mike Sevilla (mjsevill@calpoly.edu)
+
+   @ivar selectedTool: Represents the currently selected tool
+   """
+
+   def __init__(self):
+      """
+      Initialize the selectedTool to 'None'
+      """
+      pass
+
+   def PencilToolHandler(self, event):
+      """
+      Change the selected tool to the 'Pencil'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Pencil'
+      """
+      pass
+
+   def HandToolHandler(self, event):
+      """
+      Change the selected tool to the 'Hand'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Hand'
+      """
+      pass
+
+   def TextToolHandler(self, event):
+      """
+      Change the selected tool to the 'Text'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Text'
+      """
+      pass
+
+   def CircleShapeHandler(self, event):
+      """
+      Change the selected tool to the 'Circle Shape'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Circle Shape'
+      """
+      pass
+
+   def SquareShapeHandler(self, event):
+      """
+      Change the selected tool to the 'Square Shape'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Square Shape'
+      """
+      pass
+
+   def TriangleShapeHandler(self, event):
+      """
+      Change the selected tool to the 'Triangle Shape'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Triangle Shape'
+      """
+      pass
 
 class DrawingTools:
    """
@@ -26,10 +102,7 @@ class DrawingTools:
 
    @ivar pencilTool: Tool that simulates drawing with a pencil on the layer
    @ivar handTool: Tool that is used to grab, move, or manipulate LayerObjects on a layer
-   @ivar attachmentTool: Tool that allows users to upload external media such as images to a presentation
    @ivar textTool: Tool that creates text boxes
-   @ivar basicShapesTool: Tool that allows a user to create basic shapes on the layer (circle, square, triangle)
-   @ivar basicShapesDropdown: Drop down menu for the basic shapes (circle, square, triangle)
    @ivar circleShape: Basic shape tool for a circle
    @ivar squareShape: Basic shape tool for a square
    @ivar triangleShape: Basic shape tool for a triangle
@@ -60,17 +133,6 @@ class DrawingTools:
 
       @postcondition: for (tools.ToggleTool() : DrawingTools) == False &&
       handTool.ToggleTool() == True
-      """
-      pass
-
-   def AttachmentToolHandler(self, event):
-      """
-      Handles attachment tool events when this tool is selected.
-
-      @param event: Event that called this method
-
-      @postcondition: for (tools.ToggleTool() : DrawingTools) == False &&
-      attachmentTool.ToggleTool() == True
       """
       pass
 
@@ -115,5 +177,15 @@ class DrawingTools:
 
       @postcondition: for (tools.ToggleTool() : DrawingTools) == False &&
       triangleShape.ToggleTool() == True
+      """
+      pass
+
+   def OnClose (self, event):
+      """
+      Handles closing the DrawingTools tool bar.
+
+      @precondition: showDrawingToolsMenuItem.IsChecked() == True
+
+      @postcondition: showDrawingToolsMenuItem.IsChecked() == False
       """
       pass

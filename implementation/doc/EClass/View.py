@@ -596,20 +596,66 @@ class MenuBar:
    to) file operations, edit operations, and view operations that hide/show
    various windows.
 
-   @ivar fileMenu: Menu item for all file operations
-   @ivar editMenu: Menu item for all edit operations
-   @ivar viewMenu: Menu item for all view operations
+   @ivar IDs: List holding all the IDs for each Menu and Menu Item
+   @ivar fileMenu: Sub-menu for all file operations
+   @ivar editMenu: Sub-menu for all edit operations
+   @ivar viewMenu: Sub-menu for all view operations
+   @ivar openMenuItem: Menu item to open a presentation
+   @ivar saveMenuItem: Menu item to save a presentation
+   @ivar quitMenuItem: Menu item to quit the EClass program
+   @ivar undoMenuItem: Menu item to undo the latest action
+   @ivar redoMenuItem: Menu item to redo the latest action
+   @ivar cutMenuItem: Menu item to cut selected objects
+   @ivar copyMenuItem: Menu item to copy selected objects
+   @ivar pasteMenuItem: Menu item to paste cut or copied objects
+   @ivar selectAllMenuItem: Menu item to select all objects
+   @ivar selectNoneMenuItem: Menu item to deselect all selected objects
+   @ivar showRosterMenuItem: Menu item to show the Roster
+   @ivar showDrawingToolsMenuItem: Menu item to show the Drawing Tools
+   @ivar showLayerManagerMenuItem: Menu item to show the Layer Manager
+   @ivar showApprovalTrackerMenuItem: Menu item to show the Approval Tracker
+   @ivar showForumMenuItem: Menu item to show the Forum
+   @ivar showAskQuestionMenuItem: Menu item to show the Ask Question window
+   @ivar fullScreenMenuItem: Menu item to toggle full screen on the EClass program
 
    @author: Mike Sevilla (mjsevill@calpoly.edu)
    """
 
-   def Quit(self, event):
+   def InitLocalVars(self, event):
       """
-      Quits the EClass program.
+      Creates and returns a list of all IDs for each menu and menu item.
 
-      On success, the EClass program quits.
+      On success, the function returns a list of all IDs
 
-      On failure, the EClass program is still running.
+      On failure, the function does not return a list of all IDs
+
+      @param event: Event that calls this method.
+      """
+      pass
+
+   def OpenPresentation(self, event):
+      """
+      Opens the window allowing the user to open a pre-made presentation into
+      the EClass program.
+
+      On success, the EClass program opens the .html file.
+
+      On failure, the EClass program does not open the selected .html file.
+
+      @param event: Event that calls this method
+      """
+      pass
+
+   def SavePresentation(self, event):
+      """
+      Opens the window allowing the user to save the current presentation as either a
+      new presentation or overwrite the existing presentation.
+
+      On success, the EClass program saves the .html file.
+
+      On failure, the EClass program does not save the selected .html file.
+
+      @param event: Event that calls this method
       """
       pass
 
@@ -663,6 +709,16 @@ class MenuBar:
       """
       pass
 
+   def ToggleAskQuestion(self, event):
+      """
+      Shows/Hides the Ask Question window.
+
+      @param event: Event that calls this method.
+
+      @postcondition: askQuestion.Toggle() == !askQuestion.Toggle()
+      """
+      pass
+
    def ToggleFullScreen(self, event):
       """
       Sets the EClass window to full screen or original size.
@@ -670,5 +726,17 @@ class MenuBar:
       @param event: Event that calls this method.
 
       @postcondition: parent.IsFullScreen() = !parent.IsFullScreen()
+      """
+      pass
+
+   def Quit(self, event):
+      """
+      Quits the EClass program.
+
+      On success, the EClass program quits.
+
+      On failure, the EClass program is still running.
+
+      @param event: Event that calls this method.
       """
       pass
