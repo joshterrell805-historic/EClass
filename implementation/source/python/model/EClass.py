@@ -97,6 +97,8 @@ class EClass():
 
          if identifier == 'presentation':
             self.presentation.loadInitialData(obj)
+         elif identifier == 'forum':
+            self.forum.loadInitialData(obj)
          else:
             raise Exception(
                "Unhandled initial data '" + identifier + "'"

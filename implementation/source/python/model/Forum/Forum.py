@@ -16,6 +16,9 @@ class Forum:
          EClass.EClass.GetInstance().connection.registerMessageListener(
             'new message', self.onMessage
          )
+         EClass.EClass.GetInstance().registerOnSaveListener(
+            'forum', self.onSaveListener
+         )
       wx.CallLater(1, listen)
 
    # Add message gets called by the view only when a new message is
@@ -58,3 +61,18 @@ class Forum:
          # us
          self.messagesList.append(message)
          self.view and self.view.Refresh()
+
+   def onSaveListener(self, eventType, identifier):
+      assert identifier == 'forum'
+      if eventType == 'save initial data for student':
+         messages = map(Message.toDict, self.messagesList)
+         return {'messages': messages}
+
+   def loadInitialData(self, data):
+      assert len(self.messagesList) == 0, \
+      "there's a message in the forum before initial data was received"
+
+      # data =  same object returned from onSaveListener
+      messages = map(Message.fromDict, data['messages'])
+      self.messagesList.extend(messages)
+      self.view and self.view.Refresh()
