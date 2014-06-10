@@ -74,7 +74,13 @@ class EClass():
       self.connection.close()
       sys.exit()
 
-   def setPresentation(self, path):
+   def savePresentationToFile(self, path):
+      pass
+
+   def loadPresentationFromFile(self, path):
       EClass.GetInstance().presentation.SetPath(path)
       EClass.GetInstance().presentation.Slidify()
       EClass.GetInstance().setUpLayerManager()
+
+   def registerOnSaveListener(self, identifier, callback):
+      pass

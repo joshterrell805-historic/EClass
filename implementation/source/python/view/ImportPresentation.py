@@ -50,7 +50,7 @@ class ImportPresentation(wx.Frame):
       self.parent.importPresentation.Hide()
       self.parent.initialPrompt.Destroy()
       
-      EClass.GetInstance().setPresentation(
+      EClass.GetInstance().loadPresentationFromFile(
          self.parent.importPresentation.GetPresentationPath()
       )
       self.parent.menuBar.layerManager.UpdateLayers()
