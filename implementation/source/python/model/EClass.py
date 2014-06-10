@@ -33,12 +33,7 @@ class EClass():
       self.roster = Roster()
       self.forum = Forum()
       self.questionList = QuestionList()
-      # this is an object sent to every client when they connect.
-      # you may modify it (eclass.initialData['my value'] = crap),
-      # but do not overwrite it (eclass.initialData = crap)
-      # this value appears in the client at view/JoinPresentation.callback
-      # as the "data" field of response
-      self.initialData = {}
+      self.__saveListeners = {}
 
       # the logged in user, None if logged out
       self.user = None
@@ -83,4 +78,27 @@ class EClass():
       EClass.GetInstance().setUpLayerManager()
 
    def registerOnSaveListener(self, identifier, callback):
-      pass
+      if identifier in self.__saveListeners:
+         raise Exception("'" + identifier + "'is not unique.")
+      self.__saveListeners[identifier] = callback
+
+   def getStudentInitialData(self):
+      data = {}
+      for identifier in self.__saveListeners:
+         data[identifier] = self.__saveListeners[identifier](
+            'save initial data for student', identifier
+         )
+      return data
+
+   def loadInitialData(self, data):
+      for identifier in data:
+         # obj = whatever you returned from 'callback' in registerOnSaveListener
+         obj = data[identifier]
+
+         if identifier == 'presentation':
+            self.presentation.loadInitialData(obj)
+         else:
+            raise Exception(
+               "Unhandled initial data '" + identifier + "'"
+            )
+            

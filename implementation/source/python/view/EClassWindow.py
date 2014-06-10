@@ -39,11 +39,7 @@ class EClassWindow(wx.Frame):
    def onClose(self, event):
       EClass.GetInstance().exit()
       sys.exit()
-   def setPresentation(self, presentationHTML):
-      f = open('presentation.html', 'w')
-      f.write(presentationHTML)
-      f.close()
-      EClass.GetInstance().loadPresentationFromFile('presentation.html')
+   def showPresentation(self):
       self.menuBar.layerManager.UpdateLayers()
       self.whiteboard = WhiteboardNav(self)
       self.SendSizeEvent()

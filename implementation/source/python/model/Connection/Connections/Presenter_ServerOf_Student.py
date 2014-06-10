@@ -51,7 +51,7 @@ class Presenter_ServerOf_Student(BaseConnection):
                response['reason'] = 'You may not rejoin a presentation you\'ve been kicked from'
             else:
                import EClass
-               response['data'] = EClass.EClass.GetInstance().initialData
+               response['data'] = EClass.EClass.GetInstance().getStudentInitialData()
          self.send({
             'code' : 'join',
             'response' : response

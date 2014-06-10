@@ -10,6 +10,7 @@ class Presentation:
       self.slides = []
       self.SetPath(path)
       self.currSlideNum = 0
+      self.rawHTML = None
       # Infinite recurion without using CallLater
       # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
       # Wait a second, then get the instance to avoid infinite recursion
@@ -17,7 +18,24 @@ class Presentation:
          EClass.EClass.GetInstance().connection.registerMessageListener(
             'sync current slide', self.OnSync
          )
+         EClass.EClass.GetInstance().registerOnSaveListener(
+            'presentation', self.onSaveListener
+         )
       wx.CallLater(1, listen)
+
+   def onSaveListener(self, eventType, identifier):
+      assert identifier == 'presentation'
+      if eventType == 'save initial data for student':
+         assert self.rawHTML is not None
+         return {'presentationHTML': self.rawHTML}
+
+   def loadInitialData(self, data):
+      # data is the object we returned to the caller of onSaveListener, above
+      f = open('presentation.html', 'w')
+      f.write(data['presentationHTML'])
+      f.close()
+      EClass.EClass.GetInstance().loadPresentationFromFile('presentation.html')
+
 
    def MoveToNextSlide(self):
       if self.currSlideNum < len(self.slides) - 1:

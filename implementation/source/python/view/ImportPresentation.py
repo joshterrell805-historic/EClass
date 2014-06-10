@@ -58,9 +58,6 @@ class ImportPresentation(wx.Frame):
       self.parent.SendSizeEvent()
       self.parent.Hide()
       HostPresentation(self.parent).Show()
-      EClass.GetInstance().initialData['presentationHTML'] = (
-         EClass.GetInstance().presentation.rawHTML
-      )
 
    def CancelSelectPresentation(self, event):
       self.parent.initialPrompt.Show()
