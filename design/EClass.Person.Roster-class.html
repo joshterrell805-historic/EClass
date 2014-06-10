@@ -105,11 +105,12 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#AddNewStudent" class="summary-sig-name">AddNewStudent</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a name="setView"></a><span class="summary-sig-name">setView</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">student</span>)</span><br />
-      Takes a student and adds them to the roster.</td>
+      Initializes an instance variable the references the view object of 
+      the Roster.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.AddNewStudent">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.setView">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -123,28 +124,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#RemoveStudent" class="summary-sig-name">RemoveStudent</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">student</span>)</span><br />
-      Takes a student and removes them from the roster.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.RemoveStudent">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#SortList" class="summary-sig-name">SortList</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">list</span>)</span><br />
-      Takes a list of students and sorts them by first name then last name 
-      in ascending order.</td>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#SortList" class="summary-sig-name">SortList</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Sorts the list of students in the Roster as well as the sublists of 
+      present students and absent students by first name.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.SortList">source&nbsp;code</a></span>
             
@@ -165,6 +147,100 @@
       names.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.GetRoster">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#AddNewStudent" class="summary-sig-name">AddNewStudent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Takes a student and adds them to the roster.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.AddNewStudent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#onJoin" class="summary-sig-name">onJoin</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>)</span><br />
+      Updates the student lists to show who is present and who is absent 
+      and then redraws the view to portray the information in the model.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.onJoin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#onLeave" class="summary-sig-name">onLeave</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>)</span><br />
+      Updates the student lists to show who is present and who is absent 
+      and then redraws the view to portray the information in the model.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.onLeave">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#setStudents" class="summary-sig-name">setStudents</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">students</span>)</span><br />
+      Turns the list of student dictionaries into a list of Student 
+      objects.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.setStudents">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Person.Roster-class.html#findStudentByUsername" class="summary-sig-name">findStudentByUsername</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">username</span>)</span><br />
+      Returns the student object that is associated with the given 
+      username.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Person-pysrc.html#Roster.findStudentByUsername">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -243,6 +319,76 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="SortList"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SortList</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.SortList">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sorts the list of students in the Roster as well as the sublists of 
+  present students and absent students by first name.</p>
+  <dl class="fields">
+  </dl>
+<div class="fields">      <strong>Preconditions:</strong>
+      <ul class="nomargin-top">
+        <li>
+        !self.students.isEmpty()
+        </li>
+        <li>
+        !self.presentStudents.isEmpty()
+        </li>
+        <li>
+        !self.absentStudents.isEmpty()
+        </li>
+      </ul>
+      <strong>Postconditions:</strong>
+      <ul class="nomargin-top">
+        <li>
+        self.students.isSorted()
+        </li>
+        <li>
+        self.presentStudents.isSorted()
+        </li>
+        <li>
+        self.absentStudentstudents.isSorted()
+        </li>
+      </ul>
+</div></td></tr></table>
+</div>
+<a name="GetRoster"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetRoster</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.GetRoster">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Concatenates all the lists of studetns and returns one full list of 
+  names.</p>
+  <dl class="fields">
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        !self.students.isEmpty()
+      </p>
+      <p><strong>Postcondition:</strong>
+        return self.students + self.remoteList
+      </p>
+</div></td></tr></table>
+</div>
 <a name="AddNewStudent"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -273,93 +419,105 @@
       </p>
 </div></td></tr></table>
 </div>
-<a name="RemoveStudent"></a>
+<a name="onJoin"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">RemoveStudent</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">student</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">onJoin</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.RemoveStudent">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.onJoin">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Takes a student and removes them from the roster.</p>
+  <p>Updates the student lists to show who is present and who is absent and
+  then redraws the view to portray the information in the model.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>student</code></strong> - The student who is to be removed from the roster.</li>
+        <li><strong class="pname"><code>username</code></strong> - the username of the student that just joined the presentation.</li>
     </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        student != None and self.student.contains(student)
-      </p>
-      <p><strong>Postcondition:</strong>
-        !self.students.contains(student) and 
-        self.students.contains(student) == false
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="SortList"></a>
+<a name="onLeave"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">SortList</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">list</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">onLeave</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.SortList">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.onLeave">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Takes a list of students and sorts them by first name then last name 
-  in ascending order.</p>
+  <p>Updates the student lists to show who is present and who is absent and
+  then redraws the view to portray the information in the model.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>list</code></strong> - The list of students in the roster.</li>
+        <li><strong class="pname"><code>username</code></strong> - the username of the student that just left the presentation.</li>
     </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        !self.students.isEmpty()
-      </p>
-      <p><strong>Postcondition:</strong>
-        self.students.isSorted()
-      </p>
-</div></td></tr></table>
+</td></tr></table>
 </div>
-<a name="GetRoster"></a>
+<a name="setStudents"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">GetRoster</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setStudents</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">students</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.GetRoster">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.setStudents">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Concatenates all the lists of studetns and returns one full list of 
-  names.</p>
+  <p>Turns the list of student dictionaries into a list of Student 
+  objects.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>students</code></strong> - a list of the student dictionaries.</li>
+    </ul></dd>
   </dl>
-<div class="fields">      <p><strong>Precondition:</strong>
-        !self.students.isEmpty()
-      </p>
-      <p><strong>Postcondition:</strong>
-        return self.students + self.remoteList
-      </p>
-</div></td></tr></table>
+</td></tr></table>
+</div>
+<a name="findStudentByUsername"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">findStudentByUsername</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">username</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Person-pysrc.html#Roster.findStudentByUsername">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the student object that is associated with the given 
+  username.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>username</code></strong> - the username of the student that is to be found.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
@@ -388,7 +546,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 21 23:52:45 2014
+    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:33 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

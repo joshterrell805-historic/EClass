@@ -55,94 +55,154 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="EClass-module.html">Package EClass</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">EClass is a presentation tool which allows students to interactively follow</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">a presentation by taking notes on the presentation itself, ask the presenter</tt> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">questions, rate how well they understand the presentation at any given moment,</tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">and converse in a forum with other students.</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">There are three types of applications that interact in EClass: EClass</tt> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">(presenter logged in), EClass (student logged in), and the central server.</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">Documentation about how these applications interact behind the scenes is</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">described in the U{networking documentation &lt;THIS_WILL_BE_REMOVED_TO_CREATE_A_RELATIVE_LINK../documentation/design/networking.html&gt;}. Also, see EClass.Connection below to see</tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">the model of the EClass side of the connection.</tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">@author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
-<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">"Person"</tt><tt class="py-op">,</tt> <tt class="py-string">"Presentation"</tt><tt class="py-op">,</tt> <tt class="py-string">"Connection"</tt><tt class="py-op">]</tt> </tt>
-<a name="EClass"></a><div id="EClass-def"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="EClass-toggle" onclick="return toggle('EClass');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.EClass-class.html">EClass</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="EClass-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="EClass-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">   EClass is a collection of all the highest level models in the EClass program</tt> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">   including (but not limited to) the presentation, layer manager, and logged in</tt> </tt>
-<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">   user.</tt> </tt>
-<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar presentation: the Presentation model</tt> </tt>
-<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar user: the logged in user (None for no logged in user)</tt> </tt>
-<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar layerManagerModel: the model for the Layer Manager</tt> </tt>
-<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu, Kevin Le kle17@calpoly.edu</tt> </tt>
-<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
-<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
-<a name="EClass.__init__"></a><div id="EClass.__init__-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="EClass.__init__-toggle" onclick="return toggle('EClass.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="EClass.__init__-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="EClass.__init__-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">      Private! see EClass.GetInstance()</tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
-<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">   <tt class="py-decorator">@</tt><tt class="py-decorator">staticmethod</tt> </tt>
-<a name="EClass.GetInstance"></a><div id="EClass.GetInstance-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="EClass.GetInstance-toggle" onclick="return toggle('EClass.GetInstance');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#GetInstance">GetInstance</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="EClass.GetInstance-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="EClass.GetInstance-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">      Get an instance of this singleton which holds a reference to important</tt> </tt>
-<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring">      top-level models.</tt> </tt>
-<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">      @return: the EClass instance</tt> </tt>
-<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: isinstance(@return, EClass)</tt> </tt>
-<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
-<a name="EClass.Login"></a><div id="EClass.Login-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="EClass.Login-toggle" onclick="return toggle('EClass.Login');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#Login">Login</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">password</tt><tt class="py-op">,</tt> <tt class="py-param">onSuccess</tt><tt class="py-op">,</tt> <tt class="py-param">onFailure</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="EClass.Login-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="EClass.Login-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">      Attempt to login the user.</tt> </tt>
-<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring">      If the login succeeds, self.user is set to an instance of Presenter or</tt> </tt>
-<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">      Student depending on the credentials of the user, and the onSuccess</tt> </tt>
-<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">      callback is called.</tt> </tt>
-<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">      If the login fails, self.user remains None and onFailure is called.</tt> </tt>
-<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">      @param username: the username of the user </tt> </tt>
-<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring">      @param password: the password of the user</tt> </tt>
-<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">      @param onSuccess: the callback to be called if the authorizaiton request</tt> </tt>
-<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">      succeeds (passed 0 arguments)</tt> </tt>
-<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">      @param onFailure: the callback called if the authorization request fails</tt> </tt>
-<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">      passed one argument, a string stating the reason that the requst failed.</tt> </tt>
-<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.user == None</tt> </tt>
-<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt>
-<a name="EClass.SetUpLayerManager"></a><div id="EClass.SetUpLayerManager-def"><a name="L70"></a><tt class="py-lineno">70</tt> <a class="py-toggle" href="#" id="EClass.SetUpLayerManager-toggle" onclick="return toggle('EClass.SetUpLayerManager');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#SetUpLayerManager">SetUpLayerManager</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="EClass.SetUpLayerManager-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="EClass.SetUpLayerManager-expanded"><a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize the Layer Manager's model.</tt> </tt>
-<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: isinstance(self.layerManagerModel, LayerManagerModel)</tt> </tt>
-<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div><a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"> </tt>
-<a name="EClass.exit"></a><div id="EClass.exit-def"><a name="L78"></a><tt class="py-lineno">78</tt> <a class="py-toggle" href="#" id="EClass.exit-toggle" onclick="return toggle('EClass.exit');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#exit">exit</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="EClass.exit-collapsed" style="display:none;" pad="++" indent="+++++++"></div><div id="EClass.exit-expanded"><a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
-<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"><tt class="py-docstring">      Close the EClass model cleaning up any resources that need to be cleaned</tt> </tt>
-<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"><tt class="py-docstring">      (mainly networking connections). </tt> </tt>
-<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line"><tt class="py-docstring">      NOTE: this may pre-maturely close the program with a SIGKILL if twisted</tt> </tt>
-<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line"><tt class="py-docstring">      can't be shut down. This is a issue we're working on, but for now all</tt> </tt>
-<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"><tt class="py-docstring">      other cleanup should be called before calling this method.</tt> </tt>
-<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
-<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
-</div></div><a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">EClass is a presentation tool which allows students to interactively follow</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">a presentation by taking notes on the presentation itself, ask the presenter</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">questions, rate how well they understand the presentation at any given moment,</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">and converse in a forum with other students.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">There are three types of applications that interact in EClass: EClass</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">(presenter logged in), EClass (student logged in), and the central server.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">Documentation about how these applications interact behind the scenes is</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">described in the U{networking documentation &lt;THIS_WILL_BE_REMOVED_TO_CREATE_A_RELATIVE_LINK../documentation/design/networking.html&gt;}. Also, see EClass.Connection below to see</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">the model of the EClass side of the connection.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">@author: Josh Terrell jmterrel@calpoly.edu</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">"Person"</tt><tt class="py-op">,</tt> <tt class="py-string">"Presentation"</tt><tt class="py-op">,</tt> <tt class="py-string">"Connection"</tt><tt class="py-op">]</tt> </tt>
+<a name="EClass"></a><div id="EClass-def"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="EClass-toggle" onclick="return toggle('EClass');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="EClass.EClass-class.html">EClass</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EClass-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">   <tt class="py-docstring">"""</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">   EClass is a collection of all the highest level models in the EClass program</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">   including (but not limited to) the presentation, layer manager, and logged in</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">   user.</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar presentation: the Presentation model</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar user: the logged in user (None for no logged in user)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">   @ivar layerManagerModel: the model for the Layer Manager</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">   @author: Josh Terrell jmterrel@calpoly.edu, Kevin Le kle17@calpoly.edu</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">   """</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="EClass.__init__"></a><div id="EClass.__init__-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="EClass.__init__-toggle" onclick="return toggle('EClass.__init__');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.__init__-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.__init__-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">      Private! see EClass.GetInstance()</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">   <tt class="py-decorator">@</tt><tt class="py-decorator">staticmethod</tt> </tt>
+<a name="EClass.GetInstance"></a><div id="EClass.GetInstance-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="EClass.GetInstance-toggle" onclick="return toggle('EClass.GetInstance');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#GetInstance">GetInstance</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.GetInstance-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.GetInstance-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">      Get an instance of this singleton which holds a reference to important</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">      top-level models.</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">      @return: the EClass instance</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: isinstance(@return, EClass)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="EClass.Login"></a><div id="EClass.Login-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="EClass.Login-toggle" onclick="return toggle('EClass.Login');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#Login">Login</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">password</tt><tt class="py-op">,</tt> <tt class="py-param">onSuccess</tt><tt class="py-op">,</tt> <tt class="py-param">onFailure</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.Login-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.Login-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">      Attempt to login the user.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">      If the login succeeds, self.user is set to an instance of Presenter or</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">      Student depending on the credentials of the user, and the onSuccess</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">      callback is called.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">      If the login fails, self.user remains None and onFailure is called.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">      @param username: the username of the user </tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">      @param password: the password of the user</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">      @param onSuccess: the callback to be called if the authorizaiton request</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">      succeeds (passed 0 arguments)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">      @param onFailure: the callback called if the authorization request fails</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">      passed one argument, a string stating the reason that the requst failed.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">      @precondition: self.user == None</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="EClass.SetUpLayerManager"></a><div id="EClass.SetUpLayerManager-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="EClass.SetUpLayerManager-toggle" onclick="return toggle('EClass.SetUpLayerManager');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#SetUpLayerManager">SetUpLayerManager</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.SetUpLayerManager-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.SetUpLayerManager-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">      Initialize the Layer Manager's model.</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">      @postcondition: isinstance(self.layerManagerModel, LayerManagerModel)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="EClass.exit"></a><div id="EClass.exit-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="EClass.exit-toggle" onclick="return toggle('EClass.exit');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#exit">exit</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.exit-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.exit-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">      Close the EClass model cleaning up any resources that need to be cleaned</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">      (mainly networking connections). </tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">      NOTE: this may pre-maturely close the program with a SIGKILL if twisted</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">      can't be shut down. This is a issue we're working on, but for now all</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">      other cleanup should be called before calling this method.</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">      <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="EClass.savePresentationToFile"></a><div id="EClass.savePresentationToFile-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="EClass.savePresentationToFile-toggle" onclick="return toggle('EClass.savePresentationToFile');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#savePresentationToFile">savePresentationToFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.savePresentationToFile-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.savePresentationToFile-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">      Save the presentation to file. Invokes all the callbacks registered via</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">      registerOnSaveListener and passes them 'save to file' as the `eventType`.</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">      @param path: (string) the path to save the presentation to</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div><a name="EClass.loadPresentationFromFile"></a><div id="EClass.loadPresentationFromFile-def"><a name="L96"></a><tt class="py-lineno"> 96</tt> <a class="py-toggle" href="#" id="EClass.loadPresentationFromFile-toggle" onclick="return toggle('EClass.loadPresentationFromFile');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#loadPresentationFromFile">loadPresentationFromFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.loadPresentationFromFile-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.loadPresentationFromFile-expanded"><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">      Load the presentation from file. All data saved is iterated over</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">      and routed to the proper classes.</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">      @param path: (string) the path to load the presentation from</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div><a name="EClass.registerOnSaveListener"></a><div id="EClass.registerOnSaveListener-def"><a name="L103"></a><tt class="py-lineno">103</tt> <a class="py-toggle" href="#" id="EClass.registerOnSaveListener-toggle" onclick="return toggle('EClass.registerOnSaveListener');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#registerOnSaveListener">registerOnSaveListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">identifier</tt><tt class="py-op">,</tt> <tt class="py-param">callback</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.registerOnSaveListener-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.registerOnSaveListener-expanded"><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">      Register a callback to be called whenever we need to save the state</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">      of the presentation. The presentation needs to be saved at two distinct</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">      times: when a student logs in (we need to send them the InitialData)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">      and when the user requests to save the presentation.</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">      The callback function::</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">         callback(eventType, identfier)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">            * eventType: either 'save to file' or 'save initial data for student'.</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring">            * identifier: the same identifier passed to `registerOnSaveListener`</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring">               (note: `identifier` may be useful if the same callback is registered</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">               multiple times with differing identifiers).</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">            </tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">         This callback must return None or a SIMPLE OBJECT.</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">         This object must be able to be pickled and depickled and it must be able to be stored as a JSON string.</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">         The object may be/contain: dict, array, string, number, boolean, None.</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">         None should be returned (or don't use the "return" keyword) if no data should be stored.</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">      @param identifier: a string unique to all calls of this function. This</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">      identifier is used as a dictionary key to store the object returned</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">      by `callback`. It is also used as the dictionary key to access the</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">      same object when loading from file/network.</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">      @param callback: a callback to be called whenever we need to save data.</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div><a name="EClass.getStudentInitialData"></a><div id="EClass.getStudentInitialData-def"><a name="L128"></a><tt class="py-lineno">128</tt> <a class="py-toggle" href="#" id="EClass.getStudentInitialData-toggle" onclick="return toggle('EClass.getStudentInitialData');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#getStudentInitialData">getStudentInitialData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.getStudentInitialData-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.getStudentInitialData-expanded"><a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring">      Save the presentation to an object and send it to a student who just joined.</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">      Invokes all the callbacks registered via registerOnSaveListener and passes</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">      them 'save initial data for student' as the `eventType`.</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div><a name="EClass.loadInitialData"></a><div id="EClass.loadInitialData-def"><a name="L134"></a><tt class="py-lineno">134</tt> <a class="py-toggle" href="#" id="EClass.loadInitialData-toggle" onclick="return toggle('EClass.loadInitialData');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#loadInitialData">loadInitialData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.loadInitialData-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.loadInitialData-expanded"><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">      Load a presentation from initial data. This function is called on the</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">      student side with the same object `getStudentInitialData` produces.</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">      @param data: the object returned from `getStudentInitialData`</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div><a name="EClass.loadFileData"></a><div id="EClass.loadFileData-def"><a name="L141"></a><tt class="py-lineno">141</tt> <a class="py-toggle" href="#" id="EClass.loadFileData-toggle" onclick="return toggle('EClass.loadFileData');">-</a><tt class="py-line">   <tt class="py-keyword">def</tt> <a class="py-def-name" href="EClass.EClass-class.html#loadFileData">loadFileData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EClass.loadFileData-collapsed" style="display:none;" pad="+++" indent="+++++++"></div><div id="EClass.loadFileData-expanded"><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">      <tt class="py-docstring">"""</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">      Load a presentation from file data. This function is called</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">      with the same object `savePresentationToFile` produces.</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">      @param data: the object saved to file in `savePresentationToFile`</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">      """</tt> </tt>
+</div></div><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -175,7 +235,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 21 23:52:46 2014
+    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:34 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

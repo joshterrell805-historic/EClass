@@ -165,10 +165,31 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#SyncWithPresenter" class="summary-sig-name">SyncWithPresenter</a>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#SyncWithPresenter" class="summary-sig-name">SyncWithPresenter</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">doneSyncing</span>)</span><br />
       Set the current slide to the slide being viewed by the presenter.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.SyncWithPresenter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#OnSync" class="summary-sig-name">OnSync</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Callback used together with SyncWithPresenter to listen for sync 
+      messages between a Student and the Presenter.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.OnSync">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -263,6 +284,14 @@
     </table>
   </td>
 </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__doneSyncing"></a><span class="summary-name">__doneSyncing</span><br />
+      A callback method to update the WhiteboardNav view after syncing.
+    </td>
+  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -428,7 +457,8 @@
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">SyncWithPresenter</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SyncWithPresenter</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">doneSyncing</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.SyncWithPresenter">source&nbsp;code</a></span>&nbsp;
@@ -437,13 +467,56 @@
   
   <p>Set the current slide to the slide being viewed by the presenter.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>doneSyncing</code></strong> - A callback method to update the view after syncing.</li>
+    </ul></dd>
   </dl>
 <div class="fields">      <p><strong>Precondition:</strong>
         EClass.GetInstance().user.GetPermissions().GetPresPermLevel() != 
         PermissionLevel.Lockdown
       </p>
       <p><strong>Postcondition:</strong>
-        self.currSlideNum == (Presenter's current slide number)
+        self.currSlideNum == Presenter's current slide number
+      </p>
+</div></td></tr></table>
+</div>
+<a name="OnSync"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnSync</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">student</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.OnSync">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Callback used together with SyncWithPresenter to listen for sync 
+  messages between a Student and the Presenter. When the Presenter is 
+  receiving the message, OnSync sends a message back to the Student client 
+  with the Presenter's current slide number. When the Student is receiving 
+  the message, OnSync completes the slide change.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>message</code></strong> - A dictionary containing the Presenter's current slide number.</li>
+        <li><strong class="pname"><code>student</code></strong> - The student sending the message (when being called on the 
+          Presenter's client)</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        student != None when being called on the Presenter's client 
+        &amp;&amp; message['slideNum'] != None when being called on the 
+        Student's client
+      </p>
+      <p><strong>Postcondition:</strong>
+        self.currSlideNum == Presenter's current slide number
       </p>
 </div></td></tr></table>
 </div>
@@ -565,7 +638,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 21 23:52:45 2014
+    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:33 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

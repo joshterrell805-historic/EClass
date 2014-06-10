@@ -154,6 +154,116 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#savePresentationToFile" class="summary-sig-name">savePresentationToFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span><br />
+      Save the presentation to file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.savePresentationToFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#loadPresentationFromFile" class="summary-sig-name">loadPresentationFromFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span><br />
+      Load the presentation from file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.loadPresentationFromFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#registerOnSaveListener" class="summary-sig-name">registerOnSaveListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">identifier</span>,
+        <span class="summary-sig-arg">callback</span>)</span><br />
+      Register a callback to be called whenever we need to save the state 
+      of the presentation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.registerOnSaveListener">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#getStudentInitialData" class="summary-sig-name">getStudentInitialData</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Save the presentation to an object and send it to a student who just 
+      joined.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.getStudentInitialData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#loadInitialData" class="summary-sig-name">loadInitialData</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Load a presentation from initial data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.loadInitialData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.EClass-class.html#loadFileData" class="summary-sig-name">loadFileData</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Load a presentation from file data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass-pysrc.html#EClass.loadFileData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
 <!-- ==================== STATIC METHODS ==================== -->
 <a name="section-StaticMethods"></a>
@@ -362,6 +472,173 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="savePresentationToFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">savePresentationToFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.savePresentationToFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Save the presentation to file. Invokes all the callbacks registered 
+  via registerOnSaveListener and passes them 'save to file' as the 
+  `eventType`.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path</code></strong> - (string) the path to save the presentation to</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadPresentationFromFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadPresentationFromFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.loadPresentationFromFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Load the presentation from file. All data saved is iterated over and 
+  routed to the proper classes.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path</code></strong> - (string) the path to load the presentation from</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="registerOnSaveListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">registerOnSaveListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">identifier</span>,
+        <span class="sig-arg">callback</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.registerOnSaveListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Register a callback to be called whenever we need to save the state of
+  the presentation. The presentation needs to be saved at two distinct 
+  times: when a student logs in (we need to send them the InitialData) and 
+  when the user requests to save the presentation. The callback 
+  function:</p>
+<pre class="literalblock">
+  callback(eventType, identfier)
+     * eventType: either 'save to file' or 'save initial data for student'.
+     * identifier: the same identifier passed to `registerOnSaveListener`
+        (note: `identifier` may be useful if the same callback is registered
+        multiple times with differing identifiers).
+     
+  This callback must return None or a SIMPLE OBJECT.
+  This object must be able to be pickled and depickled and it must be able to be stored as a JSON string.
+  The object may be/contain: dict, array, string, number, boolean, None.
+  None should be returned (or don't use the &quot;return&quot; keyword) if no data should be stored.
+</pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>identifier</code></strong> - a string unique to all calls of this function. This identifier is
+          used as a dictionary key to store the object returned by 
+          `callback`. It is also used as the dictionary key to access the 
+          same object when loading from file/network.</li>
+        <li><strong class="pname"><code>callback</code></strong> - a callback to be called whenever we need to save data.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getStudentInitialData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getStudentInitialData</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.getStudentInitialData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Save the presentation to an object and send it to a student who just 
+  joined. Invokes all the callbacks registered via registerOnSaveListener 
+  and passes them 'save initial data for student' as the `eventType`.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadInitialData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadInitialData</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.loadInitialData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Load a presentation from initial data. This function is called on the 
+  student side with the same object `getStudentInitialData` produces.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>data</code></strong> - the object returned from `getStudentInitialData`</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadFileData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadFileData</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass-pysrc.html#EClass.loadFileData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Load a presentation from file data. This function is called with the 
+  same object `savePresentationToFile` produces.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>data</code></strong> - the object saved to file in `savePresentationToFile`</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -389,7 +666,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 21 23:52:45 2014
+    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:33 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

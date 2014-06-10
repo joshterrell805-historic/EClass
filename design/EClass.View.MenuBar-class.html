@@ -88,11 +88,49 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#Quit" class="summary-sig-name">Quit</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#InitLocalVars" class="summary-sig-name">InitLocalVars</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
-      Quits the EClass program.</td>
+      Creates and returns a list of all IDs for each menu and menu item.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.Quit">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.InitLocalVars">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#OpenPresentation" class="summary-sig-name">OpenPresentation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span><br />
+      Opens the window allowing the user to open a pre-made presentation 
+      into the EClass program.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.OpenPresentation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#SavePresentation" class="summary-sig-name">SavePresentation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span><br />
+      Opens the window allowing the user to save the current presentation 
+      as either a new presentation or overwrite the existing presentation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.SavePresentation">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -196,11 +234,47 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#ToggleAskQuestion" class="summary-sig-name">ToggleAskQuestion</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span><br />
+      Shows/Hides the Ask Question window.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.ToggleAskQuestion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#ToggleFullScreen" class="summary-sig-name">ToggleFullScreen</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Sets the EClass window to full screen or original size.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.ToggleFullScreen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.View.MenuBar-class.html#Quit" class="summary-sig-name">Quit</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span><br />
+      Quits the EClass program.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.Quit">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -230,8 +304,32 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a name="IDs"></a><span class="summary-name">IDs</span><br />
+      List holding all the IDs for each Menu and Menu Item
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="copyMenuItem"></a><span class="summary-name">copyMenuItem</span><br />
+      Menu item to copy selected objects
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cutMenuItem"></a><span class="summary-name">cutMenuItem</span><br />
+      Menu item to cut selected objects
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a name="editMenu"></a><span class="summary-name">editMenu</span><br />
-      Menu item for all edit operations
+      Sub-menu for all edit operations
     </td>
   </tr>
 <tr>
@@ -239,7 +337,127 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="fileMenu"></a><span class="summary-name">fileMenu</span><br />
-      Menu item for all file operations
+      Sub-menu for all file operations
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="fullScreenMenuItem"></a><span class="summary-name">fullScreenMenuItem</span><br />
+      Menu item to toggle full screen on the EClass program
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="openMenuItem"></a><span class="summary-name">openMenuItem</span><br />
+      Menu item to open a presentation
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="pasteMenuItem"></a><span class="summary-name">pasteMenuItem</span><br />
+      Menu item to paste cut or copied objects
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="quitMenuItem"></a><span class="summary-name">quitMenuItem</span><br />
+      Menu item to quit the EClass program
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="redoMenuItem"></a><span class="summary-name">redoMenuItem</span><br />
+      Menu item to redo the latest action
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="saveMenuItem"></a><span class="summary-name">saveMenuItem</span><br />
+      Menu item to save a presentation
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="selectAllMenuItem"></a><span class="summary-name">selectAllMenuItem</span><br />
+      Menu item to select all objects
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="selectNoneMenuItem"></a><span class="summary-name">selectNoneMenuItem</span><br />
+      Menu item to deselect all selected objects
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="showApprovalTrackerMenuItem"></a><span class="summary-name">showApprovalTrackerMenuItem</span><br />
+      Menu item to show the Approval Tracker
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="showAskQuestionMenuItem"></a><span class="summary-name">showAskQuestionMenuItem</span><br />
+      Menu item to show the Ask Question window
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="showDrawingToolsMenuItem"></a><span class="summary-name">showDrawingToolsMenuItem</span><br />
+      Menu item to show the Drawing Tools
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="showForumMenuItem"></a><span class="summary-name">showForumMenuItem</span><br />
+      Menu item to show the Forum
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="showLayerManagerMenuItem"></a><span class="summary-name">showLayerManagerMenuItem</span><br />
+      Menu item to show the Layer Manager
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="showRosterMenuItem"></a><span class="summary-name">showRosterMenuItem</span><br />
+      Menu item to show the Roster
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="undoMenuItem"></a><span class="summary-name">undoMenuItem</span><br />
+      Menu item to undo the latest action
     </td>
   </tr>
 <tr>
@@ -247,7 +465,7 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="viewMenu"></a><span class="summary-name">viewMenu</span><br />
-      Menu item for all view operations
+      Sub-menu for all view operations
     </td>
   </tr>
 </table>
@@ -269,25 +487,85 @@
   </td>
 </tr>
 </table>
-<a name="Quit"></a>
+<a name="InitLocalVars"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">Quit</span>(<span class="sig-arg">self</span>,
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">InitLocalVars</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.Quit">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.InitLocalVars">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Quits the EClass program.</p>
-  <p>On success, the EClass program quits.</p>
-  <p>On failure, the EClass program is still running.</p>
+  <p>Creates and returns a list of all IDs for each menu and menu item.</p>
+  <p>On success, the function returns a list of all IDs</p>
+  <p>On failure, the function does not return a list of all IDs</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - Event that calls this method.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="OpenPresentation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">OpenPresentation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.OpenPresentation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Opens the window allowing the user to open a pre-made presentation 
+  into the EClass program.</p>
+  <p>On success, the EClass program opens the .html file.</p>
+  <p>On failure, the EClass program does not open the selected .html 
+  file.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - Event that calls this method</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="SavePresentation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SavePresentation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.SavePresentation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Opens the window allowing the user to save the current presentation as
+  either a new presentation or overwrite the existing presentation.</p>
+  <p>On success, the EClass program saves the .html file.</p>
+  <p>On failure, the EClass program does not save the selected .html 
+  file.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - Event that calls this method</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -426,6 +704,33 @@
       </p>
 </div></td></tr></table>
 </div>
+<a name="ToggleAskQuestion"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ToggleAskQuestion</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.ToggleAskQuestion">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Shows/Hides the Ask Question window.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - Event that calls this method.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Postcondition:</strong>
+        askQuestion.Toggle() == !askQuestion.Toggle()
+      </p>
+</div></td></tr></table>
+</div>
 <a name="ToggleFullScreen"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -452,6 +757,32 @@
         parent.IsFullScreen() = !parent.IsFullScreen()
       </p>
 </div></td></tr></table>
+</div>
+<a name="Quit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Quit</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#MenuBar.Quit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Quits the EClass program.</p>
+  <p>On success, the EClass program quits.</p>
+  <p>On failure, the EClass program is still running.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event</code></strong> - Event that calls this method.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
 </div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
@@ -480,7 +811,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 21 23:52:45 2014
+    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:34 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

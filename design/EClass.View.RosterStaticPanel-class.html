@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.View.KickWindow</title>
+  <title>EClass.View.RosterStaticPanel</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -39,7 +39,7 @@
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
         <a href="EClass.View-module.html">Module&nbsp;View</a> ::
-        Class&nbsp;KickWindow
+        Class&nbsp;RosterStaticPanel
       </span>
     </td>
     <td>
@@ -49,37 +49,35 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.View.KickWindow-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View.RosterStaticPanel-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class KickWindow</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class RosterStaticPanel</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#RosterStaticPanel">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-     object --+                    
-              |                    
-wx._core.Object --+                
-                  |                
-wx._core.EvtHandler --+            
-                      |            
-        wx._core.Window --+        
-                          |        
- wx._windows.TopLevelWindow --+    
-                              |    
-              wx._windows.Frame --+
-                                  |
-                                 <strong class="uidshort">KickWindow</strong>
+     object --+                
+              |                
+wx._core.Object --+            
+                  |            
+wx._core.EvtHandler --+        
+                      |        
+        wx._core.Window --+    
+                          |    
+          wx._windows.Panel --+
+                              |
+                             <strong class="uidshort">RosterStaticPanel</strong>
 </pre>
 
 <hr />
-<p>KickWindow defines the window used to confirm whether or not a student
-  will be kicked.</p>
+<p>The static panel is the panel that is the parent panel to each 
+  RosterItemPanel that displays when a student is selected.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
-        Joel Wilcox (jnwilcox@calpoly.edu)
+        Carson Carroll (ccarro03@calpoly.edu)
       </p>
 </div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -104,48 +102,12 @@ wx._core.EvtHandler --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.View.KickWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">student</span>)</span><br />
-      Initialize the KickWindow view.</td>
+          <td><span class="summary-sig"><a href="EClass.View.RosterStaticPanel-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parent</span>)</span><br />
+      Initializes the panel's sizer as well as its initial background 
+      color.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.View.KickWindow-class.html#OnAccept" class="summary-sig-name">OnAccept</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Update the student's 'kicked' and 'present' statuses.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnAccept">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="EClass.View.KickWindow-class.html#OnCancel" class="summary-sig-name">OnCancel</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">event</span>)</span><br />
-      Close the window without making changes to the student's 'kicked' or 
-      'present' statuses.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnCancel">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#RosterStaticPanel.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -155,59 +117,9 @@ wx._core.EvtHandler --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
       <code>Create</code>,
-      <code>CreateStatusBar</code>,
-      <code>CreateToolBar</code>,
-      <code>DoGiveHelp</code>,
-      <code>DoMenuUpdates</code>,
-      <code>FindItemInMenuBar</code>,
-      <code>GetMenuBar</code>,
-      <code>GetStatusBar</code>,
-      <code>GetStatusBarPane</code>,
-      <code>GetToolBar</code>,
-      <code>PopStatusText</code>,
-      <code>ProcessCommand</code>,
-      <code>PushStatusText</code>,
-      <code>SetMenuBar</code>,
-      <code>SetStatusBar</code>,
-      <code>SetStatusBarPane</code>,
-      <code>SetStatusText</code>,
-      <code>SetStatusWidths</code>,
-      <code>SetToolBar</code>
-      </p>
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
-      <code>CenterOnScreen</code>,
-      <code>CentreOnScreen</code>,
-      <code>EnableCloseButton</code>,
-      <code>GetDefaultItem</code>,
-      <code>GetIcon</code>,
-      <code>GetTitle</code>,
-      <code>GetTmpDefaultItem</code>,
-      <code>Iconize</code>,
-      <code>IsActive</code>,
-      <code>IsAlwaysMaximized</code>,
-      <code>IsFullScreen</code>,
-      <code>IsIconized</code>,
-      <code>IsMaximized</code>,
-      <code>MacGetMetalAppearance</code>,
-      <code>MacGetTopLevelWindowRef</code>,
-      <code>MacGetUnifiedAppearance</code>,
-      <code>MacSetMetalAppearance</code>,
-      <code>Maximize</code>,
-      <code>OSXIsModified</code>,
-      <code>OSXSetModified</code>,
-      <code>RequestUserAttention</code>,
-      <code>Restore</code>,
-      <code>SetDefaultItem</code>,
-      <code>SetIcon</code>,
-      <code>SetIcons</code>,
-      <code>SetRepresentedFilename</code>,
-      <code>SetShape</code>,
-      <code>SetTitle</code>,
-      <code>SetTmpDefaultItem</code>,
-      <code>ShowFullScreen</code>,
-      <code>ShowWithoutActivating</code>,
+      <code>SetFocusIgnoringChildren</code>,
       <code>__repr__</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
@@ -534,11 +446,8 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
       <code>GetClassDefaultAttributes</code>
-      </p>
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
-      <code>GetDefaultSize</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>FindFocus</code>,
@@ -547,32 +456,6 @@ wx._core.EvtHandler --+
       <code>ReleaseControlId</code>,
       <code>UnreserveControlId</code>
       </p>
-    </td>
-  </tr>
-</table>
-<!-- ==================== INSTANCE VARIABLES ==================== -->
-<a name="section-InstanceVariables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Instance Variables</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-InstanceVariables"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="student"></a><span class="summary-name">student</span><br />
-      A reference to the student who may be kicked
     </td>
   </tr>
 </table>
@@ -595,19 +478,8 @@ wx._core.EvtHandler --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Frame</code></b>:
-      <code>MenuBar</code>,
-      <code>StatusBar</code>,
-      <code>StatusBarPane</code>,
-      <code>ToolBar</code>,
+    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.Panel</code></b>:
       <code>thisown</code>
-      </p>
-    <p class="indent-wrapped-lines"><b>Inherited from <code>wx._windows.TopLevelWindow</code></b>:
-      <code>DefaultItem</code>,
-      <code>Icon</code>,
-      <code>OSXModified</code>,
-      <code>Title</code>,
-      <code>TmpDefaultItem</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>wx._core.Window</code></b>:
       <code>AcceleratorTable</code>,
@@ -712,75 +584,21 @@ wx._core.EvtHandler --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">student</span>)</span>
+        <span class="sig-arg">parent</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#RosterStaticPanel.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Initialize the KickWindow view.</p>
+  <p>Initializes the panel's sizer as well as its initial background 
+  color.</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>student</code></strong> - The student to be kicked</li>
-    </ul></dd>
     <dt>Returns: EvtHandler</dt>
     <dt>Overrides:
         object.__init__
     </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="OnAccept"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnAccept</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnAccept">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Update the student's 'kicked' and 'present' statuses. Notify the 
-  roster that the student's display in the list should be changed. Close 
-  the window.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="OnCancel"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">OnCancel</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">event</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.View-pysrc.html#KickWindow.OnCancel">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Close the window without making changes to the student's 'kicked' or 
-  'present' statuses.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>event</code></strong> - The event that called this method</li>
-    </ul></dd>
   </dl>
 </td></tr></table>
 </div>

@@ -85,3 +85,63 @@ class EClass():
       other cleanup should be called before calling this method.
       """
       pass
+
+   def savePresentationToFile(self, path):
+      """
+      Save the presentation to file. Invokes all the callbacks registered via
+      registerOnSaveListener and passes them 'save to file' as the `eventType`.
+
+      @param path: (string) the path to save the presentation to
+      """
+   def loadPresentationFromFile(self, path):
+      """
+      Load the presentation from file. All data saved is iterated over
+      and routed to the proper classes.
+
+      @param path: (string) the path to load the presentation from
+      """
+   def registerOnSaveListener(self, identifier, callback):
+      """
+      Register a callback to be called whenever we need to save the state
+      of the presentation. The presentation needs to be saved at two distinct
+      times: when a student logs in (we need to send them the InitialData)
+      and when the user requests to save the presentation.
+      The callback function::
+         callback(eventType, identfier)
+            * eventType: either 'save to file' or 'save initial data for student'.
+            * identifier: the same identifier passed to `registerOnSaveListener`
+               (note: `identifier` may be useful if the same callback is registered
+               multiple times with differing identifiers).
+            
+         This callback must return None or a SIMPLE OBJECT.
+         This object must be able to be pickled and depickled and it must be able to be stored as a JSON string.
+         The object may be/contain: dict, array, string, number, boolean, None.
+         None should be returned (or don't use the "return" keyword) if no data should be stored.
+
+      @param identifier: a string unique to all calls of this function. This
+      identifier is used as a dictionary key to store the object returned
+      by `callback`. It is also used as the dictionary key to access the
+      same object when loading from file/network.
+
+      @param callback: a callback to be called whenever we need to save data.
+      """
+   def getStudentInitialData(self):
+      """
+      Save the presentation to an object and send it to a student who just joined.
+      Invokes all the callbacks registered via registerOnSaveListener and passes
+      them 'save initial data for student' as the `eventType`.
+      """
+   def loadInitialData(self, data):
+      """
+      Load a presentation from initial data. This function is called on the
+      student side with the same object `getStudentInitialData` produces.
+
+      @param data: the object returned from `getStudentInitialData`
+      """
+   def loadFileData(self, data):
+      """
+      Load a presentation from file data. This function is called
+      with the same object `savePresentationToFile` produces.
+
+      @param data: the object saved to file in `savePresentationToFile`
+      """
