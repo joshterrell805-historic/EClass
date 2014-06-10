@@ -134,21 +134,18 @@ class MenuBar:
       self.parent.importPresentation.Show()
 
    def SavePresenatation(self, e):
-      saveFileDialog = wx.FileDialog(self, "Save As", "", "", "HTML files (*.html)|*.html",
-                                     wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
+      saveFileDialog = wx.FileDialog(self.parent, "Save As", "", "",
+         "Creampie files (*.creampie)|*.creampie",
+         wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT
+      )
 
       # user decided not to save presentation
       if saveFileDialog.ShowModal() == wx.ID_CANCEL:
          return
 
       # save the current contents in the file
-      outputStream = wx.FileOutputStream(saveFileDialog.GetPath())
-
-      # file could not be saved successfully
-      if not outputStream.IsOk():
-         wx.LogError("Cannot save current contents in file '%s'.."%saveFileDialog.GetPath())
-         return
-
+      path = saveFileDialog.GetPath()
+      EClass.GetInstance().savePresentationToFile(path)
 
    def ToggleRoster(self, e):
       rosterCourseName = EClass.GetInstance().user.hostedClass['name']

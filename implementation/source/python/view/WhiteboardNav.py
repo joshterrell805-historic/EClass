@@ -23,6 +23,8 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.Layout()
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       
+      EClass.GetInstance().RefreshSlide = self.RefreshSlide
+      
       # TODO add to list of ivars in docs
       self.notesTextbox = None
       self.notesPos = None

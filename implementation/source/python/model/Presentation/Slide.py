@@ -1,7 +1,6 @@
 from Layer import Layer
 
 class Slide(object):
-   
    def __init__(self, content, layers = []):
       self.content = content
       self.layers = layers
@@ -17,7 +16,6 @@ class Slide(object):
          self.layers.append(layer)
 
    def OrderLayer(self, layer, newIndex):
-   
       if (isinstance(layer, Layer) and 
           self.layers.count(layer) == 1 and
           newIndex >= 0 and 
@@ -28,3 +26,15 @@ class Slide(object):
             # Adjust newIndex to prevent off-by-one index error
             newIndex -= 1
          self.layers.insert(newIndex, layer)
+
+   def toDict(self):
+      return {
+         'content' : self.content,
+         'layers' : map(Layer.toDict, self.layers)
+      }
+
+   @staticmethod
+   def fromDict(d):
+      return Slide(
+         d['content'], map(Layer.fromDict, d['layers'])
+      )

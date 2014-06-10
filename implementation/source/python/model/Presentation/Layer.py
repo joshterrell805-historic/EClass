@@ -42,3 +42,71 @@ class Layer:
          else:
             self.visible = True
          self.opacity = newOpacity
+
+   def toDict(self):
+      def ptToDict(pt):
+         return {
+            'x': pt.x,
+            'y': pt.y
+         }
+
+      def objToDict(obj):
+         # make a new dict rather than mutating the passed one
+         d = {
+            'type': obj['type'],
+         }
+
+         if d['type'] == 'Square':
+            d['position'] = ptToDict(obj['position'])
+            d['x_size'] = obj['x_size']
+            d['y_size'] = obj['y_size']
+
+         elif d['type'] == 'Text':
+            d['position'] = ptToDict(obj['position'])
+            d['text'] = obj['text']
+
+         elif d['type'] == 'Pencil':
+            d['points'] = map(ptToDict, obj['points'])
+
+         else:
+            raise Exception(
+               "Object type '" + d['type'] + "' cannot be translated to a dict"
+            )
+
+         return d
+         
+      return {
+         'opacity' : self.opacity,
+         'name': self.name,
+         'locked' : self.locked,
+         'objects' : map(objToDict, self.objects)
+      }
+
+   @staticmethod
+   def fromDict(d):
+      def ptFromDict(d):
+         import wx
+         return wx.Point(d['x'], d['y'])
+
+      def objFromDict(d):
+         # we don't care about making a new dict here as we do above,
+         # because here is the place we interacting with this dict
+         if d['type'] == 'Square':
+            d['position'] = ptFromDict(d['position'])
+         elif d['type'] == 'Text':
+            d['position'] = ptFromDict(d['position'])
+         elif d['type'] == 'Pencil':
+            d['points'] = map(ptFromDict, d['points'])
+         else:
+            raise Exception(
+               "Object type '" + d['type'] + "' cannot be translated from a dict"
+            )
+         return d
+
+      layer = Layer(
+         d['name'],
+         d['opacity'],
+         d['locked']
+      )
+      layer.objects = map(objFromDict, d['objects'])
+      return layer

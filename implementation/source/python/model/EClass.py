@@ -34,6 +34,8 @@ class EClass():
       self.forum = Forum()
       self.questionList = QuestionList()
       self.__saveListeners = {}
+      # set in WhiteboardNav
+      self.RefreshSlide = None
 
       # the logged in user, None if logged out
       self.user = None
@@ -70,12 +72,28 @@ class EClass():
       sys.exit()
 
    def savePresentationToFile(self, path):
-      pass
+      data = {}
+      for identifier in self.__saveListeners:
+         data[identifier] = self.__saveListeners[identifier](
+            'save to file', identifier
+         )
+      f = open(path, 'w')
+      import json
+      json.dump(data, f)
+      f.close()
 
    def loadPresentationFromFile(self, path):
-      EClass.GetInstance().presentation.SetPath(path)
-      EClass.GetInstance().presentation.Slidify()
-      EClass.GetInstance().setUpLayerManager()
+      if path.endswith('.creampie'):
+         f = open(path, 'r')
+         import json
+         data = json.load(f)
+         self.loadFileData(data)
+      elif path.endswith('.html'):
+         EClass.GetInstance().presentation.SetPath(path)
+         EClass.GetInstance().presentation.Slidify()
+         EClass.GetInstance().setUpLayerManager()
+      else:
+         raise Exception('unknown filetype: ' + path)
 
    def registerOnSaveListener(self, identifier, callback):
       if identifier in self.__saveListeners:
@@ -100,7 +118,25 @@ class EClass():
          elif identifier == 'forum':
             self.forum.loadInitialData(obj)
          else:
-            raise Exception(
-               "Unhandled initial data '" + identifier + "'"
-            )
+            if obj is not None:
+               raise Exception(
+                  "Unhandled initial data '" + identifier + "'"
+               )
             
+   def loadFileData(self, data):
+      for identifier in data:
+         # obj = whatever you returned from 'callback' in registerOnSaveListener
+         obj = data[identifier]
+
+         if identifier == 'presentation':
+            self.presentation.loadFileData(obj)
+         else:
+            if obj is not None:
+               raise Exception(
+                  "Unhandled file data '" + identifier + "'"
+               )
+      def refresh():
+         assert self.RefreshSlide is not None
+         self.RefreshSlide()
+      import wx
+      wx.CallLater(1, refresh) #lol
