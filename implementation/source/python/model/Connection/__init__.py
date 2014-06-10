@@ -182,6 +182,7 @@ class Connection(object):
    
    def CloseConnection(self, studentName):
       self.__getConnectionOf(studentName).close()
+      self.__removeConnectionOf(studentName)
       
 
    # ----- helper methods ------
@@ -261,6 +262,11 @@ class Connection(object):
       else:
          callback()
 
+   def __removeConnectionOf(self, studentName):
+      self.__presenterServer.connections.remove(
+         self.__getConnectionOf(studentName)
+      )
+
    def __startPresentationServer(self, callback, joinCallback, leaveCallback):
       def setPresenter(listeningPort):
          if not self.__presenterServer:
@@ -274,7 +280,10 @@ class Connection(object):
          connection.setCentralClient(self.__centralClient)
          connection.setJoinCallback(joinCallback)
          connection.setMessageListener(self.onMessage)
-         connection.setLeaveCallback(leaveCallback)
+         def onLeave(username):
+            self.__removeConnectionOf(username)
+            leaveCallback(username)
+         connection.setLeaveCallback(onLeave)
 
       if not self.__presenterServer:
          Server.listen(
