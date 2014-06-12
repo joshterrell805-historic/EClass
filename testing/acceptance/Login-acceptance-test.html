@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>
+Login User Acceptance Testing
+</title>
+</head>
+<body>
+<strong>CSC 309 User Acceptance Testing</strong>
+<table align=center border=1 cellpadding=4>
+<tr>
+   <td valign=top><strong>Case No.</strong>
+   <td valign=top><strong>User Inputs and Commands</strong>
+   <td valign=top><strong>Expected Output</strong>
+   <td valign=top><strong>Remarks</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <td valign=top><strong>Results</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<tr>
+   <td valign=top>1
+   <td valign=top>Enter in valid username and password as a presenter while server is up and click login
+   <td valign=top>Main EClass window pops up and login window is hidden
+   <td valign=top>Testing the username/password validation of a presenter
+   <td valign=top>Pass
+<tr>
+   <td valign=top>2
+   <td valign=top>Enter in valid username and password as a student while server is up and click login
+   <td valign=top>Select a presentation prompt pops up
+   <td valign=top>Testing the username/password validation of a student
+   <td valign=top>Pass
+<tr>
+   <td valign=top>3
+   <td valign=top>Enter in invalid username and password while server is up and click login
+   <td valign=top>Error message 'invalid credentials'
+   <td valign=top>Testing the username/password validation
+   <td valign=top>Pass
+<tr>
+   <td valign=top>4
+   <td valign=top>Enter in invalid or valid credentials while the server is down and click login
+   <td valign=top>Error message 'Failed to connect to central server'
+   <td valign=top>Testing the server validation
+   <td valign=top>Pass
+</table>
+</body>
+</html>
