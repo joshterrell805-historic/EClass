@@ -1,0 +1,498 @@
+
+<html>
+<font size=+2>
+<head>
+<title>
+CSC 309 Lecture Notes Week 1
+</title>
+</head>
+<body bgcolor=white>
+<p align=center>
+<strong>CSC 309 Lecture Notes Week 1
+<br>
+Introduction to the Course
+<br>
+Introduction to the Design Process</strong>
+</p>
+</font>
+<br>
+<br>
+<br>
+<ol type=I>
+<p> <li>
+<strong>First-day handouts.</strong>
+<ol type=A>
+<p> <li>
+Syllabus
+<p> <li>
+Milestone 1, including,
+<ol type=1>
+<p> <li>
+SCO format
+<p> <li>
+work breakdown format
+<p> <li>
+meeting minutes format
+</ol>
+</ol>
+<br><br>
+<p> <li>
+<strong>Review of software systems life cycle (see Figure 1).</strong>
+
+<br class=slide>
+
+<br>
+<br>
+<hr>
+<a name="Figure Software system lifecyle">
+<p align=center>
+<img src="figures/1-fig1.gif">
+</p>
+<p align=center> Figure 1:  Software system lifecyle.  </p>
+<hr>
+</a>
+<br>
+
+<ol type=A>
+<p> <li>
+<em>Requirements Analysis</em> determines what end users want and need from a
+software system.
+<p> <li>
+<em>Specification</em> formally defines user requirements.
+<p> <li>
+<em>Design</em> defines and organizes the major operational components of the
+system.
+<p> <li>
+<em>Implementation</em> defines operational details in a programming language.
+</ol>
+<br><br>
+<p> <li>
+<strong>Review of requirements analysis and specification phases of the life
+cycle.</strong>
+<ol type=A>
+<p> <li>
+The result of requirements analysis and specification is a document that
+specifies <em>what the system does</em> as opposed to <em>how it works</em>.
+<p> <li>
+In general, requirements analysis and specification are the domain of CSC 308.
+<p> <li>
+This quarter we will work three selected requirements specifications from 308:
+EClass, Grader, and TestTool.
+<ol type=1>
+<p> <li>
+You can choose to work on the same requirements specification you wrote last
+quarter.
+<p> <li>
+Alternatively, you can choose different spec from last quarter, a previous
+quarter, or a combination of two or more specs.
+<p> <li>
+We will discuss details during the first week lab meetings.
+</ol>
+<a name="spec-urls">
+<p> <li>
+Links to the specs from last and previous quarters are located at:
+</a>
+<font size=-2>
+<a href="../specs">
+<tt>http://www.csc.calpoly.edu/~gfisher/classes/309/specs</tt>
+</a>
+</font>
+</a>
+</ol>
+<br><br>
+<br class=slide>
+<p> <li>
+<strong>Major goals of the design process</strong>
+<ol type=A>
+<p> <li>
+Adhere to the specification
+<ol type=1>
+<p> <li>
+Any deviation from the specification must be recorded and approved in a
+Specification Change Order (SCO).
+<p> <li>
+The specification plus SCOs form a binding <em>contract</em> between the
+customer and the design team.
+<p> <li>
+No changes to specification can be made without consulting with the customer
+and completing a signed SCO.
+</ol>
+<p> <li>
+Achieve design quality goals:
+<ol type=1>
+<p> <li>
+<em>Traceability</em> -- elements of the design trace back to corresponding
+elements of the specification.
+<p> <li>
+<em>Modularity</em> -- elements of the design are organized into logically
+cohesive modules.
+<p> <li>
+<em>Portability</em> -- the design is sufficiently general that it can be
+implemented on a variety of platforms and a variety of (related) programming
+languages.
+<p> <li>
+<em>Maintainability</em> -- the system is designed such that it can be easily
+repaired and enhanced.
+<p> <li>
+<em>Reusability</em> -- where appropriate, modules are designed to promote
+their reuse in other (future) designs.
+</ol>
+</ol>
+<br><br>
+<p> <li>
+<strong>Details of the 309 design process (see Figures 2
+
+<br class=slide>
+<br>
+<br>
+<hr>
+<a name="Figure The 309 design process">
+<p align=center>
+<img src="figures/design-process-diagram.gif">
+</p>
+<p align=center> Figure 2:  The 309 design process.  </p>
+<hr>
+</a>
+<br>
+
+and 3).</strong>
+
+<br>
+<br>
+<hr>
+<a name="Figure Design Process Fully Expanded">
+<p align=center>
+<img src="figures/design-process-expansion.gif">
+</p>
+<p align=center> Figure 3:  Design Process Fully Expanded.  </p>
+<hr>
+</a>
+<br>
+
+
+<ol type=A>
+<p> <li>
+<strong><em>Design High-Level Architecture.</em></strong>
+<ol type=1>
+<p> <li>
+The step starts by deriving the high-level architecture of the program from the
+requirements model constructed in the <tt><font size=-1>Specify</font></tt>
+step.
+<ol type=a>
+<p> <li>
+The modularization defined for the structural model is carried forward into the
+packaging of the program design.
+<p> <li>
+This enforces traceability between the abstract specification and the
+corresponding architectural program design.
+</ol>
+<p> <li>
+The high level architecture of a program is defined in terms of data classes
+and computational functions.
+<ol type=a>
+<p> <li>
+These are derived, respectively, from the objects and operations of the
+abstract requirements model.
+<p> <li>
+The program classes and functions derived directly from the requirements model
+constitute the <em>model</em> portion of the design.
+<p> <li>
+The program classes derived directly from concrete user interface are the
+<em>view</em> portion of the design.
+</ol>
+</ol>
+<p> <li>
+<strong><em>Apply Design Patterns.</em></strong>
+<ol type=1>
+<p> <li>
+Once the top-level design elements are derived from the requirements
+specification, software design patterns are applied.
+<p> <li>
+A design pattern is a pre-packaged piece of design, based on experience that
+has been gained over the years by software engineers.
+<p> <li>
+High level design patterns can be used to improve the software architecture,
+which entails how the major software components relate to one another and
+communicate.
+<p> <li>
+A widely-used design pattern for end-user software is <em>Model-View-
+Process</em> (MVP).
+<p> <li>
+The MVP pattern organizes the design into three major segments:
+<ol type=a>
+<p> <li>
+the <em>Model</em> is directly traceable to the abstract functionality defined
+in the requirements model, and is independent of the concrete end-user
+interface;
+<p> <li>
+the <em>View</em> segment of the design is devoted specifically and solely to
+the end-user interface
+<p> <li>
+the <em>Process</em> segment defines underlying processing support for the
+model, in particular processing that encapsulates platform-dependent aspects of
+the design.
+</ol>
+<p> <li>
+Other patterns are employed to assist with design of program data, control, and
+communication.
+</ol>
+<p> <li>
+<strong><em>Refine Model and Process Design.</em></strong>
+<ol type=1>
+<p> <li>
+The derived, pattern-based design produced by the first two steps must be
+refined into a concrete, object-oriented program design.
+<p> <li>
+Model package design is refined using object-oriented design principles,
+information hiding conventions, and other design guidelines.
+<p> <li>
+Derived functions must be associated with specific model classes, along with
+other class refinements.
+<ol type=a>
+<p> <li>
+The function-assignment step is necessary because the operations of the
+functional specification do not necessarily belong to specific objects.
+<p> <li>
+In terms of typical nomenclature, functions associated with classes become
+class <em>methods</em>, with appropriate adjustment to method signatures based
+on object-oriented design concepts.
+<p> <li>
+Other necessary design refinements are in the areas of class member visibility,
+inheritance, and the selection of concrete data representations.
+<p> <li>
+In a modern program design, data representations are typically selected from
+reusable program libraries.
+</ol>
+<p> <li>
+Process class design entails determining the underlying processing support that
+is necessary to produce an efficient program.
+<ol type=a>
+<p> <li>
+To encapsulate platform-dependent data processing, process classes are
+interfaced with model classes via controller, adaptor, and wrapper classes.
+<p> <li>
+These model/process interface classes encapsulate aspects of the program that
+are specific to specific operating systems, hardware platforms, and external
+data stores.
+</ol>
+<p> <li>
+An important part of model and process refinement is detailed control flow
+design.
+<ol type=a>
+<p> <li>
+Dataflow relationships defined in the specification are refined into concrete
+procedural or multi-process control flow
+<p> <li>
+Other important aspects of control-flow design are functional control flow,
+event handling, and exception handling.
+</ol>
+</ol>
+<p> <li>
+<strong><em>Refine User Interface Design.</em></strong>
+<br class=slide>
+<ol type=1>
+<p> <li>
+The fourth step of design is devoted to refining the end-user interface.
+<p> <li>
+In the current state of the art, user interface design typically relies heavily
+on libraries of reusable interface classes.
+<p> <li>
+The class libraries define commonly-used interface elements and layouts.
+<p> <li>
+In a Model-View design, the model classes must be refined to support the view
+classes, based on the specifics of the user interface.
+<p> <li>
+A particularly useful design pattern in this regard is called the
+"Observer/Observable" pattern.
+<p> <li>
+This pattern defines the way in which view classes can be systematically
+updated in response to changes made by the user to data values stored in the
+model classes.
+</ol>
+<p> <li>
+<strong><em>Design for Non-Functional Requirements</em></strong>
+<ol type=1>
+<p> <li>
+Any non-functional requirements that were not modeled in the specification or
+are not yet incorporated in the design are dealt with in this step.
+<p> <li>
+The purpose of this step is to ensure that all system-related non-functional
+requirements are fully addressed in the design.
+</ol>
+<p> <li>
+<strong><em>Formally Specify Design.</em></strong>
+<ol type=1>
+<p> <li>
+As the detailed program design is established, the design is formally
+specified.
+<p> <li>
+This entails the precise definition of function (i.e., method) input/output
+signatures, followed by the specification of preconditions and postconditions
+for all functions.
+<p> <li>
+For the model functions derived directly from the specification, the function
+conditions are derived directly from the preconditions and postconditions
+defined in the derived-from operations.
+<p> <li>
+For other model and process functions, preconditions and postconditions are
+defined with the same methodology used in the abstract specification model.
+<p> <li>
+Namely, preconditions are expressions that must be true before function
+invocation; postconditions must be true after function executions.
+</ol>
+<p> <li>
+<strong><em>Apply Design Heuristics.</em></strong>
+<ol type=1>
+<p> <li>
+Various design heuristics (i.e., general guidelines) can be applied throughout
+the process of design.
+<p> <li>
+Minimizing coupling among program elements aims to reduce the dependency and
+communication to only that which is essential
+<p> <li>
+Maximizing cohesion means that program elements that are functionally related
+are grouped together, without extraneous unrelated elements.
+<p> <li>
+Other heuristics can be applied, such as controlling the size of various
+program components.
+</ol>
+<p> <li>
+<strong><em>Define SCOs and Iterate Back as Necessary.</em></strong>
+<ol type=1>
+<p> <li>
+During the course of program design, the developer may discover aspects of the
+requirements specification that need to be modified or enhanced.
+<p> <li>
+In such cases, the designer defines a <em>specification change order</em> that
+clearly states the necessary modifications or enhancements.
+<p> <li>
+This formalized change order is in keeping with the high-level process
+decomposition into problem definition and problem solution phases.
+<ol type=a>
+<p> <li>
+As discussed above, the <tt><font size=-1>Analyze</font></tt> and <tt><font
+size=-1>Specify</font></tt> process steps comprise the problem definition
+phase.
+<p> <li>
+The <tt><font size=-1>Design</font></tt> and <tt><font
+size=-1>Implement</font></tt> steps then comprise the problem solution phase.
+</ol>
+<p> <li>
+In this software process, as in a traditional problem-solving process, changing
+the problem definition while the solution is underway requires careful
+consideration.
+<p> <li>
+The specification change order codifies this careful consideration in a precise
+way.
+</ol>
+</ol>
+<br><br>
+<br class=slide>
+<p> <li>
+<strong>Comments on the 309 Design Process.</strong>
+<ol type=A>
+<p> <li>
+The process employs techniques from a number of design methodologies,
+including:
+<ol type=1>
+<p> <li>
+The UML (unified modeling language) of Rumbaugh, et al.
+<p> <li>
+The structured design techniques of Yourdon, et al.
+<p> <li>
+The MVP (Model-View-Process) technique (aka, MVC -- Model-View-Controller),
+used originally with the Smalltalk language, and now used extensively in Java
+designs.
+</ol>
+<p> <li>
+The process works well for information processing systems with substantial end-
+user interfaces, which are the types of systems developed in 308 and 309.
+<p> <li>
+For other types of system, similar process steps can be used, but possibly in a
+different order, and with different domain-specific methodologies.
+<p> <li>
+Other major system types include:
+<ol type=1>
+<p> <li>
+Realtime systems, such as communications software.
+<p> <li>
+Utility systems, such as compilers and operating systems.
+<p> <li>
+Embedded systems, such as device drivers and process controllers.
+</ol>
+</ol>
+<br><br>
+<p> <li>
+<strong>The languages of system specification and design.</strong>
+<ol type=A>
+<p> <li>
+One of the problems to be confronted in designing from a formal specification
+is the translation from the requirements/specification language into the
+design/implementation language.
+<p> <li>
+In some cases, specification languages may differ from programming languages,
+since there are different forces influencing the design of the two types of
+languages.
+<ol type=1>
+<p> <li>
+In the case of specs written in Fall 2012, the specs are written in a subset of
+Java, which is the same as the 309 design and implementation language.
+<p> <li>
+Specs from past quarters of 308 used a modeling language different from Java.
+<p> <li>
+The data dictionary generated from the formal specification can be useful, but
+you are not expected to read or understand the compilable model code.
+<p> <li>
+If you use requirements from previous quarters, you'll need to generate the
+Java model from scratch, but this should not be an overly difficult task.
+</ol>
+</ol>
+<br><br>
+<p> <li>
+<strong>Milestone 2 Discussion</strong>
+<ol type=A>
+<p> <li>
+See the writeup.
+<p> <li>
+We'll go over key points in class.
+</ol>
+</ol>
+<br>
+<br>
+<br>
+<center>
+<font size=-1>
+<hr width=80% size=3>
+<a href="..">
+index
+</a>
+|
+<a href="../lectures">
+lectures
+</a>
+|
+<a href="../handouts">
+handouts
+</a>
+|
+<a href="../examples">
+examples
+</a>
+|
+<a href="../doc">
+doc
+</a>
+|
+<a href="../lib">
+lib
+</a>
+|
+<a href="../grades">
+grades
+</a>
+<hr width=80% size=3>
+</font>
+</center>
+</body>
+</html>
+
