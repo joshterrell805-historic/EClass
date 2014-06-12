@@ -27,7 +27,7 @@ class LayerTest(unittest.TestCase):
       """
       self.layer = Layer(None, None, None)
       self.assertEquals(self.layer.name, "Layer")
-      self.assertEquals(self.layer.opacity, 100)
+      self.assertEquals(self.layer.opacity, 255)
       self.assertFalse(self.layer.locked)
       
       self.layer = Layer("Joey", 50, True)

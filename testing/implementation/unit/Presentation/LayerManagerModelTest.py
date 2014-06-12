@@ -96,6 +96,11 @@ class LayerManagerModelTest(unittest.TestCase):
       2        bad opacity                  false           
       3        good index and opacity       true           
       """
+      class Object:
+         pass
+      self.presentation = Object()
+      self.presentation.slides = [Slide("",[])]
+      self.presentation.currSlideNum = 0
       layer = Layer("test", 50, False)
       self.layerManager = LayerManagerModel(self, [layer])
       origMan = self.layerManager
