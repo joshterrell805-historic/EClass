@@ -10,6 +10,7 @@ class Presentation:
       self.slides = []
       self.SetPath(path)
       self.currSlideNum = 0
+      self.isSynced = True # TODO doc
       self.rawHTML = None
       # Infinite recurion without using CallLater
       # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
@@ -27,7 +28,7 @@ class Presentation:
       assert identifier == 'presentation'
       if eventType == 'save initial data for student':
          assert self.rawHTML is not None
-         return {'presentationHTML': self.rawHTML}
+         return {'presentationHTML': self.rawHTML, 'currSlide': self.currSlideNum}
       elif eventType == 'save to file':
          assert not len(self.slides) == 0
          return {
@@ -47,10 +48,14 @@ class Presentation:
       self.slides = map(Slide.fromDict, data['slides'])
       self.currSlideNum = data['slide num']
 
-
    def MoveToNextSlide(self):
       if self.currSlideNum < len(self.slides) - 1:
          self.currSlideNum += 1
+         # If user is presenter, broadcast change to all students
+         if EClass.EClass.GetInstance().user.isPresenter():
+            self.OnSync({'slideNum': self.currSlideNum}, None)
+         else:
+            self.isSynced = False
          return True
       else:
          return False
@@ -58,6 +63,11 @@ class Presentation:
    def MoveToPreviousSlide(self):
       if self.currSlideNum != 0:
          self.currSlideNum -= 1
+         # If user is presenter, broadcast change to all students
+         if EClass.EClass.GetInstance().user.isPresenter():
+            self.OnSync({'slideNum': self.currSlideNum}, None)
+         else:
+            self.isSynced = False
          return True
       else:
          return False
@@ -65,14 +75,19 @@ class Presentation:
    def MoveToSlide(self, slideNum):
       if slideNum > 0 and slideNum <= len(self.slides):
          self.currSlideNum = slideNum - 1
+         # If user is presenter, broadcast change to all students
+         if EClass.EClass.GetInstance().user.isPresenter():
+            self.OnSync({'slideNum': self.currSlideNum}, None)
+         else:
+            self.isSynced = False
          return True
       else:
          return False
 
-   def SyncWithPresenter(self, doneSyncing):
+   def SyncWithPresenter(self):
       if (EClass.EClass.GetInstance().user.GetPermissions().GetPresPermLevel() 
        != PermissionLevel.PermissionLevel.Lockdown):
-         self.__doneSyncing = doneSyncing
+         self.isSynced = True
          
          # The message only contains a slide number if it's coming from the Presenter
          message = {'slideNum': None}
@@ -85,9 +100,10 @@ class Presentation:
          EClass.EClass.GetInstance().connection.send(
             'sync current slide', message, student
          )
-      else:
+      elif self.isSynced:
          self.currSlideNum = message['slideNum']
-         self.__doneSyncing()
+         EClass.EClass.GetInstance().RefreshSlide()
+         EClass.EClass.GetInstance().Redraw()
       
    def SetPath(self, path):
       self.path = path

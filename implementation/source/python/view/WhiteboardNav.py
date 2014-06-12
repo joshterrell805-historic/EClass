@@ -24,6 +24,7 @@ class WhiteboardNav(wx.Panel):
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       
       EClass.GetInstance().RefreshSlide = self.RefreshSlide
+      EClass.GetInstance().Redraw = self.Redraw
       
       # TODO add to list of ivars in docs
       self.notesTextbox = None
@@ -266,7 +267,7 @@ class WhiteboardNav(wx.Panel):
          self.Redraw()
          
    def SyncWithPresenter(self, event):
-      self.presentation.SyncWithPresenter(self.RefreshSlide)
+      self.presentation.SyncWithPresenter()
       self.RefreshSlide()
       self.Redraw()
 

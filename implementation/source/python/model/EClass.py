@@ -138,5 +138,7 @@ class EClass():
       def refresh():
          assert self.RefreshSlide is not None
          self.RefreshSlide()
+         assert self.Redraw is not None
+         self.Redraw()
       import wx
       wx.CallLater(1, refresh) #lol
