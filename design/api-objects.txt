@@ -285,7 +285,7 @@ EClass.View.LayerManager.__init__	EClass.View.LayerManager-class.html#__init__
 EClass.View.LayerView	EClass.View.LayerView-class.html
 EClass.View.LayerView.parent	EClass.View.LayerView-class.html#parent
 EClass.View.LayerView.ToggleVisible	EClass.View.LayerView-class.html#ToggleVisible
-EClass.View.LayerView.layerListObject	EClass.View.LayerView-class.html#layerListObject
+EClass.View.LayerView.LayerListObject	EClass.View.LayerView-class.html#LayerListObject
 EClass.View.LayerView.ToggleLock	EClass.View.LayerView-class.html#ToggleLock
 EClass.View.LayerView.ChangePermissions	EClass.View.LayerView-class.html#ChangePermissions
 EClass.View.LayerView.__init__	EClass.View.LayerView-class.html#__init__

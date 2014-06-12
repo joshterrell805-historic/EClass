@@ -10,12 +10,10 @@ class LayerManagerModel:
       if index >= 0 and len(self.layers) > 0 and index <= len(self.layers):
          self.currLayer = index
       
-   # TODO update documentation - newObj is a dictionary with all needed info for an object
    def AddObject(self, newObj):
       if ( self.layers[self.currLayer].locked == False 
        and self.layers[self.currLayer].visible == True):
          self.layers[self.currLayer].objects.append(newObj)
-         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
       
    def RemoveObject(self, objToRemove):
       if ( self.layers[self.currLayer].locked == False 
@@ -24,7 +22,6 @@ class LayerManagerModel:
           for obj in self.layers[self.currLayer].objects:
              if obj == objToRemove:
                 del self.layers[self.currLayer].objects[i]
-                self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
              i += 1
              
    def ChangeObjPos(self, objToChange, oldPos, newPos):
@@ -32,34 +29,25 @@ class LayerManagerModel:
        and self.layers[self.currLayer].visible == True):
           xdiff = newPos.x - oldPos.x
           ydiff = newPos.y - oldPos.y
-          i = 0
-          for obj in self.layers[self.currLayer].objects:
-             if obj == objToChange:
-                if obj['type'] == 'Pencil':
-                   for point in objToChange['points']:
-                      point.x += xdiff
-                      point.y += ydiff
-                   self.layers[self.currLayer].objects[i] = objToChange
-                else:
-                   self.layers[self.currLayer].objects[i]['position'].x += xdiff
-                   self.layers[self.currLayer].objects[i]['position'].y += ydiff
-                self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
-             i += 1
+          if objToChange['type'] == 'Pencil':
+             for point in objToChange['points']:
+                point.x += xdiff
+                point.y += ydiff
+          else:
+             objToChange['position'].x += xdiff
+             objToChange['position'].y += ydiff
             
    def DeleteLayer(self, index):
       if index >= 0 and len(self.layers) > 0 and index <= len(self.layers) and self.layers[index].locked == False:
          del self.layers[index]
-         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
 
    def NewLayer(self, layer):
       if isinstance(layer, Layer):
          self.layers.reverse()
          self.layers.append(layer)
          self.layers.reverse()
-         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers
          self.currLayer = 0
          
    def ChangeOpacity(self, index, newOpacity):
       if index > -1 and index < len(self.layers) and newOpacity > -1 and newOpacity <= 255:
          self.layers[index].SetOpacity(newOpacity)
-         self.parent.presentation.slides[self.parent.presentation.currSlideNum].layers = self.layers

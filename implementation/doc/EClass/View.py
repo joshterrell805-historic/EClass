@@ -474,12 +474,20 @@ class LayerView:
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
    @ivar parent: A reference to the parent class
+   @ivar index: Position in Layer manager
+   @ivar layer: The layer this class is displaying
    """
-   def layerListObject(self, parent):
+   def LayerListObject(self, parent, index, checked):
       """
       Gets the layer represented as a sizer.
 
       @param parent: A reference to the EClass window.
+      @param index: Index in the layer manager.
+      @param checked: Whether the layer is Selected
+      
+      @precondition: index > -1 && index < len(self.parent.layers)
+      
+      @postcondition: self.index == index
       """
       pass
 
@@ -529,6 +537,9 @@ class NewLayerWindow:
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
    @ivar parent: A reference to the parent class
+   @ivar layer: A reference to the new layer
+   @ivar newName: A reference to the new name box
+   @ivar slider: A reference to the slider
    """
    
    def __init__(self, parent):
@@ -566,6 +577,7 @@ class ChangePermWindow(wx.Frame):
 
    @ivar parent: A reference to the parent class
    @ivar layer: A reference to the layer we are changing
+   @ivar listBox1: Selection for permissions
    """
    def __init__(self, parent, layer):
       """

@@ -1,5 +1,5 @@
 class Layer:
-   def __init__(self, name, opacity, lock):
+   def __init__(self, name = None, opacity = None, lock = False):
       self.objects = []
       if opacity == 0:
          self.visible = False

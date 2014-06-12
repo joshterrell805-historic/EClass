@@ -11,25 +11,25 @@ class ChangePermWindow(wx.Frame):
       super(ChangePermWindow, self).__init__(parent, size = (200,400))
       self.parent = parent
       self.layer = layer
-      self.sizer = wx.BoxSizer(wx.VERTICAL)
-      self.controls = wx.BoxSizer(wx.HORIZONTAL)
+      sizer = wx.BoxSizer(wx.VERTICAL)
+      controls = wx.BoxSizer(wx.HORIZONTAL)
 
-      self.namelabel = wx.StaticText(self, -1, 'Choose Some Students:', size = (150, 40), style=wx.ALIGN_CENTER)
+      namelabel = wx.StaticText(self, -1, 'Choose Some Students:', size = (150, 40), style=wx.ALIGN_CENTER)
       otherOptions = ["All", "None"]
       self.listBox1 = wx.ListBox(choices=otherOptions + EClass.GetInstance().rosterModel.GetRoster(), name='listBox1', parent=self, size=wx.Size(184, 256), style=wx.ALIGN_CENTER)
       
-      self.make = wx.Button(self, -1, 'OK', size = (100, 40), style=wx.ALIGN_CENTER)
-      self.make.Bind(wx.EVT_BUTTON, self.ChangeLayerPerm)
-      self.controls.AddStretchSpacer(1)
-      self.controls.Add(self.make)
-      self.controls.AddStretchSpacer(1)
+      make = wx.Button(self, -1, 'OK', size = (100, 40), style=wx.ALIGN_CENTER)
+      make.Bind(wx.EVT_BUTTON, self.ChangeLayerPerm)
+      controls.AddStretchSpacer(1)
+      controls.Add(make)
+      controls.AddStretchSpacer(1)
 
-      self.sizer.Add(self.namelabel)
-      self.sizer.Add(self.listBox1)
-      self.sizer.Add(self.controls)
+      sizer.Add(namelabel)
+      sizer.Add(self.listBox1)
+      sizer.Add(controls)
 
-      self.sizer.SetMinSize(size = (100,10))
-      self.SetSizer(self.sizer)
+      sizer.SetMinSize(size = (100,10))
+      self.SetSizer(sizer)
       self.Show()
 
    def ChangeLayerPerm(self, event):

@@ -222,7 +222,8 @@ class PermissionLevel():
    
 class Layer:
    """
-   A layer is a overlay on top of slides, which the user can draw or write on.
+   A layer is a list of objects drawn on top of slides. Lines are drawn as a 
+   bunch of points and everything else is vector based.
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
