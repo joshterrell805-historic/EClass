@@ -36,6 +36,7 @@ class EClass():
       self.__saveListeners = {}
       # set in WhiteboardNav
       self.RefreshSlide = None
+      self.Redraw = None
 
       # the logged in user, None if logged out
       self.user = None
@@ -122,6 +123,7 @@ class EClass():
                raise Exception(
                   "Unhandled initial data '" + identifier + "'"
                )
+      self.refreshView()
             
    def loadFileData(self, data):
       for identifier in data:
@@ -135,10 +137,12 @@ class EClass():
                raise Exception(
                   "Unhandled file data '" + identifier + "'"
                )
-      def refresh():
+      self.refreshView()
+   def refreshView(self):
+      def _refresh():
          assert self.RefreshSlide is not None
          self.RefreshSlide()
          assert self.Redraw is not None
          self.Redraw()
       import wx
-      wx.CallLater(1, refresh) #lol
+      wx.CallLater(1, _refresh) #lol

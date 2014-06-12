@@ -42,6 +42,7 @@ class Presentation:
       f.write(data['presentationHTML'])
       f.close()
       EClass.EClass.GetInstance().loadPresentationFromFile('presentation.html')
+      self.currSlideNum = data['currSlide'];
 
    def loadFileData(self, data):
       # data is the object we returned to the caller of onSaveListener, above
