@@ -28,7 +28,10 @@ class Presentation:
       assert identifier == 'presentation'
       if eventType == 'save initial data for student':
          assert self.rawHTML is not None
-         return {'presentationHTML': self.rawHTML, 'currSlide': self.currSlideNum}
+         return {
+            'slides': map(Slide.toDict, self.slides),
+            'currSlide': self.currSlideNum
+         }
       elif eventType == 'save to file':
          assert not len(self.slides) == 0
          return {
@@ -38,10 +41,7 @@ class Presentation:
 
    def loadInitialData(self, data):
       # data is the object we returned to the caller of onSaveListener, above
-      f = open('presentation.html', 'w')
-      f.write(data['presentationHTML'])
-      f.close()
-      EClass.EClass.GetInstance().loadPresentationFromFile('presentation.html')
+      self.slides = map(Slide.fromDict, data['slides'])
       self.currSlideNum = data['currSlide'];
 
    def loadFileData(self, data):
