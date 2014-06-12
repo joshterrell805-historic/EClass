@@ -27,7 +27,6 @@ class Presentation:
    def onSaveListener(self, eventType, identifier):
       assert identifier == 'presentation'
       if eventType == 'save initial data for student':
-         assert self.rawHTML is not None
          return {
             'slides': map(Slide.toDict, self.slides),
             'currSlide': self.currSlideNum

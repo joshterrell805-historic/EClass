@@ -5,7 +5,6 @@ from Connections.Presenter_ServerOf_Student import Presenter_ServerOf_Student as
 from Connections.Student_ClientOf_Presenter import Student_ClientOf_Presenter as PresenterClient
 from Responses import *
 from twisted.internet import reactor
-import EClass
 
 # This class is defined as a package-level class since this is the only class
 # most of our model will need to interface with for networking.
@@ -304,3 +303,5 @@ class Connection(object):
       assert len(connections) is 1, \
       username + "'s connections: " + str(len(connections))
       return connections[0]
+
+import EClass
