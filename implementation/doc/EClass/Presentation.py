@@ -233,11 +233,12 @@ class Layer:
    @ivar name: Name of the given Layer
    @ivar locked: Boolean determining whether the user can edit this layer.
    """
-   def __init__(self, name, lock):
+   def __init__(self, name, opacity, lock):
       """
       Initialize a Layer.
 
       @param name: The name of the new layer.
+      @param opacity: How visible the layer is.
       @param lock: Whether the layer is locked.
       """
       pass
@@ -271,6 +272,8 @@ class Layer:
       Set the name of a layer.
 
       @param newName: The new name of the layer.
+      
+      @precondition: newName != ""
 
       @postcondition: self.name == newName
       """
@@ -281,6 +284,8 @@ class Layer:
       Set the opacity of a layer.
 
       @param newOpacity: The new opacity of the layer.
+      
+      @precondition: newOpacity > -1 && newOpacity < 256
 
       @postcondition: self.opacity == newOpacity
       """
@@ -293,6 +298,7 @@ class LayerManagerModel:
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
    @ivar layers: A Collection of Layers that represent all graphics on a Slide
+   @ivar currLayer: The current Layer selected in the layer manager
    @ivar parent: A reference to the parent class
    """
    def __init__(self, parent, layers):
@@ -327,5 +333,50 @@ class LayerManagerModel:
 
       @param index: index of layer to change opacity on.
       @postcondition: self.layers[index].opacity != old(self.layers[index].opacity)
+      """
+      pass
+      
+   def SetCurrentLayer(self, index):
+      """
+      Changes the current layer
+
+      @param index: index of layer to change opacity on.
+      @precondition: index > -1 && index < len(self.layers)
+      @postcondition: self.currLayer == index
+      """
+      pass
+   
+   def AddObj(self, newObj):
+      """
+      Adds an object to the current layer
+
+      @param newObj: the new object to add to the layer
+      @precondition: self.layers[self.currLayer].locked == False 
+                     && self.layers[self.currLayer].visible == True
+      @postcondition: len(self.layers[self.currLayer].objects) == len(old(self.layers[self.currLayer].objects)) + 1
+      """
+      pass
+      
+   def RemoveObject(self, objToRemove):
+      """
+      Removes an object to the current layer
+
+      @param objToRemove: the object to remove
+      @precondition: self.layers[self.currLayer].locked == False 
+                     && self.layers[self.currLayer].visible == True
+      @postcondition: len(self.layers[self.currLayer].objects) == len(old(self.layers[self.currLayer].objects)) - 1
+      """
+      pass
+      
+   def ChangeObjPos(self, objToChange, oldPos, newPos):
+      """
+      Changes position of an object on the current layer
+
+      @param objToChange: object to take the action on
+      @param oldPos: objects old position
+      @param newPos: objects new position
+      @precondition: self.layers[self.currLayer].locked == False 
+                     && self.layers[self.currLayer].visible == True
+      @postcondition: object has moved x and y coordinates
       """
       pass
