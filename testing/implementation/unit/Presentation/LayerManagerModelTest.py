@@ -16,6 +16,8 @@ class LayerManagerModelTest(unittest.TestCase):
       Phase 2: Unit test the new Layer method.
       Phase 3: Unit test the Delete Layer method.
       Phase 4: Unit test the change opacity method.
+      Phase 5: Unit test the change AddObject, RemoveObject, ChangeObjPos methods.
+      Phase 6: Unit test the set current Layer method.
    """
    
    def setUp(self):
@@ -25,13 +27,9 @@ class LayerManagerModelTest(unittest.TestCase):
       Test
       Case     Input                   Output               Remarks
       =========================================================================
-      1        No parent                ValueError
-      2        No layers                Empty Layer Manager Created
-      3        Both Layer and parent    Layer Manager with layers created
+      1        No layers               Empty Layer Manager Created
+      2        Layers                  Layer Manager with layers created
       """
-      
-      #self.layerManager = LayerManagerModel(None, [])
-      
       self.layerManager = LayerManagerModel(self, [])
       self.assertEquals(self.layerManager.parent, self)
       self.assertEquals(self.layerManager.layers, [])

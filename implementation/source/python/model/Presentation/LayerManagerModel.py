@@ -2,12 +2,9 @@ from Layer import Layer
 
 class LayerManagerModel:
    def __init__(self, parent, layers):
-      if parent == None:
-         raise ValueError('Layer Manager needs a parent!')
-      else:
-         self.layers = layers
-         self.parent = parent
-         self.currLayer = 0
+      self.layers = layers
+      self.parent = parent
+      self.currLayer = 0
          
    def SetCurrentLayer(self, index):
       if index >= 0 and len(self.layers) > 0 and index <= len(self.layers):

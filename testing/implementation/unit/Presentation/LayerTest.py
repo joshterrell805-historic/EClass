@@ -12,7 +12,9 @@ class LayerTest(unittest.TestCase):
       Phase 1: Unit test the constructor.
       Phase 2: Unit test the ToggleLock.
       Phase 3: Unit test the ToggleVisible and SetOpacity.
-      Phase 4: Unit test the change name and permissions methods.
+      Phase 4: Unit test the ChangeName and ChangePermissions methods.
+      Phase 5: Unit test the ToDict and FromDice methods.
+
    """
    
    def setUp(self):
@@ -24,15 +26,23 @@ class LayerTest(unittest.TestCase):
       =========================================================================
       1        No name, opacity, or lock    Generic Layer
       2        All name, opacity, and lock  Unique Layer
+      3        0 opacity                    Invisible Layer
       """
       self.layer = Layer(None, None, None)
       self.assertEquals(self.layer.name, "Layer")
       self.assertEquals(self.layer.opacity, 255)
+      self.assertTrue(self.layer.visible)
       self.assertFalse(self.layer.locked)
       
       self.layer = Layer("Joey", 50, True)
       self.assertEquals(self.layer.name, "Joey")
       self.assertEquals(self.layer.opacity, 50)
+      self.assertTrue(self.layer.locked)
+      
+      self.layer = Layer("Mike", 0, True)
+      self.assertEquals(self.layer.name, "Mike")
+      self.assertEquals(self.layer.opacity, 0)
+      self.assertFalse(self.layer.visible)
       self.assertTrue(self.layer.locked)
 
    def test_ChangePermissions(self):
@@ -118,14 +128,23 @@ class LayerTest(unittest.TestCase):
       Case     Input                   Output               Remarks
       =========================================================================
       1        -5                      no change
-      2        100                     opacity changed
-      3        10 (Layer is locked)    no change
+      2        100                     opacity changed and visible
+      3        0                       opacity changed and not visible
+      4        10 (Layer is locked)    no change
       """
       self.layer = Layer("Mep", 50, False)
       self.layer.SetOpacity(-5)
       self.assertEquals(self.layer.opacity, 50)
+      
       self.layer.SetOpacity(100);
       self.assertEquals(self.layer.opacity, 100)
+      self.assertTrue(self.layer.visible)
+
+      
+      self.layer.SetOpacity(0);
+      self.assertEquals(self.layer.opacity, 0)
+      self.assertFalse(self.layer.visible)
+      
       self.layer = Layer("Pem", 50, True)
       self.layer.SetOpacity(10);
       self.assertEquals(self.layer.opacity, 50)

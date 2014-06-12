@@ -1,21 +1,25 @@
 import unittest
 import sys
 
-sys.path.insert(0, '../../../implementation/source/python/model/Presentation')
+sys.path.insert(0, '../../../implementation/source/python/model/Person')
 
-from Slide import Slide
-from LayerManagerModel import LayerManagerModel
-from Layer import Layer
-
+from RosterItem import RosterItem
 from Roster import Roster
 
-class RosterItem:
-   def __init__(self, student):
-      self.student = student
+class RosterItemTest(unittest.TestCase):
+   """
+   Class RosterItemTest is the companion testing class for class RosterItem.
+   It implements the following class test plan:
+
+      Phase 1: Unit test the constructor.
+      Phase 2: Unit test the Hand method.
+      Phase 3: Unit test the Layers method.
+   """
+   def setUp(self, student):
       pass
 
-   def Hand(self):
-      print('From Roster.Hand()')
-
-   def Layers(self):
-      print('From Roster.Layers()')
+   def test_Hand(self):
+      pass
+      
+   def test_Layers(self):
+      pass
