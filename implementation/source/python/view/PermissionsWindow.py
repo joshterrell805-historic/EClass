@@ -2,6 +2,7 @@ import wx
 import sys
 sys.path.insert(0, '../model')
 
+from EClass import EClass
 from Person.Student import Student
 from Presentation.PermissionLevel import PermissionLevel
 
@@ -84,10 +85,19 @@ class PermissionsWindow(wx.Frame):
       
       if self.radioUnrestricted.GetValue() == True:
          perms.SetPresPermLevel(PermissionLevel.Unrestricted)
+         EClass.GetInstance().connection.send('lockdown', {'on': False}, 
+            self.student.username
+         )
       elif self.radioNormal.GetValue() == True:
          perms.SetPresPermLevel(PermissionLevel.Normal)
+         EClass.GetInstance().connection.send('lockdown', {'on': False}, 
+            self.student.username
+         )
       else:
          perms.SetPresPermLevel(PermissionLevel.Lockdown)
+         EClass.GetInstance().connection.send('lockdown', {'on': True}, 
+            self.student.username
+         )
 
       perms.SetCanRaiseHand(self.checkRaiseHand.GetValue())
       perms.SetCanPushLayer(self.checkPushLayer.GetValue())

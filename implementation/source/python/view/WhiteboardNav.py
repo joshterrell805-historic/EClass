@@ -30,13 +30,13 @@ class WhiteboardNav(wx.Panel):
       self.notesTextbox = None
       self.notesPos = None
 
-      previousSlideButton = wx.Button(self, label = '<< Previous',
+      self.previousSlideButton = wx.Button(self, label = '<< Previous',
          size = (70, 30)
       )
-      previousSlideButton.Bind(wx.EVT_BUTTON, self.MoveToPreviousSlide)
+      self.previousSlideButton.Bind(wx.EVT_BUTTON, self.MoveToPreviousSlide)
 
-      nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
-      nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
+      self.nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
+      self.nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
 
       self.slideTextbox = wx.lib.intctrl.IntCtrl(self,
          style = wx.TE_PROCESS_ENTER | wx.TE_CENTRE
@@ -56,18 +56,18 @@ class WhiteboardNav(wx.Panel):
 
       # Only add the Sync button for Students
       if isinstance(EClass.GetInstance().user, Student):
-         syncButton = wx.Button(self, label = 'SYNC', size = (120, 15))
-         syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
-         navVertSizer.Add(syncButton, 3, wx.CENTER)
+         self.syncButton = wx.Button(self, label = 'SYNC', size = (120, 15))
+         self.syncButton.Bind(wx.EVT_BUTTON, self.SyncWithPresenter)
+         navVertSizer.Add(self.syncButton, 3, wx.CENTER)
       navVertSizer.AddStretchSpacer(1)
 
       navHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
       navHoriSizer.AddStretchSpacer(1)
-      navHoriSizer.Add(previousSlideButton, 1, wx.CENTER)
+      navHoriSizer.Add(self.previousSlideButton, 1, wx.CENTER)
       navHoriSizer.Add(navVertSizer, 1, flag = wx.LEFT|wx.RIGHT|wx.CENTER,
          border = 20
       )
-      navHoriSizer.Add(nextSlideButton, 1, wx.CENTER)
+      navHoriSizer.Add(self.nextSlideButton, 1, wx.CENTER)
       navHoriSizer.AddStretchSpacer(1)
 
       boardHoriSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -91,6 +91,26 @@ class WhiteboardNav(wx.Panel):
       self.Bind(wx.EVT_PAINT, self.DisplayLayers)
       self.Bind(wx.EVT_CHAR_HOOK, self.onKey)
       self.Show()
+      
+      def listen():
+         EClass.GetInstance().connection.registerMessageListener(
+            'lockdown', self.LockdownMode
+         )
+      wx.CallLater(1, listen)
+      
+   # TODO docs
+   def LockdownMode(self, message, student):
+      if not EClass.GetInstance().user.isPresenter():
+         if message['on']:
+            self.previousSlideButton.Disable()
+            self.nextSlideButton.Disable()
+            self.syncButton.Disable()
+            self.slideTextbox.SetEditable(False)
+         else:
+            self.previousSlideButton.Enable()
+            self.nextSlideButton.Enable()
+            self.syncButton.Enable()
+            self.slideTextbox.SetEditable(True)
       
    def onKey(self, evt):
       if evt.GetKeyCode() == wx.WXK_DELETE or evt.GetKeyCode() == wx.WXK_BACK:
