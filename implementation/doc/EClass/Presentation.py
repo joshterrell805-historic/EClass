@@ -275,6 +275,10 @@ class Layer:
    "square" "text" or "pencil" and then a varying set of properties determining
    how to draw the object (position, points, width, height, ...)
 
+   Although Layers may appear as a visual representation, they can be more seen
+   as a list of graphical objects and their data to draw them; Layers are used
+   simply to keep track of the graphical objects.
+
    @author: Andrew Lisowski (alisowsk@calpoly.edu) + Josh (class doc)
 
    @ivar objects: A Collection of LayerObjects that represent all graphics on a Layer
@@ -437,6 +441,13 @@ class LayerManagerModel:
       pass
 
 class QuestionList():
+   """
+   QuestionList is the underlying model for questions that students have to ask.
+   It is a array wrapper for questions.
+
+   @author Kevin Le (kle17@calpoly.edu)
+   """
+   
    def __init__(self):
       """
       Initialize a new QuestionList
@@ -480,8 +491,8 @@ class QuestionList():
 
 class DrawingToolsModel:
    """
-   A DrawingToolsModel holds the functionality of selecting any of the drawing tools from the DrawingTools
-   tool bar. In our implementation, drawing is done on a frame known as a layer. Each user has a series of layers 
+   A DrawingToolsModel handles the events for the drawing tools. Due to the fact that click events must be registered by the WhiteboardNav, we do not actually handle the drawing in DrawingToolsModel.
+   In our implementation, drawing is done on a frame known as a layer. Each user has a series of layers 
    to draw on. See the Layer class under Presentation.py for more information.
 
    @author: Mike Sevilla (mjsevill@calpoly.edu)
