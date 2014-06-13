@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>
+Presentation Acceptance Testing
+</title>
+</head>
+<body>
+<center><strong>Presentation Acceptance Testing</strong></center>
+<br>
+<br>
+<table align=center border=1 cellpadding=4>
+<tr>
+   <td valign=top><strong>Case No.</strong>
+   <td valign=top><strong>User Inputs and Commands</strong>
+   <td valign=top><strong>Expected Output</strong>
+   <td valign=top><strong>Remarks</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <td valign=top><strong>Results</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<tr>
+   <td valign=top>1
+   <td valign=top>(As a presenter) At the presentation selection dialog, choose a valid HTML file with no slide breaks. Then choose a class to host for.
+   <td valign=top>The first slide and navigation controls are displayed. There is exactly one slide which may be fairly long with a scroll bar.
+   <td valign=top>Testing that Presentation.Slidify does not break the presentation file into slides when no slide breaks are present
+   <td valign=top>Pass
+<tr>
+   <td valign=top>2
+   <td valign=top>(As a presenter) At the presentation selection dialog, choose a valid HTML file with at least one slide break. Then choose a class to host for.
+   <td valign=top>As before, the first slide and navigation controls are displayed. There are at least two slides to navigate between
+   <td valign=top>Testing that Presentation.Slidify successfully breaks the presentation file into multiple slides.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>3
+   <td valign=top>(As a student) Choose a presentation to join.
+   <td valign=top>Navigation controls are displayed and the whiteboard starts on the slide the presenter is currently on.
+   <td valign=top>Testing that the presenter's Presentation successfully transmits its slides and current slide number to the student upon joining the presentation
+   <td valign=top>Pass
+<tr>
+   <td valign=top>4
+   <td valign=top>(As a presenter or student) Click the 'Next >>' button.
+   <td valign=top>The whiteboard displays the next slide and the displayed slide number is updated.
+   <td valign=top>Testing the ability to advance to the next slide
+   <td valign=top>Pass
+<tr>
+   <td valign=top>5
+   <td valign=top>(As a presenter or student) Click the '<< Previous' button.
+   <td valign=top>The whiteboard displays the previous slide and the displayed slide number is updated.
+   <td valign=top>Testing the ability to go to the previous slide
+   <td valign=top>Pass
+<tr>
+   <td valign=top>6
+   <td valign=top>(As a presenter or student) Enter a slide number in the 'Slide Number' text box, and hit <enter>.
+   <td valign=top>The whiteboard displays the slide indicated by the number that was entered.
+   <td valign=top>Testing the ability to go jump to any slide.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>7
+   <td valign=top>(As a presenter or student) Enter a negative slide number or one that is greater than the current number of slides in the 'Slide Number' text box, and hit <enter>.
+   <td valign=top>The whiteboard makes no change since the slide number was invalid.
+   <td valign=top>Testing the error checking for jumping to a specified slide.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>8
+   <td valign=top>(As a student) Either do not use any navigation controls after joining the presentation, or hit the 'SYNC' button. Then wait for the presenter to navigate to different slides.
+   <td valign=top>The whiteboard keeps automatically updating the current slide to match where the presenter is at.
+   <td valign=top>Testing that Presentation syncing works the entire time a student is connected if he/she has syncing enabled.
+   <td valign=top>Pass 
+<tr>
+   <td valign=top>9
+   <td valign=top>(As a student) Use any of the navigation controls excluding the 'SYNC' button. Then wait for the presenter to navigate to at least one other slide.
+   <td valign=top>The whiteboard does not automatically follow the presenter's current slide any more and only updates based on the student's interactions until 'SYNC' is pressed again.
+   <td valign=top>Testing that Presentation syncing is successfully disabled when the student uses navigation controls other than 'SYNC'.
+   <td valign=top>Pass
+</table>
+</body>
+</html>
