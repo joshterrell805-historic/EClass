@@ -36,6 +36,39 @@ class Presentation:
       """
       pass
 
+   def onSaveListener(self, eventType, identifier):
+      """
+      Internal use only (private). This is the callback passed to
+      EClass.registerOnSaveListener. The parameters are documented in the respective
+      EClass method's documentation.
+
+      This callback returns an object representing the
+      state of the presentation for both the 'initial data' save functionality and
+      the 'file' save functionality. Both of these save functions are explained
+      in the EClass methods' documentation.
+      """
+      pass
+
+   def onInitialData(self, data):
+      """
+      Internal use only (private). This method is called from
+      EClass.loadInitalData with the object returned from
+      Presentation.onSaveListener when 'save initial data for student' is the
+      `eventType`. This method initializes the presentation on a student's
+      EClass given the data sent by the presenter.
+      """
+      pass
+      
+   def loadFileData(self, data):
+      """
+      Internal use only (private). This method is called from
+      EClass.loadFileData with the object returned from
+      Presentation.onSaveListener when 'save to file' is the
+      `eventType`. This method initializes the presentation on the presenter's
+      EClass given the data saved to file by a previous `file->save` operation.
+      """
+      pass
+
    def MoveToNextSlide(self):
       """
       Set the current slide to the next consecutive slide.
