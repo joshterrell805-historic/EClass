@@ -315,10 +315,9 @@ class WhiteboardNav(wx.Panel):
             wx.CallLater(30 - (millis() - self.__lastRedraw), scheduledRedraw)
 
    def RefreshSlide(self):
-      oldCurrLayer = EClass.GetInstance().layerManagerModel.currLayer
       self.whiteboard.SetPage(self.presentation.GetSlide().GetContent())
       EClass.GetInstance().setUpLayerManager()
-      EClass.GetInstance().layerManagerModel.SetCurrentLayer(oldCurrLayer)
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
       self.Redraw()
+      wx.CallLater(250, self.Redraw)
