@@ -28,11 +28,11 @@ HOW TO RUN EClass
    <li>Make sure webkit is installed (should be pre-installed on mac)</li>
    <li>The path where the program is to be ran from is: 
       <tt>http://users.csc.calpoly.edu/~kle17/EClass/implementation/source/python/</tt></li>
-   <li>In order to log in, the server must be running. To run the server, run
+   <li>In order to log in, the central server must be running. To run the central server, run
       <tt>python main.py server</tt> from a separate terminal</li>
    <li>To run the program simply run the command: <tt>python main.py</tt></li>
    <li>To authenticate, your username is `gfisher` and no password is required.</li>
-   <li>It is now possible to launch a student user that is connected with the presenter through the server. To do this, open up another instance of EClass
+   <li>It is now possible to launch a student user that is connected with the presenter through the central server. To do this, open up another instance of EClass
        and login with the username 'student'. From the Professor terminal, a print message will display the user joining and when they leave as well.</li>
    <li>'student' can only join a presentation when the professor is hosting one.</li>
 </ol>
@@ -48,7 +48,7 @@ meeting during class.
 NOTE: If you run EClass on Windows, there is occasionally an issue with student syncing where their whiteboard will not sync up with the presenter every time the slide is changed due to our need for using wx's version of Sleep(). It's possible this may occur on Mac/Linux as well but we have not encountered it on those platforms yet.
 <br>
 <br>
-While EClass works pretty good in the three major operating systems (Linux, Mac, Windows), they each ultimately have some unique quirks when interacting with Python + wxPython. If you run into something strange (you shouldn't, but if you do...) please see if it occurs on one of the other operating systems as it may be an issue with only on platform.
+While EClass works pretty well in the three major operating systems (Linux, Mac, Windows), they each ultimately have some unique quirks when interacting with wxPython. If you run into something strange (you shouldn't, but if you do...) please see if it occurs on one of the other operating systems as it may be an issue with only one platform.
 <br>
 <br>
 Thanks,
