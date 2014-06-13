@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>
+Join Presentation Acceptance Testing
+</title>
+</head>
+<body>
+<center><strong>Join Presentation Acceptance Testing</strong></center>
+<br>
+<br>
+<table align=center border=1 cellpadding=4>
+<tr>
+   <td valign=top><strong>Case No.</strong>
+   <td valign=top><strong>User Inputs and Commands</strong>
+   <td valign=top><strong>Expected Output</strong>
+   <td valign=top><strong>Remarks</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <td valign=top><strong>Results</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<tr>
+   <td valign=top>1
+   <td valign=top>Start the central server, and login as username:'student' password:''.
+   <td valign=top>The join presentation window will appear with the classes you belong to.
+   <td valign=top>&nbsp;
+   <td valign=top>Pass
+<tr>
+   <td valign=top>2
+   <td valign=top>With the join presentation window still open select either class and press the 'join' button
+   <td valign=top>A message will appear stating that there is no presentation hosted for the selected course.
+   <td valign=top>&nbsp;
+   <td valign=top>Pass
+<tr>
+   <td valign=top>3
+   <td valign=top>Open another instance of eclass and login as username: 'gfisher' password:''. As described in many other sections, host a new presentation. (open a .html or .creampie file and choose a course to host for, eg 'cpe 309').
+   <td valign=top>The student's join presentation window now shows that 'cpe 309' is hosted.
+   <td valign=top>Tests that the presentation server properly communicates with the central server which then communicates with the student about which classes are hosted.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>4
+   <td valign=top>As the student, select the now-hosted course and press the 'join' button.
+   <td valign=top>The student is directed to a window similar to what the presenter sees (with an additional "sync" button at the bottom)
+   <td valign=top>&nbsp;
+   <td valign=top>Pass
+<tr>
+   <td valign=top>5
+   <td valign=top>As the presenter (window without sync button), make some drawings on a few slides. As a simple reminder (full instructions elsewhere) open up Drawing Tools from the view menu, select a tool to draw with, and draw directly on the whiteboard (center panel with text). Next, navigate to a slide other than "1" as the presenter. Finally, close the student's EClass program, and reopen it up, log the student back in, and join the presentation again.
+   <td valign=top>The student recieves the presentation in-full as the presenter had it. The presenter starts off on the same slide the presenter is on, and the student recieves all the layers and layer objects the presenter had at the time of joining.
+   <td valign=top>Verify that when the student joins the presentation, he receives all the "initial data".
+   <td valign=top>Pass
+</table>
+</body>
+</html>

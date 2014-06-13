@@ -10,11 +10,9 @@ class Presentation:
       self.slides = []
       self.SetPath(path)
       self.currSlideNum = 0
-      self.isSynced = True # TODO doc
+      self.isSynced = True
       self.rawHTML = None
-      # Infinite recurion without using CallLater
-      # EClass.GetInstance() -> Presentation() ->EClass.GetInstance() ...
-      # Wait a second, then get the instance to avoid infinite recursion
+      
       def listen():
          EClass.EClass.GetInstance().connection.registerMessageListener(
             'sync current slide', self.OnSync

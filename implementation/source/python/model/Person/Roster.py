@@ -46,7 +46,6 @@ class Roster:
       self.__view and self.__view.Redraw()
 
    def onLeave(self, username):
-      print(username + ' left the presentation!')
       def matchesUsername(student):
          return student.username == username
       students = filter(matchesUsername, self.students)

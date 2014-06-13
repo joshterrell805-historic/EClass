@@ -9,7 +9,9 @@ class KickWindow(wx.Frame):
    
    def __init__(self, student):
 
-      super(KickWindow, self).__init__(None, -1, 'Kick Confirmation', size=(500,200))
+      super(KickWindow, self).__init__(None, -1, 'Kick Confirmation',
+         size=(500,200)
+      )
       self.SetBackgroundColour('#FFFFFF')
       
       self.student = student 
@@ -40,12 +42,11 @@ class KickWindow(wx.Frame):
 
    def OnAccept(self, event):
       self.student.SetKicked(True)
-      # Send a kick notification to the student (no message value used)
       EClass.EClass.GetInstance().connection.send(
          'kick notification', {'pickle': 'needs this'}, self.student.username
       )
       EClass.EClass.GetInstance().connection.CloseConnection(self.student.username)
-      # TODO get the current Roster and update the student's display color
+      EClass.EClass.GetInstance().roster.onLeave(self.student.username)
       self.Destroy()
       
    def OnCancel(self, event):
