@@ -24,7 +24,8 @@ class Presentation:
    @ivar currSlideNum: The index of the current slide.
    @ivar slides: Contains each of the slides in a presentation.
    @ivar path: Refers to the current file system path of the backing presentation file.
-   @ivar __doneSyncing: A callback method to update the WhiteboardNav view after syncing.
+   @ivar isSynced: Boolean to keep track of whether the slides should be synced with the presenter's slides.
+   @ivar rawHTML: A string copy of the presentation HTML contents.
    """
 
    def __init__(self, path):

@@ -6,7 +6,9 @@ import wx
 
 class WhiteboardNav(wx.Panel):
    """
-   WhiteboardNav defines the view for the whiteboard (where slides will be displayed) as well as the navigation controls for changing the current slide.
+   WhiteboardNav defines the view for the whiteboard (where slides are displayed) as well as the navigation controls for changing the current slide.
+   Due to the way wxPython handles events, this class also contains much of the drawing tools functionality.
+   
    
    @author: Joel Wilcox (jnwilcox@calpoly.edu), Kevin Le (kle17@calpoly.edu)
 

@@ -8,7 +8,6 @@ from Presentation.LayerManagerModel import LayerManagerModel
 
 class WhiteboardNav(wx.Panel):
 
-   # TODO possibly break this up
    def __init__(self, parent):
       super(WhiteboardNav, self).__init__(parent)
       self.__lastRedraw = None
@@ -25,7 +24,6 @@ class WhiteboardNav(wx.Panel):
       
       EClass.GetInstance().RefreshSlide = self.RefreshSlide
       EClass.GetInstance().Redraw = self.Redraw
-      
       # TODO add to list of ivars in docs
       self.notesTextbox = None
       self.notesPos = None
@@ -34,7 +32,6 @@ class WhiteboardNav(wx.Panel):
          size = (70, 30)
       )
       self.previousSlideButton.Bind(wx.EVT_BUTTON, self.MoveToPreviousSlide)
-
       self.nextSlideButton = wx.Button(self, label = 'Next >>', size = (70, 30))
       self.nextSlideButton.Bind(wx.EVT_BUTTON, self.MoveToNextSlide)
 
@@ -44,9 +41,27 @@ class WhiteboardNav(wx.Panel):
       self.slideTextbox.Bind(wx.EVT_TEXT_ENTER, self.MoveToSlide)
       self.slideTextbox.SetHint('Slide Number')
       self.slideTextbox.Clear()
-
       self.currSlideText = wx.StaticText(self, -1, label = '1')
 
+      self.InitSizers()
+      self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
+      self.whiteboard.Bind(wx.EVT_LEFT_UP, self.OnLeftUp)
+      self.whiteboard.Bind(wx.EVT_MOTION, self.OnMotion)
+
+      def OnScroll(evt):
+         self.Redraw()
+      self.whiteboard.Bind(wx.EVT_SCROLLWIN, OnScroll)
+      self.Bind(wx.EVT_PAINT, self.DisplayLayers)
+      self.Bind(wx.EVT_CHAR_HOOK, self.OnKey)
+      self.Show()
+      
+      def Listen():
+         EClass.GetInstance().connection.registerMessageListener(
+            'lockdown', self.LockdownMode
+         )
+      wx.CallLater(1, Listen)
+   
+   def InitSizers(self):
       navVertSizer = wx.BoxSizer(wx.VERTICAL)
       navVertSizer.AddStretchSpacer(1)
       navVertSizer.Add(self.currSlideText, 5, wx.CENTER)
@@ -80,23 +95,6 @@ class WhiteboardNav(wx.Panel):
       mainSizer.Add(navHoriSizer, 1, wx.CENTER)
 
       self.SetSizer(mainSizer)
-      self.whiteboard.Bind(wx.EVT_LEFT_DOWN, self.OnClickChange)
-      self.whiteboard.Bind(wx.EVT_LEFT_UP, self.OnLeftUp)
-      self.whiteboard.Bind(wx.EVT_MOTION, self.OnMotion)
-
-      def onScroll(evt):
-         self.Redraw()
-      self.whiteboard.Bind(wx.EVT_SCROLLWIN, onScroll)
-
-      self.Bind(wx.EVT_PAINT, self.DisplayLayers)
-      self.Bind(wx.EVT_CHAR_HOOK, self.onKey)
-      self.Show()
-      
-      def listen():
-         EClass.GetInstance().connection.registerMessageListener(
-            'lockdown', self.LockdownMode
-         )
-      wx.CallLater(1, listen)
    
    # TODO docs
    def LockdownMode(self, message, student):
@@ -121,10 +119,12 @@ class WhiteboardNav(wx.Panel):
           'Lockdown Mode Initiated', wx.OK | wx.ICON_INFORMATION)
          wx.CallLater(MILLIS, __Lockdown)
       
-   def onKey(self, evt):
+   def OnKey(self, evt):
       if evt.GetKeyCode() == wx.WXK_DELETE or evt.GetKeyCode() == wx.WXK_BACK:
          if not self.selectedObj == None:
-            EClass.GetInstance().layerManagerModel.RemoveObject(self.selectedObj)
+            EClass.GetInstance().layerManagerModel.RemoveObject(
+               self.selectedObj
+            )
             self.Redraw()
       else:
          evt.Skip()
@@ -142,18 +142,15 @@ class WhiteboardNav(wx.Panel):
             'points' : self.__currentLine
          })
          self.__currentLine.append(whiteboardMousePos)
-         #self.CaptureMouse()
       elif curTool == 'Hand':
-         self.selectedObj = self.findSelectedObject(whiteboardMousePos)
+         self.selectedObj = self.FindSelectedObject(whiteboardMousePos)
          self.leftdown = whiteboardMousePos
          pass
       elif curTool == 'Text':
-         # Ensure the user does not create tons of new text boxes
          if self.notesTextbox:
             self.notesTextbox.Destroy()
             self.notesTextbox = None
          
-         # new Point because wx doesn't like Points being shared...
          self.notesPos = wx.Point(whiteboardMousePos.x, whiteboardMousePos.y)
          self.notesTextbox = wx.TextCtrl(self, pos = wx.Point(
             self.notesPos.x + NOTES_OFFSET, self.notesPos.y),
@@ -181,7 +178,7 @@ class WhiteboardNav(wx.Panel):
       self.Redraw()
       return
       
-   def findSelectedObject(self, mousePos):
+   def FindSelectedObject(self, mousePos):
       lmm = EClass.GetInstance().layerManagerModel
       layer = lmm.layers[lmm.currLayer]
       for obj in layer.objects:
@@ -195,11 +192,8 @@ class WhiteboardNav(wx.Panel):
                   return obj
 
    def OnLeftUp(self, event):
-      # drawing with pencil
       if self.__activeTool == 'Pencil':
          assert EClass.GetInstance().drawingTools.selectedTool == 'Pencil'
-         # TODO were gonna remove redraw and use double buffering.. for now
-         # this just draws after the complete motion is done.
          self.Redraw()
       elif self.__activeTool == 'Hand' and not self.selectedObj == None:
          assert EClass.GetInstance().drawingTools.selectedTool == 'Hand'
@@ -260,11 +254,7 @@ class WhiteboardNav(wx.Panel):
                elif obj['type'] == 'Square':
                   dc.DrawRectangle(obj['position'].x, obj['position'].y, obj['x_size'], obj['x_size'])
                elif obj['type'] == 'Pencil':
-                  #dc = wx.BufferedDC(wx.ClientDC(self), self.buffer)
-                  #dc.BeginDrawing()
-                  #dc.SetPen(self.pen)
 
-                  # TODO this is unecessary cpu work to do this every draw.
                   prev = { 'point' : None }
                   def toLines(lines, point):
                      if not prev['point'] == None:
@@ -281,7 +271,6 @@ class WhiteboardNav(wx.Panel):
                   else:
                      for line in lines:
                         dc.StrokeLine(line[0], line[1], line[2], line[3])
-                  #dc.EndDrawing()
 
       layers.reverse()
 
@@ -308,7 +297,6 @@ class WhiteboardNav(wx.Panel):
 
    
    # TODO documentation
-   # only redraw at max every 30 ms.. reduce flickering and lag
    def Redraw(self):
       def millis():
         return int(round(time.time() * 1000))
