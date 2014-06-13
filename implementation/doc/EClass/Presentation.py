@@ -256,8 +256,7 @@ class PermissionLevel():
    
 class Layer:
    """
-   A layer is a list of objects drawn on top of slides. Lines are drawn as a 
-   bunch of points and everything else is vector based.
+   A layer contains a list of objects contained within the Layer. 
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
@@ -328,7 +327,9 @@ class Layer:
 
 class LayerManagerModel:
    """
-   Manages the layers attached to the current slide. A the layer manager is initialized with each slide. To got the layers, the application looks at what is stored in the current slide in the presentiation.
+   This model manages the layers attached to the current slide. The layer manager is 
+   initialized with each slide. To got the layers, the application looks at 
+   what layers are stored in the current slide of presentiation.
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
