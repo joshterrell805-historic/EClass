@@ -421,3 +421,80 @@ class LayerManagerModel:
       @postcondition: object has moved x and y coordinates
       """
       pass
+
+class DrawingToolsModel:
+   """
+   A DrawingToolsModel holds the functionality of selecting any of the drawing tools from the DrawingTools
+   tool bar. In our implementation, drawing is done on a frame known as a layer. Each user has a series of layers 
+   to draw on. See the Layer class under Presentation.py for more information.
+
+   @author: Mike Sevilla (mjsevill@calpoly.edu)
+
+   @ivar selectedTool: Represents the currently selected tool
+   """
+
+   def __init__(self):
+      """
+      Initialize the selectedTool to 'None'
+      """
+      pass
+
+   def PencilToolHandler(self, event):
+      """
+      Change the selected tool to the 'Pencil'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Pencil'
+      """
+      pass
+
+   def HandToolHandler(self, event):
+      """
+      Change the selected tool to the 'Hand'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Hand'
+      """
+      pass
+
+   def TextToolHandler(self, event):
+      """
+      Change the selected tool to the 'Text'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Text'
+      """
+      pass
+
+   def CircleShapeHandler(self, event):
+      """
+      Change the selected tool to the 'Circle Shape'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Circle Shape'
+      """
+      pass
+
+   def SquareShapeHandler(self, event):
+      """
+      Change the selected tool to the 'Square Shape'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Square Shape'
+      """
+      pass
+
+   def TriangleShapeHandler(self, event):
+      """
+      Change the selected tool to the 'Triangle Shape'
+
+      @param event: Event that called this method
+
+      @postcondition: selectedTool == 'Triangle Shape'
+      """
+      pass
