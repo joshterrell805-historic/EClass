@@ -10,10 +10,13 @@ sys.path.insert(0, '../../source/python/model/enum')
 class Presentation:
    """
    A Presentation is a collection of slides and their respective layers which is displayed at 
-   the center of the EClass. It contains a variety of methods used to navigate between slides
-   and access the current slide.
+   the center of the EClass. View the Slide documentation for more detailed information about them. Presentation contains a variety of methods used to navigate between slides
+   and access the current slide. It handles all of the model-related syncing functionality between presenters and students as well.
+   It accomplishes this by passing messages back and forth between the presenter and the student(s). On a presenter client, the current slide is broadcast
+   to each student whenever the slide is changed. A student's Presentation object will listen for the message and update accordingly if it is 
+   currently set to stay synced.
    
-   Presentation includes a Slidify() method which opens up the HTML file located at a Presentation's
+   Presentation also includes the Slidify() method which opens up the HTML file located at a Presentation's
    path and converts it to a fresh set of slides to be displayed. Any <br class="slide"> tags
    in the HTML denote the location where a new Slide should be created and Slidify() will break 
    them up at those points. However, the method ensures there will always be at least one slide if
@@ -176,7 +179,7 @@ class Presentation:
 class Slide(object):
    """
    A Slide is a collection of presentation content and layers that can be edited by a presenter
-   or student. A Slide contains zero or more layers that have been created specifically for its 
+   or student. The presentation content is raw HTML to be displayed by a wxPython HTMLWindow. A Slide contains zero or more layers that have been created specifically for its 
    presentation content. Although it is primarily a data container, a Slide also provides the 
    ability to reorder its layers.
    
