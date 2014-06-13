@@ -35,11 +35,11 @@ class ChangePermWindow(wx.Frame):
    def ChangeLayerPerm(self, event):
       sel = self.listBox1.GetStringSelection()
       if sel == "All":
-         self.layer.permissions = EClass.GetInstance().rosterModel.GetRoster()
+         self.layer.ChangePermissions(EClass.GetInstance().rosterModel.GetRoster())
          print(''.join(self.layer.permissions) + " add to permissions on " + self.layer.name)
       elif sel == "None":
-         self.layer.permissions = []
+         self.layer.ChangePermissions([])
          print("Removed all layer permissions from" + self.layer.name)
       else:
-         self.layer.permissions.append(sel)
+         self.layer.ChangePermissions([sel])
       self.Destroy()
