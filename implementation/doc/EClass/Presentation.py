@@ -328,7 +328,7 @@ class Layer:
 
 class LayerManagerModel:
    """
-   Manages the layers attached to the current slide
+   Manages the layers attached to the current slide. A the layer manager is initialized with each slide. To got the layers, the application looks at what is stored in the current slide in the presentiation.
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 
