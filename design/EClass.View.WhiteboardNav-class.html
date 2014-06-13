@@ -72,9 +72,14 @@ wx._core.EvtHandler --+
 </pre>
 
 <hr />
-<p>WhiteboardNav defines the view for the whiteboard (where slides will 
-  be displayed) as well as the navigation controls for changing the current
-  slide.</p>
+<p>WhiteboardNav defines the view for the whiteboard (where slides are 
+  displayed) as well as the navigation controls for changing the current 
+  slide. Due to the way wxPython handles events, this class also contains 
+  much of the drawing tools functionality. It uses wx.ClientDC and 
+  wx.GraphicsContext to directly paint and shapes, lines, text, etc. that 
+  comes from a drawing tool directly onto the screen. For more information 
+  on the drawing tools' underlying data structures, take a look at the 
+  documentation for DrawingToolsModel and Layer.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -108,6 +113,43 @@ wx._core.EvtHandler --+
       Initialize the WhiteboardNav view.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="InitSizers"></a><span class="summary-sig-name">InitSizers</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Set up all the necessary sizers and UI layout.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.InitSizers">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.View.WhiteboardNav-class.html#LockdownMode" class="summary-sig-name">LockdownMode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">student</span>)</span><br />
+      Initiates lockdown mode for a student by displaying a notification 
+      and then disabling all navigation controls after a minute.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.LockdownMode">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -181,6 +223,23 @@ wx._core.EvtHandler --+
       TextBox).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.MoveToSlide">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="Redraw"></a><span class="summary-sig-name">Redraw</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Redraw all layers for the current slide.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.Redraw">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -745,6 +804,41 @@ wx._core.EvtHandler --+
   </dl>
 </td></tr></table>
 </div>
+<a name="LockdownMode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">LockdownMode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">student</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.View-pysrc.html#WhiteboardNav.LockdownMode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initiates lockdown mode for a student by displaying a notification and
+  then disabling all navigation controls after a minute.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>message</code></strong> - A dictionary containing a boolean for whether lockdown is being 
+          turned on or off</li>
+        <li><strong class="pname"><code>student</code></strong> - A student's username</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        EClass.GetInstance().user.isPresenter() == False.
+      </p>
+      <p><strong>Postcondition:</strong>
+        All navigation controls are disabled when message['on'] == True, or
+        they are enabled if message['on'] == False.
+      </p>
+</div></td></tr></table>
+</div>
 <a name="MoveToPreviousSlide"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -890,7 +984,7 @@ wx._core.EvtHandler --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:34 2014
+    Generated by Epydoc 3.0.1 on Thu Jun 12 23:13:49 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
