@@ -21,7 +21,8 @@ class LayerObject:
 class DrawingToolsModel:
    """
    A DrawingToolsModel holds the functionality of selecting any of the drawing tools from the DrawingTools
-   tool bar.
+   tool bar. In our implementation, drawing is done on a frame known as a layer. Each user has a series of layers 
+   to draw on. See the Layer class under Presentation.py for more information.
 
    @author: Mike Sevilla (mjsevill@calpoly.edu)
 
@@ -97,6 +98,8 @@ class DrawingToolsModel:
 class DrawingTools:
    """
    A DrawingTools is a tool bar containing the various drawing tools a student or presenter may use during a presentation.
+   In our implementation, drawing is done on a frame known as a layer. Each user has a series of layers 
+   to draw on. See the Layer class under Presentation.py for more information.
 
    @author: Mike Sevilla (mjsevill@calpoly.edu)
 
