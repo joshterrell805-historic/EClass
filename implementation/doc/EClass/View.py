@@ -604,24 +604,15 @@ class EClassWindow:
 
 class MenuBar:
    """
-   MenuBar is a collection of all menu operations including (but not limited
-   to) file operations, edit operations, and view operations that hide/show
-   various windows.
+   MenuBar is a collection of all menu operations including 
+   file operations and view operations that hide/show various windows.
 
    @ivar IDs: List holding all the IDs for each Menu and Menu Item
    @ivar fileMenu: Sub-menu for all file operations
-   @ivar editMenu: Sub-menu for all edit operations
    @ivar viewMenu: Sub-menu for all view operations
    @ivar openMenuItem: Menu item to open a presentation
    @ivar saveMenuItem: Menu item to save a presentation
    @ivar quitMenuItem: Menu item to quit the EClass program
-   @ivar undoMenuItem: Menu item to undo the latest action
-   @ivar redoMenuItem: Menu item to redo the latest action
-   @ivar cutMenuItem: Menu item to cut selected objects
-   @ivar copyMenuItem: Menu item to copy selected objects
-   @ivar pasteMenuItem: Menu item to paste cut or copied objects
-   @ivar selectAllMenuItem: Menu item to select all objects
-   @ivar selectNoneMenuItem: Menu item to deselect all selected objects
    @ivar showRosterMenuItem: Menu item to show the Roster
    @ivar showDrawingToolsMenuItem: Menu item to show the Drawing Tools
    @ivar showLayerManagerMenuItem: Menu item to show the Layer Manager
@@ -663,9 +654,9 @@ class MenuBar:
       Opens the window allowing the user to save the current presentation as either a
       new presentation or overwrite the existing presentation.
 
-      On success, the EClass program saves the .html file.
+      On success, the EClass program saves the .creampie file.
 
-      On failure, the EClass program does not save the selected .html file.
+      On failure, the EClass program does not save the selected .creampie file.
 
       @param event: Event that calls this method
       """

@@ -37,53 +37,34 @@ class MenuBar:
                                      'Quits EClass program.')
       parent.Bind(wx.EVT_MENU, self.Quit, quitMenuItem)
 
-      editMenu = wx.Menu()
-      menuBar.Append(editMenu, 'Edit')
-      undoMenuItem = editMenu.Append(self.IDs[3], 'Undo\tCtrl+Z',
-                                     'Undoes the most recent edit.')
-      redoMenuItem = editMenu.Append(self.IDs[4], 'Redo\tCtrl+Y',
-                                     'Redoes the most recent undo.')
-      editMenu.AppendSeparator()
-      cutMenuItem = editMenu.Append(self.IDs[5], 'Cut\tCtrl+X',
-                                    'Cuts the selected object(s).')
-      copyMenuItem = editMenu.Append(self.IDs[6], 'Copy\tCtrl+C',
-                                     'Copies the selected object(s).')
-      pasteMenuItem = editMenu.Append(self.IDs[7], 'Paste\tCtrl+V',
-                                      'Pastes the selected object(s).')
-      editMenu.AppendSeparator()
-      selectAllMenuItem = editMenu.Append(self.IDs[8],
-                                          'Select All\tCtrl+A', 'Selects all objects.')
-      selectNoneMenuItem = editMenu.Append(self.IDs[9],
-                                           'Select None\tCtrl+Shift+A', 'Deselects all selected objects.')
-
       viewMenu = wx.Menu()
       menuBar.Append(viewMenu, 'View')
-      self.showRosterMenuItem = viewMenu.Append(self.IDs[10], 'Show Roster',
+      self.showRosterMenuItem = viewMenu.Append(self.IDs[3], 'Show Roster',
                                                 'Shows the roster window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleRoster, self.showRosterMenuItem)
 
-      self.showDrawingToolsMenuItem = viewMenu.Append(self.IDs[11], 'Show Drawing Tools',
+      self.showDrawingToolsMenuItem = viewMenu.Append(self.IDs[4], 'Show Drawing Tools',
                                                       'Shows the drawing tools window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleDrawingTools, self.showDrawingToolsMenuItem)
 
-      self.showLayerManagerMenuItem = viewMenu.Append(self.IDs[12], 'Show Layer Manager',
+      self.showLayerManagerMenuItem = viewMenu.Append(self.IDs[5], 'Show Layer Manager',
                                                       'Shows the layer manager window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleLayerManager, self.showLayerManagerMenuItem)
 
-      self.showApprovalTrackerMenuItem = viewMenu.Append(self.IDs[13], 'Show Approval Tracker',
+      self.showApprovalTrackerMenuItem = viewMenu.Append(self.IDs[6], 'Show Approval Tracker',
                                                          'Shows the approval tracker window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleApprovalTracker, self.showApprovalTrackerMenuItem)
 
-      self.showForumMenuItem = viewMenu.Append(self.IDs[14], 'Show Forum',
+      self.showForumMenuItem = viewMenu.Append(self.IDs[7], 'Show Forum',
                                                'Shows the forum window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleForum, self.showForumMenuItem)
 
-      self.showAskQuestionMenuItem = viewMenu.Append(self.IDs[15], 'Show Questions',
+      self.showAskQuestionMenuItem = viewMenu.Append(self.IDs[8], 'Show Questions',
                                                      'Shows the questions window.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleAskQuestion, self.showAskQuestionMenuItem)
 
       viewMenu.AppendSeparator()
-      self.fullScreenMenuItem = viewMenu.Append(self.IDs[16], 'Full Screen\tCtrl+F',
+      self.fullScreenMenuItem = viewMenu.Append(self.IDs[9], 'Full Screen\tCtrl+F',
                                                 'Zooms to full screen.', wx.ITEM_CHECK)
       parent.Bind(wx.EVT_MENU, self.ToggleFullScreen, self.fullScreenMenuItem)
 
@@ -96,13 +77,6 @@ class MenuBar:
       ID_FILE_OPEN = wx.NewId()
       ID_FILE_SAVE = wx.NewId()
       ID_FILE_QUIT = wx.NewId()
-      ID_EDIT_UNDO = wx.NewId()
-      ID_EDIT_REDO = wx.NewId()
-      ID_EDIT_CUT = wx.NewId()
-      ID_EDIT_COPY = wx.NewId()
-      ID_EDIT_PASTE = wx.NewId()
-      ID_EDIT_SELECTALL = wx.NewId()
-      ID_EDIT_SELECTNONE = wx.NewId()
       ID_VIEW_SHOWROSTER = wx.NewId()
       ID_VIEW_SHOWDRAWINGTOOLS = wx.NewId()
       ID_VIEW_SHOWLAYERMANAGER = wx.NewId()
@@ -114,13 +88,6 @@ class MenuBar:
       localVars.append(ID_FILE_OPEN)
       localVars.append(ID_FILE_SAVE)
       localVars.append(ID_FILE_QUIT)
-      localVars.append(ID_EDIT_UNDO)
-      localVars.append(ID_EDIT_REDO)
-      localVars.append(ID_EDIT_CUT)
-      localVars.append(ID_EDIT_COPY)
-      localVars.append(ID_EDIT_PASTE)
-      localVars.append(ID_EDIT_SELECTALL)
-      localVars.append(ID_EDIT_SELECTNONE)
       localVars.append(ID_VIEW_SHOWROSTER)
       localVars.append(ID_VIEW_SHOWDRAWINGTOOLS)
       localVars.append(ID_VIEW_SHOWLAYERMANAGER)
