@@ -1,8 +1,11 @@
 python Presentation/PresentationTest.py
 python Person/StudentTest.py
-python Presentation/DrawingToolsTest.py
 python Person/QuestionTest.py
 python Person/StudentPermissionsTest.py
+python Person/RosterItemTest.py
+python Person/RosterTest.py
+python Forum/ForumTests.py
+python Presentation/DrawingToolsTest.py
 python Presentation/LayerTest.py
 python Presentation/LayerManagerModelTest.py
 python Presentation/QuestionListTest.py

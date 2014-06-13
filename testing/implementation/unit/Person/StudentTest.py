@@ -35,7 +35,7 @@ class StudentTest(unittest.TestCase):
       """
       
       self.student = Student('BurtMacklin', 'blah')
-      self.assertTrue(self.student.present)
+      self.assertFalse(self.student.present)
       self.assertFalse(self.student.kicked)
       self.assertEqual(self.student.question, None)
       self.assertEqual(self.student.pushedLayer, None)
@@ -89,7 +89,7 @@ class StudentTest(unittest.TestCase):
       1        present = True          True
       2        present = False         False
       """
-      
+      self.student.present = True
       self.assertTrue(self.student.IsPresent())
       self.student.present = False
       self.assertFalse(self.student.IsPresent())
@@ -105,7 +105,6 @@ class StudentTest(unittest.TestCase):
       2        False                                        present status changed
       3        True                                         present status changed
       """
-      
       present = self.student.IsPresent()
       self.student.SetPresent(3)
       self.assertEqual(self.student.IsPresent(), present)
@@ -160,7 +159,10 @@ class StudentTest(unittest.TestCase):
       2        student doesn't have    False
                a question
       """
-      pass
+      self.student.question = Question("Amazing Question")
+      self.assertTrue(self.student.HasQuestion())
+      self.student.question = None
+      self.assertFalse(self.student.HasQuestion())
       
    def test_GetQuestion(self):
       """
@@ -172,7 +174,10 @@ class StudentTest(unittest.TestCase):
       1        question != None        student.question
       2        question == None        None
       """
-      pass
+      self.student.question = Question("Amazing Question")
+      self.assertEqual(self.student.GetQuestion().text, "Amazing Question")
+      self.student.question = None
+      self.assertEqual(self.student.GetQuestion(), None)
       
    def test_SetQuestion(self):
       """
@@ -184,7 +189,11 @@ class StudentTest(unittest.TestCase):
       1        Question object                              question is set
       2        non-Question                                 question is unchanged
       """
-      pass
+      newQuestion = Question("I'm new!")
+      self.student.SetQuestion(newQuestion)
+      self.assertEqual(self.student.GetQuestion(), newQuestion)
+      self.student.SetQuestion("I'm just a string")
+      self.assertEqual(self.student.GetQuestion(), newQuestion)
          
    def test_GetPushedLayer(self):
       """

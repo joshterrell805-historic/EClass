@@ -1,9 +1,9 @@
 import unittest
 import sys
-sys.path.insert(0, '../../../implementation/source/python/model/Presentation')
+sys.path.insert(0, '../../../implementation/source/python/model')
 
-from Presentation import Presentation
-from Slide import Slide
+import Presentation
+import Presentation.Slide
 
 class PresentationTest(unittest.TestCase):
    """
@@ -29,7 +29,7 @@ class PresentationTest(unittest.TestCase):
       """
       self.samplePath = 'Presentation/PresentationTestSample.html'
       self.sampleSlideCount = 300
-      self.presentation = Presentation(self.samplePath)
+      self.presentation = Presentation.Presentation.Presentation(self.samplePath)
       self.assertEqual(len(self.presentation.slides), 0)
       self.assertEqual(self.presentation.path, self.samplePath)
       self.assertEqual(self.presentation.currSlideNum, 0)
@@ -82,6 +82,7 @@ class PresentationTest(unittest.TestCase):
       6        file with no <body>     No slides created
                tag
       """
+      pass
       
    def test_MoveToNextSlide(self):
       """
@@ -159,7 +160,7 @@ class PresentationTest(unittest.TestCase):
       2        currSlideNum !=         currSlideNum =
                presenter currSlideNum  presenter currSlideNum    
       """
-      
+      pass
 
    def test_GetSlideNum(self):
       """
@@ -187,7 +188,7 @@ class PresentationTest(unittest.TestCase):
       =========================================================================
       1        none                    Slide returned       Only case
       """
-      self.assertTrue(isinstance(self.presentation.GetSlide(), Slide))
+      self.assertTrue(isinstance(self.presentation.GetSlide(), Slide.Slide))
       
       
 if __name__ == "__main__":

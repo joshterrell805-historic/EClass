@@ -39,7 +39,10 @@ class Student(Person):
          self.present = False
       
    def HasQuestion(self):
-      return self.question == None
+      if self.question:
+         return True
+      else:
+         return False
       
    def GetQuestion(self):
       return self.question
