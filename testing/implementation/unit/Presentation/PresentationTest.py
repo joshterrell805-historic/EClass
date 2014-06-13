@@ -29,7 +29,7 @@ class PresentationTest(unittest.TestCase):
       """
       self.samplePath = 'Presentation/PresentationTestSample.html'
       self.sampleSlideCount = 300
-      self.presentation = Presentation.Presentation.Presentation(self.samplePath)
+      self.presentation = Presentation.Presentation(self.samplePath)
       self.assertEqual(len(self.presentation.slides), 0)
       self.assertEqual(self.presentation.path, self.samplePath)
       self.assertEqual(self.presentation.currSlideNum, 0)
