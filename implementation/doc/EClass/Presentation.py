@@ -329,7 +329,9 @@ class LayerManagerModel:
    """
    This model manages the layers attached to the current slide. The layer manager is 
    initialized with each slide. To got the layers, the application looks at 
-   what layers are stored in the current slide of presentiation.
+   what layers are stored in the current slide of presentiation. It handles adding 
+   and removing objects from the selected layer. It essentially is the canvas and
+   has acces to all of the necassary object information.
 
    @author: Andrew Lisowski (alisowsk@calpoly.edu)
 

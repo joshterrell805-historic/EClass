@@ -96,6 +96,7 @@ class WhiteboardNav(wx.Panel):
 
       self.SetSizer(mainSizer)
    
+   # TODO docs
    def LockdownMode(self, message, student):
       MILLIS = 60000
       
@@ -276,18 +277,22 @@ class WhiteboardNav(wx.Panel):
    def MoveToPreviousSlide(self, event):
       if self.presentation.MoveToPreviousSlide():
          self.RefreshSlide()
+         self.Redraw()
 
    def MoveToNextSlide(self, event):
       if self.presentation.MoveToNextSlide():
          self.RefreshSlide()
+         self.Redraw()
          
    def SyncWithPresenter(self, event):
       self.presentation.SyncWithPresenter()
       self.RefreshSlide()
+      self.Redraw()
 
    def MoveToSlide(self, event):
       if self.presentation.MoveToSlide(self.slideTextbox.GetValue()):
          self.RefreshSlide()
+         self.Redraw()
       self.slideTextbox.Clear()
 
    
@@ -299,7 +304,7 @@ class WhiteboardNav(wx.Panel):
          self.__lastRedraw = millis()
          self.whiteboard.Refresh()
          self.Update()
-         wx.CallLater(3, self.DisplayLayers)
+         self.DisplayLayers()
       def scheduledRedraw():
          self.__redrawScheduled = False
          redraw()
@@ -321,4 +326,3 @@ class WhiteboardNav(wx.Panel):
       EClass.GetInstance().layerManagerModel.SetCurrentLayer(oldCurrLayer)
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
-      self.Redraw()
