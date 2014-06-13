@@ -326,3 +326,4 @@ class WhiteboardNav(wx.Panel):
       EClass.GetInstance().layerManagerModel.SetCurrentLayer(oldCurrLayer)
       self.parent.menuBar.layerManager.UpdateLayers()
       self.currSlideText.SetLabel(str(self.presentation.GetSlideNum()))
+      wx.CallLater(250, self.Redraw)
