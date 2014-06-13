@@ -96,7 +96,6 @@ class WhiteboardNav(wx.Panel):
 
       self.SetSizer(mainSizer)
    
-   # TODO docs
    def LockdownMode(self, message, student):
       MILLIS = 60000
       

@@ -8,7 +8,8 @@ class WhiteboardNav(wx.Panel):
    """
    WhiteboardNav defines the view for the whiteboard (where slides are displayed) as well as the navigation controls for changing the current slide.
    Due to the way wxPython handles events, this class also contains much of the drawing tools functionality.
-   
+   It uses wx.ClientDC and wx.GraphicsContext to directly paint and shapes, lines, text, etc. that comes from a drawing tool directly onto the screen.
+   For more information on the drawing tools' underlying data structures, take a look at the documentation for DrawingToolsModel and Layer.
    
    @author: Joel Wilcox (jnwilcox@calpoly.edu), Kevin Le (kle17@calpoly.edu)
 
@@ -25,6 +26,24 @@ class WhiteboardNav(wx.Panel):
       @param parent: The current instance of the main EClass view
       """
 
+   def InitSizers(self):
+      """
+      Set up all the necessary sizers and UI layout.
+      """
+      pass
+      
+   def LockdownMode(self, message, student):
+      """
+      Initiates lockdown mode for a student by displaying a notification and then disabling all navigation controls after a minute.
+      
+      @param message: A dictionary containing a boolean for whether lockdown is being turned on or off
+      @param student: A student's username
+      
+      @precondition: EClass.GetInstance().user.isPresenter() == False.
+      @postcondition: All navigation controls are disabled when message['on'] == True, or they are enabled if message['on'] == False.
+      """
+      pass
+      
    def MoveToPreviousSlide(self, event):
       """
       Change the current slide to the previous slide.
@@ -57,6 +76,12 @@ class WhiteboardNav(wx.Panel):
       """
       pass
 
+   def Redraw(self):
+      """
+      Redraw all layers for the current slide.
+      """
+      pass
+   
    def RefreshSlide(self):
       """
       Refresh the whiteboard to display the presentation's current slide.
