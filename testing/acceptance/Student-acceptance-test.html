@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>
+Student Acceptance Testing
+</title>
+</head>
+<body>
+<center><strong>Student Acceptance Testing</strong></center>
+<br>
+<br>
+<table align=center border=1 cellpadding=4>
+<tr>
+   <td valign=top><strong>Case No.</strong>
+   <td valign=top><strong>User Inputs and Commands</strong>
+   <td valign=top><strong>Expected Output</strong>
+   <td valign=top><strong>Remarks</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <td valign=top><strong>Results</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<tr>
+   <td valign=top>1
+   <td valign=top>(As a presenter) From the MenuBar->View select 'Show Roster'. With the Roster Window open, click on a student and click the 'Permissions' button.
+   <td valign=top>The Permissions dialog pops up with the student's current permissions indicated by the radio buttons and check boxes.
+   <td valign=top>Testing opening the the student permissions dialogue and accessing student permissions.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>2
+   <td valign=top>(As a presenter) With the permissions dialog open, change the student's whiteboard level by selecting the 'Lockdown' radio button and click 'Accept'
+   <td valign=top>On the student's client, they will see a pop-up notifying them that they have been placed in lockdown mode and have one minute before it takes effect. After a minute, the student will not be able to use any whiteboard navigation controls and will be synced with the presenter.
+   <td valign=top>Testing the 'Lockdown' student permission and changing student permissions via the dialog.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>3
+   <td valign=top>(As a presenter) With the Roster Window open, click on a student and click the 'Kick' button.
+   <td valign=top>The Kick confirmation dialog pops up.
+   <td valign=top>Testing opening the Kick dialog.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>4
+   <td valign=top>(As a presenter) With the Kick dialog open, click 'Yes'.
+   <td valign=top>The student will receive a pop-up notifying them that they have been kicked but will still be able to edit their layers and browse the slides if they want to. The roster window is updated so that the student is now absent and they will no longer be able to interact with the presenter or other students.
+   <td valign=top>Testing the the ability to kick students.
+   <td valign=top>Pass
+<tr>
+   <td valign=top>5
+   <td valign=top>(As a student) Close and reopen EClass after being kicked. Login and attempt to join the presentation you were kicked from.
+   <td valign=top>The window will display an error letting the student know that they have been kicked and are not allowed to rejoin the presentation.
+   <td valign=top>Testing that a student's kicked status is preserved even after they close their instance of EClass.
+   <td valign=top>Pass
+</table>
+</body>
+</html>

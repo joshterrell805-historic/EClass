@@ -45,7 +45,7 @@ class KickWindow(wx.Frame):
          'kick notification', {'pickle': 'needs this'}, self.student.username
       )
       EClass.EClass.GetInstance().connection.CloseConnection(self.student.username)
-      # TODO get the current Roster and update the student's display color
+      EClass.EClass.GetInstance().roster.onLeave(self.student.username)
       self.Destroy()
       
    def OnCancel(self, event):

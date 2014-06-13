@@ -97,20 +97,29 @@ class WhiteboardNav(wx.Panel):
             'lockdown', self.LockdownMode
          )
       wx.CallLater(1, listen)
-      
+   
    # TODO docs
    def LockdownMode(self, message, student):
+      MILLIS = 60000
+      
       if not EClass.GetInstance().user.isPresenter():
-         if message['on']:
-            self.previousSlideButton.Disable()
-            self.nextSlideButton.Disable()
-            self.syncButton.Disable()
-            self.slideTextbox.SetEditable(False)
-         else:
-            self.previousSlideButton.Enable()
-            self.nextSlideButton.Enable()
-            self.syncButton.Enable()
-            self.slideTextbox.SetEditable(True)
+         def __Lockdown(): 
+            if message['on']:
+               self.previousSlideButton.Disable()
+               self.nextSlideButton.Disable()
+               self.syncButton.Disable()
+               self.slideTextbox.SetEditable(False)
+               self.SyncWithPresenter(None)
+            else:
+               self.previousSlideButton.Enable()
+               self.nextSlideButton.Enable()
+               self.syncButton.Enable()
+               self.slideTextbox.SetEditable(True)
+      
+         wx.MessageBox('The presenter has put you in lockdown mode, ' +
+          'you have one minute before it takes effect.', 
+          'Lockdown Mode Initiated', wx.OK | wx.ICON_INFORMATION)
+         wx.CallLater(MILLIS, __Lockdown)
       
    def onKey(self, evt):
       if evt.GetKeyCode() == wx.WXK_DELETE or evt.GetKeyCode() == wx.WXK_BACK:
