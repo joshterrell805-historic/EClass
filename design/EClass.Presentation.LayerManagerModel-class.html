@@ -57,7 +57,12 @@
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class LayerManagerModel</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel">source&nbsp;code</a></span></p>
-<p>Manages the layers attached to the current slide</p>
+<p>This model manages the layers attached to the current slide. The layer
+  manager is initialized with each slide. To got the layers, the 
+  application looks at what layers are stored in the current slide of 
+  presentiation. It handles adding and removing objects from the selected 
+  layer. It essentially is the canvas and has acces to all of the necassary
+  object information.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -152,6 +157,80 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.LayerManagerModel-class.html#SetCurrentLayer" class="summary-sig-name">SetCurrentLayer</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">index</span>)</span><br />
+      Changes the current layer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.SetCurrentLayer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.LayerManagerModel-class.html#AddObj" class="summary-sig-name">AddObj</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">newObj</span>)</span><br />
+      Adds an object to the current layer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.AddObj">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.LayerManagerModel-class.html#RemoveObject" class="summary-sig-name">RemoveObject</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">objToRemove</span>)</span><br />
+      Removes an object to the current layer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.RemoveObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.LayerManagerModel-class.html#ChangeObjPos" class="summary-sig-name">ChangeObjPos</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">objToChange</span>,
+        <span class="summary-sig-arg">oldPos</span>,
+        <span class="summary-sig-arg">newPos</span>)</span><br />
+      Changes position of an object on the current layer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.ChangeObjPos">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
 <!-- ==================== INSTANCE VARIABLES ==================== -->
 <a name="section-InstanceVariables"></a>
@@ -170,6 +249,14 @@
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="currLayer"></a><span class="summary-name">currLayer</span><br />
+      The current Layer selected in the layer manager
+    </td>
+  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -308,6 +395,135 @@
       </p>
 </div></td></tr></table>
 </div>
+<a name="SetCurrentLayer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">SetCurrentLayer</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">index</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.SetCurrentLayer">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Changes the current layer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>index</code></strong> - index of layer to change opacity on.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        index &gt; -1 &amp;&amp; index &lt; len(self.layers)
+      </p>
+      <p><strong>Postcondition:</strong>
+        self.currLayer == index
+      </p>
+</div></td></tr></table>
+</div>
+<a name="AddObj"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">AddObj</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">newObj</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.AddObj">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds an object to the current layer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>newObj</code></strong> - the new object to add to the layer</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        self.layers[self.currLayer].locked == False &amp;&amp; 
+        self.layers[self.currLayer].visible == True
+      </p>
+      <p><strong>Postcondition:</strong>
+        len(self.layers[self.currLayer].objects) == 
+        len(old(self.layers[self.currLayer].objects)) + 1
+      </p>
+</div></td></tr></table>
+</div>
+<a name="RemoveObject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">RemoveObject</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">objToRemove</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.RemoveObject">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Removes an object to the current layer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>objToRemove</code></strong> - the object to remove</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        self.layers[self.currLayer].locked == False &amp;&amp; 
+        self.layers[self.currLayer].visible == True
+      </p>
+      <p><strong>Postcondition:</strong>
+        len(self.layers[self.currLayer].objects) == 
+        len(old(self.layers[self.currLayer].objects)) - 1
+      </p>
+</div></td></tr></table>
+</div>
+<a name="ChangeObjPos"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ChangeObjPos</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">objToChange</span>,
+        <span class="sig-arg">oldPos</span>,
+        <span class="sig-arg">newPos</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#LayerManagerModel.ChangeObjPos">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Changes position of an object on the current layer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>objToChange</code></strong> - object to take the action on</li>
+        <li><strong class="pname"><code>oldPos</code></strong> - objects old position</li>
+        <li><strong class="pname"><code>newPos</code></strong> - objects new position</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Precondition:</strong>
+        self.layers[self.currLayer].locked == False &amp;&amp; 
+        self.layers[self.currLayer].visible == True
+      </p>
+      <p><strong>Postcondition:</strong>
+        object has moved x and y coordinates
+      </p>
+</div></td></tr></table>
+</div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -335,7 +551,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:33 2014
+    Generated by Epydoc 3.0.1 on Thu Jun 12 23:13:48 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

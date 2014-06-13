@@ -259,9 +259,23 @@ class PermissionLevel():
    
 class Layer:
    """
-   A layer contains a list of objects contained within the Layer. 
+   A layer is a collection of layer objects. Layers are like a sheet of paper
+   on an overhead projector. You can stack them on top of eachother, swap
+   positions, and draw on whichever one you want. They are always drawn in
+   a specified order. Layers have several different properties including:
+   the visual objects each layer contains, opacity (determining
+   how transparent to draw each object), visiblility (a toggle
+   determining whether to draw the layer at all), and lock (a toggle determing
+   whether objects may be added to or moved on the layer).
+   
 
-   @author: Andrew Lisowski (alisowsk@calpoly.edu)
+   Layers contain layer objects which are python dictionaries holding
+   representations of visual objects. The currently implemented layer objects are:
+   square, text, and pencil. Each object has a type property defining what type it is
+   "square" "text" or "pencil" and then a varying set of properties determining
+   how to draw the object (position, points, width, height, ...)
+
+   @author: Andrew Lisowski (alisowsk@calpoly.edu) + Josh (class doc)
 
    @ivar objects: A Collection of LayerObjects that represent all graphics on a Layer
    @ivar opacity: A double representing how transparent a Layer is

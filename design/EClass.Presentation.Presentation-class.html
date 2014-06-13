@@ -58,14 +58,22 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class Presentation</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation">source&nbsp;code</a></span></p>
 <p>A Presentation is a collection of slides and their respective layers 
-  which is displayed at the center of the EClass. It contains a variety of 
-  methods used to navigate between slides and access the current slide.</p>
-  <p>Presentation includes a Slidify() method which opens up the HTML file 
-  located at a Presentation's path and converts it to a fresh set of slides
-  to be displayed. Any &lt;br class=&quot;slide&quot;&gt; tags in the HTML 
-  denote the location where a new Slide should be created and Slidify() 
-  will break them up at those points. However, the method ensures there 
-  will always be at least one slide if there are no &lt;br 
+  which is displayed at the center of the EClass. View the Slide 
+  documentation for more detailed information about them. Presentation 
+  contains a variety of methods used to navigate between slides and access 
+  the current slide. It handles all of the model-related syncing 
+  functionality between presenters and students as well. It accomplishes 
+  this by passing messages back and forth between the presenter and the 
+  student(s). On a presenter client, the current slide is broadcast to each
+  student whenever the slide is changed. A student's Presentation object 
+  will listen for the message and update accordingly if it is currently set
+  to stay synced.</p>
+  <p>Presentation also includes the Slidify() method which opens up the 
+  HTML file located at a Presentation's path and converts it to a fresh set
+  of slides to be displayed. Any &lt;br class=&quot;slide&quot;&gt; tags in
+  the HTML denote the location where a new Slide should be created and 
+  Slidify() will break them up at those points. However, the method ensures
+  there will always be at least one slide if there are no &lt;br 
   class=&quot;slide&quot;&gt; tags.</p>
 
 <hr />
@@ -100,6 +108,61 @@
       Initialize a Presentation.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#onSaveListener" class="summary-sig-name">onSaveListener</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">eventType</span>,
+        <span class="summary-sig-arg">identifier</span>)</span><br />
+      Internal use only (private).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.onSaveListener">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#onInitialData" class="summary-sig-name">onInitialData</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Internal use only (private).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.onInitialData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="EClass.Presentation.Presentation-class.html#loadFileData" class="summary-sig-name">loadFileData</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Internal use only (private).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.loadFileData">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -284,14 +347,6 @@
     </table>
   </td>
 </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="__doneSyncing"></a><span class="summary-name">__doneSyncing</span><br />
-      A callback method to update the WhiteboardNav view after syncing.
-    </td>
-  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -304,9 +359,26 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a name="isSynced"></a><span class="summary-name">isSynced</span><br />
+      Boolean to keep track of whether the slides should be synced with the
+      presenter's slides.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a name="path"></a><span class="summary-name">path</span><br />
       Refers to the current file system path of the backing presentation 
       file.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="rawHTML"></a><span class="summary-name">rawHTML</span><br />
+      A string copy of the presentation HTML contents.
     </td>
   </tr>
 <tr>
@@ -358,6 +430,81 @@
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>path</code></strong> - The path to the presentation file.</li>
     </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="onSaveListener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">onSaveListener</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">eventType</span>,
+        <span class="sig-arg">identifier</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.onSaveListener">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal use only (private). This is the callback passed to 
+  EClass.registerOnSaveListener. The parameters are documented in the 
+  respective EClass method's documentation.</p>
+  <p>This callback returns an object representing the state of the 
+  presentation for both the 'initial data' save functionality and the 
+  'file' save functionality. Both of these save functions are explained in 
+  the EClass methods' documentation.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="onInitialData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">onInitialData</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.onInitialData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal use only (private). This method is called from 
+  EClass.loadInitalData with the object returned from 
+  Presentation.onSaveListener when 'save initial data for student' is the 
+  `eventType`. This method initializes the presentation on a student's 
+  EClass given the data sent by the presenter.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadFileData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadFileData</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="EClass.Presentation-pysrc.html#Presentation.loadFileData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal use only (private). This method is called from 
+  EClass.loadFileData with the object returned from 
+  Presentation.onSaveListener when 'save to file' is the `eventType`. This 
+  method initializes the presentation on the presenter's EClass given the 
+  data saved to file by a previous `file-&gt;save` operation.</p>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -638,7 +785,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:33 2014
+    Generated by Epydoc 3.0.1 on Thu Jun 12 23:13:48 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

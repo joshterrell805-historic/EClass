@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>EClass.LayerObject.DrawingTools</title>
+  <title>EClass.View.DrawingTools</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,7 +38,7 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="EClass-module.html">Package&nbsp;EClass</a> ::
-        <a href="EClass.LayerObject-module.html">Module&nbsp;LayerObject</a> ::
+        <a href="EClass.View-module.html">Module&nbsp;View</a> ::
         Class&nbsp;DrawingTools
       </span>
     </td>
@@ -49,16 +49,19 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="EClass.LayerObject.DrawingTools-class.html"
+            >]&nbsp;|&nbsp;<a href="EClass.View.DrawingTools-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class DrawingTools</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class DrawingTools</h1><p class="nomargin-top"><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools">source&nbsp;code</a></span></p>
 <p>A DrawingTools is a tool bar containing the various drawing tools a 
-  student or presenter may use during a presentation.</p>
+  student or presenter may use during a presentation. In our 
+  implementation, drawing is done on a frame known as a layer. Each user 
+  has a series of layers to draw on. See the Layer class under 
+  Presentation.py for more information.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -90,7 +93,7 @@
           <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span><br />
       Initialize a Drawing Tools window.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -104,11 +107,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#PencilToolHandler" class="summary-sig-name">PencilToolHandler</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#PencilToolHandler" class="summary-sig-name">PencilToolHandler</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles pencil tool events when this tool is selected.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.PencilToolHandler">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.PencilToolHandler">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -122,11 +125,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#HandToolHandler" class="summary-sig-name">HandToolHandler</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#HandToolHandler" class="summary-sig-name">HandToolHandler</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles hand tool events when this tool is selected.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.HandToolHandler">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.HandToolHandler">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -140,11 +143,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#TextToolHandler" class="summary-sig-name">TextToolHandler</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#TextToolHandler" class="summary-sig-name">TextToolHandler</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles text tool events when this tool is selected.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.TextToolHandler">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.TextToolHandler">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -158,11 +161,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#CircleShapeHandler" class="summary-sig-name">CircleShapeHandler</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#CircleShapeHandler" class="summary-sig-name">CircleShapeHandler</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles circle shape tool events when this tool is selected.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.CircleShapeHandler">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.CircleShapeHandler">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -176,11 +179,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#SquareShapeHandler" class="summary-sig-name">SquareShapeHandler</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#SquareShapeHandler" class="summary-sig-name">SquareShapeHandler</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles square shape tool events when this tool is selected.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.SquareShapeHandler">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.SquareShapeHandler">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -194,11 +197,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#TriangleShapeHandler" class="summary-sig-name">TriangleShapeHandler</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#TriangleShapeHandler" class="summary-sig-name">TriangleShapeHandler</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles triangle shape tool events when this tool is selected.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.TriangleShapeHandler">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.TriangleShapeHandler">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -212,11 +215,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="EClass.LayerObject.DrawingTools-class.html#OnClose" class="summary-sig-name">OnClose</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="EClass.View.DrawingTools-class.html#OnClose" class="summary-sig-name">OnClose</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">event</span>)</span><br />
       Handles closing the DrawingTools tool bar.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.OnClose">source&nbsp;code</a></span>
+            <span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.OnClose">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -321,7 +324,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.PencilToolHandler">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.PencilToolHandler">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -349,7 +352,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.HandToolHandler">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.HandToolHandler">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -377,7 +380,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.TextToolHandler">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.TextToolHandler">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -405,7 +408,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.CircleShapeHandler">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.CircleShapeHandler">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -433,7 +436,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.SquareShapeHandler">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.SquareShapeHandler">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -461,7 +464,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.TriangleShapeHandler">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.TriangleShapeHandler">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -489,7 +492,7 @@
         <span class="sig-arg">event</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="EClass.LayerObject-pysrc.html#DrawingTools.OnClose">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="EClass.View-pysrc.html#DrawingTools.OnClose">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -531,7 +534,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Jun  9 21:22:33 2014
+    Generated by Epydoc 3.0.1 on Thu Jun 12 23:13:48 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
