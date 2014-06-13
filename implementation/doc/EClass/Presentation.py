@@ -421,3 +421,45 @@ class LayerManagerModel:
       @postcondition: object has moved x and y coordinates
       """
       pass
+
+class QuestionList():
+   def __init__(self):
+      """
+      Initialize a new QuestionList
+      """
+      pass
+   
+   def Append(self, question):
+      """
+      Add question to the QuestionList
+
+      @param question: question to add to the QuestionList
+      @precondition: question != None
+      @postcondition: question in self
+      """
+
+   def Remove(self, index):
+      """
+      Remove the question at the specified index in the QuestionList
+
+      @param index: index of the question to be removed
+      @precondition: index < len(self) && index >= 0
+      @postcondition: question not in self
+      """
+
+   def RemoveAll(self):
+      """
+      Remove all questions from the QuestionList
+      
+      @precondition: None
+      @postcondition: len(self) == 0
+      """
+
+   def __getitem__(self, index):
+      """
+      Returns the item at the specified index. Allows QuestionList to be
+      accessed as an array: i.e QuestionList[0]
+
+      @precondition: index < len(self) && index >= 0
+      @postcondition: None
+      """
